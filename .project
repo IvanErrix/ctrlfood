@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Driver/mysql-connector-java-8.0.20.jar</name>
+			<type>1</type>
+			<location>C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.20.jar</location>
+		</link>
+	</linkedResources>
 </projectDescription>
