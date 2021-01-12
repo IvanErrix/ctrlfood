@@ -15,7 +15,7 @@ public class DAO {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			try {
-				conn = DriverManager.getConnection("jdbc:mysql://den1.mysql2.gear.host/spotyfree", "spotyfree", "ivan@2020");
+				conn = DriverManager.getConnection("jdbc:mysql://den1.mysql4.gear.host/ctrlfood", "ctrlfood", "Po3IZ79Y?C_6");
 			} catch (SQLException e) {
 				JOptionPane.showMessageDialog(null, "Connessione al server fallita", "ERRORE", JOptionPane.ERROR_MESSAGE);
 			}
