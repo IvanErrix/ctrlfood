@@ -15,28 +15,37 @@ public class DepositoPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private String Titoli[]= {"Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
 	private String Elementi[][]= {};
-	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli);
+	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
+		private static final long serialVersionUID = 1L;
+
+			@Override
+			   public boolean isCellEditable(int row, int column) {
+			       //Only the third column
+			       return false;
+			   }
+			};
 	private JTable table;
 	private JTextField textField;
 
 	public DepositoPanel(Controller ctrl) {
-		setVisible(false);
-		setBounds(386, 0, 765, 600);
 		setOpaque(false);
+		setBackground(Color.BLACK);
+		setBounds(0, 0, 765, 600);
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setOpaque(false);
 		scrollPane.setBounds(10, 78, 745, 511);
 		add(scrollPane);
 		
 		table = new JTable(model);
-		table.setBackground(Color.BLUE);
+		table.setOpaque(false);
+		table.setBackground(Color.WHITE);
 		table.setBounds(302, 183, 150, 150);
 		scrollPane.setViewportView(table);
+		model.isCellEditable(0, 0);
 		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
 	
-		
-		
 		JButton ButtonSearch = new JButton("");
 		ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
 		ButtonSearch.setOpaque(false);
@@ -51,9 +60,8 @@ public class DepositoPanel extends JPanel {
 		textField.setColumns(10);
 		add(textField);
 		
-		
-		
-	
-		
+		JButton ButtonAggiungi = new JButton("Aggiungi");
+		ButtonAggiungi.setBounds(602, 35, 89, 23);
+		add(ButtonAggiungi);
 	}
 }

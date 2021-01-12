@@ -20,7 +20,6 @@ public class Controller {
 	    				System.out.println("Connessione avvenuta");
 	    				FramePrincipale frameprincipale = new FramePrincipale(ctrl);
 	    				frameprincipale.setVisible(true);
-	    				
 	    			} catch (Exception e) {
 	    				e.printStackTrace();
 	    			}
@@ -33,10 +32,13 @@ public class Controller {
 	}
 	
 	
-	public void ApriDepositoPanel(Controller ctrl) {
+	public void ApriDepositoPanel(Controller ctrl, JPanel PanelCaricamento) {
 		DepositoPanel deposito = new DepositoPanel(ctrl);
-		JPanel panel = new JPanel();
 		deposito.setVisible(true);
+		PanelCaricamento.removeAll();
+		PanelCaricamento.add(deposito);
+		PanelCaricamento.repaint();
+		PanelCaricamento.revalidate();
 	}
 
 }

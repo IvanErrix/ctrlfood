@@ -32,10 +32,17 @@ public class FramePrincipale extends JFrame {
 		setContentPane(PanelPrincipale);
 		PanelPrincipale.setLayout(null);
 		
+		JPanel PanelCaricamento = new JPanel();
+		PanelCaricamento.setOpaque(false);
+		PanelCaricamento.setBorder(null);
+		PanelCaricamento.setBounds(386, 0, 765, 571);
+		PanelPrincipale.add(PanelCaricamento);
+		PanelCaricamento.setLayout(null);
+		
 		JButton ButtonDeposito = new JButton("");
 		ButtonDeposito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriDepositoPanel(ctrl);
+				ctrl.ApriDepositoPanel(ctrl, PanelCaricamento);
 			}
 		});
 		ButtonDeposito.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -81,5 +88,6 @@ public class FramePrincipale extends JFrame {
 		Sfondo.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Homepage.png")));
 		Sfondo.setBounds(0, 0, 1156, 600);
 		PanelPrincipale.add(Sfondo);
+
 	}
 }
