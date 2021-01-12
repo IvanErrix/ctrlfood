@@ -45,40 +45,40 @@ public class FramePrincipale extends JFrame {
 		ButtonDeposito.setBorderPainted(false);
 		ButtonDeposito.setVisible(false);
 		ButtonDeposito.setOpaque(false);
-		ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Button_Deposito.png")));
-		ButtonDeposito.setBounds(59, 97, 223, 52);
+		ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 1.png")));
+		ButtonDeposito.setBounds(74, 150, 151, 52);
 		contentPane.add(ButtonDeposito);
 		
 		JButton ButtonNegozio = new JButton("");
-		ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Button_Negozio.png")));
+		ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 2.png")));
 		ButtonNegozio.setVisible(false);
 		ButtonNegozio.setOpaque(false);
 		ButtonNegozio.setContentAreaFilled(false);
 		ButtonNegozio.setBorderPainted(false);
-		ButtonNegozio.setBounds(59, 200, 223, 52);
+		ButtonNegozio.setBounds(74, 215, 137, 52);
 		contentPane.add(ButtonNegozio);
 		
 		JButton ButtonCliente = new JButton("");
-		ButtonCliente.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Button_Cliente.png")));
+		ButtonCliente.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 3.png")));
 		ButtonCliente.setVisible(false);
 		ButtonCliente.setOpaque(false);
 		ButtonCliente.setContentAreaFilled(false);
 		ButtonCliente.setBorderPainted(false);
-		ButtonCliente.setBounds(59, 300, 223, 52);
+		ButtonCliente.setBounds(74, 290, 128, 52);
 		contentPane.add(ButtonCliente);
 		
 		JButton ButtonCarello = new JButton("");
-		ButtonCarello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Button_Carrello.png")));
+		ButtonCarello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 4.png")));
 		ButtonCarello.setVisible(false);
 		ButtonCarello.setOpaque(false);
 		ButtonCarello.setContentAreaFilled(false);
 		ButtonCarello.setBorderPainted(false);
-		ButtonCarello.setBounds(59, 400, 223, 52);
+		ButtonCarello.setBounds(74, 365, 141, 52);
 		contentPane.add(ButtonCarello);
 		
-		JLabel Homepage = new JLabel("");
-		Homepage.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Homepage.png")));
-		Homepage.setBounds(0, 0, 1146, 571);
-		contentPane.add(Homepage);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Homepage.png")));
+		lblNewLabel.setBounds(0, 0, 1156, 600);
+		contentPane.add(lblNewLabel);
 	}
 }
