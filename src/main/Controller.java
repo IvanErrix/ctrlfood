@@ -3,6 +3,7 @@ package main;
 import java.awt.EventQueue;
 import java.awt.Frame;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Controller {
@@ -31,7 +32,6 @@ public class Controller {
 		}
 	}
 	
-	
 	public void ApriDepositoPanel(Controller ctrl, JPanel PanelCaricamento) {
 		DepositoPanel deposito = new DepositoPanel(ctrl);
 		deposito.setVisible(true);
@@ -39,11 +39,6 @@ public class Controller {
 		PanelCaricamento.add(deposito);
 		PanelCaricamento.repaint();
 		PanelCaricamento.revalidate();
-	}
-	
-	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
-		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
-		dialog.setVisible(true);
 	}
 	
 	public void ApriNegozioPanel(Controller ctrl, JPanel PanelCaricamento) {
@@ -62,5 +57,10 @@ public class Controller {
 		PanelCaricamento.add(clienti);
 		PanelCaricamento.repaint();
 		PanelCaricamento.revalidate();
+	}
+	
+	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
+		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
+		dialog.setVisible(true);
 	}
 }
