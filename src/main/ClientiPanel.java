@@ -1,22 +1,23 @@
 package main;
 
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JTextField;
-import java.awt.Color;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Cursor;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
-public class DepositoPanel extends JPanel {
+public class ClientiPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private String Titoli[]= {"Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
+	private String Titoli[]= {"Nome", "Cognome", "Codice Fiscale", "ID Carta","Punti"};
 	private String Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
 		private static final long serialVersionUID = 1L;
@@ -30,7 +31,7 @@ public class DepositoPanel extends JPanel {
 	private JTable table;
 	private JTextField textField;
 
-	public DepositoPanel(Controller ctrl) {
+	public ClientiPanel(Controller ctrl) {
 		setOpaque(false);
 		setBackground(Color.BLACK);
 		setBounds(0, 0, 765, 600);
@@ -49,7 +50,7 @@ public class DepositoPanel extends JPanel {
 		table.setBounds(302, 183, 150, 150);
 		scrollPane.setViewportView(table);
 		model.isCellEditable(0, 0);
-		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
+		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", "001", "110"});
 	
 		JButton ButtonSearch = new JButton("");
 		ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
@@ -67,22 +68,18 @@ public class DepositoPanel extends JPanel {
 		textField.setColumns(10);
 		add(textField);
 		
-		JLabel lblNewLabel = new JLabel("Deposito");
-		lblNewLabel.setBounds(529, 39, 46, 14);
-		add(lblNewLabel);
-		
 		JButton ButtonAggiungi = new JButton("");
-		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonAggiungi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriAggiungiAlDepositoDialog(ctrl);
-			}
-		});
+		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/IcoButtonAggiungi.png")));
 		ButtonAggiungi.setBounds(690, 11, 50, 56);
 		add(ButtonAggiungi);
+		
+		JLabel lblNewLabel = new JLabel("Clienti");
+		lblNewLabel.setBounds(533, 39, 46, 14);
+		add(lblNewLabel);
 	}
+
 }

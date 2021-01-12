@@ -25,7 +25,7 @@ public class FramePrincipale extends JFrame {
 		setTitle("CtrlFood");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1152, 600);
+		setSize(1152, 600);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		PanelPrincipale = new JPanel();
 		PanelPrincipale.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -60,6 +60,11 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.add(ButtonDeposito);
 		
 		JButton ButtonNegozio = new JButton("");
+		ButtonNegozio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.ApriNegozioPanel(ctrl, PanelCaricamento);
+			}
+		});
 		ButtonNegozio.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 2.png")));
 		ButtonNegozio.setVisible(true);
@@ -70,24 +75,29 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.add(ButtonNegozio);
 		
 		JButton ButtonCliente = new JButton("");
+		ButtonCliente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.ApriClientiPanel(ctrl, PanelCaricamento);
+			}
+		});
 		ButtonCliente.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonCliente.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 3.png")));
-		ButtonCliente.setVisible(false);
+		ButtonCliente.setVisible(true);
 		ButtonCliente.setOpaque(false);
 		ButtonCliente.setContentAreaFilled(false);
 		ButtonCliente.setBorderPainted(false);
 		ButtonCliente.setBounds(74, 290, 128, 52);
 		PanelPrincipale.add(ButtonCliente);
 		
-		JButton ButtonCarello = new JButton("");
-		ButtonCarello.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonCarello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 4.png")));
-		ButtonCarello.setVisible(false);
-		ButtonCarello.setOpaque(false);
-		ButtonCarello.setContentAreaFilled(false);
-		ButtonCarello.setBorderPainted(false);
-		ButtonCarello.setBounds(74, 365, 141, 52);
-		PanelPrincipale.add(ButtonCarello);
+		JButton ButtonCarrello = new JButton("");
+		ButtonCarrello.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 4.png")));
+		ButtonCarrello.setVisible(false);
+		ButtonCarrello.setOpaque(false);
+		ButtonCarrello.setContentAreaFilled(false);
+		ButtonCarrello.setBorderPainted(false);
+		ButtonCarrello.setBounds(74, 365, 141, 52);
+		PanelPrincipale.add(ButtonCarrello);
 		
 		JLabel Sfondo = new JLabel("");
 		Sfondo.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Homepage.png")));

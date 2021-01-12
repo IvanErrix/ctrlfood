@@ -45,5 +45,22 @@ public class Controller {
 		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
 		dialog.setVisible(true);
 	}
-
+	
+	public void ApriNegozioPanel(Controller ctrl, JPanel PanelCaricamento) {
+		NegozioPanel negozio = new NegozioPanel(ctrl);
+		negozio.setVisible(true);
+		PanelCaricamento.removeAll();
+		PanelCaricamento.add(negozio);
+		PanelCaricamento.repaint();
+		PanelCaricamento.revalidate();
+	}
+	
+	public void ApriClientiPanel(Controller ctrl, JPanel PanelCaricamento) {
+		ClientiPanel clienti = new ClientiPanel(ctrl);
+		clienti.setVisible(true);
+		PanelCaricamento.removeAll();
+		PanelCaricamento.add(clienti);
+		PanelCaricamento.repaint();
+		PanelCaricamento.revalidate();
+	}
 }

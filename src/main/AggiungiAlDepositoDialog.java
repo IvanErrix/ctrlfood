@@ -1,12 +1,7 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -17,17 +12,25 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Cursor;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AggiungiAlDepositoDialog extends JDialog {
+
+	private static final long serialVersionUID = 1L;
+	
 	private JTextField textFieldNome;
 	private JTextField textFieldPrezzo;
 	private JTextField textFieldDataScadenza;
 	private JTextField textFieldQuantita;
 
 	public AggiungiAlDepositoDialog(Controller ctrl) {
+		setAlwaysOnTop(true);
+		setUndecorated(true);
+		setSize(623, 463);
+		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setBackground(new Color(0, 67, 137));
 		getContentPane().setLayout(null);
-		getContentPane().setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		
 		JLabel LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(255, 213, 0));
@@ -47,19 +50,19 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		lblDataScadenza.setBounds(10, 165, 118, 14);
 		getContentPane().add(lblDataScadenza);
 		
-		JLabel lblQuantit = new JLabel("Quantit\u00E0");
-		lblQuantit.setForeground(new Color(255, 213, 0));
-		lblQuantit.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblQuantit.setBounds(10, 240, 68, 14);
-		getContentPane().add(lblQuantit);
+		JLabel lblQuantita = new JLabel("Quantit\u00E0");
+		lblQuantita.setForeground(new Color(255, 213, 0));
+		lblQuantita.setFont(new Font("Impact", Font.PLAIN, 16));
+		lblQuantita.setBounds(10, 240, 68, 14);
+		getContentPane().add(lblQuantita);
 		
 		textFieldNome = new JTextField();
 		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldNome.setForeground(new Color(255, 213, 0));
 		textFieldNome.setOpaque(false);
+		textFieldNome.setColumns(10);
 		textFieldNome.setBounds(220, 17, 267, 30);
 		getContentPane().add(textFieldNome);
-		textFieldNome.setColumns(10);
 		
 		textFieldPrezzo = new JTextField();
 		textFieldPrezzo.setFont(new Font("Impact", Font.PLAIN, 11));
@@ -89,6 +92,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiugni.setOpaque(false);
 		ButtonAggiugni.setBorder(null);
+		ButtonAggiugni.setContentAreaFilled(false);
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -98,20 +102,34 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(ButtonAggiugni);
 		
 		JButton ButtonCancellaTutto = new JButton("");
+		ButtonCancellaTutto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textFieldNome.setText("");
+				textFieldPrezzo.setText("");
+				textFieldDataScadenza.setText("");
+				textFieldQuantita.setText("");
+			}
+		});
 		ButtonCancellaTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
 		ButtonCancellaTutto.setOpaque(false);
 		ButtonCancellaTutto.setBorder(null);
+		ButtonCancellaTutto.setContentAreaFilled(false);
 		ButtonCancellaTutto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonCancellaTutto.setBounds(268, 344, 168, 30);
 		getContentPane().add(ButtonCancellaTutto);
 		
 		JButton ButtonAnnulla = new JButton("");
+		ButtonAnnulla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		ButtonAnnulla.setOpaque(false);
 		ButtonAnnulla.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAnnulla.setBorder(null);
+		ButtonAnnulla.setContentAreaFilled(false);
 		ButtonAnnulla.setBounds(39, 344, 141, 30);
 		getContentPane().add(ButtonAnnulla);
-		setBounds(100, 100, 623, 463);
 	}
 }
