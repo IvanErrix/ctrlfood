@@ -32,6 +32,11 @@ public class FramePrincipale extends JFrame {
 		setContentPane(PanelPrincipale);
 		PanelPrincipale.setLayout(null);
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHouseYellow_32.png")));
+		lblNewLabel.setBounds(20, 150, 32, 32);
+		PanelPrincipale.add(lblNewLabel);
+		
 		JPanel PanelCaricamento = new JPanel();
 		PanelCaricamento.setOpaque(false);
 		PanelCaricamento.setBorder(null);
