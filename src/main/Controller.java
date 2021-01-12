@@ -40,5 +40,10 @@ public class Controller {
 		PanelCaricamento.repaint();
 		PanelCaricamento.revalidate();
 	}
+	
+	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
+		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
+		dialog.setVisible(true);
+	}
 
 }

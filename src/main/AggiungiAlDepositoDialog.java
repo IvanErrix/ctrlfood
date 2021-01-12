@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,9 +24,10 @@ public class AggiungiAlDepositoDialog extends JDialog {
 	private JTextField textFieldDataScadenza;
 	private JTextField textFieldQuantita;
 
-	public AggiungiAlDepositoDialog() {
+	public AggiungiAlDepositoDialog(Controller ctrl) {
 		getContentPane().setBackground(new Color(0, 67, 137));
 		getContentPane().setLayout(null);
+		getContentPane().setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		
 		JLabel LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(255, 213, 0));

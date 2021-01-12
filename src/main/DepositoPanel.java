@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Cursor;
 
 public class DepositoPanel extends JPanel {
 
@@ -52,19 +55,28 @@ public class DepositoPanel extends JPanel {
 		ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
 		ButtonSearch.setOpaque(false);
 		ButtonSearch.setContentAreaFilled(false);
-		ButtonSearch.setBounds(498, 11, 42, 42);
+		ButtonSearch.setBounds(370, 11, 42, 42);
 		add(ButtonSearch);
 		
 		textField = new JTextField();
 		textField.setForeground(new Color(255, 213, 0));
 		textField.setBackground(new Color(0, 80, 157));
 		textField.setBorder(null);
-		textField.setBounds(133, 11, 350, 42);
+		textField.setBounds(10, 11, 415, 42);
 		textField.setColumns(10);
 		add(textField);
 		
-		JButton ButtonAggiungi = new JButton("Aggiungi");
-		ButtonAggiungi.setBounds(602, 35, 89, 23);
+		JButton ButtonAggiungi = new JButton("");
+		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonAggiungi.setOpaque(false);
+		ButtonAggiungi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.ApriAggiungiAlDepositoDialog(ctrl);
+			}
+		});
+		ButtonAggiungi.setBorder(null);
+		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/IcoButtonAggiungi.png")));
+		ButtonAggiungi.setBounds(690, 11, 50, 56);
 		add(ButtonAggiungi);
 	}
 }
