@@ -76,10 +76,6 @@ public class ClientiPanel extends JPanel {
 		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/IcoButtonAggiungi.png")));
 		ButtonAggiungi.setBounds(690, 11, 50, 56);
 		add(ButtonAggiungi);
-		
-		JLabel lblNewLabel = new JLabel("Clienti");
-		lblNewLabel.setBounds(533, 39, 46, 14);
-		add(lblNewLabel);
 	}
 
 }

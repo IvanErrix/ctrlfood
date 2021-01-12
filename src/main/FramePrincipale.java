@@ -33,26 +33,36 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.setLayout(null);
 		
 		
+		JButton ButtonDeposito = new JButton("");
+		ButtonDeposito.setFocusable(false);
+		JButton ButtonNegozio = new JButton("");
+		ButtonNegozio.setFocusable(false);
+		JButton ButtonClienti = new JButton("");
+		ButtonClienti.setFocusable(false);
+		JButton ButtonCarrello = new JButton("");
+		ButtonCarrello.setFocusable(false);
+		
+		
 		JLabel LabelDeposito = new JLabel("");
 		LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-		LabelDeposito.setBounds(20, 150, 32, 32);
+		LabelDeposito.setBounds(20, 140, 53, 55);
 		PanelPrincipale.add(LabelDeposito);
 		
 		
 		JLabel LabelNegozio = new JLabel("");
 		LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShopWhite_32.png")));
-		LabelNegozio.setBounds(20, 215, 32, 32);
+		LabelNegozio.setBounds(20, 205, 53, 55);
 		PanelPrincipale.add(LabelNegozio);
 		
 		
 		JLabel LabelClienti = new JLabel("");
 		LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoUserWhite_32.png")));
-		LabelClienti.setBounds(20, 290, 32, 32);
+		LabelClienti.setBounds(20, 280, 53, 55);
 		PanelPrincipale.add(LabelClienti);
 		
 		JLabel LabelCarrello = new JLabel("");
 		LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
-		LabelCarrello.setBounds(20, 365, 32, 32);
+		LabelCarrello.setBounds(20, 355, 53, 55);
 		PanelPrincipale.add(LabelCarrello);
 		
 		JPanel PanelCaricamento = new JPanel();
@@ -62,14 +72,18 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.add(PanelCaricamento);
 		PanelCaricamento.setLayout(null);
 		
-		JButton ButtonDeposito = new JButton("");
+		/*BUTTON DEPOSITO*/
 		ButtonDeposito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriDepositoPanel(ctrl, PanelCaricamento);
-				LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHouseYellow_32.png")));
+				LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IconHouse3D.png")));
 				LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShopWhite_32.png")));
 				LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoUserWhite_32.png")));
 				LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
+				ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonDeposito.png")));
+				ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/NegozioWhite.png")));
+				ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ClientiWhite.png")));
+				ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CarrelloWhite.png")));
 			}
 		});
 		ButtonDeposito.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -77,66 +91,78 @@ public class FramePrincipale extends JFrame {
 		ButtonDeposito.setBorderPainted(false);
 		ButtonDeposito.setVisible(true);
 		ButtonDeposito.setOpaque(false);
-		ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 1.png")));
-		ButtonDeposito.setBounds(74, 150, 151, 52);
+		ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/DepositoWhite.png")));
+		ButtonDeposito.setBounds(74, 150, 131, 36);
 		PanelPrincipale.add(ButtonDeposito);
 		
-		JButton ButtonNegozio = new JButton("");
+		/*BUTTON NEGOZIO*/
 		ButtonNegozio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriNegozioPanel(ctrl, PanelCaricamento);
 				LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-				LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShopYellow_32.png")));
+				LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IconShop3D.png")));
 				LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoUserWhite_32.png")));
 				LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
+				ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/DepositoWhite.png")));
+				ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonNegozio.png")));
+				ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ClientiWhite.png")));
+				ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CarrelloWhite.png")));
 			}
 		});
 		ButtonNegozio.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 2.png")));
+		ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/NegozioWhite.png")));
 		ButtonNegozio.setVisible(true);
 		ButtonNegozio.setOpaque(false);
 		ButtonNegozio.setContentAreaFilled(false);
 		ButtonNegozio.setBorderPainted(false);
-		ButtonNegozio.setBounds(74, 215, 137, 52);
+		ButtonNegozio.setBounds(74, 215, 118, 36);
 		PanelPrincipale.add(ButtonNegozio);
 		
-		JButton ButtonCliente = new JButton("");
-		ButtonCliente.addActionListener(new ActionListener() {
+		/*BUTTON CLIENTI*/
+		ButtonClienti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriClientiPanel(ctrl, PanelCaricamento);
 				LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHomeWhite_32.png")));
 				LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShopWhite_32.png")));
-				LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoUserYellow_32.png")));
+				LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IconUser3D.png")));
 				LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
+				ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/DepositoWhite.png")));
+				ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/NegozioWhite.png")));
+				ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonClienti.png")));
+				ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CarrelloWhite.png")));
 			}
 		});
-		ButtonCliente.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonCliente.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 3.png")));
-		ButtonCliente.setVisible(true);
-		ButtonCliente.setOpaque(false);
-		ButtonCliente.setContentAreaFilled(false);
-		ButtonCliente.setBorderPainted(false);
-		ButtonCliente.setBounds(74, 290, 128, 52);
-		PanelPrincipale.add(ButtonCliente);
+		ButtonClienti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ClientiWhite.png")));
+		ButtonClienti.setVisible(true);
+		ButtonClienti.setOpaque(false);
+		ButtonClienti.setContentAreaFilled(false);
+		ButtonClienti.setBorderPainted(false);
+		ButtonClienti.setBounds(76, 290, 103, 36);
+		PanelPrincipale.add(ButtonClienti);
 		
-		JButton ButtonCarrello = new JButton("");
+		/*BUTTON CARRELLO*/
 		ButtonCarrello.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHomeWhite_32.png")));
 				LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShopWhite_32.png")));
 				LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoUserWhite_32.png")));
-				LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShoppingCartYellow_32.png")));
+				LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IconShoppingCart3D.png")));
+				ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/DepositoWhite.png")));
+				ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/NegozioWhite.png")));
+				ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ClientiWhite.png")));
+				ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonCarrello.png")));
 				
 			}
 			
 		});
 		ButtonCarrello.setVisible(true);
 		ButtonCarrello.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Group 4.png")));
+		ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CarrelloWhite.png")));
 		ButtonCarrello.setOpaque(false);
 		ButtonCarrello.setContentAreaFilled(false);
 		ButtonCarrello.setBorderPainted(false);
-		ButtonCarrello.setBounds(74, 365, 141, 52);
+		ButtonCarrello.setBounds(70, 365, 131, 36);
 		PanelPrincipale.add(ButtonCarrello);
 		
 		JLabel Sfondo = new JLabel("");

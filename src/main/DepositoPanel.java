@@ -67,10 +67,6 @@ public class DepositoPanel extends JPanel {
 		textField.setColumns(10);
 		add(textField);
 		
-		JLabel lblNewLabel = new JLabel("Deposito");
-		lblNewLabel.setBounds(529, 39, 46, 14);
-		add(lblNewLabel);
-		
 		JButton ButtonAggiungi = new JButton("");
 		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
