@@ -50,6 +50,7 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldNome.setOpaque(false);
 		textFieldNome.setColumns(10);
 		textFieldNome.setBounds(220, 17, 267, 30);
+		textFieldNome.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldNome);
 		
 		JTextField textFieldCognome = new JTextField();
@@ -58,6 +59,7 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldCognome.setForeground(new Color(255, 213, 0));
 		textFieldCognome.setColumns(10);
 		textFieldCognome.setBounds(220, 86, 267, 30);
+		textFieldCognome.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldCognome);
 		
 		JTextField textFieldCodiceFiscale = new JTextField();
@@ -66,6 +68,7 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldCodiceFiscale.setForeground(new Color(255, 213, 0));
 		textFieldCodiceFiscale.setColumns(10);
 		textFieldCodiceFiscale.setBounds(220, 155, 267, 30);
+		textFieldCodiceFiscale.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldCodiceFiscale);
 		
 		JButton ButtonAggiugni = new JButton("");

@@ -1,3 +1,2 @@
-Rimuovere bordi textfield deposito
-Il button deve essere clienti e non cliente
 System.out.println(textFieldNome.getText().toUpperCase());
+Vedere il colore della scrollpane 

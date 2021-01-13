@@ -1,19 +1,20 @@
 package main;
 
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JTextField;
-import java.awt.Color;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Cursor;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
-public class DepositoPanel extends JPanel {
-
+public class CarrelloPanel extends JPanel {
+	
 	private static final long serialVersionUID = 1L;
 	private String Titoli[]= {"Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
 	private String Elementi[][]= {};
@@ -27,9 +28,9 @@ public class DepositoPanel extends JPanel {
 			   }
 			};
 	private JTable table;
-	private JTextField textFieldSearch;
+	
+	public CarrelloPanel(Controller ctrl) {
 
-	public DepositoPanel(Controller ctrl) {
 		setOpaque(false);
 		setBackground(Color.BLACK);
 		setBounds(0, 0, 765, 600);
@@ -37,7 +38,6 @@ public class DepositoPanel extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(new Color(0, 67, 137));
-		scrollPane.getViewport().setBackground(new Color(0,67,137));
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(10, 78, 730, 499);
 		add(scrollPane);
@@ -62,7 +62,7 @@ public class DepositoPanel extends JPanel {
 		ButtonSearch.setBounds(435, 11, 42, 42);
 		add(ButtonSearch);
 		
-		textFieldSearch = new JTextField();
+		JTextField textFieldSearch = new JTextField();
 		textFieldSearch.setForeground(new Color(255, 213, 0));
 		textFieldSearch.setBackground(new Color(0, 80, 157));
 		textFieldSearch.setBorder(null);
@@ -75,13 +75,14 @@ public class DepositoPanel extends JPanel {
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriAggiungiAlDepositoDialog(ctrl);
+				ctrl.ApriAggiungiAlCarrelloDialog(ctrl);
 			}
 		});
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/IcoButtonAggiungi.png")));
-		ButtonAggiungi.setBounds(690, 11, 50, 56);
+		ButtonAggiungi.setBounds(690, 10, 50, 56);
 		add(ButtonAggiungi);
 	}
+
 }

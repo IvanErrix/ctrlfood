@@ -58,6 +58,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldNome.setOpaque(false);
 		textFieldNome.setColumns(10);
 		textFieldNome.setBounds(220, 17, 267, 30);
+		textFieldNome.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldNome);
 		
 		JTextField textFieldPrezzo = new JTextField();
@@ -66,6 +67,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldPrezzo.setForeground(new Color(255, 213, 0));
 		textFieldPrezzo.setColumns(10);
 		textFieldPrezzo.setBounds(220, 86, 267, 30);
+		textFieldPrezzo.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldPrezzo);
 		
 		JTextField textFieldDataScadenza = new JTextField();
@@ -74,6 +76,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldDataScadenza.setForeground(new Color(255, 213, 0));
 		textFieldDataScadenza.setColumns(10);
 		textFieldDataScadenza.setBounds(220, 155, 267, 30);
+		textFieldDataScadenza.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldDataScadenza);
 		
 		JTextField textFieldQuantita = new JTextField();
@@ -82,6 +85,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldQuantita.setForeground(new Color(255, 213, 0));
 		textFieldQuantita.setColumns(10);
 		textFieldQuantita.setBounds(220, 224, 267, 30);
+		textFieldQuantita.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldQuantita);
 		
 		JButton ButtonAggiugni = new JButton("");

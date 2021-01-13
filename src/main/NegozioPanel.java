@@ -12,7 +12,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JLabel;
 
 public class NegozioPanel extends JPanel {
 
@@ -30,7 +29,6 @@ public class NegozioPanel extends JPanel {
 			   }
 			};
 	private JTable table;
-	private JTextField textField;
 
 	public NegozioPanel(Controller ctrl) {
 		setOpaque(false);
@@ -51,6 +49,8 @@ public class NegozioPanel extends JPanel {
 		table.setBounds(302, 183, 150, 150);
 		scrollPane.setViewportView(table);
 		table.getTableHeader().setReorderingAllowed(false);
+		table.getTableHeader().setBackground(new Color(0,67,137));
+		table.getTableHeader().setForeground(new Color(255, 213, 0));
 		model.isCellEditable(0, 0);
 		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
 	
@@ -62,13 +62,13 @@ public class NegozioPanel extends JPanel {
 		ButtonSearch.setBounds(435, 11, 42, 42);
 		add(ButtonSearch);
 		
-		textField = new JTextField();
-		textField.setForeground(new Color(255, 213, 0));
-		textField.setBackground(new Color(0, 80, 157));
-		textField.setBorder(null);
-		textField.setBounds(10, 11, 415, 42);
-		textField.setColumns(10);
-		add(textField);
+		JTextField textFieldSearch = new JTextField();
+		textFieldSearch.setForeground(new Color(255, 213, 0));
+		textFieldSearch.setBackground(new Color(0, 80, 157));
+		textFieldSearch.setBorder(null);
+		textFieldSearch.setBounds(10, 11, 415, 42);
+		textFieldSearch.setColumns(10);
+		add(textFieldSearch);
 		
 		JButton ButtonAggiungi = new JButton("");
 		ButtonAggiungi.addActionListener(new ActionListener() {

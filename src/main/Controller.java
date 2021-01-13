@@ -2,9 +2,11 @@ package main;
 
 import java.awt.EventQueue;
 import java.awt.Frame;
+import java.awt.Color;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 public class Controller {
 	
@@ -12,6 +14,9 @@ public class Controller {
 	
 	
 	public static void main(String[] args) {
+		UIManager.put("ComboBox.background", new Color(0, 67, 137));
+		UIManager.put("ScrollPane.background", new Color(0, 67, 137));
+		UIManager.put("Table.gridColor", new Color(255, 213, 0));
 		
 		if(dao.getConn() != null) {
 			EventQueue.invokeLater(new Runnable() {
@@ -59,6 +64,15 @@ public class Controller {
 		PanelCaricamento.revalidate();
 	}
 	
+	public void ApriCarrelloPanel(Controller ctrl, JPanel PanelCaricamento) {
+		CarrelloPanel carrello = new CarrelloPanel(ctrl);
+		carrello.setVisible(true);
+		PanelCaricamento.removeAll();
+		PanelCaricamento.add(carrello);
+		PanelCaricamento.repaint();
+		PanelCaricamento.revalidate();
+	}
+	
 	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
 		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
 		dialog.setVisible(true);
@@ -72,5 +86,11 @@ public class Controller {
 	public void ApriAggiungiClientiDialog(Controller ctrl) {
 		AggiungiClientiDialog dialog = new AggiungiClientiDialog(ctrl);
 		dialog.setVisible(true);
+	}
+	
+	public void ApriAggiungiAlCarrelloDialog(Controller ctrl) {
+		AggiungiAlCarrelloDialog dialog = new AggiungiAlCarrelloDialog(ctrl);
+		dialog.setVisible(true);
+		
 	}
 }

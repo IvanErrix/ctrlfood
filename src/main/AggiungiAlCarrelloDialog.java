@@ -9,16 +9,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JComboBox;
+import javax.swing.JPanel;
 
-public class AggiungiAlNegozioDialog extends JDialog {
+public class AggiungiAlCarrelloDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	private final JPanel contentPanel = new JPanel();
 
-	public AggiungiAlNegozioDialog(Controller ctrl) {
+	public AggiungiAlCarrelloDialog(Controller ctrl) {
 		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(623, 463);
@@ -66,13 +67,20 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		getContentPane().add(ButtonAnnulla);
 		
 		JComboBox comboBoxNome = new JComboBox();
+		comboBoxNome.setOpaque(false);
+		comboBoxNome.setBackground(new Color(0,67,137));
+		comboBoxNome.setForeground(new Color(255, 213, 0));
 		comboBoxNome.setFocusable(false);
 		comboBoxNome.setBounds(220, 104, 267, 30);
 		getContentPane().add(comboBoxNome);
 		
 		JComboBox comboBoxQuantita = new JComboBox();
+		comboBoxQuantita.setOpaque(false);
+		comboBoxQuantita.setBackground(new Color(0,67,137));
+		comboBoxQuantita.setForeground(new Color(255, 213, 0));
 		comboBoxQuantita.setFocusable(false);
 		comboBoxQuantita.setBounds(220, 178, 267, 30);
 		getContentPane().add(comboBoxQuantita);
 	}
+
 }

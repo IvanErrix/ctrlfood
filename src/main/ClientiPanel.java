@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -20,7 +19,6 @@ public class ClientiPanel extends JPanel {
 	private String Titoli[]= {"Nome", "Cognome", "Codice Fiscale", "ID Carta","Punti"};
 	private String Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
-		private static final long serialVersionUID = 1L;
 
 			@Override
 			   public boolean isCellEditable(int row, int column) {
@@ -29,7 +27,6 @@ public class ClientiPanel extends JPanel {
 			   }
 			};
 	private JTable table;
-	private JTextField textField;
 
 	public ClientiPanel(Controller ctrl) {
 		setOpaque(false);
@@ -50,6 +47,8 @@ public class ClientiPanel extends JPanel {
 		table.setBounds(302, 183, 150, 150);
 		scrollPane.setViewportView(table);
 		table.getTableHeader().setReorderingAllowed(false);
+		table.getTableHeader().setBackground(new Color(0,67,137));
+		table.getTableHeader().setForeground(new Color(255, 213, 0));
 		model.isCellEditable(0, 0);
 		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", "001", "110"});
 	
@@ -61,13 +60,13 @@ public class ClientiPanel extends JPanel {
 		ButtonSearch.setBounds(435, 11, 42, 42);
 		add(ButtonSearch);
 		
-		textField = new JTextField();
-		textField.setForeground(new Color(255, 213, 0));
-		textField.setBackground(new Color(0, 80, 157));
-		textField.setBorder(null);
-		textField.setBounds(10, 11, 415, 42);
-		textField.setColumns(10);
-		add(textField);
+		JTextField textFieldSearch = new JTextField();
+		textFieldSearch.setForeground(new Color(255, 213, 0));
+		textFieldSearch.setBackground(new Color(0, 80, 157));
+		textFieldSearch.setBorder(null);
+		textFieldSearch.setBounds(10, 11, 415, 42);
+		textFieldSearch.setColumns(10);
+		add(textFieldSearch);
 		
 		JButton ButtonAggiungi = new JButton("");
 		ButtonAggiungi.addActionListener(new ActionListener() {
