@@ -1,7 +1,5 @@
 package main;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;

@@ -63,4 +63,14 @@ public class Controller {
 		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
 		dialog.setVisible(true);
 	}
+	
+	public void ApriAggiungiAlNegozioDialog(Controller ctrl) {
+		AggiungiAlNegozioDialog dialog = new AggiungiAlNegozioDialog(ctrl);
+		dialog.setVisible(true);
+	}
+	
+	public void ApriAggiungiClientiDialog(Controller ctrl) {
+		AggiungiClientiDialog dialog = new AggiungiClientiDialog(ctrl);
+		dialog.setVisible(true);
+	}
 }

@@ -1,25 +1,23 @@
 package main;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Toolkit;
-
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
-import java.awt.Cursor;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
 
-public class AggiungiAlDepositoDialog extends JDialog {
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class AggiungiClientiDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
-	public AggiungiAlDepositoDialog(Controller ctrl) {
+	public AggiungiClientiDialog(Controller ctrl) {
 		
 		setAlwaysOnTop(true);
 		setUndecorated(true);
@@ -34,23 +32,17 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelNome.setBounds(10, 33, 46, 14);
 		getContentPane().add(LabelNome);
 		
-		JLabel lblPrezzo = new JLabel("Prezzo");
-		lblPrezzo.setForeground(new Color(255, 213, 0));
-		lblPrezzo.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblPrezzo.setBounds(10, 102, 46, 14);
-		getContentPane().add(lblPrezzo);
+		JLabel lblCognome = new JLabel("Cognome");
+		lblCognome.setForeground(new Color(255, 213, 0));
+		lblCognome.setFont(new Font("Impact", Font.PLAIN, 16));
+		lblCognome.setBounds(10, 102, 68, 14);
+		getContentPane().add(lblCognome);
 		
-		JLabel lblDataScadenza = new JLabel("Data Scadenza");
-		lblDataScadenza.setForeground(new Color(255, 213, 0));
-		lblDataScadenza.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblDataScadenza.setBounds(10, 165, 118, 14);
-		getContentPane().add(lblDataScadenza);
-		
-		JLabel lblQuantita = new JLabel("Quantit\u00E0");
-		lblQuantita.setForeground(new Color(255, 213, 0));
-		lblQuantita.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblQuantita.setBounds(10, 240, 68, 14);
-		getContentPane().add(lblQuantita);
+		JLabel lblCodiceFiscale = new JLabel("Codice Fiscale");
+		lblCodiceFiscale.setForeground(new Color(255, 213, 0));
+		lblCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 16));
+		lblCodiceFiscale.setBounds(10, 165, 118, 14);
+		getContentPane().add(lblCodiceFiscale);
 		
 		JTextField textFieldNome = new JTextField();
 		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 11));
@@ -60,29 +52,21 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldNome.setBounds(220, 17, 267, 30);
 		getContentPane().add(textFieldNome);
 		
-		JTextField textFieldPrezzo = new JTextField();
-		textFieldPrezzo.setFont(new Font("Impact", Font.PLAIN, 11));
-		textFieldPrezzo.setOpaque(false);
-		textFieldPrezzo.setForeground(new Color(255, 213, 0));
-		textFieldPrezzo.setColumns(10);
-		textFieldPrezzo.setBounds(220, 86, 267, 30);
-		getContentPane().add(textFieldPrezzo);
+		JTextField textFieldCognome = new JTextField();
+		textFieldCognome.setFont(new Font("Impact", Font.PLAIN, 11));
+		textFieldCognome.setOpaque(false);
+		textFieldCognome.setForeground(new Color(255, 213, 0));
+		textFieldCognome.setColumns(10);
+		textFieldCognome.setBounds(220, 86, 267, 30);
+		getContentPane().add(textFieldCognome);
 		
-		JTextField textFieldDataScadenza = new JTextField();
-		textFieldDataScadenza.setFont(new Font("Impact", Font.PLAIN, 11));
-		textFieldDataScadenza.setOpaque(false);
-		textFieldDataScadenza.setForeground(new Color(255, 213, 0));
-		textFieldDataScadenza.setColumns(10);
-		textFieldDataScadenza.setBounds(220, 155, 267, 30);
-		getContentPane().add(textFieldDataScadenza);
-		
-		JTextField textFieldQuantita = new JTextField();
-		textFieldQuantita.setFont(new Font("Impact", Font.PLAIN, 11));
-		textFieldQuantita.setOpaque(false);
-		textFieldQuantita.setForeground(new Color(255, 213, 0));
-		textFieldQuantita.setColumns(10);
-		textFieldQuantita.setBounds(220, 224, 267, 30);
-		getContentPane().add(textFieldQuantita);
+		JTextField textFieldCodiceFiscale = new JTextField();
+		textFieldCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 11));
+		textFieldCodiceFiscale.setOpaque(false);
+		textFieldCodiceFiscale.setForeground(new Color(255, 213, 0));
+		textFieldCodiceFiscale.setColumns(10);
+		textFieldCodiceFiscale.setBounds(220, 155, 267, 30);
+		getContentPane().add(textFieldCodiceFiscale);
 		
 		JButton ButtonAggiugni = new JButton("");
 		ButtonAggiugni.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -101,9 +85,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonCancellaTutto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textFieldNome.setText("");
-				textFieldPrezzo.setText("");
-				textFieldDataScadenza.setText("");
-				textFieldQuantita.setText("");
+				textFieldCognome.setText("");
+				textFieldCodiceFiscale.setText("");
 			}
 		});
 		ButtonCancellaTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
@@ -128,4 +111,5 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAnnulla.setBounds(39, 344, 141, 30);
 		getContentPane().add(ButtonAnnulla);
 	}
+
 }

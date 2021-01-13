@@ -40,7 +40,7 @@ public class ClientiPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(new Color(0, 67, 137));
 		scrollPane.setOpaque(false);
-		scrollPane.setBounds(10, 78, 745, 511);
+		scrollPane.setBounds(10, 78, 730, 499);
 		add(scrollPane);
 		
 		table = new JTable(model);
@@ -49,6 +49,7 @@ public class ClientiPanel extends JPanel {
 		table.setBackground(new Color(0, 67, 137));
 		table.setBounds(302, 183, 150, 150);
 		scrollPane.setViewportView(table);
+		table.getTableHeader().setReorderingAllowed(false);
 		model.isCellEditable(0, 0);
 		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", "001", "110"});
 	
@@ -69,6 +70,11 @@ public class ClientiPanel extends JPanel {
 		add(textField);
 		
 		JButton ButtonAggiungi = new JButton("");
+		ButtonAggiungi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.ApriAggiungiClientiDialog(ctrl);
+			}
+		});
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setBorder(null);

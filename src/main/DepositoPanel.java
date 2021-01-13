@@ -39,7 +39,7 @@ public class DepositoPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(new Color(0, 67, 137));
 		scrollPane.setOpaque(false);
-		scrollPane.setBounds(10, 78, 745, 511);
+		scrollPane.setBounds(10, 78, 730, 499);
 		add(scrollPane);
 		
 		table = new JTable(model);
@@ -48,6 +48,7 @@ public class DepositoPanel extends JPanel {
 		table.setBackground(new Color(0, 67, 137));
 		table.setBounds(302, 183, 150, 150);
 		scrollPane.setViewportView(table);
+		table.getTableHeader().setReorderingAllowed(false);
 		model.isCellEditable(0, 0);
 		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
 	
