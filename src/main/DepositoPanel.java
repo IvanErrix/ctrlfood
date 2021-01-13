@@ -34,14 +34,14 @@ public class DepositoPanel extends JPanel {
 	public DepositoPanel(Controller ctrl) {
 		setOpaque(false);
 		setBackground(Color.BLACK);
-		setBounds(0, 0, 765, 600);
+		setBounds(0, 0, 765, 558);
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), null));
 		scrollPane.getViewport().setBackground(new Color(0,67,137));
 		scrollPane.setOpaque(false);
-		scrollPane.setBounds(10, 78, 730, 499);
+		scrollPane.setBounds(10, 78, 730, 470);
 		add(scrollPane);
 		
 		table = new JTable(model);
@@ -70,6 +70,7 @@ public class DepositoPanel extends JPanel {
 		textFieldSearch.setBackground(new Color(0, 80, 157));
 		textFieldSearch.setBorder(null);
 		textFieldSearch.setBounds(10, 11, 415, 42);
+		textFieldSearch.setCaretColor(new Color(255, 213, 0));
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
 		

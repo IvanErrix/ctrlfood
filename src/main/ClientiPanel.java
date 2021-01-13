@@ -40,7 +40,7 @@ public class ClientiPanel extends JPanel {
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), null));
 		scrollPane.getViewport().setBackground(new Color(0,67,137));
 		scrollPane.setOpaque(false);
-		scrollPane.setBounds(10, 78, 730, 499);
+		scrollPane.setBounds(10, 78, 730, 470);
 		add(scrollPane);
 		
 		table = new JTable(model);
@@ -69,6 +69,7 @@ public class ClientiPanel extends JPanel {
 		textFieldSearch.setBackground(new Color(0, 80, 157));
 		textFieldSearch.setBorder(null);
 		textFieldSearch.setBounds(10, 11, 415, 42);
+		textFieldSearch.setCaretColor(new Color(255, 213, 0));
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
 		
