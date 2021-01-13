@@ -6,6 +6,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
+
 import java.awt.Color;
 import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
@@ -36,7 +38,7 @@ public class DepositoPanel extends JPanel {
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBackground(new Color(0, 67, 137));
+		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), null));
 		scrollPane.getViewport().setBackground(new Color(0,67,137));
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(10, 78, 730, 499);
@@ -55,6 +57,7 @@ public class DepositoPanel extends JPanel {
 		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
 	
 		JButton ButtonSearch = new JButton("");
+		ButtonSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
 		ButtonSearch.setOpaque(false);
 		ButtonSearch.setBorder(null);

@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableModel;
 
 public class ClientiPanel extends JPanel {
@@ -19,6 +20,7 @@ public class ClientiPanel extends JPanel {
 	private String Titoli[]= {"Nome", "Cognome", "Codice Fiscale", "ID Carta","Punti"};
 	private String Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
+		private static final long serialVersionUID = 1L;
 
 			@Override
 			   public boolean isCellEditable(int row, int column) {
@@ -35,7 +37,8 @@ public class ClientiPanel extends JPanel {
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBackground(new Color(0, 67, 137));
+		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), null));
+		scrollPane.getViewport().setBackground(new Color(0,67,137));
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(10, 78, 730, 499);
 		add(scrollPane);
@@ -53,6 +56,7 @@ public class ClientiPanel extends JPanel {
 		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", "001", "110"});
 	
 		JButton ButtonSearch = new JButton("");
+		ButtonSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
 		ButtonSearch.setOpaque(false);
 		ButtonSearch.setBorder(null);

@@ -19,6 +19,7 @@ public class FramePrincipale extends JFrame {
 	private JPanel PanelPrincipale;
 
 	public FramePrincipale(Controller ctrl) {
+		
 		setFont(new Font("Impact", Font.BOLD, 14));
 		setTitle("CtrlFood");
 		setResizable(false);

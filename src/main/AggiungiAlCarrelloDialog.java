@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 public class AggiungiAlCarrelloDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	private final JPanel contentPanel = new JPanel();
 
 	public AggiungiAlCarrelloDialog(Controller ctrl) {
 		setAlwaysOnTop(true);

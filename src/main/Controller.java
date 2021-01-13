@@ -15,7 +15,7 @@ public class Controller {
 	
 	public static void main(String[] args) {
 		UIManager.put("ComboBox.background", new Color(0, 67, 137));
-		UIManager.put("ScrollPane.background", new Color(0, 67, 137));
+//		UIManager.put("ScrollPane.background", new Color(0, 67, 137));
 		UIManager.put("Table.gridColor", new Color(255, 213, 0));
 		
 		if(dao.getConn() != null) {
@@ -69,6 +69,15 @@ public class Controller {
 		carrello.setVisible(true);
 		PanelCaricamento.removeAll();
 		PanelCaricamento.add(carrello);
+		PanelCaricamento.repaint();
+		PanelCaricamento.revalidate();
+	}
+	
+	public void ApriCassaPanel(Controller ctrl, JPanel PanelCaricamento) {
+		CassaPanel cassa = new CassaPanel(ctrl);
+		cassa.setVisible(true);
+		PanelCaricamento.removeAll();
+		PanelCaricamento.add(cassa);
 		PanelCaricamento.repaint();
 		PanelCaricamento.revalidate();
 	}
