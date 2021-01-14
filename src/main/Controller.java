@@ -1,18 +1,24 @@
 package main;
 
 import java.awt.EventQueue;
-import java.awt.Frame;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.awt.Color;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.UIManager;
 
 public class Controller {
 	
 	static DAO dao = new DAO();
 	
-	
+	/*Prima di tutto il programma controlla la connessione. See la connessione è assente
+	 *Se invece la connessione è presente, la funzione main fa partire la prima schermata
+	 *del programma, ovvero FramePrincipale
+	 */
 	public static void main(String[] args) {
 		UIManager.put("ComboBox.background", new Color(0, 67, 137));
 //		UIManager.put("ScrollPane.background", new Color(0, 67, 137));
@@ -37,6 +43,7 @@ public class Controller {
 		}
 	}
 	
+	//Funzioni per l'apertura dei panel
 	public void ApriDepositoPanel(Controller ctrl, JPanel PanelCaricamento) {
 		DepositoPanel deposito = new DepositoPanel(ctrl);
 		deposito.setVisible(true);
@@ -82,6 +89,7 @@ public class Controller {
 		PanelCaricamento.revalidate();
 	}
 	
+	//Funzioni per l'apertura delle dialog
 	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
 		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
 		dialog.setVisible(true);
@@ -100,6 +108,33 @@ public class Controller {
 	public void ApriAggiungiAlCarrelloDialog(Controller ctrl) {
 		AggiungiAlCarrelloDialog dialog = new AggiungiAlCarrelloDialog(ctrl);
 		dialog.setVisible(true);
-		
+	}
+	
+	//Stampa all'interno di un file txt che si trova sul desktop, il contenuto della tabella passata come argomento
+	public void StampaListaProdotti(JTable table, String luogo) {
+		String cartellahome = System.getProperty("user.home");
+		String nome = new String();
+		if(luogo=="negozio") {
+			nome = "Lista_"+ luogo + ".txt";
+		}
+		else if(luogo=="deposito") {
+			nome = "Lista_"+ luogo + ".txt";
+		}
+		else if(luogo=="clienti") {
+			nome = "Lista_"+ luogo + ".txt";
+		}
+		File file = new File(cartellahome+ "/Desktop", nome+".txt");
+		try {
+			BufferedWriter output = new BufferedWriter(new FileWriter(file));
+			for(int i = 0; i < table.getRowCount(); i++){
+                for(int j = 0; j < table.getColumnCount(); j++){
+                    output.write(table.getModel().getValueAt(i, j)+" ");
+                }
+                output.write("\n- - - - - - - - - - - - - - - - \n");
+            }
+			output.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

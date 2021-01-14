@@ -19,6 +19,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	public AggiungiAlNegozioDialog(Controller ctrl) {
+		
 		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(623, 463);

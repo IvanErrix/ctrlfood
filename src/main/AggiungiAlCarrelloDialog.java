@@ -19,6 +19,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	public AggiungiAlCarrelloDialog(Controller ctrl) {
+		
 		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(623, 463);

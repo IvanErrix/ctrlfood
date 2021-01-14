@@ -19,7 +19,6 @@ public class AggiungiClientiDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	public AggiungiClientiDialog(Controller ctrl) {
-		getContentPane().setFont(new Font("Impact", Font.PLAIN, 14));
 		
 		setAlwaysOnTop(true);
 		setUndecorated(true);

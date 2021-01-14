@@ -20,8 +20,8 @@ public class FramePrincipale extends JFrame {
 	private JPanel PanelPrincipale;
 
 	public FramePrincipale(Controller ctrl) {
-		setUndecorated(true);
 		
+		setUndecorated(true);
 		setFont(new Font("Impact", Font.BOLD, 14));
 		setTitle("CtrlFood");
 		setResizable(false);
@@ -33,7 +33,6 @@ public class FramePrincipale extends JFrame {
 		setContentPane(PanelPrincipale);
 		PanelPrincipale.setLayout(null);
 		
-		
 		JButton ButtonDeposito = new JButton("");
 		ButtonDeposito.setFocusable(false);
 		JButton ButtonNegozio = new JButton("");
@@ -44,21 +43,15 @@ public class FramePrincipale extends JFrame {
 		ButtonCarrello.setFocusable(false);
 		JButton ButtonCassa = new JButton("");
 		
-		
-		
-		
-		
 		JLabel LabelDeposito = new JLabel("");
 		LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHomeWhite_32.png")));
 		LabelDeposito.setBounds(20, 140, 53, 55);
 		PanelPrincipale.add(LabelDeposito);
 		
-		
 		JLabel LabelNegozio = new JLabel("");
 		LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShopWhite_32.png")));
 		LabelNegozio.setBounds(20, 205, 53, 55);
 		PanelPrincipale.add(LabelNegozio);
-		
 		
 		JLabel LabelClienti = new JLabel("");
 		LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoUserWhite_32.png")));
@@ -232,10 +225,5 @@ public class FramePrincipale extends JFrame {
 		Sfondo.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Homepage.png")));
 		Sfondo.setBounds(0, 0, 1162, 600);
 		PanelPrincipale.add(Sfondo);
-		
-		
-		
-		
-
 	}
 }

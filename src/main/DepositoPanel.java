@@ -2,6 +2,7 @@ package main;
 
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,6 +15,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Cursor;
 import java.awt.Font;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
+
+import java.awt.Component;
 
 public class DepositoPanel extends JPanel {
 
@@ -47,6 +52,7 @@ public class DepositoPanel extends JPanel {
 		add(scrollPane);
 		
 		table = new JTable(model);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setFont(new Font("Impact", Font.PLAIN, 13));
 		table.setForeground(new Color(255, 213, 0));
 		table.setOpaque(false);
@@ -56,9 +62,11 @@ public class DepositoPanel extends JPanel {
 		table.getTableHeader().setReorderingAllowed(false);
 		table.getTableHeader().setBackground(new Color(0,67,137));
 		table.getTableHeader().setForeground(new Color(255, 213, 0));
-		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));		
-		model.isCellEditable(0, 0);
+		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
+		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
+	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
 		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
+		model.addRow(new Object[] {"Pera", "002", "1.0", "1", "15/20/2021"});
 	
 		JButton ButtonSearch = new JButton("");
 		ButtonSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -70,6 +78,7 @@ public class DepositoPanel extends JPanel {
 		add(ButtonSearch);
 		
 		textFieldSearch = new JTextField();
+		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
 		textFieldSearch.setForeground(new Color(255, 213, 0));
 		textFieldSearch.setBackground(new Color(0, 80, 157));
 		textFieldSearch.setBorder(null);
@@ -91,5 +100,14 @@ public class DepositoPanel extends JPanel {
 		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/IcoButtonAggiungi.png")));
 		ButtonAggiungi.setBounds(690, 11, 50, 56);
 		add(ButtonAggiungi);
+		
+		JButton ButtonStampa = new JButton("Stampa");
+		ButtonStampa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.StampaListaProdotti(table, "deposito");
+			}
+		});
+		ButtonStampa.setBounds(541, 21, 89, 23);
+		add(ButtonStampa);
 	}
 }
