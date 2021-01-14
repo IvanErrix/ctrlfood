@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.Color;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
@@ -133,6 +134,7 @@ public class Controller {
                 output.write("\n- - - - - - - - - - - - - - - - \n");
             }
 			output.close();
+			JOptionPane.showMessageDialog(null, "FILE STAMPATO", "", JOptionPane.INFORMATION_MESSAGE);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

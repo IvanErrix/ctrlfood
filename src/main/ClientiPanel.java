@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -124,9 +125,11 @@ public class ClientiPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(editable==false) {
 					editable=true;
+					JOptionPane.showMessageDialog(null, "LA TABELLA È ORA MODIFICABILE", "", JOptionPane.INFORMATION_MESSAGE);
 				}
 				else {
 					editable=false;
+					JOptionPane.showMessageDialog(null, "LA TABELLA NON È MODIFICABILE", "", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 			}

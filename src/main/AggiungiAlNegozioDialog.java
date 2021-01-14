@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 
@@ -19,8 +20,6 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	public AggiungiAlNegozioDialog(Controller ctrl) {
-		
-		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(623, 463);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
@@ -47,6 +46,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		ButtonAggiugni.setBounds(379, 344, 141, 30);
