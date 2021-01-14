@@ -1,2 +1,6 @@
 System.out.println(textFieldNome.getText().toUpperCase());
 Vedere il colore della scrollpane 
+Cambiare il colore del titolo della show message Dialog
+creare grafica e metodi del pagamento
+unire tutte le funzioni delle dialog insieme
+Aggiungere le showmessage nelle dialog

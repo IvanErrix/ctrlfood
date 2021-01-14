@@ -93,8 +93,8 @@ public class CarrelloPanel extends JPanel {
 		});
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
-		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/IcoButtonAggiungi.png")));
-		ButtonAggiungi.setBounds(690, 10, 50, 56);
+		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
+		ButtonAggiungi.setBounds(539, 42, 105, 25);
 		add(ButtonAggiungi);
 	}
 

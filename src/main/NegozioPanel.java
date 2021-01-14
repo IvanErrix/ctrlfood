@@ -83,27 +83,33 @@ public class NegozioPanel extends JPanel {
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
 		
+
 		JButton ButtonAggiungi = new JButton("");
+		ButtonAggiungi.setOpaque(false);
+		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriAggiungiAlNegozioDialog(ctrl);
 			}
 		});
-		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
-		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/IcoButtonAggiungi.png")));
-		ButtonAggiungi.setBounds(690, 11, 50, 56);
+		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
+		ButtonAggiungi.setBounds(539, 42, 105, 25);
 		add(ButtonAggiungi);
 		
-		JButton ButtonStampa = new JButton("Stampa");
+		JButton ButtonStampa = new JButton("");
 		ButtonStampa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.StampaListaProdotti(table, "negozio");
 			}
 		});
-		ButtonStampa.setBounds(530, 25, 89, 23);
+		ButtonStampa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
+		ButtonStampa.setBounds(539, 11, 105, 25);
+		ButtonStampa.setOpaque(false);
+		ButtonStampa.setBorder(null);
+		ButtonStampa.setContentAreaFilled(false);
 		add(ButtonStampa);
 	}
 }

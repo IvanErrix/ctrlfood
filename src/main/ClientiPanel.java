@@ -107,21 +107,22 @@ public class ClientiPanel extends JPanel {
 		add(textFieldSearch);
 		
 		JButton ButtonAggiungi = new JButton("");
+		ButtonAggiungi.setOpaque(false);
+		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriAggiungiClientiDialog(ctrl);
 			}
 		});
-		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
-		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/IcoButtonAggiungi.png")));
-		ButtonAggiungi.setBounds(690, 11, 50, 56);
+		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
+		ButtonAggiungi.setBounds(539, 42, 105, 25);
 		add(ButtonAggiungi);
 		
-		JButton ButtonEdit = new JButton("Edit");
-		ButtonEdit.addActionListener(new ActionListener() {
+		JButton ButtonModifica = new JButton("");
+		ButtonModifica.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(editable==false) {
 					editable=true;
@@ -134,16 +135,25 @@ public class ClientiPanel extends JPanel {
 				
 			}
 		});
-		ButtonEdit.setBounds(539, 44, 89, 23);
-		add(ButtonEdit);
+		ButtonModifica.setBounds(654, 42, 105, 25);
+		ButtonModifica.setIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonModifica.png")));
+		ButtonModifica.setOpaque(false);
+		ButtonModifica.setBorder(null);
+		ButtonModifica.setContentAreaFilled(false);
+		add(ButtonModifica);
 		
-		JButton ButtonStampa = new JButton("Stampa");
+		JButton ButtonStampa = new JButton("");
 		ButtonStampa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.StampaListaProdotti(table, "clienti");
 			}
 		});
-		ButtonStampa.setBounds(539, 10, 89, 23);
+		ButtonStampa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
+		ButtonStampa.setBounds(539, 11, 105, 25);
+		ButtonStampa.setOpaque(false);
+		ButtonStampa.setBorder(null);
+		ButtonStampa.setContentAreaFilled(false);
 		add(ButtonStampa);
 	}
 }

@@ -38,6 +38,7 @@ public class DepositoPanel extends JPanel {
 	private JTextField textFieldSearch;
 
 	public DepositoPanel(Controller ctrl) {
+		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		setOpaque(false);
 		setBackground(Color.BLACK);
@@ -97,17 +98,22 @@ public class DepositoPanel extends JPanel {
 		});
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
-		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/IcoButtonAggiungi.png")));
-		ButtonAggiungi.setBounds(690, 11, 50, 56);
+		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
+		ButtonAggiungi.setBounds(539, 42, 105, 25);
 		add(ButtonAggiungi);
 		
-		JButton ButtonStampa = new JButton("Stampa");
+		JButton ButtonStampa = new JButton("");
 		ButtonStampa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.StampaListaProdotti(table, "deposito");
 			}
 		});
-		ButtonStampa.setBounds(541, 21, 89, 23);
+		ButtonStampa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
+		ButtonStampa.setBounds(539, 11, 105, 25);
+		ButtonStampa.setOpaque(false);
+		ButtonStampa.setBorder(null);
+		ButtonStampa.setContentAreaFilled(false);
 		add(ButtonStampa);
 	}
 }

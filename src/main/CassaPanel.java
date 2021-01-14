@@ -40,9 +40,13 @@ public class CassaPanel extends JPanel {
 		ButtonTotaleNumero.setBounds(628, 127, 68, 23);
 		add(ButtonTotaleNumero);
 		
-		JButton ButtonPaga = new JButton("Paga");
+		JButton ButtonPaga = new JButton("");
+		ButtonPaga.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPaga.png")));
 		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonPaga.setBounds(619, 194, 89, 23);
+		ButtonPaga.setBounds(619, 194, 105, 25);
+		ButtonPaga.setOpaque(false);
+		ButtonPaga.setBorder(null);
+		ButtonPaga.setContentAreaFilled(false);
 		add(ButtonPaga);
 		
 		JScrollPane scrollPaneProdottiCarrello = new JScrollPane();

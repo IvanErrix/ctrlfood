@@ -1,11 +1,12 @@
 package main;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.awt.Color;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,6 +25,15 @@ public class Controller {
 		UIManager.put("ComboBox.background", new Color(0, 67, 137));
 //		UIManager.put("ScrollPane.background", new Color(0, 67, 137));
 		UIManager.put("Table.gridColor", new Color(255, 213, 0));
+		UIManager.put("OptionPane.background", new Color(0, 67, 137));    
+		UIManager.put("OptionPane.messageForeground", new Color(255, 213, 0));
+		UIManager.put("OptionPane.messageFont",new Font("Impact", Font.PLAIN, 16));
+		UIManager.put("OptionPane.buttonFont",new Font("Impact", Font.PLAIN, 16));
+		UIManager.put("Panel.background", new Color(0, 67, 137));
+		UIManager.put("Button.background", new Color(255, 213, 0));
+		UIManager.put("Button.foreground", new Color(0, 67, 137));
+//	    UIManager.put("OptionPane.messageDialog.titlePane.background", Color.black);
+//		UIManager.put("OptionPane.messageDialogTitle.background", new Color(255, 213, 0));
 		
 		if(dao.getConn() != null) {
 			EventQueue.invokeLater(new Runnable() {
@@ -112,24 +122,24 @@ public class Controller {
 	}
 	
 	//Stampa all'interno di un file txt che si trova sul desktop, il contenuto della tabella passata come argomento
-	public void StampaListaProdotti(JTable table, String luogo) {
+	public void StampaListaProdotti(JTable table, String tipo) {
 		String cartellahome = System.getProperty("user.home");
 		String nome = new String();
-		if(luogo=="negozio") {
-			nome = "Lista_"+ luogo + ".txt";
+		if(tipo=="negozio") {
+			nome = "Lista_"+ tipo + ".txt";
 		}
-		else if(luogo=="deposito") {
-			nome = "Lista_"+ luogo + ".txt";
+		else if(tipo=="deposito") {
+			nome = "Lista_"+ tipo + ".txt";
 		}
-		else if(luogo=="clienti") {
-			nome = "Lista_"+ luogo + ".txt";
+		else if(tipo=="clienti") {
+			nome = "Lista_"+ tipo + ".txt";
 		}
 		File file = new File(cartellahome+ "/Desktop", nome+".txt");
 		try {
 			BufferedWriter output = new BufferedWriter(new FileWriter(file));
 			for(int i = 0; i < table.getRowCount(); i++){
                 for(int j = 0; j < table.getColumnCount(); j++){
-                    output.write(table.getModel().getValueAt(i, j)+" ");
+                	output.write(table.getModel().getValueAt(i, j)+" ");
                 }
                 output.write("\n- - - - - - - - - - - - - - - - \n");
             }
