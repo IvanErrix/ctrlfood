@@ -12,12 +12,14 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.JCheckBox;
 
 public class AggiungiClientiDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
 	public AggiungiClientiDialog(Controller ctrl) {
+		getContentPane().setFont(new Font("Impact", Font.PLAIN, 14));
 		
 		setAlwaysOnTop(true);
 		setUndecorated(true);
@@ -32,17 +34,17 @@ public class AggiungiClientiDialog extends JDialog {
 		LabelNome.setBounds(10, 33, 46, 14);
 		getContentPane().add(LabelNome);
 		
-		JLabel lblCognome = new JLabel("Cognome");
-		lblCognome.setForeground(new Color(255, 213, 0));
-		lblCognome.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblCognome.setBounds(10, 102, 68, 14);
-		getContentPane().add(lblCognome);
+		JLabel LabelCognome = new JLabel("Cognome");
+		LabelCognome.setForeground(new Color(255, 213, 0));
+		LabelCognome.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelCognome.setBounds(10, 102, 68, 14);
+		getContentPane().add(LabelCognome);
 		
-		JLabel lblCodiceFiscale = new JLabel("Codice Fiscale");
-		lblCodiceFiscale.setForeground(new Color(255, 213, 0));
-		lblCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblCodiceFiscale.setBounds(10, 165, 118, 14);
-		getContentPane().add(lblCodiceFiscale);
+		JLabel LabelCodiceFiscale = new JLabel("Codice Fiscale");
+		LabelCodiceFiscale.setForeground(new Color(255, 213, 0));
+		LabelCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelCodiceFiscale.setBounds(10, 165, 118, 14);
+		getContentPane().add(LabelCodiceFiscale);
 		
 		JTextField textFieldNome = new JTextField();
 		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 11));
@@ -113,6 +115,18 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonAnnulla.setContentAreaFilled(false);
 		ButtonAnnulla.setBounds(39, 344, 141, 30);
 		getContentPane().add(ButtonAnnulla);
+		
+		JCheckBox CheckBoxCartaFedelta = new JCheckBox("");
+		CheckBoxCartaFedelta.setForeground(new Color(255, 213, 0));
+		CheckBoxCartaFedelta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		CheckBoxCartaFedelta.setBackground(new Color(0, 67, 137));
+		CheckBoxCartaFedelta.setBounds(220, 246, 21, 23);
+		getContentPane().add(CheckBoxCartaFedelta);
+		
+		JLabel LabelCartaFedelta = new JLabel("Carta Fedelt\u00E0");
+		LabelCartaFedelta.setForeground(new Color(255, 213, 0));
+		LabelCartaFedelta.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelCartaFedelta.setBounds(10, 246, 93, 23);
+		getContentPane().add(LabelCartaFedelta);
 	}
-
 }

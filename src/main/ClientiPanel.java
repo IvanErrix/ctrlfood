@@ -7,27 +7,32 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Font;
 
 public class ClientiPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private String Titoli[]= {"Nome", "Cognome", "Codice Fiscale", "ID Carta","Punti"};
-	private String Elementi[][]= {};
+	private Object Elementi[][]= {{"Ivan", "Erricis", "RRVHEUVBOERVH08", false, 110}};
+	boolean editable = false;
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
 		private static final long serialVersionUID = 1L;
 
 			@Override
 			   public boolean isCellEditable(int row, int column) {
-			       //Only the third column
-			       return false;
+				return editable;
 			   }
 			};
+			
 	private JTable table;
 
 	public ClientiPanel(Controller ctrl) {
@@ -43,7 +48,27 @@ public class ClientiPanel extends JPanel {
 		scrollPane.setBounds(10, 78, 730, 470);
 		add(scrollPane);
 		
-		table = new JTable(model);
+		table = new JTable(model) {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public Class<?> getColumnClass(int column) {
+                switch (column) {
+                    case 0:
+                        return String.class;
+                    case 1:
+                        return String.class;
+                    case 2:
+                        return String.class;
+                    case 3:
+                        return Boolean.class;
+                    case 4:
+                    	return Integer.class;
+                }
+				return null;
+            }
+        };
+		table.setFont(new Font("Impact", Font.PLAIN, 13));
 		table.setForeground(new Color(255, 213, 0));
 		table.setOpaque(false);
 		table.setBackground(new Color(0, 67, 137));
@@ -52,8 +77,9 @@ public class ClientiPanel extends JPanel {
 		table.getTableHeader().setReorderingAllowed(false);
 		table.getTableHeader().setBackground(new Color(0,67,137));
 		table.getTableHeader().setForeground(new Color(255, 213, 0));
-		model.isCellEditable(0, 0);
-		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", "001", "110"});
+		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
+//		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", false, 110});
+//		model.addRow(new Object[] {"Carlo", "Spazio", "CRVNNWEPB387VISV", "002", "0"});
 	
 		JButton ButtonSearch = new JButton("");
 		ButtonSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -86,6 +112,15 @@ public class ClientiPanel extends JPanel {
 		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/IcoButtonAggiungi.png")));
 		ButtonAggiungi.setBounds(690, 11, 50, 56);
 		add(ButtonAggiungi);
+		
+		JButton ButtonEdit = new JButton("Edit");
+		ButtonEdit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				editable=true;
+			}
+		});
+		ButtonEdit.setBounds(539, 21, 89, 23);
+		add(ButtonEdit);
 	}
 
 }

@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Cursor;
+import java.awt.Font;
 
 public class DepositoPanel extends JPanel {
 
@@ -32,6 +33,7 @@ public class DepositoPanel extends JPanel {
 	private JTextField textFieldSearch;
 
 	public DepositoPanel(Controller ctrl) {
+		
 		setOpaque(false);
 		setBackground(Color.BLACK);
 		setBounds(0, 0, 765, 558);
@@ -45,6 +47,7 @@ public class DepositoPanel extends JPanel {
 		add(scrollPane);
 		
 		table = new JTable(model);
+		table.setFont(new Font("Impact", Font.PLAIN, 13));
 		table.setForeground(new Color(255, 213, 0));
 		table.setOpaque(false);
 		table.setBackground(new Color(0, 67, 137));
@@ -53,6 +56,7 @@ public class DepositoPanel extends JPanel {
 		table.getTableHeader().setReorderingAllowed(false);
 		table.getTableHeader().setBackground(new Color(0,67,137));
 		table.getTableHeader().setForeground(new Color(255, 213, 0));
+		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));		
 		model.isCellEditable(0, 0);
 		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
 	
