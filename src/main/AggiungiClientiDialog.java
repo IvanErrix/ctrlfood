@@ -89,23 +89,6 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonAggiugni.setBounds(446, 344, 141, 30);
 		getContentPane().add(ButtonAggiugni);
 		
-		JButton ButtonCancellaTutto = new JButton("");
-		ButtonCancellaTutto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
-				textFieldNome.setText("");
-				textFieldCognome.setText("");
-				textFieldCodiceFiscale.setText("");
-			}
-		});
-		ButtonCancellaTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
-		ButtonCancellaTutto.setOpaque(false);
-		ButtonCancellaTutto.setBorder(null);
-		ButtonCancellaTutto.setContentAreaFilled(false);
-		ButtonCancellaTutto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonCancellaTutto.setBounds(268, 344, 168, 30);
-		getContentPane().add(ButtonCancellaTutto);
-		
 		JButton ButtonAnnulla = new JButton("");
 		ButtonAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -132,5 +115,23 @@ public class AggiungiClientiDialog extends JDialog {
 		LabelCartaFedelta.setFont(new Font("Impact", Font.PLAIN, 16));
 		LabelCartaFedelta.setBounds(10, 246, 93, 23);
 		getContentPane().add(LabelCartaFedelta);
+		
+		JButton ButtonCancellaTutto = new JButton("");
+		ButtonCancellaTutto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
+				textFieldNome.setText("");
+				textFieldCognome.setText("");
+				textFieldCodiceFiscale.setText("");
+				CheckBoxCartaFedelta.setSelected(false);
+			}
+		});
+		ButtonCancellaTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
+		ButtonCancellaTutto.setOpaque(false);
+		ButtonCancellaTutto.setBorder(null);
+		ButtonCancellaTutto.setContentAreaFilled(false);
+		ButtonCancellaTutto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonCancellaTutto.setBounds(268, 344, 168, 30);
+		getContentPane().add(ButtonCancellaTutto);
 	}
 }

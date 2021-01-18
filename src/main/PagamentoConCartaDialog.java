@@ -109,21 +109,6 @@ public class PagamentoConCartaDialog extends JDialog {
 		passwordFieldPin.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(passwordFieldPin);
 		
-		JButton ButtonPaga = new JButton("");
-		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonPaga.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
-				dispose();
-			}
-		});
-		ButtonPaga.setOpaque(false);
-		ButtonPaga.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga.png")));
-		ButtonPaga.setBounds(166, 243, 105, 25);
-		ButtonPaga.setBorder(null);
-		ButtonPaga.setContentAreaFilled(false);
-		getContentPane().add(ButtonPaga);
-		
 		textFieldScadenza = new JTextField();
 		textFieldScadenza.addFocusListener(new FocusAdapter() {
 			@Override
@@ -148,5 +133,26 @@ public class PagamentoConCartaDialog extends JDialog {
 		textFieldScadenza.setBackground(new Color(0, 67, 137));
 		textFieldScadenza.setBounds(146, 140, 269, 32);
 		getContentPane().add(textFieldScadenza);
+		
+		JButton ButtonPaga = new JButton("");
+		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonPaga.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") || textFieldScadenza.getText().equals("YYYY-MM-GG") ) {
+					JOptionPane.showMessageDialog(null, "DEVONO ESSERE INSERITI TUTTI I CAMPI", "", JOptionPane.ERROR_MESSAGE);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
+					dispose();
+				}
+
+			}
+		});
+		ButtonPaga.setOpaque(false);
+		ButtonPaga.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga.png")));
+		ButtonPaga.setBounds(166, 243, 105, 25);
+		ButtonPaga.setBorder(null);
+		ButtonPaga.setContentAreaFilled(false);
+		getContentPane().add(ButtonPaga);
 	}
 }

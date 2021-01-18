@@ -1,4 +1,2 @@
 System.out.println(textFieldNome.getText().toUpperCase());
-Vedere il colore della scrollpane 
 unire tutte le funzioni delle dialog insieme
-aggiungere loading

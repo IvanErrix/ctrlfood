@@ -98,6 +98,11 @@ public class Controller {
 		PanelCaricamento.revalidate();
 	}
 	
+	public void ApriLoadingPanel(Controller ctrl, JPanel PanelCaricamento) {
+		LoadingPanel loading = new LoadingPanel(ctrl);
+		PanelCaricamento.add(loading);
+	}
+	
 	//Funzioni per l'apertura delle dialog
 	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
 		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
