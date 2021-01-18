@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
 import javax.swing.JComboBox;
 
 public class AggiungiAlNegozioDialog extends JDialog {
@@ -67,11 +68,13 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		getContentPane().add(ButtonAnnulla);
 		
 		JComboBox comboBoxNome = new JComboBox();
+		comboBoxNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		comboBoxNome.setFocusable(false);
 		comboBoxNome.setBounds(220, 104, 267, 30);
 		getContentPane().add(comboBoxNome);
 		
 		JComboBox comboBoxQuantita = new JComboBox();
+		comboBoxQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		comboBoxQuantita.setFocusable(false);
 		comboBoxQuantita.setBounds(220, 178, 267, 30);
 		getContentPane().add(comboBoxQuantita);

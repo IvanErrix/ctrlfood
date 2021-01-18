@@ -79,10 +79,10 @@ public class DepositoPanel extends JPanel {
 		add(ButtonSearch);
 		
 		textFieldSearch = new JTextField();
+		textFieldSearch.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
 		textFieldSearch.setForeground(new Color(255, 213, 0));
 		textFieldSearch.setBackground(new Color(0, 80, 157));
-		textFieldSearch.setBorder(null);
 		textFieldSearch.setBounds(10, 11, 415, 42);
 		textFieldSearch.setCaretColor(new Color(255, 213, 0));
 		textFieldSearch.setColumns(10);

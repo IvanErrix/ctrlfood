@@ -10,6 +10,8 @@ import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
@@ -53,6 +55,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(lblQuantita);
 		
 		JTextField textFieldNome = new JTextField();
+		textFieldNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldNome.setForeground(new Color(255, 213, 0));
 		textFieldNome.setOpaque(false);
@@ -62,6 +65,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(textFieldNome);
 		
 		JTextField textFieldPrezzo = new JTextField();
+		textFieldPrezzo.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldPrezzo.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldPrezzo.setOpaque(false);
 		textFieldPrezzo.setForeground(new Color(255, 213, 0));
@@ -71,6 +75,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(textFieldPrezzo);
 		
 		JTextField textFieldDataScadenza = new JTextField();
+		textFieldDataScadenza.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldDataScadenza.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldDataScadenza.setOpaque(false);
 		textFieldDataScadenza.setForeground(new Color(255, 213, 0));
@@ -80,6 +85,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(textFieldDataScadenza);
 		
 		JTextField textFieldQuantita = new JTextField();
+		textFieldQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldQuantita.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldQuantita.setOpaque(false);
 		textFieldQuantita.setForeground(new Color(255, 213, 0));

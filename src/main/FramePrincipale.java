@@ -219,6 +219,7 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.add(ButtonChiudi);
 		
 		JButton ButtonRiduci = new JButton("");
+		ButtonRiduci.setFocusable(false);
 		ButtonRiduci.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonRiduci.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -226,7 +227,7 @@ public class FramePrincipale extends JFrame {
 			}
 		});
 		ButtonRiduci.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonRiduci.png")));
-		ButtonRiduci.setBounds(1109, 19, 15, 3);
+		ButtonRiduci.setBounds(1109, 5, 15, 18);
 		ButtonRiduci.setOpaque(false);
 		ButtonRiduci.setBorder(null);
 		ButtonRiduci.setContentAreaFilled(false);

@@ -14,6 +14,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.EtchedBorder;
 
 public class AggiungiAlCarrelloDialog extends JDialog {
 
@@ -67,6 +68,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		getContentPane().add(ButtonAnnulla);
 		
 		JComboBox comboBoxNome = new JComboBox();
+		comboBoxNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		comboBoxNome.setOpaque(false);
 		comboBoxNome.setBackground(new Color(0,67,137));
 		comboBoxNome.setForeground(new Color(255, 213, 0));
@@ -75,6 +77,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		getContentPane().add(comboBoxNome);
 		
 		JComboBox comboBoxQuantita = new JComboBox();
+		comboBoxQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		comboBoxQuantita.setOpaque(false);
 		comboBoxQuantita.setBackground(new Color(0,67,137));
 		comboBoxQuantita.setForeground(new Color(255, 213, 0));

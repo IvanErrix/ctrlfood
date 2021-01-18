@@ -13,6 +13,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
 import javax.swing.JCheckBox;
 
 public class AggiungiClientiDialog extends JDialog {
@@ -45,6 +46,7 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(LabelCodiceFiscale);
 		
 		JTextField textFieldNome = new JTextField();
+		textFieldNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldNome.setForeground(new Color(255, 213, 0));
 		textFieldNome.setOpaque(false);
@@ -54,6 +56,7 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(textFieldNome);
 		
 		JTextField textFieldCognome = new JTextField();
+		textFieldCognome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldCognome.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldCognome.setOpaque(false);
 		textFieldCognome.setForeground(new Color(255, 213, 0));
@@ -63,6 +66,7 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(textFieldCognome);
 		
 		JTextField textFieldCodiceFiscale = new JTextField();
+		textFieldCodiceFiscale.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldCodiceFiscale.setOpaque(false);
 		textFieldCodiceFiscale.setForeground(new Color(255, 213, 0));
