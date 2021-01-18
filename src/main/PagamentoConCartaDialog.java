@@ -2,6 +2,9 @@ package main;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFormattedTextField.AbstractFormatter;
+
+import java.awt.Button;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -14,9 +17,20 @@ import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
+import javax.swing.text.DateFormatter;
+
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 import java.awt.Cursor;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Properties;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class PagamentoConCartaDialog extends JDialog {
 
@@ -24,6 +38,8 @@ public class PagamentoConCartaDialog extends JDialog {
 	
 	private JTextField textFieldNumeroCarta;
 	private JPasswordField passwordFieldPin;
+	private boolean visible=false;
+	private JTextField textFieldScadenza;
 	
 	public PagamentoConCartaDialog(Controller ctrl) {
 		
@@ -34,12 +50,26 @@ public class PagamentoConCartaDialog extends JDialog {
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		
 		JButton ButtonVediPassword = new JButton("");
-		ButtonVediPassword.setSelectedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonViewPassord.png")));
+		ButtonVediPassword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(visible==false) {
+					visible=true;
+					ButtonVediPassword.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonUnviewPassword.png")));
+					passwordFieldPin.setEchoChar((char) 0);
+				}
+				else if(visible==true) {
+					visible=false;
+					ButtonVediPassword.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonViewPassword.png")));
+					passwordFieldPin.setEchoChar('●');
+				}
+			}
+		});
 		ButtonVediPassword.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonVediPassword.setSelectedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonViewPassword.png")));
 		ButtonVediPassword.setBorder(null);
-		ButtonVediPassword.setOpaque(false);
 		ButtonVediPassword.setContentAreaFilled(false);
-		ButtonVediPassword.setBounds(383, 84, 32, 32);
+		ButtonVediPassword.setBounds(418, 84, 32, 32);
+		ButtonVediPassword.setVisible(true);
 		getContentPane().add(ButtonVediPassword);
 		
 		JLabel LabelNumeroCarta = new JLabel("Numero Carta");
@@ -93,5 +123,30 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonPaga.setBorder(null);
 		ButtonPaga.setContentAreaFilled(false);
 		getContentPane().add(ButtonPaga);
+		
+		textFieldScadenza = new JTextField();
+		textFieldScadenza.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				if(textFieldScadenza.getText().equals("YYYY-MM-GG")) {
+					textFieldScadenza.setText("");
+				}
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				if(textFieldScadenza.getText().equals("")) {
+					textFieldScadenza.setText("YYYY-MM-GG");
+				}
+			}
+		});
+		textFieldScadenza.setText("YYYY-MM-GG");
+		textFieldScadenza.setForeground(new Color(255, 213, 0));
+		textFieldScadenza.setFont(new Font("Impact", Font.PLAIN, 15));
+		textFieldScadenza.setColumns(10);
+		textFieldScadenza.setCaretColor(new Color(255, 213, 0));
+		textFieldScadenza.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		textFieldScadenza.setBackground(new Color(0, 67, 137));
+		textFieldScadenza.setBounds(146, 140, 269, 32);
+		getContentPane().add(textFieldScadenza);
 	}
 }

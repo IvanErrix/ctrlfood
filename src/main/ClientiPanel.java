@@ -24,7 +24,7 @@ public class ClientiPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private String Titoli[]= {"Nome", "Cognome", "Codice Fiscale", "ID Carta","Punti"};
 	private Object Elementi[][]= {};
-	boolean editable = false;
+	private boolean editable = false;
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
 		
 		private static final long serialVersionUID = 1L;

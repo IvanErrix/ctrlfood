@@ -7,11 +7,13 @@ import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import java.awt.Font;
 import java.awt.Cursor;
+import javax.swing.border.EtchedBorder;
 
 public class CassaPanel extends JPanel {
 
@@ -56,6 +58,9 @@ public class CassaPanel extends JPanel {
 		add(ButtonPaga);
 		
 		JScrollPane scrollPaneProdottiCarrello = new JScrollPane();
+		scrollPaneProdottiCarrello.setBackground(new Color(0, 67, 137));
+		scrollPaneProdottiCarrello.getViewport().setBackground(new Color(0, 67, 137));
+		scrollPaneProdottiCarrello.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		scrollPaneProdottiCarrello.setOpaque(false);
 		scrollPaneProdottiCarrello.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPaneProdottiCarrello.setBounds(10, 78, 578, 470);
@@ -66,5 +71,14 @@ public class CassaPanel extends JPanel {
 		ButtonListaProdotti.setForeground(new Color(255, 213, 0));
 		ButtonListaProdotti.setBounds(10, 35, 239, 32);
 		add(ButtonListaProdotti);
+		
+		JButton ButtonContanti = new JButton("Paga in contanti");
+		ButtonContanti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		ButtonContanti.setBounds(628, 264, 89, 23);
+		add(ButtonContanti);
 	}
 }

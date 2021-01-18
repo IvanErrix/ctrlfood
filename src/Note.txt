@@ -1,7 +1,4 @@
 System.out.println(textFieldNome.getText().toUpperCase());
 Vedere il colore della scrollpane 
-metodi del pagamento
 unire tutte le funzioni delle dialog insieme
-Aggiungere le showmessage nei rimuovi tutti
-Agggiungere icon al vedi password
 aggiungere loading
