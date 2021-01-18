@@ -4,24 +4,37 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.Cursor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PagamentoConCartaDialog extends JDialog {
+
+	private static final long serialVersionUID = 1L;
+	
 	private JTextField textFieldNumeroCarta;
 	private JPasswordField passwordFieldPin;
-	public PagamentoConCartaDialog() {
+	
+	public PagamentoConCartaDialog(Controller ctrl) {
+		
 		getContentPane().setBackground(new Color(0, 67, 137));
 		setUndecorated(true);
-		setBounds(100, 100, 450, 300);
+		setSize(450, 300);
 		getContentPane().setLayout(null);
+		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		
 		JButton ButtonVediPassword = new JButton("");
+		ButtonVediPassword.setSelectedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonViewPassord.png")));
 		ButtonVediPassword.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonVediPassword.setBorder(null);
 		ButtonVediPassword.setOpaque(false);
@@ -67,6 +80,13 @@ public class PagamentoConCartaDialog extends JDialog {
 		getContentPane().add(passwordFieldPin);
 		
 		JButton ButtonPaga = new JButton("");
+		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonPaga.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
+				dispose();
+			}
+		});
 		ButtonPaga.setOpaque(false);
 		ButtonPaga.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga.png")));
 		ButtonPaga.setBounds(166, 243, 105, 25);

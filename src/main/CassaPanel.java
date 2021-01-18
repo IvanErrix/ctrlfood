@@ -18,6 +18,7 @@ public class CassaPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	public CassaPanel(Controller ctrl) {
+		
 		setForeground(Color.GRAY);
 		setFont(new Font("Impact", Font.PLAIN, 11));
 		
@@ -41,6 +42,11 @@ public class CassaPanel extends JPanel {
 		add(ButtonTotaleNumero);
 		
 		JButton ButtonPaga = new JButton("");
+		ButtonPaga.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.ApriPagamentoConCartaDialog(ctrl);
+			}
+		});
 		ButtonPaga.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPaga.png")));
 		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonPaga.setBounds(619, 194, 105, 25);

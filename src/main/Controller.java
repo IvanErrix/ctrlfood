@@ -15,8 +15,6 @@ import javax.swing.UIManager;
 
 public class Controller {
 	
-	static DAO dao = new DAO();
-	
 	/*Prima di tutto il programma controlla la connessione. See la connessione è assente
 	 *Se invece la connessione è presente, la funzione main fa partire la prima schermata
 	 *del programma, ovvero FramePrincipale
@@ -32,8 +30,8 @@ public class Controller {
 		UIManager.put("Panel.background", new Color(0, 67, 137));
 		UIManager.put("Button.background", new Color(255, 213, 0));
 		UIManager.put("Button.foreground", new Color(0, 67, 137));
-//	    UIManager.put("OptionPane.messageDialog.titlePane.background", Color.black);
-//		UIManager.put("OptionPane.messageDialogTitle.background", new Color(255, 213, 0));
+		
+		DAO dao = new DAO();
 		
 		if(dao.getConn() != null) {
 			EventQueue.invokeLater(new Runnable() {
@@ -118,6 +116,11 @@ public class Controller {
 	
 	public void ApriAggiungiAlCarrelloDialog(Controller ctrl) {
 		AggiungiAlCarrelloDialog dialog = new AggiungiAlCarrelloDialog(ctrl);
+		dialog.setVisible(true);
+	}
+	
+	public void ApriPagamentoConCartaDialog(Controller ctrl) {
+		PagamentoConCartaDialog dialog = new PagamentoConCartaDialog(ctrl);
 		dialog.setVisible(true);
 	}
 	

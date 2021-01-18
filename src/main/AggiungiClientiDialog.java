@@ -92,6 +92,7 @@ public class AggiungiClientiDialog extends JDialog {
 		JButton ButtonCancellaTutto = new JButton("");
 		ButtonCancellaTutto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
 				textFieldNome.setText("");
 				textFieldCognome.setText("");
 				textFieldCodiceFiscale.setText("");
