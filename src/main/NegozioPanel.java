@@ -86,6 +86,7 @@ public class NegozioPanel extends JPanel {
 		
 
 		JButton ButtonAggiungi = new JButton("");
+		ButtonAggiungi.setPressedIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/ButtonAggiungi2Yellow.png")));
 		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.addActionListener(new ActionListener() {
@@ -100,6 +101,7 @@ public class NegozioPanel extends JPanel {
 		add(ButtonAggiungi);
 		
 		JButton ButtonStampa = new JButton("");
+		ButtonStampa.setPressedIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/ButtonStampaYellow.png")));
 		ButtonStampa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.StampaListaProdotti(table, "negozio");

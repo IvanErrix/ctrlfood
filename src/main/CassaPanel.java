@@ -44,6 +44,7 @@ public class CassaPanel extends JPanel {
 		add(ButtonTotaleNumero);
 		
 		JButton ButtonPagaConCarta = new JButton("");
+		ButtonPagaConCarta.setPressedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCartaYellow.png")));
 		ButtonPagaConCarta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriPagamentoConCartaDialog(ctrl);
@@ -73,6 +74,8 @@ public class CassaPanel extends JPanel {
 		add(ButtonListaProdotti);
 		
 		JButton ButtonPagaInContanti = new JButton("");
+		ButtonPagaInContanti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonPagaInContanti.setPressedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContantiYellow.png")));
 		ButtonPagaInContanti.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
 		ButtonPagaInContanti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

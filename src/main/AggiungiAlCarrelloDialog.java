@@ -40,6 +40,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		getContentPane().add(lblQuantita);
 		
 		JButton ButtonAggiugni = new JButton("");
+		ButtonAggiugni.setPressedIcon(new ImageIcon(AggiungiAlCarrelloDialog.class.getResource("/scrimg/ButtonAggiungiYellow.png")));
 		ButtonAggiugni.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiugni.setOpaque(false);
 		ButtonAggiugni.setBorder(null);
@@ -54,6 +55,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		getContentPane().add(ButtonAggiugni);
 		
 		JButton ButtonAnnulla = new JButton("");
+		ButtonAnnulla.setPressedIcon(new ImageIcon(AggiungiAlCarrelloDialog.class.getResource("/scrimg/ButtonAnnullaYellow.png")));
 		ButtonAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

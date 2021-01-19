@@ -13,6 +13,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseAdapter;
 
 public class FramePrincipale extends JFrame {
 
@@ -20,6 +25,7 @@ public class FramePrincipale extends JFrame {
 	private JPanel PanelPrincipale;
 
 	public FramePrincipale(Controller ctrl) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FramePrincipale.class.getResource("/scrimg/logo.png")));
 		
 		setUndecorated(true);
 		setFont(new Font("Impact", Font.BOLD, 14));
@@ -205,6 +211,17 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.add(ButtonCassa);
 		
 		JButton ButtonChiudi = new JButton("");
+		ButtonChiudi.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonChiudi.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonChiudiYellow.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonChiudi.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonChiudi.png")));
+			}
+		});
+		
 		ButtonChiudi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonChiudi.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonChiudi.png")));
 		ButtonChiudi.addActionListener(new ActionListener() {
@@ -220,6 +237,16 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.add(ButtonChiudi);
 		
 		JButton ButtonRiduci = new JButton("");
+		ButtonRiduci.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonRiduci.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonRiduciYellow.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonRiduci.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonRiduci.png")));
+			}
+		});
 		ButtonRiduci.setFocusable(false);
 		ButtonRiduci.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonRiduci.addActionListener(new ActionListener() {

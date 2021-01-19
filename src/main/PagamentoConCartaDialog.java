@@ -134,6 +134,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		getContentPane().add(textFieldScadenza);
 		
 		JButton ButtonPaga = new JButton("");
+		ButtonPaga.setPressedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPagaYellow.png")));
 		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -155,6 +156,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		getContentPane().add(ButtonPaga);
 		
 		JButton ButtonAnnulla = new JButton("");
+		ButtonAnnulla.setPressedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonAnnullaYellow.png")));
 		ButtonAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

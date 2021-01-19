@@ -19,6 +19,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class DepositoPanel extends JPanel {
 
@@ -38,8 +40,7 @@ public class DepositoPanel extends JPanel {
 	private JTextField textFieldSearch;
 
 	public DepositoPanel(Controller ctrl) {
-		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		
+		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		setOpaque(false);
 		setBackground(Color.BLACK);
 		setBounds(0, 0, 765, 558);
@@ -89,6 +90,17 @@ public class DepositoPanel extends JPanel {
 		add(textFieldSearch);
 		
 		JButton ButtonAggiungi = new JButton("");
+		ButtonAggiungi.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2Yellow.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
+			}
+		});
+		ButtonAggiungi.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.addActionListener(new ActionListener() {
@@ -103,6 +115,17 @@ public class DepositoPanel extends JPanel {
 		add(ButtonAggiungi);
 		
 		JButton ButtonStampa = new JButton("");
+		ButtonStampa.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampaYellow.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
+			}
+		});
+		ButtonStampa.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
 		ButtonStampa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.StampaListaProdotti(table, "deposito");

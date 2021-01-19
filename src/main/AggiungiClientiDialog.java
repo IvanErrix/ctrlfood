@@ -76,6 +76,7 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(textFieldCodiceFiscale);
 		
 		JButton ButtonAggiugni = new JButton("");
+		ButtonAggiugni.setPressedIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonAggiungiYellow.png")));
 		ButtonAggiugni.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiugni.setOpaque(false);
 		ButtonAggiugni.setBorder(null);
@@ -90,6 +91,7 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(ButtonAggiugni);
 		
 		JButton ButtonAnnulla = new JButton("");
+		ButtonAnnulla.setPressedIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonAnnullaYellow.png")));
 		ButtonAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -117,6 +119,7 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(LabelCartaFedelta);
 		
 		JButton ButtonCancellaTutto = new JButton("");
+		ButtonCancellaTutto.setPressedIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonRimuoviTuttoYellow.png")));
 		ButtonCancellaTutto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);

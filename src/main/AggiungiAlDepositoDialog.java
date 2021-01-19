@@ -95,6 +95,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(textFieldQuantita);
 		
 		JButton ButtonAggiugni = new JButton("");
+		ButtonAggiugni.setPressedIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungiYellow.png")));
 		ButtonAggiugni.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiugni.setOpaque(false);
 		ButtonAggiugni.setBorder(null);
@@ -109,6 +110,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(ButtonAggiugni);
 		
 		JButton ButtonCancellaTutto = new JButton("");
+		ButtonCancellaTutto.setPressedIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTuttoYellow.png")));
 		ButtonCancellaTutto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
@@ -127,6 +129,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(ButtonCancellaTutto);
 		
 		JButton ButtonAnnulla = new JButton("");
+		ButtonAnnulla.setPressedIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAnnullaYellow.png")));
 		ButtonAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();

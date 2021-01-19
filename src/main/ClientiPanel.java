@@ -107,6 +107,7 @@ public class ClientiPanel extends JPanel {
 		add(textFieldSearch);
 		
 		JButton ButtonAggiungi = new JButton("");
+		ButtonAggiungi.setPressedIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonAggiungi2Yellow.png")));
 		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.addActionListener(new ActionListener() {
@@ -121,6 +122,7 @@ public class ClientiPanel extends JPanel {
 		add(ButtonAggiungi);
 		
 		JButton ButtonModifica = new JButton("");
+		ButtonModifica.setPressedIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonModificaYellow.png")));
 		ButtonModifica.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -143,6 +145,7 @@ public class ClientiPanel extends JPanel {
 		add(ButtonModifica);
 		
 		JButton ButtonStampa = new JButton("");
+		ButtonStampa.setPressedIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonStampaYellow.png")));
 		ButtonStampa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.StampaListaProdotti(table, "clienti");

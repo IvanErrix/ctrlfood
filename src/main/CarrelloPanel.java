@@ -84,6 +84,7 @@ public class CarrelloPanel extends JPanel {
 		add(textFieldSearch);
 		
 		JButton ButtonAggiungi = new JButton("");
+		ButtonAggiungi.setPressedIcon(new ImageIcon(CarrelloPanel.class.getResource("/scrimg/ButtonAggiungi2Yellow.png")));
 		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.addActionListener(new ActionListener() {
