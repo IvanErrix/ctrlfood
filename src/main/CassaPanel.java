@@ -33,29 +33,29 @@ public class CassaPanel extends JPanel {
 		ButtonTotale.setFont(new Font("Impact", Font.PLAIN, 19));
 		ButtonTotale.setForeground(new Color(255, 213, 0));
 		ButtonTotale.setHorizontalAlignment(SwingConstants.CENTER);
-		ButtonTotale.setBounds(628, 78, 68, 23);
+		ButtonTotale.setBounds(640, 107, 68, 23);
 		add(ButtonTotale);
 		
 		JLabel ButtonTotaleNumero = new JLabel("0");
 		ButtonTotaleNumero.setFont(new Font("Impact", Font.PLAIN, 19));
 		ButtonTotaleNumero.setForeground(new Color(255, 213, 0));
 		ButtonTotaleNumero.setHorizontalAlignment(SwingConstants.CENTER);
-		ButtonTotaleNumero.setBounds(628, 127, 68, 23);
+		ButtonTotaleNumero.setBounds(640, 141, 68, 23);
 		add(ButtonTotaleNumero);
 		
-		JButton ButtonPaga = new JButton("");
-		ButtonPaga.addActionListener(new ActionListener() {
+		JButton ButtonPagaConCarta = new JButton("");
+		ButtonPagaConCarta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriPagamentoConCartaDialog(ctrl);
 			}
 		});
-		ButtonPaga.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPaga.png")));
-		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonPaga.setBounds(619, 194, 105, 25);
-		ButtonPaga.setOpaque(false);
-		ButtonPaga.setBorder(null);
-		ButtonPaga.setContentAreaFilled(false);
-		add(ButtonPaga);
+		ButtonPagaConCarta.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
+		ButtonPagaConCarta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonPagaConCarta.setBounds(620, 195, 113, 36);
+		ButtonPagaConCarta.setOpaque(false);
+		ButtonPagaConCarta.setBorder(null);
+		ButtonPagaConCarta.setContentAreaFilled(false);
+		add(ButtonPagaConCarta);
 		
 		JScrollPane scrollPaneProdottiCarrello = new JScrollPane();
 		scrollPaneProdottiCarrello.setBackground(new Color(0, 67, 137));
@@ -72,13 +72,17 @@ public class CassaPanel extends JPanel {
 		ButtonListaProdotti.setBounds(10, 35, 239, 32);
 		add(ButtonListaProdotti);
 		
-		JButton ButtonContanti = new JButton("Paga in contanti");
-		ButtonContanti.addActionListener(new ActionListener() {
+		JButton ButtonPagaInContanti = new JButton("");
+		ButtonPagaInContanti.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
+		ButtonPagaInContanti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		ButtonContanti.setBounds(628, 264, 89, 23);
-		add(ButtonContanti);
+		ButtonPagaInContanti.setBorder(null);
+		ButtonPagaInContanti.setOpaque(false);
+		ButtonPagaInContanti.setContentAreaFilled(false);
+		ButtonPagaInContanti.setBounds(620, 259, 113, 36);
+		add(ButtonPagaInContanti);
 	}
 }

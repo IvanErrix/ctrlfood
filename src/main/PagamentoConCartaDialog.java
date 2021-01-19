@@ -65,11 +65,10 @@ public class PagamentoConCartaDialog extends JDialog {
 			}
 		});
 		ButtonVediPassword.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonVediPassword.setSelectedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonViewPassword.png")));
+		ButtonVediPassword.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonViewPassword.png")));
 		ButtonVediPassword.setBorder(null);
 		ButtonVediPassword.setContentAreaFilled(false);
-		ButtonVediPassword.setBounds(418, 84, 32, 32);
-		ButtonVediPassword.setVisible(true);
+		ButtonVediPassword.setBounds(383, 84, 32, 32);
 		getContentPane().add(ButtonVediPassword);
 		
 		JLabel LabelNumeroCarta = new JLabel("Numero Carta");
@@ -105,7 +104,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		passwordFieldPin.setBackground(new Color(0, 67, 137));
 		passwordFieldPin.setForeground(new Color(255, 213, 0));
 		passwordFieldPin.setFont(new Font("Impact", Font.PLAIN, 15));
-		passwordFieldPin.setBounds(146, 84, 269, 32);
+		passwordFieldPin.setBounds(146, 84, 234, 32);
 		passwordFieldPin.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(passwordFieldPin);
 		
@@ -149,10 +148,24 @@ public class PagamentoConCartaDialog extends JDialog {
 			}
 		});
 		ButtonPaga.setOpaque(false);
-		ButtonPaga.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga.png")));
-		ButtonPaga.setBounds(166, 243, 105, 25);
+		ButtonPaga.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga2.png")));
+		ButtonPaga.setBounds(262, 243, 141, 30);
 		ButtonPaga.setBorder(null);
 		ButtonPaga.setContentAreaFilled(false);
 		getContentPane().add(ButtonPaga);
+		
+		JButton ButtonAnnulla = new JButton("");
+		ButtonAnnulla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		ButtonAnnulla.setOpaque(false);
+		ButtonAnnulla.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
+		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonAnnulla.setBorder(null);
+		ButtonAnnulla.setContentAreaFilled(false);
+		ButtonAnnulla.setBounds(39, 243, 141, 30);
+		getContentPane().add(ButtonAnnulla);
 	}
 }

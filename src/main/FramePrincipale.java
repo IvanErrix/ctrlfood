@@ -34,13 +34,9 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.setLayout(null);
 		
 		JButton ButtonDeposito = new JButton("");
-		ButtonDeposito.setFocusable(false);
 		JButton ButtonNegozio = new JButton("");
-		ButtonNegozio.setFocusable(false);
 		JButton ButtonClienti = new JButton("");
-		ButtonClienti.setFocusable(false);
 		JButton ButtonCarrello = new JButton("");
-		ButtonCarrello.setFocusable(false);
 		JButton ButtonCassa = new JButton("");
 		
 		JLabel LabelDeposito = new JLabel("");
@@ -76,6 +72,7 @@ public class FramePrincipale extends JFrame {
 		PanelCaricamento.setLayout(null);
 		
 		/*BUTTON DEPOSITO*/
+		ButtonDeposito.setFocusable(false);
 		ButtonDeposito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriDepositoPanel(ctrl, PanelCaricamento);
@@ -101,6 +98,7 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.add(ButtonDeposito);
 		
 		/*BUTTON NEGOZIO*/
+		ButtonNegozio.setFocusable(false);
 		ButtonNegozio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriNegozioPanel(ctrl, PanelCaricamento);
@@ -126,6 +124,7 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.add(ButtonNegozio);
 		
 		/*BUTTON CLIENTI*/
+		ButtonClienti.setFocusable(false);
 		ButtonClienti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriClientiPanel(ctrl, PanelCaricamento);
@@ -151,6 +150,7 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.add(ButtonClienti);
 		
 		/*BUTTON CARRELLO*/
+		ButtonCarrello.setFocusable(false);
 		ButtonCarrello.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriCarrelloPanel(ctrl, PanelCaricamento);
@@ -178,6 +178,7 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.add(ButtonCarrello);
 		
 		/*BUTTONCASSA*/ 
+		ButtonCassa.setFocusable(false);
 		ButtonCassa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriCassaPanel(ctrl, PanelCaricamento);

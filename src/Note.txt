@@ -1,2 +1,4 @@
 System.out.println(textFieldNome.getText().toUpperCase());
 unire tutte le funzioni delle dialog insieme
+Fare icona e mockup
+Fare la ricerca dei prodotti in negozio deposito e carrello e dei clienti
