@@ -31,6 +31,8 @@ import java.util.Properties;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PagamentoConCartaDialog extends JDialog {
 
@@ -40,12 +42,13 @@ public class PagamentoConCartaDialog extends JDialog {
 	private JPasswordField passwordFieldPin;
 	private boolean visible=false;
 	private JTextField textFieldScadenza;
+	private JTextField textFieldNumeroCartaFedelta;
 	
 	public PagamentoConCartaDialog(Controller ctrl) {
 		
 		getContentPane().setBackground(new Color(0, 67, 137));
 		setUndecorated(true);
-		setSize(450, 300);
+		setSize(490, 330);
 		getContentPane().setLayout(null);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		
@@ -71,8 +74,8 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonVediPassword.setBounds(383, 84, 32, 32);
 		getContentPane().add(ButtonVediPassword);
 		
-		JLabel LabelNumeroCarta = new JLabel("Numero Carta");
-		LabelNumeroCarta.setBounds(10, 40, 115, 20);
+		JLabel LabelNumeroCarta = new JLabel("N° Carta");
+		LabelNumeroCarta.setBounds(10, 40, 76, 20);
 		LabelNumeroCarta.setForeground(new Color(255, 213, 0));
 		LabelNumeroCarta.setFont(new Font("Impact", Font.PLAIN, 18));
 		getContentPane().add(LabelNumeroCarta);
@@ -134,7 +137,17 @@ public class PagamentoConCartaDialog extends JDialog {
 		getContentPane().add(textFieldScadenza);
 		
 		JButton ButtonPaga = new JButton("");
-		ButtonPaga.setPressedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPagaYellow.png")));
+		ButtonPaga.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonPaga.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPagaYellow.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonPaga.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga2.png")));
+			}
+		});
+		ButtonPaga.setPressedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga2.png")));
 		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -150,13 +163,23 @@ public class PagamentoConCartaDialog extends JDialog {
 		});
 		ButtonPaga.setOpaque(false);
 		ButtonPaga.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga2.png")));
-		ButtonPaga.setBounds(262, 243, 141, 30);
+		ButtonPaga.setBounds(265, 281, 141, 30);
 		ButtonPaga.setBorder(null);
 		ButtonPaga.setContentAreaFilled(false);
 		getContentPane().add(ButtonPaga);
 		
 		JButton ButtonAnnulla = new JButton("");
-		ButtonAnnulla.setPressedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonAnnullaYellow.png")));
+		ButtonAnnulla.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonAnnulla.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonAnnullaYellow.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonAnnulla.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
+			}
+		});
+		ButtonAnnulla.setPressedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 		ButtonAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -167,7 +190,23 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
-		ButtonAnnulla.setBounds(39, 243, 141, 30);
+		ButtonAnnulla.setBounds(43, 279, 141, 30);
 		getContentPane().add(ButtonAnnulla);
+		
+		JLabel LabelNumeroCartaFedelta = new JLabel("N° Carta Fedeltà");
+		LabelNumeroCartaFedelta.setForeground(new Color(255, 213, 0));
+		LabelNumeroCartaFedelta.setFont(new Font("Impact", Font.PLAIN, 18));
+		LabelNumeroCartaFedelta.setBounds(12, 208, 114, 20);
+		getContentPane().add(LabelNumeroCartaFedelta);
+		
+		textFieldNumeroCartaFedelta = new JTextField();
+		textFieldNumeroCartaFedelta.setForeground(new Color(255, 213, 0));
+		textFieldNumeroCartaFedelta.setFont(new Font("Impact", Font.PLAIN, 15));
+		textFieldNumeroCartaFedelta.setColumns(10);
+		textFieldNumeroCartaFedelta.setCaretColor(new Color(255, 213, 0));
+		textFieldNumeroCartaFedelta.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		textFieldNumeroCartaFedelta.setBackground(new Color(0, 67, 137));
+		textFieldNumeroCartaFedelta.setBounds(146, 194, 269, 32);
+		getContentPane().add(textFieldNumeroCartaFedelta);
 	}
 }

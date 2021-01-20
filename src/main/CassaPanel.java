@@ -14,6 +14,8 @@ import javax.swing.ScrollPaneConstants;
 import java.awt.Font;
 import java.awt.Cursor;
 import javax.swing.border.EtchedBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class CassaPanel extends JPanel {
 
@@ -44,7 +46,17 @@ public class CassaPanel extends JPanel {
 		add(ButtonTotaleNumero);
 		
 		JButton ButtonPagaConCarta = new JButton("");
-		ButtonPagaConCarta.setPressedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCartaYellow.png")));
+		ButtonPagaConCarta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonPagaConCarta.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCartaYellow.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonPagaConCarta.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
+			}
+		});
+		ButtonPagaConCarta.setSelectedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
 		ButtonPagaConCarta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriPagamentoConCartaDialog(ctrl);
@@ -74,8 +86,18 @@ public class CassaPanel extends JPanel {
 		add(ButtonListaProdotti);
 		
 		JButton ButtonPagaInContanti = new JButton("");
+		ButtonPagaInContanti.setSelectedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
+		ButtonPagaInContanti.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonPagaInContanti.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContantiYellow.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonPagaInContanti.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
+			}
+		});
 		ButtonPagaInContanti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonPagaInContanti.setPressedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContantiYellow.png")));
 		ButtonPagaInContanti.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
 		ButtonPagaInContanti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

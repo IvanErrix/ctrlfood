@@ -53,6 +53,7 @@ public class NegozioPanel extends JPanel {
 		
 		table = new JTable(model);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setAutoCreateRowSorter(true);
 		table.setFont(new Font("Impact", Font.PLAIN, 13));
 		table.setForeground(new Color(255, 213, 0));
 		table.setOpaque(false);
@@ -68,8 +69,19 @@ public class NegozioPanel extends JPanel {
 		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
 	
 		JButton ButtonSearch = new JButton("");
+		ButtonSearch.setSelectedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearchYellow.png")));
+		ButtonSearch.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearchYellow.png")));
+			}
+		});
 		ButtonSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
+		ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearchYellow.png")));
 		ButtonSearch.setOpaque(false);
 		ButtonSearch.setBorder(null);
 		ButtonSearch.setContentAreaFilled(false);

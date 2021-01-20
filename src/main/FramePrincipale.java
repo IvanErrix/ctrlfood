@@ -18,6 +18,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseAdapter;
+import java.awt.Window.Type;
 
 public class FramePrincipale extends JFrame {
 
@@ -25,10 +26,9 @@ public class FramePrincipale extends JFrame {
 	private JPanel PanelPrincipale;
 
 	public FramePrincipale(Controller ctrl) {
-		
-		setIconImage(Toolkit.getDefaultToolkit().getImage(FramePrincipale.class.getResource("/scrimg/logo.png")));
-		
 		setUndecorated(true);
+		
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FramePrincipale.class.getResource("/scrimg/logo2.png")));
 		setFont(new Font("Impact", Font.BOLD, 14));
 		setTitle("CtrlFood");
 		setResizable(false);
