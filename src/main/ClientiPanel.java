@@ -24,9 +24,12 @@ import javax.swing.table.TableRowSorter;
 
 import java.awt.Font;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.RowSorter;
 import javax.swing.SortOrder;
 import javax.swing.SwingConstants;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ClientiPanel extends JPanel {
 
@@ -45,6 +48,7 @@ public class ClientiPanel extends JPanel {
 	};
 			
 	private JTable table;
+	private JTextField textFieldSearch;
 
 	public ClientiPanel(Controller ctrl) {
 		
@@ -106,8 +110,21 @@ public class ClientiPanel extends JPanel {
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
 		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", false, 110});
 		model.addRow(new Object[] {"Carlo", "Spazio", "CRVNNWEPB387VISV", true, 0});
-	
+
+		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+		table.setRowSorter(rowSorter);
+		
 		JButton ButtonSearch = new JButton("");
+		ButtonSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String text = textFieldSearch.getText();
+				if (text.trim().length() == 0) {
+					rowSorter.setRowFilter(null);
+				} else {
+					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+				}
+			}
+		});
 		ButtonSearch.setSelectedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearchYellow.png")));
 		ButtonSearch.addMouseListener(new MouseAdapter() {
 			@Override
@@ -128,6 +145,19 @@ public class ClientiPanel extends JPanel {
 		add(ButtonSearch);
 		
 		JTextField textFieldSearch = new JTextField();
+		textFieldSearch.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+					String text = textFieldSearch.getText();
+					if (text.trim().length() == 0) {
+						rowSorter.setRowFilter(null);
+					} else {
+						rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+					} 
+				}
+			}
+		});
 		textFieldSearch.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
 		textFieldSearch.setForeground(new Color(255, 213, 0));
@@ -148,7 +178,7 @@ public class ClientiPanel extends JPanel {
 				ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
 			}
 		});
-		ButtonAggiungi.setPressedIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonAggiungi2Yellow.png")));
+		ButtonAggiungi.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.addActionListener(new ActionListener() {

@@ -16,10 +16,16 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+
 import java.awt.Font;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
 import javax.swing.DebugGraphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class NegozioPanel extends JPanel {
 
@@ -37,6 +43,7 @@ public class NegozioPanel extends JPanel {
 			   }
 			};
 	private JTable table;
+	private JTextField textFieldSearch;
 
 	public NegozioPanel(Controller ctrl) {
 		setOpaque(false);
@@ -67,8 +74,21 @@ public class NegozioPanel extends JPanel {
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
 		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
+		
+		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+		table.setRowSorter(rowSorter);
 	
 		JButton ButtonSearch = new JButton("");
+		ButtonSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String text = textFieldSearch.getText();
+				if (text.trim().length() == 0) {
+					rowSorter.setRowFilter(null);
+				} else {
+					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+				}
+			}
+		});
 		ButtonSearch.setSelectedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearchYellow.png")));
 		ButtonSearch.addMouseListener(new MouseAdapter() {
 			@Override
@@ -89,6 +109,19 @@ public class NegozioPanel extends JPanel {
 		add(ButtonSearch);
 		
 		JTextField textFieldSearch = new JTextField();
+		textFieldSearch.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+					String text = textFieldSearch.getText();
+					if (text.trim().length() == 0) {
+						rowSorter.setRowFilter(null);
+					} else {
+						rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+					} 
+				}
+			}
+		});
 		textFieldSearch.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
 		textFieldSearch.setForeground(new Color(255, 213, 0));

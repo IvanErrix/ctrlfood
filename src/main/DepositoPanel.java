@@ -18,14 +18,13 @@ import java.awt.event.ActionEvent;
 import java.awt.Cursor;
 import java.awt.Font;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowSorter;
-import javax.swing.SortOrder;
+import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class DepositoPanel extends JPanel {
 
@@ -41,6 +40,7 @@ public class DepositoPanel extends JPanel {
 			       return false;
 			   }
 			};
+			
 	private JTable table;
 	private JTextField textFieldSearch;
 
@@ -73,10 +73,25 @@ public class DepositoPanel extends JPanel {
 		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
-		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
-		model.addRow(new Object[] {"Pera", "002", "1.0", "1", "15/20/2021"});
+		model.addRow(new Object[] {"MELA", "001", "0.5", "2", "10/01/2021"});
+		model.addRow(new Object[] {"PERA", "002", "1.0", "1", "15/12/2021"});
+		model.addRow(new Object[] {"BANANA", "003", "1.5", "4", "05/8/2021"});
+		model.addRow(new Object[] {"CAFFE", "004", "4.0", "3", "03/6/2021"});
+		
+		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+		table.setRowSorter(rowSorter);
 	
 		JButton ButtonSearch = new JButton("");
+		ButtonSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String text = textFieldSearch.getText();
+				if (text.trim().length() == 0) {
+					rowSorter.setRowFilter(null);
+				} else {
+					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+				}
+			}
+		});
 		ButtonSearch.setSelectedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearchYellow.png")));
 		ButtonSearch.addMouseListener(new MouseAdapter() {
 			@Override
@@ -97,6 +112,19 @@ public class DepositoPanel extends JPanel {
 		add(ButtonSearch);
 		
 		textFieldSearch = new JTextField();
+		textFieldSearch.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+					String text = textFieldSearch.getText();
+					if (text.trim().length() == 0) {
+						rowSorter.setRowFilter(null);
+					} else {
+						rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+					} 
+				}
+			}
+		});
 		textFieldSearch.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
 		textFieldSearch.setForeground(new Color(255, 213, 0));

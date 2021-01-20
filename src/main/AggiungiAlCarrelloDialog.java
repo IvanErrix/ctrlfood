@@ -15,7 +15,6 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
 public class AggiungiAlCarrelloDialog extends JDialog {

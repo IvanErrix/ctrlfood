@@ -16,8 +16,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Cursor;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -26,7 +24,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	public AggiungiAlDepositoDialog(Controller ctrl) {
-		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(623, 463);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);

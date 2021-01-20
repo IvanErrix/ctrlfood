@@ -23,6 +23,7 @@ public class AggiungiClientiDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	public AggiungiClientiDialog(Controller ctrl) {
+		
 		setUndecorated(true);
 		setSize(623, 463);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
@@ -151,7 +152,7 @@ public class AggiungiClientiDialog extends JDialog {
 				ButtonCancellaTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
 			}
 		});
-		ButtonCancellaTutto.setPressedIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonRimuoviTuttoY.png")));
+		ButtonCancellaTutto.setPressedIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
 		ButtonCancellaTutto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
