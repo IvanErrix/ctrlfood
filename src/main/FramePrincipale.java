@@ -25,6 +25,7 @@ public class FramePrincipale extends JFrame {
 	private JPanel PanelPrincipale;
 
 	public FramePrincipale(Controller ctrl) {
+		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FramePrincipale.class.getResource("/scrimg/logo.png")));
 		
 		setUndecorated(true);
@@ -34,6 +35,7 @@ public class FramePrincipale extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1152, 600);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
+		
 		PanelPrincipale = new JPanel();
 		PanelPrincipale.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(PanelPrincipale);

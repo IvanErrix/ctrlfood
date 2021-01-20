@@ -28,11 +28,11 @@ public class DepositoPanel extends JPanel {
 	private String Titoli[]= {"Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
 	private String Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
+		
 		private static final long serialVersionUID = 1L;
 
 			@Override
 			   public boolean isCellEditable(int row, int column) {
-			       //Only the third column
 			       return false;
 			   }
 			};
