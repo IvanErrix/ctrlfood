@@ -19,6 +19,8 @@ import java.awt.event.MouseWheelListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.Window.Type;
+import javax.swing.border.EtchedBorder;
+import java.awt.Color;
 
 public class FramePrincipale extends JFrame {
 
@@ -37,7 +39,7 @@ public class FramePrincipale extends JFrame {
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		
 		PanelPrincipale = new JPanel();
-		PanelPrincipale.setBorder(new EmptyBorder(5, 5, 5, 5));
+		PanelPrincipale.setBorder(null);
 		setContentPane(PanelPrincipale);
 		PanelPrincipale.setLayout(null);
 		
@@ -267,7 +269,5 @@ public class FramePrincipale extends JFrame {
 		Sfondo.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Homepage.png")));
 		Sfondo.setBounds(0, 0, 1162, 600);
 		PanelPrincipale.add(Sfondo);
-		
-		
 	}
 }

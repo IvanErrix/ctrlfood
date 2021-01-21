@@ -8,6 +8,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 
@@ -30,7 +31,7 @@ public class DepositoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private String Titoli[]= {"Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
-	private String Elementi[][]= {};
+	private Object Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
 		
 		private static final long serialVersionUID = 1L;
@@ -183,5 +184,19 @@ public class DepositoPanel extends JPanel {
 		ButtonStampa.setBorder(null);
 		ButtonStampa.setContentAreaFilled(false);
 		add(ButtonStampa);
+		
+		JButton ButtonElimina = new JButton("Elimina");
+		ButtonElimina.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					model.removeRow(table.getSelectedRow());
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
+				}
+				
+			}
+		});
+		ButtonElimina.setBounds(651, 11, 89, 23);
+		add(ButtonElimina);
 	}
 }

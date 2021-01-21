@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -153,6 +154,20 @@ public class CarrelloPanel extends JPanel {
 		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiungi.setBounds(539, 42, 105, 25);
 		add(ButtonAggiungi);
+		
+		JButton ButtonElimina = new JButton("Elimina");
+		ButtonElimina.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					model.removeRow(table.getSelectedRow());
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
+				}
+				
+			}
+		});
+		ButtonElimina.setBounds(651, 11, 89, 23);
+		add(ButtonElimina);
 	}
 
 }

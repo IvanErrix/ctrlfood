@@ -26,7 +26,6 @@ import java.awt.Font;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.RowSorter;
-import javax.swing.SortOrder;
 import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -43,7 +42,12 @@ public class ClientiPanel extends JPanel {
 
 			@Override
 			   public boolean isCellEditable(int row, int column) {
+				
 				return editable;
+				
+//				if (column == 0 || column == 1 || column == 2 || column == 4)
+//					return false;
+//				return super.isCellEditable(row, column);
 			   }
 	};
 			
@@ -90,8 +94,8 @@ public class ClientiPanel extends JPanel {
 		TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(sorter);
 		List<RowSorter.SortKey> sortKeys = new ArrayList<>(); 
-		int columnIndexToSort = 1;
-		sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.ASCENDING));
+//		int columnIndexToSort = 1;
+//		sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.ASCENDING));
 		sorter.setSortKeys(sortKeys);sorter.sort();
 		sorter.setSortable(2, false);
 		sorter.setSortable(3, false);
@@ -110,18 +114,15 @@ public class ClientiPanel extends JPanel {
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
 		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", false, 110});
 		model.addRow(new Object[] {"Carlo", "Spazio", "CRVNNWEPB387VISV", true, 0});
-
-		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
-		table.setRowSorter(rowSorter);
 		
 		JButton ButtonSearch = new JButton("");
 		ButtonSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String text = textFieldSearch.getText();
 				if (text.trim().length() == 0) {
-					rowSorter.setRowFilter(null);
+					sorter.setRowFilter(null);
 				} else {
-					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+					sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
 				}
 			}
 		});
@@ -151,9 +152,9 @@ public class ClientiPanel extends JPanel {
 				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
 					String text = textFieldSearch.getText();
 					if (text.trim().length() == 0) {
-						rowSorter.setRowFilter(null);
+						sorter.setRowFilter(null);
 					} else {
-						rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+						sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
 					} 
 				}
 			}
@@ -249,5 +250,19 @@ public class ClientiPanel extends JPanel {
 		ButtonStampa.setBorder(null);
 		ButtonStampa.setContentAreaFilled(false);
 		add(ButtonStampa);
+		
+		JButton ButtonElimina = new JButton("Elimina");
+		ButtonElimina.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					model.removeRow(table.getSelectedRow());
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
+				}
+				
+			}
+		});
+		ButtonElimina.setBounds(651, 11, 89, 23);
+		add(ButtonElimina);
 	}
 }

@@ -1,6 +1,7 @@
 package main;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -11,6 +12,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.border.EtchedBorder;
 import java.awt.Cursor;
@@ -38,6 +40,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		setSize(490, 330);
 		getContentPane().setLayout(null);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
+		((JComponent) getContentPane()).setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		
 		JButton ButtonVediPassword = new JButton("");
 		ButtonVediPassword.addActionListener(new ActionListener() {
@@ -142,8 +145,18 @@ public class PagamentoConCartaDialog extends JDialog {
 					JOptionPane.showMessageDialog(null, "DEVONO ESSERE INSERITI TUTTI I CAMPI", "", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
-					JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
-					dispose();
+					if (passwordFieldPin.getText().length()>4) {
+						JOptionPane.showMessageDialog(null, "IL PIN DEVE CONTENERE 5 NUMERI", "", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+						try {
+							int x = Integer.parseInt(textFieldNumeroCarta.getText());
+							JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
+							dispose();
+						} catch (Exception e2) {
+							JOptionPane.showMessageDialog(null, "INSERIRE CORRETTAMENTE UN NUMERO PER LA CARTA", "", JOptionPane.ERROR_MESSAGE);
+						}
+					}
 				}
 
 			}

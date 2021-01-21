@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -181,5 +182,19 @@ public class NegozioPanel extends JPanel {
 		ButtonStampa.setBorder(null);
 		ButtonStampa.setContentAreaFilled(false);
 		add(ButtonStampa);
+		
+		JButton ButtonElimina = new JButton("Elimina");
+		ButtonElimina.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					model.removeRow(table.getSelectedRow());
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
+				}
+				
+			}
+		});
+		ButtonElimina.setBounds(651, 11, 89, 23);
+		add(ButtonElimina);
 	}
 }

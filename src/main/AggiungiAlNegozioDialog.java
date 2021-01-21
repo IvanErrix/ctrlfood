@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -16,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 
 public class AggiungiAlNegozioDialog extends JDialog {
 
@@ -27,6 +29,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setBackground(new Color(0, 67, 137));
 		getContentPane().setLayout(null);
+		((JComponent) getContentPane()).setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		
 		JLabel LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(255, 213, 0));
