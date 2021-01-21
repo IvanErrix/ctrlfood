@@ -60,7 +60,7 @@ public class DepositoPanel extends JPanel {
 		add(scrollPane);
 		
 		table = new JTable(model);
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		table.setAutoCreateRowSorter(true);
 		table.setFont(new Font("Impact", Font.PLAIN, 13));
 		table.setForeground(new Color(255, 213, 0));
@@ -171,7 +171,7 @@ public class DepositoPanel extends JPanel {
 				ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
 			}
 		});
-		ButtonStampa.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampaYellow.png")));
+		ButtonStampa.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
 		ButtonStampa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.StampaListaProdotti(table, "deposito");
@@ -185,7 +185,18 @@ public class DepositoPanel extends JPanel {
 		ButtonStampa.setContentAreaFilled(false);
 		add(ButtonStampa);
 		
-		JButton ButtonElimina = new JButton("Elimina");
+		JButton ButtonElimina = new JButton("");
+		ButtonElimina.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonEliminaYellow.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
+			}
+		});
+		ButtonElimina.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
 		ButtonElimina.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -196,7 +207,12 @@ public class DepositoPanel extends JPanel {
 				
 			}
 		});
-		ButtonElimina.setBounds(651, 11, 89, 23);
+		ButtonElimina.setBounds(651, 11, 105, 25);
+		ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
+		ButtonElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonElimina.setOpaque(false);
+		ButtonElimina.setBorder(null);
+		ButtonElimina.setContentAreaFilled(false);
 		add(ButtonElimina);
 	}
 }

@@ -126,6 +126,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		textFieldScadenza.setBounds(146, 140, 269, 32);
 		getContentPane().add(textFieldScadenza);
 		
+		
 		JButton ButtonPaga = new JButton("");
 		ButtonPaga.addMouseListener(new MouseAdapter() {
 			@Override
@@ -145,7 +146,7 @@ public class PagamentoConCartaDialog extends JDialog {
 					JOptionPane.showMessageDialog(null, "DEVONO ESSERE INSERITI TUTTI I CAMPI", "", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
-					if (passwordFieldPin.getText().length()>4) {
+					if (passwordFieldPin.getText().length()>5) {
 						JOptionPane.showMessageDialog(null, "IL PIN DEVE CONTENERE 5 NUMERI", "", JOptionPane.ERROR_MESSAGE);
 					}
 					else {

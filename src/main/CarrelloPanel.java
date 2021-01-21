@@ -155,7 +155,18 @@ public class CarrelloPanel extends JPanel {
 		ButtonAggiungi.setBounds(539, 42, 105, 25);
 		add(ButtonAggiungi);
 		
-		JButton ButtonElimina = new JButton("Elimina");
+		JButton ButtonElimina = new JButton("");
+		ButtonElimina.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonEliminaYellow.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
+			}
+		});
+		ButtonElimina.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
 		ButtonElimina.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -166,7 +177,12 @@ public class CarrelloPanel extends JPanel {
 				
 			}
 		});
-		ButtonElimina.setBounds(651, 11, 89, 23);
+		ButtonElimina.setBounds(539, 11, 105, 25);
+		ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
+		ButtonElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonElimina.setOpaque(false);
+		ButtonElimina.setBorder(null);
+		ButtonElimina.setContentAreaFilled(false);
 		add(ButtonElimina);
 	}
 

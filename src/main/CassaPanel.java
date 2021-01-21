@@ -35,14 +35,14 @@ public class CassaPanel extends JPanel {
 		ButtonTotale.setFont(new Font("Impact", Font.PLAIN, 19));
 		ButtonTotale.setForeground(new Color(255, 213, 0));
 		ButtonTotale.setHorizontalAlignment(SwingConstants.CENTER);
-		ButtonTotale.setBounds(640, 107, 68, 23);
+		ButtonTotale.setBounds(20, 523, 68, 23);
 		add(ButtonTotale);
 		
-		JLabel ButtonTotaleNumero = new JLabel("0");
+		JLabel ButtonTotaleNumero = new JLabel("0 \u20AC");
 		ButtonTotaleNumero.setFont(new Font("Impact", Font.PLAIN, 19));
 		ButtonTotaleNumero.setForeground(new Color(255, 213, 0));
 		ButtonTotaleNumero.setHorizontalAlignment(SwingConstants.CENTER);
-		ButtonTotaleNumero.setBounds(640, 141, 68, 23);
+		ButtonTotaleNumero.setBounds(98, 523, 68, 23);
 		add(ButtonTotaleNumero);
 		
 		JButton ButtonPagaConCarta = new JButton("");
@@ -64,7 +64,7 @@ public class CassaPanel extends JPanel {
 		});
 		ButtonPagaConCarta.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
 		ButtonPagaConCarta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonPagaConCarta.setBounds(620, 195, 113, 36);
+		ButtonPagaConCarta.setBounds(618, 510, 113, 36);
 		ButtonPagaConCarta.setOpaque(false);
 		ButtonPagaConCarta.setBorder(null);
 		ButtonPagaConCarta.setContentAreaFilled(false);
@@ -76,7 +76,7 @@ public class CassaPanel extends JPanel {
 		scrollPaneProdottiCarrello.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		scrollPaneProdottiCarrello.setOpaque(false);
 		scrollPaneProdottiCarrello.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPaneProdottiCarrello.setBounds(10, 78, 578, 470);
+		scrollPaneProdottiCarrello.setBounds(20, 78, 711, 388);
 		add(scrollPaneProdottiCarrello);
 		
 		JLabel ButtonListaProdotti = new JLabel("Lista dei prodotti nel carrello:");
@@ -107,7 +107,7 @@ public class CassaPanel extends JPanel {
 		ButtonPagaInContanti.setBorder(null);
 		ButtonPagaInContanti.setOpaque(false);
 		ButtonPagaInContanti.setContentAreaFilled(false);
-		ButtonPagaInContanti.setBounds(620, 259, 113, 36);
+		ButtonPagaInContanti.setBounds(495, 510, 113, 36);
 		add(ButtonPagaInContanti);
 	}
 }
