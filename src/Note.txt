@@ -1,3 +1,14 @@
 System.out.println(textFieldNome.getText().toUpperCase());
 Fare mockup
 Ingrandire logo
+
+for (int x = 0; x < 16; x++) {
+					if (e.getKeyCode()==KeyEvent.VK_0 ||e.getKeyCode()==KeyEvent.VK_1 ||e.getKeyCode()==KeyEvent.VK_2||e.getKeyCode()==KeyEvent.VK_3||
+							e.getKeyCode()==KeyEvent.VK_4||e.getKeyCode()==KeyEvent.VK_5 ||e.getKeyCode()==KeyEvent.VK_6||e.getKeyCode()==KeyEvent.VK_7||
+							e.getKeyCode()==KeyEvent.VK_8||e.getKeyCode()==KeyEvent.VK_9) {
+						if (x != 3 || x != 7 || x != 11) {
+							String text =textFieldNumeroCarta.getText();
+							textFieldNumeroCarta.setText(text+ "-");
+						}
+					} 
+				}

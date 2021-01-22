@@ -31,18 +31,18 @@ import java.awt.event.KeyEvent;
 public class NegozioPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String Titoli[]= {"Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
 	private String Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
 		private static final long serialVersionUID = 1L;
 
-			@Override
-			   public boolean isCellEditable(int row, int column) {
-			       //Only the third column
-			       return false;
-			   }
-			};
+		@Override
+		public boolean isCellEditable(int row, int column) {
+			//Only the third column
+			return false;
+		}
+	};
 	private JTable table;
 	private JTextField textFieldSearch;
 
@@ -51,14 +51,14 @@ public class NegozioPanel extends JPanel {
 		setBackground(Color.BLACK);
 		setBounds(0, 0, 765, 600);
 		setLayout(null);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), null));
 		scrollPane.getViewport().setBackground(new Color(0,67,137));
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(10, 78, 730, 470);
 		add(scrollPane);
-		
+
 		table = new JTable(model);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setAutoCreateRowSorter(true);
@@ -73,12 +73,12 @@ public class NegozioPanel extends JPanel {
 		table.getTableHeader().setForeground(new Color(255, 213, 0));
 		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
-	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
+		renderer.setHorizontalAlignment( SwingConstants.CENTER );
 		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
-		
+
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);
-	
+
 		JButton ButtonSearch = new JButton("");
 		ButtonSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -108,7 +108,7 @@ public class NegozioPanel extends JPanel {
 		ButtonSearch.setContentAreaFilled(false);
 		ButtonSearch.setBounds(435, 11, 42, 42);
 		add(ButtonSearch);
-		
+
 		JTextField textFieldSearch = new JTextField();
 		textFieldSearch.addKeyListener(new KeyAdapter() {
 			@Override
@@ -131,7 +131,7 @@ public class NegozioPanel extends JPanel {
 		textFieldSearch.setCaretColor(new Color(255, 213, 0));
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
-		
+
 
 		JButton ButtonAggiungi = new JButton("");
 		ButtonAggiungi.addMouseListener(new MouseAdapter() {
@@ -157,7 +157,7 @@ public class NegozioPanel extends JPanel {
 		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiungi.setBounds(539, 42, 105, 25);
 		add(ButtonAggiungi);
-		
+
 		JButton ButtonStampa = new JButton("");
 		ButtonStampa.addMouseListener(new MouseAdapter() {
 			@Override
@@ -182,7 +182,7 @@ public class NegozioPanel extends JPanel {
 		ButtonStampa.setBorder(null);
 		ButtonStampa.setContentAreaFilled(false);
 		add(ButtonStampa);
-		
+
 		JButton ButtonElimina = new JButton("");
 		ButtonElimina.addMouseListener(new MouseAdapter() {
 			@Override
@@ -202,7 +202,7 @@ public class NegozioPanel extends JPanel {
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
 				}
-				
+
 			}
 		});
 		ButtonElimina.setBounds(651, 11, 105, 25);

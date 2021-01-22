@@ -60,7 +60,7 @@ public class DepositoPanel extends JPanel {
 		add(scrollPane);
 		
 		table = new JTable(model);
-		table.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setAutoCreateRowSorter(true);
 		table.setFont(new Font("Impact", Font.PLAIN, 13));
 		table.setForeground(new Color(255, 213, 0));
