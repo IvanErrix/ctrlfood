@@ -89,12 +89,13 @@ public class PagamentoConCartaDialog extends JDialog {
 		textFieldNumeroCarta = new JTextField();
 		textFieldNumeroCarta.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyReleased(KeyEvent e) {
+			public void keyPressed(KeyEvent e) {
 				if(textFieldNumeroCarta.getText().length()>18) {
-					String[] Keys = {"48","KeyEvent.VK_1","KeyEvent.VK_2","KeyEvent.VK_3"};
-					for (String Key : Keys) {
-						textFieldNumeroCarta.getInputMap().put(KeyStroke.getKeyStroke(Key), "none");
-					}
+//					String[] Keys = {"48","KeyEvent.VK_1","KeyEvent.VK_2","KeyEvent.VK_3"};
+//					for (String Key : Keys) {
+//						textFieldNumeroCarta.getInputMap().put(KeyStroke.getKeyStroke(Key), "none");
+//					}
+					textFieldNumeroCarta.setEditable(false);
 				}
 				if (e.getKeyCode() == KeyEvent.VK_0 || e.getKeyCode() == KeyEvent.VK_1
 						|| e.getKeyCode() == KeyEvent.VK_2 || e.getKeyCode() == KeyEvent.VK_3
@@ -175,18 +176,19 @@ public class PagamentoConCartaDialog extends JDialog {
 					JOptionPane.showMessageDialog(null, "DEVONO ESSERE INSERITI TUTTI I CAMPI", "", JOptionPane.ERROR_MESSAGE);
 				}
 				else {
-					if (passwordFieldPin.getText().length()>5 || textFieldNumeroCarta.getText().length()!=16) {
+					if (passwordFieldPin.getText().length()>5 || textFieldNumeroCarta.getText().replace("-", "").length()!=16) {
 						JOptionPane.showMessageDialog(null, "IL PIN DEVE CONTENERE 5 NUMERI E IL NUMERO DELLA CARTA NE DEVE CONTENERE 16", "", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
 						try {
-							String text = textFieldNumeroCarta.getText();
+							String text = textFieldNumeroCarta.getText().replace("-", "");
 							Long.parseLong(text);
+							String text2 = textFieldNumeroCartaFedelta.getText();
+							Long.parseLong(text2);
 							JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
 							dispose();
 						} catch (Exception e2) {
-							e2.printStackTrace();
-							JOptionPane.showMessageDialog(null, "INSERIRE CORRETTAMENTE UN NUMERO PER LA CARTA", "", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "INSERIRE CORRETTAMENTE UN NUMERO PER LA CARTA DI CREDITO E PER LA CARTA FEDELTA", "", JOptionPane.ERROR_MESSAGE);
 						}
 					}
 				}
