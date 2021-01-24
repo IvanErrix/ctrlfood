@@ -11,9 +11,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JTextField;
-import javax.swing.KeyStroke;
 import javax.swing.JPasswordField;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.border.EtchedBorder;
 
