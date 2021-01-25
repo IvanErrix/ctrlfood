@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -52,6 +54,14 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(LabelCodiceFiscale);
 		
 		JTextField textFieldNome = new JTextField();
+		textFieldNome.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+			    if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+			        e.consume();
+			}
+		});
 		textFieldNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldNome.setForeground(new Color(255, 213, 0));
@@ -62,6 +72,14 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(textFieldNome);
 		
 		JTextField textFieldCognome = new JTextField();
+		textFieldCognome.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+			    if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+			        e.consume();
+			}
+		});
 		textFieldCognome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldCognome.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldCognome.setOpaque(false);
@@ -72,6 +90,14 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(textFieldCognome);
 		
 		JTextField textFieldCodiceFiscale = new JTextField();
+		textFieldNome.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char c=e.getKeyChar();
+			    if(!(Character.isAlphabetic(c) || Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+			        e.consume();
+			}
+		});
 		textFieldCodiceFiscale.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldCodiceFiscale.setOpaque(false);

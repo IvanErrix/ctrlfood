@@ -28,6 +28,11 @@ import java.text.ParseException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JFormattedTextField;
+import javax.swing.JToggleButton;
+import javax.swing.JComboBox;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.DefaultComboBoxModel;
 
 public class AggiungiAlDepositoDialog extends JDialog {
 
@@ -35,35 +40,54 @@ public class AggiungiAlDepositoDialog extends JDialog {
 
 	public AggiungiAlDepositoDialog(Controller ctrl) {
 		setUndecorated(true);
-		setSize(623, 463);
+		setSize(726, 553);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setBackground(new Color(0, 67, 137));
 		getContentPane().setLayout(null);
 		((JComponent) getContentPane()).setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		
+		JLabel LabelTipologia = new JLabel("Tipologia");
+		LabelTipologia.setForeground(new Color(255, 213, 0));
+		LabelTipologia.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelTipologia.setBounds(107, 37, 92, 21);
+		getContentPane().add(LabelTipologia);
+		
 		JLabel LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(255, 213, 0));
 		LabelNome.setFont(new Font("Impact", Font.PLAIN, 16));
-		LabelNome.setBounds(10, 33, 46, 14);
+		LabelNome.setBounds(107, 101, 46, 14);
 		getContentPane().add(LabelNome);
 		
-		JLabel lblPrezzo = new JLabel("Prezzo");
-		lblPrezzo.setForeground(new Color(255, 213, 0));
-		lblPrezzo.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblPrezzo.setBounds(10, 102, 46, 14);
-		getContentPane().add(lblPrezzo);
+		JLabel LabelPrezzo = new JLabel("Prezzo");
+		LabelPrezzo.setForeground(new Color(255, 213, 0));
+		LabelPrezzo.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelPrezzo.setBounds(107, 170, 46, 14);
+		getContentPane().add(LabelPrezzo);
 		
-		JLabel lblDataScadenza = new JLabel("Data Scadenza");
-		lblDataScadenza.setForeground(new Color(255, 213, 0));
-		lblDataScadenza.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblDataScadenza.setBounds(10, 165, 118, 14);
-		getContentPane().add(lblDataScadenza);
+		JLabel LabelDataScadenza = new JLabel("Data Scadenza");
+		LabelDataScadenza.setForeground(new Color(255, 213, 0));
+		LabelDataScadenza.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelDataScadenza.setBounds(107, 233, 118, 14);
+		getContentPane().add(LabelDataScadenza);
 		
-		JLabel lblQuantita = new JLabel("Quantit\u00E0");
-		lblQuantita.setForeground(new Color(255, 213, 0));
-		lblQuantita.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblQuantita.setBounds(10, 240, 68, 14);
-		getContentPane().add(lblQuantita);
+		JLabel LabelQuantita = new JLabel("Quantit\u00E0");
+		LabelQuantita.setForeground(new Color(255, 213, 0));
+		LabelQuantita.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelQuantita.setBounds(107, 308, 68, 14);
+		getContentPane().add(LabelQuantita);
+		
+		JComboBox comboBoxTipologia = new JComboBox();
+		comboBoxTipologia.setFocusable(false);
+		comboBoxTipologia.setOpaque(false);
+		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati"}));
+		comboBoxTipologia.setBackground(new Color(10, 67, 137));
+		comboBoxTipologia.setForeground(new Color(255, 213, 0));
+		comboBoxTipologia.setFont(new Font("Impact", Font.PLAIN, 11));
+		comboBoxTipologia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		comboBoxTipologia.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		comboBoxTipologia.setMaximumRowCount(3);
+		comboBoxTipologia.setBounds(317, 25, 267, 30);
+		getContentPane().add(comboBoxTipologia);
 		
 		JTextField textFieldNome = new JTextField();
 		textFieldNome.addKeyListener(new KeyAdapter() {
@@ -74,14 +98,18 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			        e.consume();
 			}
 		});
+		
+		
+		
 		textFieldNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldNome.setForeground(new Color(255, 213, 0));
 		textFieldNome.setOpaque(false);
 		textFieldNome.setColumns(10);
-		textFieldNome.setBounds(220, 17, 267, 30);
+		textFieldNome.setBounds(317, 85, 267, 30);
 		textFieldNome.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldNome);
+		
 		
 		JTextField textFieldPrezzo = new JTextField();
 		textFieldPrezzo.addKeyListener(new KeyAdapter() {
@@ -97,73 +125,37 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldPrezzo.setOpaque(false);
 		textFieldPrezzo.setForeground(new Color(255, 213, 0));
 		textFieldPrezzo.setColumns(10);
-		textFieldPrezzo.setBounds(220, 86, 267, 30);
+		textFieldPrezzo.setBounds(317, 154, 267, 30);
 		textFieldPrezzo.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldPrezzo);
 		
-		JTextField textFieldDataScadenza = new JTextField();
-		textFieldDataScadenza.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent e) {
-				if(textFieldDataScadenza.getText().equals("YYYY-MM-GG")) {
-					textFieldDataScadenza.setText("");
-				}
-			}
-			@Override
-			public void focusLost(FocusEvent e) {
-				if(textFieldDataScadenza.getText().equals("")) {
-					textFieldDataScadenza.setText("YYYY-MM-GG");
-				}
-			}
-		});
-		textFieldDataScadenza.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				if (textFieldDataScadenza.getText().length()<10) {
-					char c = e.getKeyChar();
-					if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE || c == KeyEvent.VK_MINUS))
-						e.consume();
-				}
-				else {
-					char c = e.getKeyChar();
-					if (!(c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE))
-						e.consume();
-				}
-			}
-			@Override
-			public void keyPressed(KeyEvent e) {
-				if(textFieldDataScadenza.getText().length()==4 || textFieldDataScadenza.getText().length()==7) {
-					textFieldDataScadenza.setText(textFieldDataScadenza.getText()+"-");
-				}
-			}
-		});
-		textFieldDataScadenza.setText("YYYY-MM-GG");
+		JFormattedTextField textFieldDataScadenza = new JFormattedTextField();
+		try {
+			MaskFormatter mf = new MaskFormatter("####-##-##");
+			textFieldDataScadenza = new JFormattedTextField(mf);
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
 		textFieldDataScadenza.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldDataScadenza.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldDataScadenza.setOpaque(false);
 		textFieldDataScadenza.setForeground(new Color(255, 213, 0));
 		textFieldDataScadenza.setColumns(10);
-		textFieldDataScadenza.setBounds(220, 155, 267, 30);
+		textFieldDataScadenza.setBounds(317, 223, 267, 30);
 		textFieldDataScadenza.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldDataScadenza);
 		
-		JTextField textFieldQuantita = new JTextField();
-		textFieldQuantita.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent e) {
-				char c=e.getKeyChar();
-			    if(!(Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
-			        e.consume();
-			}
-		});
-		textFieldQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
-		textFieldQuantita.setFont(new Font("Impact", Font.PLAIN, 11));
-		textFieldQuantita.setOpaque(false);
-		textFieldQuantita.setForeground(new Color(255, 213, 0));
-		textFieldQuantita.setColumns(10);
-		textFieldQuantita.setBounds(220, 224, 267, 30);
-		textFieldQuantita.setCaretColor(new Color(255, 213, 0));
-		getContentPane().add(textFieldQuantita);
+		JSpinner spinnerQuantita = new JSpinner();
+		spinnerQuantita.setOpaque(false);
+		spinnerQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color (255, 213, 0)));
+		spinnerQuantita.setBackground(new Color(0, 67, 137));
+		spinnerQuantita.setRequestFocusEnabled(false);
+		spinnerQuantita.setModel(new SpinnerNumberModel(1, null, 50, 1));
+		spinnerQuantita.setForeground(new Color(255, 213, 0));
+		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 11));
+		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		spinnerQuantita.setBounds(317, 292, 59, 30);
+		getContentPane().add(spinnerQuantita);
 		
 		JButton ButtonAggiugni = new JButton("");
 		ButtonAggiugni.addMouseListener(new MouseAdapter() {
@@ -184,13 +176,13 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldNome.getText().length()==0 || textFieldPrezzo.getText().length()==0 || textFieldQuantita.getText().length()==0 || textFieldDataScadenza.getText()=="YYYY-MM-GG") {
+				if(textFieldNome.getText().length()==0 || textFieldPrezzo.getText().length()==0 /*|| textFieldQuantita.getText().length()==0*/) {
 					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
 				}
 				else{
 					try {
 						Double.parseDouble(textFieldPrezzo.getText());
-						Integer.parseInt(textFieldQuantita.getText());
+						//Integer.parseInt(textFieldQuantita.getText());
 						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 					} catch (Exception e2) {
 						JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI CON I VALORI CORRETTI", "", JOptionPane.WARNING_MESSAGE);
@@ -199,7 +191,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				
 			}
 		});
-		ButtonAggiugni.setBounds(446, 344, 141, 30);
+		ButtonAggiugni.setBounds(532, 480, 141, 30);
 		getContentPane().add(ButtonAggiugni);
 		
 		JButton ButtonCancellaTutto = new JButton("");
@@ -219,8 +211,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
 				textFieldNome.setText("");
 				textFieldPrezzo.setText("");
-				textFieldDataScadenza.setText("YYYY-MM-GG");
-				textFieldQuantita.setText("");
+				//textFieldQuantita.setText("");
 			}
 		});
 		ButtonCancellaTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
@@ -228,7 +219,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonCancellaTutto.setBorder(null);
 		ButtonCancellaTutto.setContentAreaFilled(false);
 		ButtonCancellaTutto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonCancellaTutto.setBounds(268, 344, 168, 30);
+		ButtonCancellaTutto.setBounds(354, 480, 168, 30);
 		getContentPane().add(ButtonCancellaTutto);
 		
 		JButton ButtonAnnulla = new JButton("");
@@ -253,18 +244,79 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
-		ButtonAnnulla.setBounds(39, 344, 141, 30);
+		ButtonAnnulla.setBounds(43, 480, 141, 30);
 		getContentPane().add(ButtonAnnulla);
 		
-//		JFormattedTextField formattedTextField = new JFormattedTextField();
-//		try {
-//			MaskFormatter mf = new MaskFormatter("##-###-#######");
-//			mf.setPlaceholderCharacter('#');
-//			formattedTextField = new JFormattedTextField(mf);
-//		} catch (ParseException e1) {
-//			e1.printStackTrace();
-//		}
-//		formattedTextField.setBounds(220, 285, 267, 20);
-//		getContentPane().add(formattedTextField);
+		
+		
+//		JTextField textFieldQuantita = new JTextField();
+//		textFieldQuantita.addKeyListener(new KeyAdapter() {
+//			@Override
+//			public void keyTyped(KeyEvent e) {
+//				char c=e.getKeyChar();
+//			    if(!(Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+//			        e.consume();
+//			}
+//		});
+//		textFieldQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+//		textFieldQuantita.setFont(new Font("Impact", Font.PLAIN, 11));
+//		textFieldQuantita.setOpaque(false);
+//		textFieldQuantita.setForeground(new Color(255, 213, 0));
+//		textFieldQuantita.setColumns(10);
+//		textFieldQuantita.setBounds(220, 291, 267, 30);
+//		textFieldQuantita.setCaretColor(new Color(255, 213, 0));
+//		getContentPane().add(textFieldQuantita);
+
+		
+//		JTextField textFieldDataScadenza = new JTextField();
+//		textFieldDataScadenza.addFocusListener(new FocusAdapter() {
+//			@Override
+//			public void focusGained(FocusEvent e) {
+//				if(textFieldDataScadenza.getText().equals("YYYY-MM-GG")) {
+//					textFieldDataScadenza.setText("");
+//				}
+//			}
+//			@Override
+//			public void focusLost(FocusEvent e) {
+//				if(textFieldDataScadenza.getText().equals("")) {
+//					textFieldDataScadenza.setText("YYYY-MM-GG");
+//				}
+//			}
+//		});
+//		textFieldDataScadenza.addKeyListener(new KeyAdapter() {
+//			@Override
+//			public void keyTyped(KeyEvent e) {
+//				if (textFieldDataScadenza.getText().length()<10) {
+//					char c = e.getKeyChar();
+//					if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE || c == KeyEvent.VK_MINUS))
+//						e.consume();
+//				}
+//				else {
+//					char c = e.getKeyChar();
+//					if ((c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) { 
+//						textFieldDataScadenza.setText("");
+//					}
+//					else {
+////						if((c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE))
+//							e.consume();
+//					}
+//				}
+//			}
+//			@Override
+//			public void keyPressed(KeyEvent e) {
+//				if(textFieldDataScadenza.getText().length()==4 || textFieldDataScadenza.getText().length()==7) {
+//					textFieldDataScadenza.setText(textFieldDataScadenza.getText()+"-");
+//				}
+//			}
+//		});
+//		textFieldDataScadenza.setText("YYYY-MM-GG");
+//		textFieldDataScadenza.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+//		textFieldDataScadenza.setFont(new Font("Impact", Font.PLAIN, 11));
+//		textFieldDataScadenza.setOpaque(false);
+//		textFieldDataScadenza.setForeground(new Color(255, 213, 0));
+//		textFieldDataScadenza.setColumns(10);
+//		textFieldDataScadenza.setBounds(220, 155, 267, 30);
+//		textFieldDataScadenza.setCaretColor(new Color(255, 213, 0));
+//		getContentPane().add(textFieldDataScadenza);
 	}
 }
