@@ -13,6 +13,20 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 
+import Dao.Connessione;
+import Design.AggiungiAlCarrelloDialog;
+import Design.AggiungiAlDepositoDialog;
+import Design.AggiungiAlNegozioDialog;
+import Design.AggiungiClientiDialog;
+import Design.CarrelloPanel;
+import Design.CassaPanel;
+import Design.ClientiPanel;
+import Design.DepositoPanel;
+import Design.FramePrincipale;
+import Design.LoadingPanel;
+import Design.NegozioPanel;
+import Design.PagamentoConCartaDialog;
+
 public class Controller {
 	
 	/*Prima di tutto il programma controlla la connessione. See la connessione è assente
@@ -32,7 +46,7 @@ public class Controller {
 		UIManager.put("Button.background", new Color(255, 213, 0));
 		UIManager.put("Button.foreground", new Color(0, 67, 137));
 		
-		DAO dao = new DAO();
+		Connessione dao = new Connessione();
 		
 		if(dao.getConn() != null) {
 			EventQueue.invokeLater(new Runnable() {

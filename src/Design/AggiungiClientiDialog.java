@@ -1,4 +1,4 @@
-package main;
+package Design;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -19,6 +19,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
+
+import main.Controller;
+
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 

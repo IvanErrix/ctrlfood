@@ -1,4 +1,4 @@
-package main;
+package Design;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -22,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import main.Controller;
+
 import java.awt.Font;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
@@ -33,7 +35,7 @@ import java.awt.event.KeyEvent;
 public class ClientiPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private String Titoli[]= {"Nome", "Cognome", "Codice Fiscale", "ID Carta","Punti"};
+	private String Titoli[]= {"Nome", "Cognome", "Codice Fiscale", "Carta", "ID Carta","Punti"};
 	private Object Elementi[][]= {};
 	private boolean editable = false;
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
@@ -84,6 +86,8 @@ public class ClientiPanel extends JPanel {
                         return Boolean.class;
                     case 4:
                     	return Integer.class;
+                    case 5:
+                    	return Integer.class;
                 }
 				return null;
             }
@@ -103,8 +107,8 @@ public class ClientiPanel extends JPanel {
 		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
-		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", false, 110});
-		model.addRow(new Object[] {"Carlo", "Spazio", "CRVNNWEPB387VISV", true, 0});
+		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", false,1, 110});
+		model.addRow(new Object[] {"Carlo", "Spazio", "CRVNNWEPB387VISV", true,2, 0});
 		
 		TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(sorter);

@@ -1,7 +1,10 @@
-package main;
+package Design;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import main.Controller;
+
 import javax.swing.JLabel;
 
 public class LoadingPanel extends JPanel {

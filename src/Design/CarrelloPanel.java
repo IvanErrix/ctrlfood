@@ -1,4 +1,4 @@
-package main;
+package Design;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -20,6 +20,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import main.Controller;
+
 import java.awt.Font;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
@@ -30,7 +32,7 @@ import java.awt.event.KeyEvent;
 public class CarrelloPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	private String Titoli[]= {"Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
+	private String Titoli[]= {"Tipologia","Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
 	private String Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
 		private static final long serialVersionUID = 1L;
@@ -72,7 +74,7 @@ public class CarrelloPanel extends JPanel {
 		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
-		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
+		model.addRow(new Object[] {"Ortofrutta","Mela", "001", "0.5", "2", "10/01/2021"});
 
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);

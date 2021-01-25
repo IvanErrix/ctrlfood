@@ -1,9 +1,12 @@
-package main;
+package Design;
 
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import main.Controller;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,19 +24,18 @@ public class FramePrincipale extends JFrame {
 
 	public FramePrincipale(Controller ctrl) {
 		setUndecorated(true);
-		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FramePrincipale.class.getResource("/scrimg/logo2.png")));
 		setFont(new Font("Impact", Font.BOLD, 14));
 		setTitle("CtrlFood");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1152, 600);
-		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
+		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);	
 		
 		PanelPrincipale = new JPanel();
 		PanelPrincipale.setBorder(null);
-		setContentPane(PanelPrincipale);
 		PanelPrincipale.setLayout(null);
+		setContentPane(PanelPrincipale);
 		
 		JButton ButtonDeposito = new JButton("");
 		JButton ButtonNegozio = new JButton("");

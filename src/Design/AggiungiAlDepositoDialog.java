@@ -1,4 +1,4 @@
-package main;
+package Design;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -13,6 +13,8 @@ import java.awt.Toolkit;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.MaskFormatter;
+
+import main.Controller;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

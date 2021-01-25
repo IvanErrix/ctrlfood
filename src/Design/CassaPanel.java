@@ -1,4 +1,4 @@
-package main;
+package Design;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -14,6 +14,9 @@ import javax.swing.ScrollPaneConstants;
 import java.awt.Font;
 import java.awt.Cursor;
 import javax.swing.border.EtchedBorder;
+
+import main.Controller;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
