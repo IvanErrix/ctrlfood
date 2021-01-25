@@ -15,11 +15,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.text.MaskFormatter;
 
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.awt.event.ActionEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
@@ -28,11 +25,13 @@ import java.text.ParseException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JFormattedTextField;
-import javax.swing.JToggleButton;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.SpinnerDateModel;
+import java.util.Date;
+import java.util.Calendar;
 
 public class AggiungiAlDepositoDialog extends JDialog {
 
@@ -73,21 +72,37 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		JLabel LabelQuantita = new JLabel("Quantit\u00E0");
 		LabelQuantita.setForeground(new Color(255, 213, 0));
 		LabelQuantita.setFont(new Font("Impact", Font.PLAIN, 16));
-		LabelQuantita.setBounds(107, 308, 68, 14);
+		LabelQuantita.setBounds(107, 296, 68, 14);
 		getContentPane().add(LabelQuantita);
 		
-		JComboBox comboBoxTipologia = new JComboBox();
-		comboBoxTipologia.setFocusable(false);
-		comboBoxTipologia.setOpaque(false);
-		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati"}));
-		comboBoxTipologia.setBackground(new Color(10, 67, 137));
-		comboBoxTipologia.setForeground(new Color(255, 213, 0));
-		comboBoxTipologia.setFont(new Font("Impact", Font.PLAIN, 11));
-		comboBoxTipologia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		comboBoxTipologia.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 213, 0), new Color(255, 213, 0)));
-		comboBoxTipologia.setMaximumRowCount(3);
-		comboBoxTipologia.setBounds(317, 25, 267, 30);
-		getContentPane().add(comboBoxTipologia);
+		JLabel LabelDataRaccolta = new JLabel("Data Raccolto");
+		LabelDataRaccolta.setVisible(true);
+		LabelDataRaccolta.setForeground(new Color(255, 213, 0));
+		LabelDataRaccolta.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelDataRaccolta.setBounds(107, 361, 118, 14);
+		getContentPane().add(LabelDataRaccolta);
+		
+		JLabel LabelDataProduzione = new JLabel("Data Produzione");
+		LabelDataProduzione.setVisible(false);
+		LabelDataProduzione.setForeground(new Color(255, 213, 0));
+		LabelDataProduzione.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelDataProduzione.setBounds(107, 361, 118, 14);
+		getContentPane().add(LabelDataProduzione);
+		
+		JLabel LabelDataMungitura = new JLabel("Data Mungitura");
+		LabelDataMungitura.setVisible(false);
+		LabelDataMungitura.setForeground(new Color(255, 213, 0));
+		LabelDataMungitura.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelDataMungitura.setBounds(107, 415, 118, 14);
+		getContentPane().add(LabelDataMungitura);
+		
+		JLabel LabelDataConfezionamento = new JLabel("Data Confezionamento");
+		LabelDataConfezionamento.setVisible(false);
+		LabelDataConfezionamento.setForeground(new Color(255, 213, 0));
+		LabelDataConfezionamento.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelDataConfezionamento.setBounds(107, 361, 168, 14);
+		getContentPane().add(LabelDataConfezionamento);
+		
 		
 		JTextField textFieldNome = new JTextField();
 		textFieldNome.addKeyListener(new KeyAdapter() {
@@ -98,9 +113,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			        e.consume();
 			}
 		});
-		
-		
-		
 		textFieldNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldNome.setForeground(new Color(255, 213, 0));
@@ -125,36 +137,83 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldPrezzo.setOpaque(false);
 		textFieldPrezzo.setForeground(new Color(255, 213, 0));
 		textFieldPrezzo.setColumns(10);
-		textFieldPrezzo.setBounds(317, 154, 267, 30);
+		textFieldPrezzo.setBounds(317, 150, 267, 30);
 		textFieldPrezzo.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldPrezzo);
 		
-		JFormattedTextField textFieldDataScadenza = new JFormattedTextField();
+		MaskFormatter mf = null;
 		try {
-			MaskFormatter mf = new MaskFormatter("####-##-##");
-			textFieldDataScadenza = new JFormattedTextField(mf);
+			mf = new MaskFormatter("####-##-##");
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
+		
+		JFormattedTextField textFieldDataScadenza = new JFormattedTextField(mf);
 		textFieldDataScadenza.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldDataScadenza.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldDataScadenza.setOpaque(false);
 		textFieldDataScadenza.setForeground(new Color(255, 213, 0));
 		textFieldDataScadenza.setColumns(10);
-		textFieldDataScadenza.setBounds(317, 223, 267, 30);
+		textFieldDataScadenza.setBounds(317, 215, 267, 30);
 		textFieldDataScadenza.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldDataScadenza);
 		
-		JSpinner spinnerQuantita = new JSpinner();
+		JFormattedTextField textFieldDataRaccolta = new JFormattedTextField(mf);
+		textFieldDataRaccolta.setVisible(true);
+		textFieldDataRaccolta.setBounds(317, 345, 267, 30);
+		textFieldDataRaccolta.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		textFieldDataRaccolta.setFont(new Font("Impact", Font.PLAIN, 11));
+		textFieldDataRaccolta.setOpaque(false);
+		textFieldDataRaccolta.setForeground(new Color(255, 213, 0));
+		textFieldDataRaccolta.setCaretColor(new Color(255, 213, 0));
+		textFieldDataRaccolta.setColumns(10);
+		getContentPane().add(textFieldDataRaccolta);
+		
+		JFormattedTextField textFieldDataProduzione = new JFormattedTextField(mf);
+		textFieldDataProduzione.setVisible(false);
+		textFieldDataProduzione.setBounds(317, 345, 267, 30);
+		textFieldDataProduzione.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		textFieldDataProduzione.setFont(new Font("Impact", Font.PLAIN, 11));
+		textFieldDataProduzione.setOpaque(false);
+		textFieldDataProduzione.setForeground(new Color(255, 213, 0));
+		textFieldDataProduzione.setCaretColor(new Color(255, 213, 0));
+		textFieldDataProduzione.setColumns(10);
+		getContentPane().add(textFieldDataProduzione);
+		
+		JFormattedTextField textFieldDataConfezionamento = new JFormattedTextField(mf);
+		textFieldDataConfezionamento.setVisible(false);
+		textFieldDataConfezionamento.setBounds(317, 345, 267, 30);
+		textFieldDataConfezionamento.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		textFieldDataConfezionamento.setFont(new Font("Impact", Font.PLAIN, 11));
+		textFieldDataConfezionamento.setOpaque(false);
+		textFieldDataConfezionamento.setForeground(new Color(255, 213, 0));
+		textFieldDataConfezionamento.setCaretColor(new Color(255, 213, 0));
+		textFieldDataConfezionamento.setColumns(10);
+		getContentPane().add(textFieldDataConfezionamento);
+		
+		JFormattedTextField textFieldDataMungitura = new JFormattedTextField(mf);
+		textFieldDataMungitura.setVisible(false);
+		textFieldDataMungitura.setBounds(317, 399, 267, 30);
+		textFieldDataMungitura.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		textFieldDataMungitura.setFont(new Font("Impact", Font.PLAIN, 11));
+		textFieldDataMungitura.setOpaque(false);
+		textFieldDataMungitura.setForeground(new Color(255, 213, 0));
+		textFieldDataMungitura.setCaretColor(new Color(255, 213, 0));
+		textFieldDataMungitura.setColumns(10);
+		getContentPane().add(textFieldDataMungitura);
+		
+		SpinnerNumberModel model = new SpinnerNumberModel(1, null, 50, 1);
+		JSpinner spinnerQuantita = new JSpinner(model);
 		spinnerQuantita.setOpaque(false);
 		spinnerQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color (255, 213, 0)));
-		spinnerQuantita.setBackground(new Color(0, 67, 137));
+		spinnerQuantita.getComponent(0).setBackground(new Color(0, 67, 137));
+		spinnerQuantita.getComponent(1).setBackground(new Color(0, 67, 137));
+		spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(0, 67, 137));
+		spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(255, 213, 0));
 		spinnerQuantita.setRequestFocusEnabled(false);
-		spinnerQuantita.setModel(new SpinnerNumberModel(1, null, 50, 1));
-		spinnerQuantita.setForeground(new Color(255, 213, 0));
-		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 11));
+		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		spinnerQuantita.setBounds(317, 292, 59, 30);
+		spinnerQuantita.setBounds(317, 280, 59, 30);
 		getContentPane().add(spinnerQuantita);
 		
 		JButton ButtonAggiugni = new JButton("");
@@ -176,17 +235,12 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldNome.getText().length()==0 || textFieldPrezzo.getText().length()==0 /*|| textFieldQuantita.getText().length()==0*/) {
+				if(textFieldNome.getText().length()==0 || textFieldPrezzo.getText().length()==0 ) {
 					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
 				}
 				else{
-					try {
-						Double.parseDouble(textFieldPrezzo.getText());
-						//Integer.parseInt(textFieldQuantita.getText());
-						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
-					} catch (Exception e2) {
-						JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI CON I VALORI CORRETTI", "", JOptionPane.WARNING_MESSAGE);
-					}
+					JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+					
 				}
 				
 			}
@@ -211,7 +265,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
 				textFieldNome.setText("");
 				textFieldPrezzo.setText("");
-				//textFieldQuantita.setText("");
 			}
 		});
 		ButtonCancellaTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
@@ -247,76 +300,52 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAnnulla.setBounds(43, 480, 141, 30);
 		getContentPane().add(ButtonAnnulla);
 		
-		
-		
-//		JTextField textFieldQuantita = new JTextField();
-//		textFieldQuantita.addKeyListener(new KeyAdapter() {
-//			@Override
-//			public void keyTyped(KeyEvent e) {
-//				char c=e.getKeyChar();
-//			    if(!(Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
-//			        e.consume();
-//			}
-//		});
-//		textFieldQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
-//		textFieldQuantita.setFont(new Font("Impact", Font.PLAIN, 11));
-//		textFieldQuantita.setOpaque(false);
-//		textFieldQuantita.setForeground(new Color(255, 213, 0));
-//		textFieldQuantita.setColumns(10);
-//		textFieldQuantita.setBounds(220, 291, 267, 30);
-//		textFieldQuantita.setCaretColor(new Color(255, 213, 0));
-//		getContentPane().add(textFieldQuantita);
-
-		
-//		JTextField textFieldDataScadenza = new JTextField();
-//		textFieldDataScadenza.addFocusListener(new FocusAdapter() {
-//			@Override
-//			public void focusGained(FocusEvent e) {
-//				if(textFieldDataScadenza.getText().equals("YYYY-MM-GG")) {
-//					textFieldDataScadenza.setText("");
-//				}
-//			}
-//			@Override
-//			public void focusLost(FocusEvent e) {
-//				if(textFieldDataScadenza.getText().equals("")) {
-//					textFieldDataScadenza.setText("YYYY-MM-GG");
-//				}
-//			}
-//		});
-//		textFieldDataScadenza.addKeyListener(new KeyAdapter() {
-//			@Override
-//			public void keyTyped(KeyEvent e) {
-//				if (textFieldDataScadenza.getText().length()<10) {
-//					char c = e.getKeyChar();
-//					if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE || c == KeyEvent.VK_MINUS))
-//						e.consume();
-//				}
-//				else {
-//					char c = e.getKeyChar();
-//					if ((c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) { 
-//						textFieldDataScadenza.setText("");
-//					}
-//					else {
-////						if((c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE))
-//							e.consume();
-//					}
-//				}
-//			}
-//			@Override
-//			public void keyPressed(KeyEvent e) {
-//				if(textFieldDataScadenza.getText().length()==4 || textFieldDataScadenza.getText().length()==7) {
-//					textFieldDataScadenza.setText(textFieldDataScadenza.getText()+"-");
-//				}
-//			}
-//		});
-//		textFieldDataScadenza.setText("YYYY-MM-GG");
-//		textFieldDataScadenza.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
-//		textFieldDataScadenza.setFont(new Font("Impact", Font.PLAIN, 11));
-//		textFieldDataScadenza.setOpaque(false);
-//		textFieldDataScadenza.setForeground(new Color(255, 213, 0));
-//		textFieldDataScadenza.setColumns(10);
-//		textFieldDataScadenza.setBounds(220, 155, 267, 30);
-//		textFieldDataScadenza.setCaretColor(new Color(255, 213, 0));
-//		getContentPane().add(textFieldDataScadenza);
+		JComboBox comboBoxTipologia = new JComboBox();
+		comboBoxTipologia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
+					LabelDataConfezionamento.setVisible(false);
+					LabelDataRaccolta.setVisible(true);
+					LabelDataMungitura.setVisible(false);
+					LabelDataProduzione.setVisible(false);
+					textFieldDataConfezionamento.setVisible(false);
+					textFieldDataRaccolta.setVisible(true);
+					textFieldDataMungitura.setVisible(false);
+					textFieldDataProduzione.setVisible(false);
+				}
+				else if(comboBoxTipologia.getSelectedItem()=="Latticini") {
+					LabelDataConfezionamento.setVisible(false);
+					LabelDataRaccolta.setVisible(false);
+					LabelDataMungitura.setVisible(true);
+					LabelDataProduzione.setVisible(true);
+					textFieldDataConfezionamento.setVisible(false);
+					textFieldDataRaccolta.setVisible(false);
+					textFieldDataMungitura.setVisible(true);
+					textFieldDataProduzione.setVisible(true);
+				}
+				else if(comboBoxTipologia.getSelectedItem()=="Confezionati") {
+					LabelDataConfezionamento.setVisible(true);
+					LabelDataRaccolta.setVisible(false);
+					LabelDataMungitura.setVisible(false);
+					LabelDataProduzione.setVisible(false);
+					textFieldDataConfezionamento.setVisible(true);
+					textFieldDataRaccolta.setVisible(false);
+					textFieldDataMungitura.setVisible(false);
+					textFieldDataProduzione.setVisible(false);
+				}
+			}
+		});
+		comboBoxTipologia.setFocusable(false);
+		comboBoxTipologia.setOpaque(false);
+		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati"}));
+		comboBoxTipologia.setBackground(new Color(10, 67, 137));
+		comboBoxTipologia.setForeground(new Color(255, 213, 0));
+		comboBoxTipologia.setFont(new Font("Impact", Font.PLAIN, 11));
+		comboBoxTipologia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		comboBoxTipologia.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		comboBoxTipologia.setMaximumRowCount(3);
+		comboBoxTipologia.setBounds(317, 25, 267, 30);
+		getContentPane().add(comboBoxTipologia);
+	
 	}
 }

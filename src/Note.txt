@@ -2,3 +2,74 @@ System.out.println(textFieldNome.getText().toUpperCase());
 Fare mockup
 risolvere il problema di always on top sulle dialog. Un soluzione potrebbe essere quella di utilizzare un metodo per settare il valore alwaysontop delle dialog
 aggiungere tipologia del prodotto in aggiungialdepositodialog
+
+
+//		JTextField textFieldQuantita = new JTextField();
+//		textFieldQuantita.addKeyListener(new KeyAdapter() {
+//			@Override
+//			public void keyTyped(KeyEvent e) {
+//				char c=e.getKeyChar();
+//			    if(!(Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+//			        e.consume();
+//			}
+//		});
+//		textFieldQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+//		textFieldQuantita.setFont(new Font("Impact", Font.PLAIN, 11));
+//		textFieldQuantita.setOpaque(false);
+//		textFieldQuantita.setForeground(new Color(255, 213, 0));
+//		textFieldQuantita.setColumns(10);
+//		textFieldQuantita.setBounds(220, 291, 267, 30);
+//		textFieldQuantita.setCaretColor(new Color(255, 213, 0));
+//		getContentPane().add(textFieldQuantita);
+
+		
+//		JTextField textFieldDataScadenza = new JTextField();
+//		textFieldDataScadenza.addFocusListener(new FocusAdapter() {
+//			@Override
+//			public void focusGained(FocusEvent e) {
+//				if(textFieldDataScadenza.getText().equals("YYYY-MM-GG")) {
+//					textFieldDataScadenza.setText("");
+//				}
+//			}
+//			@Override
+//			public void focusLost(FocusEvent e) {
+//				if(textFieldDataScadenza.getText().equals("")) {
+//					textFieldDataScadenza.setText("YYYY-MM-GG");
+//				}
+//			}
+//		});
+//		textFieldDataScadenza.addKeyListener(new KeyAdapter() {
+//			@Override
+//			public void keyTyped(KeyEvent e) {
+//				if (textFieldDataScadenza.getText().length()<10) {
+//					char c = e.getKeyChar();
+//					if (!(Character.isDigit(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE || c == KeyEvent.VK_MINUS))
+//						e.consume();
+//				}
+//				else {
+//					char c = e.getKeyChar();
+//					if ((c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)) { 
+//						textFieldDataScadenza.setText("");
+//					}
+//					else {
+////						if((c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE))
+//							e.consume();
+//					}
+//				}
+//			}
+//			@Override
+//			public void keyPressed(KeyEvent e) {
+//				if(textFieldDataScadenza.getText().length()==4 || textFieldDataScadenza.getText().length()==7) {
+//					textFieldDataScadenza.setText(textFieldDataScadenza.getText()+"-");
+//				}
+//			}
+//		});
+//		textFieldDataScadenza.setText("YYYY-MM-GG");
+//		textFieldDataScadenza.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+//		textFieldDataScadenza.setFont(new Font("Impact", Font.PLAIN, 11));
+//		textFieldDataScadenza.setOpaque(false);
+//		textFieldDataScadenza.setForeground(new Color(255, 213, 0));
+//		textFieldDataScadenza.setColumns(10);
+//		textFieldDataScadenza.setBounds(220, 155, 267, 30);
+//		textFieldDataScadenza.setCaretColor(new Color(255, 213, 0));
+//		getContentPane().add(textFieldDataScadenza);

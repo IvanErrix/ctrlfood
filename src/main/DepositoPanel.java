@@ -30,7 +30,7 @@ import java.awt.event.KeyEvent;
 public class DepositoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private String Titoli[]= {"Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
+	private String Titoli[]= {"Tipologia","Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
 	private Object Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
 		
@@ -74,10 +74,10 @@ public class DepositoPanel extends JPanel {
 		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
-		model.addRow(new Object[] {"MELA", "001", "0.5", "2", "10/01/2021"});
-		model.addRow(new Object[] {"PERA", "002", "1.0", "1", "15/12/2021"});
-		model.addRow(new Object[] {"BANANA", "003", "1.5", "4", "05/8/2021"});
-		model.addRow(new Object[] {"CAFFE", "004", "4.0", "3", "03/6/2021"});
+		model.addRow(new Object[] {"Ortofrutta","MELA", "001", "0.5", "2", "10/01/2021"});
+		model.addRow(new Object[] {"Ortofrutta","PERA", "002", "1.0", "1", "15/12/2021"});
+		model.addRow(new Object[] {"Ortofrutta","BANANA", "003", "1.5", "4", "05/8/2021"});
+		model.addRow(new Object[] {"Confezionati","CAFFE", "004", "4.0", "3", "03/6/2021"});
 		
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);

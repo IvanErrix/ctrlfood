@@ -22,8 +22,7 @@ public class Controller {
 	public static void main(String[] args) {
 		UIManager.put("ComboBox.background", new Color(0, 67, 137));
 		UIManager.put("CheckBox.background", new Color(0, 67, 137));
-		UIManager.put("Spinner.background", new Color(0, 67, 137));
-//		UIManager.put("ScrollPane.background", new Color(0, 67, 137));
+		UIManager.getDefaults().put("controlDkShadow", new Color(255, 213, 0));
 		UIManager.put("Table.gridColor", new Color(255, 213, 0));
 		UIManager.put("OptionPane.background", new Color(0, 67, 137));    
 		UIManager.put("OptionPane.messageForeground", new Color(255, 213, 0));

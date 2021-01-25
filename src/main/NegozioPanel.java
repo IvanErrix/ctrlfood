@@ -32,8 +32,8 @@ public class NegozioPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private String Titoli[]= {"Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
-	private String Elementi[][]= {};
+	private String Titoli[]= {"Tipologia","Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
+	private Object Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
 		private static final long serialVersionUID = 1L;
 
@@ -74,7 +74,10 @@ public class NegozioPanel extends JPanel {
 		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 		renderer.setHorizontalAlignment( SwingConstants.CENTER );
-		model.addRow(new Object[] {"Mela", "001", "0.5", "2", "10/01/2021"});
+		model.addRow(new Object[] {"Ortofrutta","Mela", "001", "0.5", "2", "10/01/2021"});
+		model.addRow(new Object[] {"Ortofrutta","PERA", "002", "1.0", "1", "15/12/2021"});
+		model.addRow(new Object[] {"Ortofrutta","BANANA", "003", "1.5", "4", "05/8/2021"});
+		model.addRow(new Object[] {"Confezionati","CAFFE", "004", "4.0", "3", "03/6/2021"});
 
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);
@@ -82,6 +85,7 @@ public class NegozioPanel extends JPanel {
 		JButton ButtonSearch = new JButton("");
 		ButtonSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(textFieldSearch.getText());
 				String text = textFieldSearch.getText();
 				if (text.trim().length() == 0) {
 					rowSorter.setRowFilter(null);
@@ -109,7 +113,7 @@ public class NegozioPanel extends JPanel {
 		ButtonSearch.setBounds(435, 11, 42, 42);
 		add(ButtonSearch);
 
-		JTextField textFieldSearch = new JTextField();
+		textFieldSearch = new JTextField();
 		textFieldSearch.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {

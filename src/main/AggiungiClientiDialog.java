@@ -57,9 +57,17 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldNome.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				char c=e.getKeyChar();
-			    if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
-			        e.consume();
+				if(textFieldNome.getText().length()<15) {
+					char c=e.getKeyChar();
+					if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
+				else {
+					char c=e.getKeyChar();
+					if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
+
 			}
 		});
 		textFieldNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
@@ -75,9 +83,16 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldCognome.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				char c=e.getKeyChar();
-			    if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
-			        e.consume();
+				if(textFieldCognome.getText().length()<15) {
+					char c=e.getKeyChar();
+					if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
+				else {
+					char c=e.getKeyChar();
+					if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
 			}
 		});
 		textFieldCognome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
@@ -90,12 +105,19 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(textFieldCognome);
 		
 		JTextField textFieldCodiceFiscale = new JTextField();
-		textFieldNome.addKeyListener(new KeyAdapter() {
+		textFieldCodiceFiscale.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				char c=e.getKeyChar();
-			    if(!(Character.isAlphabetic(c) || Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
-			        e.consume();
+				if(textFieldCodiceFiscale.getText().length()<16) {
+					char c=e.getKeyChar();
+					if(!(Character.isAlphabetic(c) || Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
+				else {
+					char c=e.getKeyChar();
+					if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
 			}
 		});
 		textFieldCodiceFiscale.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
@@ -126,7 +148,12 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "CLIENTE AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+				if(textFieldNome.getText().length()==0 || textFieldCognome.getText().length()==0 || textFieldCodiceFiscale.getText().length()==0 ) {
+					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTE I CAMPI", "", JOptionPane.WARNING_MESSAGE);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "CLIENTE AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
 		ButtonAggiugni.setBounds(446, 344, 141, 30);

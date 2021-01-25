@@ -91,15 +91,6 @@ public class ClientiPanel extends JPanel {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setAutoCreateRowSorter(true);
 		/*Metodo per ordinare per colonna*/
-		TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
-		table.setRowSorter(sorter);
-		List<RowSorter.SortKey> sortKeys = new ArrayList<>(); 
-//		int columnIndexToSort = 1;
-//		sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.ASCENDING));
-		sorter.setSortKeys(sortKeys);sorter.sort();
-		sorter.setSortable(2, false);
-		sorter.setSortable(3, false);
-		
 		table.setFont(new Font("Impact", Font.PLAIN, 13));
 		table.setForeground(new Color(255, 213, 0));
 		table.setOpaque(false);
@@ -115,6 +106,13 @@ public class ClientiPanel extends JPanel {
 		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", false, 110});
 		model.addRow(new Object[] {"Carlo", "Spazio", "CRVNNWEPB387VISV", true, 0});
 		
+		TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
+		table.setRowSorter(sorter);
+		List<RowSorter.SortKey> sortKeys = new ArrayList<>(); 
+		sorter.setSortKeys(sortKeys);sorter.sort();
+		sorter.setSortable(2, false);
+		sorter.setSortable(3, false);
+	
 		JButton ButtonSearch = new JButton("");
 		ButtonSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -145,7 +143,7 @@ public class ClientiPanel extends JPanel {
 		ButtonSearch.setBounds(435, 11, 42, 42);
 		add(ButtonSearch);
 		
-		JTextField textFieldSearch = new JTextField();
+		textFieldSearch = new JTextField();
 		textFieldSearch.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {

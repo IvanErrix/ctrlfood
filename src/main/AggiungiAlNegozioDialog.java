@@ -15,9 +15,12 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.DefaultComboBoxModel;
 
 public class AggiungiAlNegozioDialog extends JDialog {
 
@@ -31,16 +34,22 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		getContentPane().setLayout(null);
 		((JComponent) getContentPane()).setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		
+		JLabel LabelTipologia = new JLabel("Tipologia");
+		LabelTipologia.setForeground(new Color(255, 213, 0));
+		LabelTipologia.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelTipologia.setBounds(10, 82, 92, 21);
+		getContentPane().add(LabelTipologia);
+		
 		JLabel LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(255, 213, 0));
 		LabelNome.setFont(new Font("Impact", Font.PLAIN, 16));
-		LabelNome.setBounds(10, 120, 46, 14);
+		LabelNome.setBounds(10, 154, 46, 14);
 		getContentPane().add(LabelNome);
 		
 		JLabel lblQuantita = new JLabel("Quantit\u00E0");
 		lblQuantita.setForeground(new Color(255, 213, 0));
 		lblQuantita.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblQuantita.setBounds(10, 194, 68, 14);
+		lblQuantita.setBounds(10, 228, 68, 14);
 		getContentPane().add(lblQuantita);
 		
 		JButton ButtonAggiugni = new JButton("");
@@ -96,13 +105,33 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		JComboBox comboBoxNome = new JComboBox();
 		comboBoxNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		comboBoxNome.setFocusable(false);
-		comboBoxNome.setBounds(220, 104, 267, 30);
+		comboBoxNome.setBounds(220, 138, 267, 30);
 		getContentPane().add(comboBoxNome);
 		
-		JComboBox comboBoxQuantita = new JComboBox();
-		comboBoxQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
-		comboBoxQuantita.setFocusable(false);
-		comboBoxQuantita.setBounds(220, 178, 267, 30);
-		getContentPane().add(comboBoxQuantita);
+		JComboBox comboBoxTipologia = new JComboBox();
+		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati"}));
+		comboBoxTipologia.setOpaque(false);
+		comboBoxTipologia.setMaximumRowCount(3);
+		comboBoxTipologia.setForeground(new Color(255, 213, 0));
+		comboBoxTipologia.setFont(new Font("Impact", Font.PLAIN, 11));
+		comboBoxTipologia.setFocusable(false);
+		comboBoxTipologia.setBorder(new EtchedBorder(EtchedBorder.RAISED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		comboBoxTipologia.setBackground(new Color(10, 67, 137));
+		comboBoxTipologia.setBounds(220, 70, 267, 30);
+		getContentPane().add(comboBoxTipologia);
+		
+		SpinnerNumberModel model = new SpinnerNumberModel(1, null, 50, 1);
+		JSpinner spinnerQuantita = new JSpinner(new SpinnerNumberModel(new Integer(1), null, null, new Integer(1)));
+		spinnerQuantita.setOpaque(false);
+		spinnerQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color (255, 213, 0)));
+		spinnerQuantita.getComponent(0).setBackground(new Color(0, 67, 137));
+		spinnerQuantita.getComponent(1).setBackground(new Color(0, 67, 137));
+		spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(0, 67, 137));
+		spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(255, 213, 0));
+		spinnerQuantita.setRequestFocusEnabled(false);
+		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 14));
+		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		spinnerQuantita.setBounds(220, 212, 59, 30);
+		getContentPane().add(spinnerQuantita);
 	}
 }
