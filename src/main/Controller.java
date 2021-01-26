@@ -8,10 +8,14 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 
 import Dao.Connessione;
 import Design.AggiungiAlCarrelloDialog;
@@ -172,4 +176,19 @@ public class Controller {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void CaricaFileJPGDaPC(JTextField textFieldFoto) {
+		JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+		jfc.setDialogTitle("Seleziona un file");
+		jfc.setAcceptAllFileFilterUsed(false);
+		FileNameExtensionFilter filter =new FileNameExtensionFilter("JPG", "jpg");
+		jfc.addChoosableFileFilter(filter);
+		int returnValue = jfc.showOpenDialog(null);
+		if(returnValue == JFileChooser.APPROVE_OPTION) {
+			textFieldFoto.setText(jfc.getSelectedFile().getPath());
+		}
+	}
+	
+	
 }

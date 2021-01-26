@@ -193,14 +193,14 @@ public class NegozioPanel extends JPanel {
 		ButtonSposta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonSposta.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonEliminaYellow.png")));
+				ButtonSposta.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSpostaYellow.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ButtonSposta.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
+				ButtonSposta.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSposta.png")));
 			}
 		});
-		ButtonSposta.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
+		ButtonSposta.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSposta.png")));
 		ButtonSposta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -213,7 +213,7 @@ public class NegozioPanel extends JPanel {
 			}
 		});
 		ButtonSposta.setBounds(651, 11, 105, 25);
-		ButtonSposta.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
+		ButtonSposta.setIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/ButtonSposta.png")));
 		ButtonSposta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonSposta.setOpaque(false);
 		ButtonSposta.setBorder(null);
