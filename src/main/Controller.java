@@ -38,17 +38,17 @@ public class Controller {
 	 *del programma, ovvero FramePrincipale
 	 */
 	public static void main(String[] args) {
-		UIManager.put("ComboBox.background", new Color(0, 67, 137));
-		UIManager.put("CheckBox.background", new Color(0, 67, 137));
-		UIManager.getDefaults().put("controlDkShadow", new Color(255, 213, 0));
-		UIManager.put("Table.gridColor", new Color(255, 213, 0));
-		UIManager.put("OptionPane.background", new Color(0, 67, 137));    
-		UIManager.put("OptionPane.messageForeground", new Color(255, 213, 0));
+		UIManager.put("ComboBox.background", new Color(191, 215, 255));
+		UIManager.put("CheckBox.background", new Color(191, 215, 255));
+		UIManager.getDefaults().put("controlDkShadow", new Color(0, 41, 82));
+		UIManager.put("Table.gridColor", new Color(0,41,82));
+		UIManager.put("OptionPane.background", new Color(191, 215, 255));    
+		UIManager.put("OptionPane.messageForeground", new Color(0, 41, 82));
 		UIManager.put("OptionPane.messageFont",new Font("Impact", Font.PLAIN, 16));
 		UIManager.put("OptionPane.buttonFont",new Font("Impact", Font.PLAIN, 16));
-		UIManager.put("Panel.background", new Color(0, 67, 137));
-		UIManager.put("Button.background", new Color(255, 213, 0));
-		UIManager.put("Button.foreground", new Color(0, 67, 137));
+		UIManager.put("Panel.background", new Color(191, 215, 255));
+		UIManager.put("Button.background", new Color(0, 41, 82));
+		UIManager.put("Button.foreground", new Color(191, 215, 255));
 		
 		Connessione dao = new Connessione();
 		

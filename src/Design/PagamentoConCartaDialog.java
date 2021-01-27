@@ -176,7 +176,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") || textFieldScadenza.getText().equals("YYYY-MM-GG") ) {
+				if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") ||datePickerScadenza.getJFormattedTextField().getValue().equals("YYYY-MM-GG") ) {
 					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
 				}
 				else {

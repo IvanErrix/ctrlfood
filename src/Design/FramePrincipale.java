@@ -71,7 +71,7 @@ public class FramePrincipale extends JFrame {
 		JPanel PanelCaricamento = new JPanel();
 		PanelCaricamento.setOpaque(false);
 		PanelCaricamento.setBorder(null);
-		PanelCaricamento.setBounds(386, 28, 765, 571);
+		PanelCaricamento.setBounds(388, 36, 754, 553);
 		PanelPrincipale.add(PanelCaricamento);
 		PanelCaricamento.setLayout(null);
 		
@@ -195,7 +195,7 @@ public class FramePrincipale extends JFrame {
 				ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/NegozioWhite.png")));
 				ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ClientiWhite.png")));
 				ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CarrelloWhite.png")));
-				ButtonCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonCassa2.png")));
+				ButtonCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonCassa.png")));
 				
 			}
 		});
@@ -212,7 +212,7 @@ public class FramePrincipale extends JFrame {
 		ButtonChiudi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonChiudi.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonChiudiYellow.png")));
+				ButtonChiudi.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonChiudiAzzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -238,7 +238,7 @@ public class FramePrincipale extends JFrame {
 		ButtonRiduci.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonRiduci.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonRiduciYellow.png")));
+				ButtonRiduci.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonRiduciAzzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -260,7 +260,7 @@ public class FramePrincipale extends JFrame {
 		PanelPrincipale.add(ButtonRiduci);
 		
 		JLabel Sfondo = new JLabel("");
-		Sfondo.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/Homepage.png")));
+		Sfondo.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/custom \u2013 1.png")));
 		Sfondo.setBounds(0, 0, 1162, 600);
 		PanelPrincipale.add(Sfondo);
 	}

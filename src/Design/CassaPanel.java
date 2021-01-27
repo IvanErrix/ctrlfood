@@ -31,28 +31,28 @@ public class CassaPanel extends JPanel {
 		
 		setOpaque(false);
 		setBackground(new Color(0, 80, 157));
-		setBounds(0, 0, 765, 600);
+		setBounds(0, 0, 754, 553);
 		setLayout(null);
 		
 		JLabel ButtonTotale = new JLabel("Totale");
 		ButtonTotale.setFont(new Font("Impact", Font.PLAIN, 19));
-		ButtonTotale.setForeground(new Color(255, 213, 0));
+		ButtonTotale.setForeground(new Color(0, 41, 82));
 		ButtonTotale.setHorizontalAlignment(SwingConstants.CENTER);
-		ButtonTotale.setBounds(20, 523, 68, 23);
+		ButtonTotale.setBounds(30, 477, 68, 23);
 		add(ButtonTotale);
 		
 		JLabel ButtonTotaleNumero = new JLabel("0 \u20AC");
 		ButtonTotaleNumero.setFont(new Font("Impact", Font.PLAIN, 19));
-		ButtonTotaleNumero.setForeground(new Color(255, 213, 0));
+		ButtonTotaleNumero.setForeground(new Color(0, 41, 82));
 		ButtonTotaleNumero.setHorizontalAlignment(SwingConstants.CENTER);
-		ButtonTotaleNumero.setBounds(98, 523, 68, 23);
+		ButtonTotaleNumero.setBounds(108, 477, 68, 23);
 		add(ButtonTotaleNumero);
 		
 		JButton ButtonPagaConCarta = new JButton("");
 		ButtonPagaConCarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonPagaConCarta.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCartaYellow.png")));
+				ButtonPagaConCarta.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCartaAzzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -67,25 +67,25 @@ public class CassaPanel extends JPanel {
 		});
 		ButtonPagaConCarta.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
 		ButtonPagaConCarta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonPagaConCarta.setBounds(618, 510, 113, 36);
+		ButtonPagaConCarta.setBounds(585, 477, 98, 30);
 		ButtonPagaConCarta.setOpaque(false);
 		ButtonPagaConCarta.setBorder(null);
 		ButtonPagaConCarta.setContentAreaFilled(false);
 		add(ButtonPagaConCarta);
 		
 		JScrollPane scrollPaneProdottiCarrello = new JScrollPane();
-		scrollPaneProdottiCarrello.setBackground(new Color(0, 67, 137));
-		scrollPaneProdottiCarrello.getViewport().setBackground(new Color(0, 67, 137));
-		scrollPaneProdottiCarrello.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		scrollPaneProdottiCarrello.setBackground(new Color(191, 215, 255));
+		scrollPaneProdottiCarrello.getViewport().setBackground(new Color(191, 215, 255));
+		scrollPaneProdottiCarrello.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 41, 82), new Color(0, 41, 82)));
 		scrollPaneProdottiCarrello.setOpaque(false);
 		scrollPaneProdottiCarrello.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPaneProdottiCarrello.setBounds(20, 78, 711, 388);
+		scrollPaneProdottiCarrello.setBounds(40, 78, 643, 382);
 		add(scrollPaneProdottiCarrello);
 		
 		JLabel ButtonListaProdotti = new JLabel("Lista dei prodotti nel carrello:");
 		ButtonListaProdotti.setFont(new Font("Impact", Font.PLAIN, 19));
-		ButtonListaProdotti.setForeground(new Color(255, 213, 0));
-		ButtonListaProdotti.setBounds(10, 35, 239, 32);
+		ButtonListaProdotti.setForeground(new Color(0, 41, 82));
+		ButtonListaProdotti.setBounds(30, 35, 239, 32);
 		add(ButtonListaProdotti);
 		
 		JButton ButtonPagaInContanti = new JButton("");
@@ -93,7 +93,7 @@ public class CassaPanel extends JPanel {
 		ButtonPagaInContanti.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonPagaInContanti.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContantiYellow.png")));
+				ButtonPagaInContanti.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContantiAzzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -110,7 +110,12 @@ public class CassaPanel extends JPanel {
 		ButtonPagaInContanti.setBorder(null);
 		ButtonPagaInContanti.setOpaque(false);
 		ButtonPagaInContanti.setContentAreaFilled(false);
-		ButtonPagaInContanti.setBounds(495, 510, 113, 36);
+		ButtonPagaInContanti.setBounds(462, 477, 98, 32);
 		add(ButtonPagaInContanti);
+		
+		JLabel LabelSfondo = new JLabel("");
+		LabelSfondo.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/SfondoCassa.png")));
+		LabelSfondo.setBounds(0, 0, 748, 552);
+		add(LabelSfondo);
 	}
 }

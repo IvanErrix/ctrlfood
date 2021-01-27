@@ -32,7 +32,7 @@ public class AggiungiClientiDialog extends JDialog {
 	public AggiungiClientiDialog(Controller ctrl) {
 		
 		setUndecorated(true);
-		setSize(623, 463);
+		setSize(680, 490);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setBackground(new Color(0, 67, 137));
 		getContentPane().setLayout(null);
@@ -228,5 +228,10 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonCancellaTutto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonCancellaTutto.setBounds(268, 344, 168, 30);
 		getContentPane().add(ButtonCancellaTutto);
+		
+		JLabel LabelSfondo = new JLabel("");
+		LabelSfondo.setIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/SfondoAggiungiAlDeposito.png")));
+		LabelSfondo.setBounds(0, 0, 680, 490);
+		getContentPane().add(LabelSfondo);
 	}
 }

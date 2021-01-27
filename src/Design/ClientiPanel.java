@@ -31,6 +31,7 @@ import javax.swing.RowSorter;
 import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JLabel;
 
 public class ClientiPanel extends JPanel {
 
@@ -46,10 +47,6 @@ public class ClientiPanel extends JPanel {
 			   public boolean isCellEditable(int row, int column) {
 				
 				return editable;
-				
-//				if (column == 0 || column == 1 || column == 2 || column == 4)
-//					return false;
-//				return super.isCellEditable(row, column);
 			   }
 	};
 			
@@ -60,14 +57,14 @@ public class ClientiPanel extends JPanel {
 		
 		setOpaque(false);
 		setBackground(Color.BLACK);
-		setBounds(0, 0, 765, 600);
+		setBounds(0, 0, 754, 553);
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), null));
-		scrollPane.getViewport().setBackground(new Color(0,67,137));
+		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
+		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
 		scrollPane.setOpaque(false);
-		scrollPane.setBounds(10, 78, 730, 470);
+		scrollPane.setBounds(55, 88, 630, 419);
 		add(scrollPane);
 		
 		table = new JTable(model) {
@@ -96,14 +93,14 @@ public class ClientiPanel extends JPanel {
 		table.setAutoCreateRowSorter(true);
 		/*Metodo per ordinare per colonna*/
 		table.setFont(new Font("Impact", Font.PLAIN, 13));
-		table.setForeground(new Color(255, 213, 0));
+		table.setForeground(new Color(0,41,82));
 		table.setOpaque(false);
-		table.setBackground(new Color(0, 67, 137));
+		table.setBackground(new Color(191, 215, 255));
 		table.setBounds(302, 183, 150, 150);
 		scrollPane.setViewportView(table);
 		table.getTableHeader().setReorderingAllowed(false);
-		table.getTableHeader().setBackground(new Color(0,67,137));
-		table.getTableHeader().setForeground(new Color(255, 213, 0));
+		table.getTableHeader().setBackground(new Color(191, 215, 255));
+		table.getTableHeader().setForeground(new Color(0,41,82));
 		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
@@ -140,11 +137,11 @@ public class ClientiPanel extends JPanel {
 			}
 		});
 		ButtonSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearchYellow.png")));
+		ButtonSearch.setIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonSearch.png")));
 		ButtonSearch.setOpaque(false);
 		ButtonSearch.setBorder(null);
 		ButtonSearch.setContentAreaFilled(false);
-		ButtonSearch.setBounds(435, 11, 42, 42);
+		ButtonSearch.setBounds(379, 28, 34, 34);
 		add(ButtonSearch);
 		
 		textFieldSearch = new JTextField();
@@ -161,12 +158,12 @@ public class ClientiPanel extends JPanel {
 				}
 			}
 		});
-		textFieldSearch.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
-		textFieldSearch.setForeground(new Color(255, 213, 0));
-		textFieldSearch.setBackground(new Color(0, 80, 157));
-		textFieldSearch.setBounds(10, 11, 415, 42);
-		textFieldSearch.setCaretColor(new Color(255, 213, 0));
+		textFieldSearch.setForeground(new Color(191, 215, 255));
+		textFieldSearch.setOpaque(false);
+		textFieldSearch.setBorder(null);
+		textFieldSearch.setBounds(78, 28, 291, 34);
+		textFieldSearch.setCaretColor(new Color(0, 41, 82));
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
 		
@@ -174,14 +171,14 @@ public class ClientiPanel extends JPanel {
 		ButtonAggiungi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2Yellow.png")));
+				ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungiAzzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
+				ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
 			}
 		});
-		ButtonAggiungi.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
+		ButtonAggiungi.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.addActionListener(new ActionListener() {
@@ -191,22 +188,22 @@ public class ClientiPanel extends JPanel {
 		});
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
-		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi2.png")));
-		ButtonAggiungi.setBounds(539, 42, 105, 25);
+		ButtonAggiungi.setIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
+		ButtonAggiungi.setBounds(450, 55, 90, 22);
 		add(ButtonAggiungi);
 		
 		JButton ButtonModifica = new JButton("");
 		ButtonModifica.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonModifica.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonModificaYellow.png")));
+				ButtonModifica.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonModificaAzzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				ButtonModifica.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonModifica.png")));
 			}
 		});
-		ButtonModifica.setPressedIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonModificaYellow.png")));
+		ButtonModifica.setPressedIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonModifica.png")));
 		ButtonModifica.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -221,7 +218,7 @@ public class ClientiPanel extends JPanel {
 				
 			}
 		});
-		ButtonModifica.setBounds(651, 42, 105, 25);
+		ButtonModifica.setBounds(550, 28, 90, 22);
 		ButtonModifica.setIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonModifica.png")));
 		ButtonModifica.setOpaque(false);
 		ButtonModifica.setBorder(null);
@@ -232,14 +229,14 @@ public class ClientiPanel extends JPanel {
 		ButtonStampa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampaYellow.png")));
+				ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampaAzzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
 			}
 		});
-		ButtonStampa.setPressedIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonStampaYellow.png")));
+		ButtonStampa.setPressedIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonStampa.png")));
 		ButtonStampa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.StampaListaProdotti(table, "clienti");
@@ -247,7 +244,7 @@ public class ClientiPanel extends JPanel {
 		});
 		ButtonStampa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
-		ButtonStampa.setBounds(539, 11, 105, 25);
+		ButtonStampa.setBounds(450, 28, 90, 22);
 		ButtonStampa.setOpaque(false);
 		ButtonStampa.setBorder(null);
 		ButtonStampa.setContentAreaFilled(false);
@@ -257,7 +254,7 @@ public class ClientiPanel extends JPanel {
 		ButtonElimina.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonEliminaYellow.png")));
+				ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonEliminaAzzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -275,12 +272,17 @@ public class ClientiPanel extends JPanel {
 				
 			}
 		});
-		ButtonElimina.setBounds(651, 11, 105, 25);
+		ButtonElimina.setBounds(550, 55, 90, 22);
 		ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
 		ButtonElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonElimina.setOpaque(false);
 		ButtonElimina.setBorder(null);
 		ButtonElimina.setContentAreaFilled(false);
 		add(ButtonElimina);
+		
+		JLabel LabelSfondo = new JLabel("New label");
+		LabelSfondo.setIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/SfondoPanel.png")));
+		LabelSfondo.setBounds(0, 0, 748, 552);
+		add(LabelSfondo);
 	}
 }
