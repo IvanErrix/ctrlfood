@@ -197,7 +197,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") || textFieldScadenza.getText().equals("YYYY-MM-GG") ) {
-					JOptionPane.showMessageDialog(null, "DEVONO ESSERE INSERITI TUTTI I CAMPI", "", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
 				}
 				else {
 					if (passwordFieldPin.getText().length()<5 || textFieldNumeroCarta.getText().replace("-", "").length()==0) {
@@ -272,22 +272,5 @@ public class PagamentoConCartaDialog extends JDialog {
 		textFieldNumeroCartaFedelta.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldNumeroCartaFedelta.setBackground(new Color(0, 67, 137));
 		getContentPane().add(textFieldNumeroCartaFedelta);
-	}
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
 	}
 }

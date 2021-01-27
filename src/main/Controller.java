@@ -177,7 +177,6 @@ public class Controller {
 		}
 	}
 	
-	
 	public void CaricaFileJPGDaPC(JTextField textFieldFoto) {
 		JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 		jfc.setDialogTitle("Seleziona un file");
