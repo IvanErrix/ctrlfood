@@ -60,6 +60,7 @@ public class DepositoPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
+		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(55, 88, 630, 419);
 		add(scrollPane);
@@ -69,6 +70,7 @@ public class DepositoPanel extends JPanel {
 		table.setAutoCreateRowSorter(true);
 		table.setFont(new Font("Impact", Font.PLAIN, 13));
 		table.setForeground(new Color(0,41,82));
+		table.setShowGrid(false);
 		table.setOpaque(false);
 		table.setBackground(new Color(191, 215, 255));
 		table.setBounds(302, 183, 150, 150);

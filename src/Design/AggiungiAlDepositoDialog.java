@@ -2,6 +2,8 @@ package Design;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,6 +31,7 @@ import java.text.ParseException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.DefaultComboBoxModel;
@@ -42,75 +45,80 @@ public class AggiungiAlDepositoDialog extends JDialog {
 
 	public AggiungiAlDepositoDialog(Controller ctrl) {
 		setUndecorated(true);
-		setSize(680, 490);
+		setSize(584, 462);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
-		getContentPane().setBackground(new Color(0, 67, 137));
+		//getContentPane().setBackground(new Color(0, 67, 137));
 		getContentPane().setLayout(null);
-//		((JComponent) getContentPane()).setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		ContentPane contentPane = new ContentPane();
+		setContentPane(contentPane);
+		getContentPane().isOpaque();
+		setBackground(new Color(0, 67, 137, 0));
+		contentPane.setLayout(null);
+
 		
 		
 		JLabel LabelTipologia = new JLabel("Tipologia");
 		LabelTipologia.setForeground(new Color(0, 41, 82));
 		LabelTipologia.setFont(new Font("Impact", Font.PLAIN, 14));
-		LabelTipologia.setBounds(133, 71, 92, 14);
+		LabelTipologia.setBounds(50, 64, 92, 14);
 		getContentPane().add(LabelTipologia);
 		
 		JLabel LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0, 41, 82));
 		LabelNome.setFont(new Font("Impact", Font.PLAIN, 14));
-		LabelNome.setBounds(133, 104, 46, 14);
+		LabelNome.setBounds(50, 97, 46, 14);
 		getContentPane().add(LabelNome);
 		
 		JLabel LabelPrezzo = new JLabel("Prezzo");
 		LabelPrezzo.setForeground(new Color(0, 41, 82));
 		LabelPrezzo.setFont(new Font("Impact", Font.PLAIN, 14));
-		LabelPrezzo.setBounds(133, 131, 46, 14);
+		LabelPrezzo.setBounds(50, 124, 46, 14);
 		getContentPane().add(LabelPrezzo);
 		
 		JLabel LabelDataScadenza = new JLabel("Data Scadenza");
 		LabelDataScadenza.setForeground(new Color(0, 41, 82));
 		LabelDataScadenza.setFont(new Font("Impact", Font.PLAIN, 14));
-		LabelDataScadenza.setBounds(133, 168, 118, 14);
+		LabelDataScadenza.setBounds(50, 161, 118, 14);
 		getContentPane().add(LabelDataScadenza);
 		
 		JLabel LabelQuantita = new JLabel("Quantit\u00E0");
 		LabelQuantita.setForeground(new Color(0, 41, 82));
 		LabelQuantita.setFont(new Font("Impact", Font.PLAIN, 14));
-		LabelQuantita.setBounds(133, 199, 68, 14);
+		LabelQuantita.setBounds(50, 192, 68, 14);
 		getContentPane().add(LabelQuantita);
 		
 		JLabel LabelDataRaccolta = new JLabel("Data Raccolto");
 		LabelDataRaccolta.setVisible(true);
 		LabelDataRaccolta.setForeground(new Color(0, 41, 82));
 		LabelDataRaccolta.setFont(new Font("Impact", Font.PLAIN, 14));
-		LabelDataRaccolta.setBounds(133, 260, 118, 14);
+		LabelDataRaccolta.setBounds(50, 253, 118, 14);
 		getContentPane().add(LabelDataRaccolta);
 		
 		JLabel LabelDataProduzione = new JLabel("Data Produzione");
 		LabelDataProduzione.setVisible(false);
 		LabelDataProduzione.setForeground(new Color(0, 41, 82));
 		LabelDataProduzione.setFont(new Font("Impact", Font.PLAIN, 14));
-		LabelDataProduzione.setBounds(133, 260, 118, 14);
+		LabelDataProduzione.setBounds(50, 253, 118, 14);
 		getContentPane().add(LabelDataProduzione);
 		
 		JLabel LabelDataMungitura = new JLabel("Data Mungitura");
 		LabelDataMungitura.setVisible(false);
 		LabelDataMungitura.setForeground(new Color(0, 41, 82));
 		LabelDataMungitura.setFont(new Font("Impact", Font.PLAIN, 14));
-		LabelDataMungitura.setBounds(133, 291, 118, 14);
+		LabelDataMungitura.setBounds(50, 284, 118, 14);
 		getContentPane().add(LabelDataMungitura);
 		
 		JLabel LabelDataConfezionamento = new JLabel("Data Confezionamento");
 		LabelDataConfezionamento.setVisible(false);
 		LabelDataConfezionamento.setForeground(new Color(0, 41, 82));
 		LabelDataConfezionamento.setFont(new Font("Impact", Font.PLAIN, 14));
-		LabelDataConfezionamento.setBounds(133, 260, 161, 14);
+		LabelDataConfezionamento.setBounds(50, 253, 161, 14);
 		getContentPane().add(LabelDataConfezionamento);
 		
 		JLabel LabelFoto = new JLabel("Foto");
 		LabelFoto.setForeground(new Color(0, 41, 82));
 		LabelFoto.setFont(new Font("Impact", Font.PLAIN, 14));
-		LabelFoto.setBounds(133, 226, 46, 14);
+		LabelFoto.setBounds(50, 219, 46, 14);
 		getContentPane().add(LabelFoto);
 		
 		JTextField textFieldNome = new JTextField();
@@ -135,7 +143,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldNome.setForeground(new Color(191,215,255));
 		textFieldNome.setOpaque(false);
 		textFieldNome.setColumns(10);
-		textFieldNome.setBounds(312, 98, 177, 20);
+		textFieldNome.setBounds(229, 91, 177, 20);
 		textFieldNome.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(textFieldNome);
 		
@@ -154,7 +162,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldPrezzo.setOpaque(false);
 		textFieldPrezzo.setForeground(new Color(191,215,255));
 		textFieldPrezzo.setColumns(10);
-		textFieldPrezzo.setBounds(312, 128, 177, 20);
+		textFieldPrezzo.setBounds(229, 121, 177, 20);
 		textFieldPrezzo.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(textFieldPrezzo);
 		
@@ -176,7 +184,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		spinnerQuantita.setRequestFocusEnabled(false);
 		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		spinnerQuantita.setBounds(302, 199, 46, 20);
+		spinnerQuantita.setBounds(219, 192, 46, 20);
 		getContentPane().add(spinnerQuantita);
 		
 		Properties p = new Properties();
@@ -199,7 +207,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		datePickerScadenza.getJFormattedTextField().setForeground(new Color(191,215,255));
 		datePickerScadenza.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
 		datePickerScadenza.getJFormattedTextField().setBackground(new Color(0,41,82));
-		datePickerScadenza.setLocation(302, 168);
+		datePickerScadenza.setLocation(219, 161);
 		datePickerScadenza.setSize(190, 20);
 		datePickerScadenza.setVisible(true);
 		getContentPane().add(datePickerScadenza);
@@ -209,7 +217,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		datePickerRaccolta.getJFormattedTextField().setForeground(new Color(191,215,255));
 		datePickerRaccolta.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
 		datePickerRaccolta.getJFormattedTextField().setBackground(new Color(0, 41, 82));
-		datePickerRaccolta.setLocation(302, 254);
+		datePickerRaccolta.setLocation(219, 247);
 		datePickerRaccolta.setSize(190, 20);
 		datePickerRaccolta.setVisible(true);
 		getContentPane().add(datePickerRaccolta);
@@ -219,7 +227,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		datePickerProduzione.getJFormattedTextField().setForeground(new Color(191,215,255));
 		datePickerProduzione.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
 		datePickerProduzione.getJFormattedTextField().setBackground(new Color(0, 41, 82));
-		datePickerProduzione.setLocation(302, 254);
+		datePickerProduzione.setLocation(219, 247);
 		datePickerProduzione.setSize(190, 20);
 		datePickerProduzione.setVisible(false);
 		getContentPane().add(datePickerProduzione);
@@ -229,7 +237,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		datePickerConfezionamento.getJFormattedTextField().setForeground(new Color(191,215,255));
 		datePickerConfezionamento.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
 		datePickerConfezionamento.getJFormattedTextField().setBackground(new Color(0, 41, 82));
-		datePickerConfezionamento.setLocation(302, 254);
+		datePickerConfezionamento.setLocation(219, 247);
 		datePickerConfezionamento.setSize(190, 20);
 		datePickerConfezionamento.setVisible(false);
 		getContentPane().add(datePickerConfezionamento);
@@ -239,7 +247,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		datePickerMungitura.getJFormattedTextField().setForeground(new Color(191,215,255));
 		datePickerMungitura.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
 		datePickerMungitura.getJFormattedTextField().setBackground(new Color(0, 41, 82));
-		datePickerMungitura.setLocation(302, 285);
+		datePickerMungitura.setLocation(219, 278);
 		datePickerMungitura.setSize(190, 20);
 		datePickerMungitura.setVisible(false);
 		getContentPane().add(datePickerMungitura);
@@ -288,7 +296,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		comboBoxTipologia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		comboBoxTipologia.setBorder(null);
 		comboBoxTipologia.setMaximumRowCount(3);
-		comboBoxTipologia.setBounds(302, 68, 190, 20);
+		comboBoxTipologia.setBounds(219, 61, 190, 20);
 		getContentPane().add(comboBoxTipologia);
 		
 		JButton ButtonAggiugni = new JButton("");
@@ -331,7 +339,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				
 			}
 		});
-		ButtonAggiugni.setBounds(489, 376, 110, 24);
+		ButtonAggiugni.setBounds(406, 369, 110, 24);
 		getContentPane().add(ButtonAggiugni);
 		
 		JButton ButtonRimuoviTutto = new JButton("");
@@ -360,7 +368,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonRimuoviTutto.setBorder(null);
 		ButtonRimuoviTutto.setContentAreaFilled(false);
 		ButtonRimuoviTutto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonRimuoviTutto.setBounds(331, 376, 150, 24);
+		ButtonRimuoviTutto.setBounds(248, 369, 150, 24);
 		getContentPane().add(ButtonRimuoviTutto);
 		
 		JButton ButtonAnnulla = new JButton("");
@@ -385,7 +393,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
-		ButtonAnnulla.setBounds(108, 376, 110, 24);
+		ButtonAnnulla.setBounds(25, 369, 110, 24);
 		getContentPane().add(ButtonAnnulla);
 		
 		JTextField textFieldFoto = new JTextField();
@@ -394,7 +402,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldFoto.setForeground(new Color(191,215,255));
 		textFieldFoto.setOpaque(false);
 		textFieldFoto.setColumns(10);
-		textFieldFoto.setBounds(312, 223, 179, 20);
+		textFieldFoto.setBounds(229, 216, 179, 20);
 		textFieldFoto.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(textFieldFoto);
 		
@@ -404,18 +412,18 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				ctrl.CaricaFileJPGDaPC(textFieldFoto);
 			}
 		});
-		ButtonAggiungiFoto.setBounds(525, 228, 25, 30);
+		ButtonAggiungiFoto.setBounds(409, 213, 20, 20);
 		getContentPane().add(ButtonAggiungiFoto);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/Sfondo.png")));
-		lblNewLabel.setBounds(72, 0, 598, 480);
+		lblNewLabel.setBounds(-8, -8, 601, 480);
 		getContentPane().add(lblNewLabel);
 		
-		JLabel LabelSfondo = new JLabel("");
-		LabelSfondo.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/Group 4.png")));
-		LabelSfondo.setBounds(0, 0, 680, 490);
-		getContentPane().add(LabelSfondo);
+//		JLabel LabelSfondo = new JLabel("");
+//		LabelSfondo.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/Group 4.png")));
+//		LabelSfondo.setBounds(0, 0, 680, 490);
+//		getContentPane().add(LabelSfondo);
 	
 	}
 }
