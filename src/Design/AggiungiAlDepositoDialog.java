@@ -400,17 +400,17 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldFoto.setForeground(new Color(255, 213, 0));
 		textFieldFoto.setOpaque(false);
 		textFieldFoto.setColumns(10);
-		textFieldFoto.setBounds(317, 345, 267, 30);
+		textFieldFoto.setBounds(317, 345, 241, 30);
 		textFieldFoto.setCaretColor(new Color(255, 213, 0));
 		getContentPane().add(textFieldFoto);
 		
-		JButton ButtonAggiungiFoto = new JButton("New button");
+		JButton ButtonAggiungiFoto = new JButton("...");
 		ButtonAggiungiFoto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.CaricaFileJPGDaPC(textFieldFoto);
 			}
 		});
-		ButtonAggiungiFoto.setBounds(594, 330, 89, 23);
+		ButtonAggiungiFoto.setBounds(559, 345, 25, 30);
 		getContentPane().add(ButtonAggiungiFoto);
 	
 	}

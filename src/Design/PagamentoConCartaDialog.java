@@ -18,6 +18,10 @@ import javax.swing.ImageIcon;
 import javax.swing.border.EtchedBorder;
 import javax.swing.text.MaskFormatter;
 
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 import main.Controller;
 
 import java.awt.Cursor;
@@ -28,6 +32,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.util.Properties;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JPopupMenu;
@@ -74,31 +79,6 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonVediPassword.setContentAreaFilled(false);
 		getContentPane().add(ButtonVediPassword);
 		
-		JLabel LabelFormatoData = new JLabel(" Data : AAAA-MM-GG");
-		LabelFormatoData.setVisible(false);
-		LabelFormatoData.setForeground(new Color(0, 67, 137));
-		LabelFormatoData.setOpaque(true);
-		LabelFormatoData.setFont(new Font("Impact", Font.PLAIN, 12));
-		LabelFormatoData.setBackground(new Color(255, 213, 0));
-		LabelFormatoData.setBounds(383, 96, 97, 39);
-		getContentPane().add(LabelFormatoData);
-		
-		JLabel LabelInfo = new JLabel("");
-		LabelInfo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		LabelInfo.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				LabelFormatoData.setVisible(true);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				LabelFormatoData.setVisible(false);
-			}
-		});
-		LabelInfo.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ICOinfoYellow.png")));
-		LabelInfo.setBounds(392, 146, 20, 20);
-		getContentPane().add(LabelInfo);
-		
 
 		JLabel LabelNumeroCarta = new JLabel("N° Carta");
 		LabelNumeroCarta.setBounds(10, 40, 76, 20);
@@ -128,7 +108,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		}
 		
 		JFormattedTextField textFieldNumeroCarta = new JFormattedTextField(mf);
-		textFieldNumeroCarta.setBounds(146, 28, 269, 32);
+		textFieldNumeroCarta.setBounds(146, 28, 269, 30);
 		textFieldNumeroCarta.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldNumeroCarta.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldNumeroCarta.setOpaque(false);
@@ -139,7 +119,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		
 
 		passwordFieldPin = new JPasswordField();
-		passwordFieldPin.setBounds(146, 84, 234, 32);
+		passwordFieldPin.setBounds(146, 84, 234, 30);
 		passwordFieldPin.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -164,21 +144,21 @@ public class PagamentoConCartaDialog extends JDialog {
 		getContentPane().add(passwordFieldPin);
 
 		
-		MaskFormatter mf2 = null;
-		try {
-			mf2 = new MaskFormatter("####-##-##");
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
-		JFormattedTextField textFieldScadenza = new JFormattedTextField(mf2);
-		textFieldScadenza.setBounds(146, 140, 269, 32);
-		textFieldScadenza.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
-		textFieldScadenza.setFont(new Font("Impact", Font.PLAIN, 11));
-		textFieldScadenza.setOpaque(false);
-		textFieldScadenza.setForeground(new Color(255, 213, 0));
-		textFieldScadenza.setColumns(10);
-		textFieldScadenza.setCaretColor(new Color(255, 213, 0));
-		getContentPane().add(textFieldScadenza);
+		Properties p = new Properties();
+		UtilDateModel model = new UtilDateModel();
+		p.put("text.today", "Oggi");
+		p.put("text.month", "Mese");
+		p.put("text.year", "Anno");
+		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
+		JDatePickerImpl datePickerScadenza = new JDatePickerImpl(datePanel, new DateLabelFormatter());
+		datePickerScadenza.getJFormattedTextField().setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		datePickerScadenza.getJFormattedTextField().setForeground(new Color(255, 213, 0));
+		datePickerScadenza.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
+		datePickerScadenza.getJFormattedTextField().setBackground(new Color(0, 67, 137));
+		datePickerScadenza.setLocation(146, 140);
+		datePickerScadenza.setSize(267, 30);
+		datePickerScadenza.setVisible(true);
+		getContentPane().add(datePickerScadenza);
 
 		JButton ButtonPaga = new JButton("");
 		ButtonPaga.setBounds(265, 281, 141, 30);
@@ -248,7 +228,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		getContentPane().add(LabelNumeroCartaFedelta);		
 		
 		textFieldNumeroCartaFedelta = new JTextField();
-		textFieldNumeroCartaFedelta.setBounds(146, 194, 269, 32);
+		textFieldNumeroCartaFedelta.setBounds(146, 194, 269, 30);
 		textFieldNumeroCartaFedelta.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -272,5 +252,9 @@ public class PagamentoConCartaDialog extends JDialog {
 		textFieldNumeroCartaFedelta.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
 		textFieldNumeroCartaFedelta.setBackground(new Color(0, 67, 137));
 		getContentPane().add(textFieldNumeroCartaFedelta);
+		
+		
+		
+		
 	}
 }
