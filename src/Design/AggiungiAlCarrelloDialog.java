@@ -27,54 +27,57 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 
 	public AggiungiAlCarrelloDialog(Controller ctrl) {
 		setUndecorated(true);
-		setSize(623, 463);
+		setSize(449, 357);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
-		getContentPane().setBackground(new Color(0, 67, 137));
 		getContentPane().setLayout(null);
-		((JComponent) getContentPane()).setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		ContentPane contentPane = new ContentPane();
+		setContentPane(contentPane);
+		getContentPane().isOpaque();
+		setBackground(new Color(0, 67, 137, 0));
+		contentPane.setLayout(null);
 		
 		JLabel LabelNome = new JLabel("Nome");
-		LabelNome.setForeground(new Color(255, 213, 0));
+		LabelNome.setForeground(new Color(0,41,82));
 		LabelNome.setFont(new Font("Impact", Font.PLAIN, 16));
-		LabelNome.setBounds(10, 120, 46, 14);
+		LabelNome.setBounds(44, 109, 46, 14);
 		getContentPane().add(LabelNome);
 		
 		JLabel lblQuantita = new JLabel("Quantit\u00E0");
-		lblQuantita.setForeground(new Color(255, 213, 0));
+		lblQuantita.setForeground(new Color(0,41,82));
 		lblQuantita.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblQuantita.setBounds(10, 194, 68, 14);
+		lblQuantita.setBounds(44, 174, 68, 14);
 		getContentPane().add(lblQuantita);
 		
 		JButton ButtonAggiugni = new JButton("");
 		ButtonAggiugni.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungiYellow.png")));
+				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2Azzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi.png")));
+				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 			}
 		});
-		ButtonAggiugni.setPressedIcon(new ImageIcon(AggiungiAlCarrelloDialog.class.getResource("/scrimg/ButtonAggiungi.png")));
+		ButtonAggiugni.setPressedIcon(new ImageIcon(AggiungiAlCarrelloDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiugni.setOpaque(false);
 		ButtonAggiugni.setBorder(null);
 		ButtonAggiugni.setContentAreaFilled(false);
-		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi.png")));
+		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlCarrelloDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		ButtonAggiugni.setBounds(379, 344, 141, 30);
+		ButtonAggiugni.setBounds(258, 290, 110, 24);
 		getContentPane().add(ButtonAggiugni);
 		
 		JButton ButtonAnnulla = new JButton("");
 		ButtonAnnulla.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonAnnulla.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAnnullaYellow.png")));
+				ButtonAnnulla.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAnnullaAzzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -92,26 +95,30 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
-		ButtonAnnulla.setBounds(104, 344, 141, 30);
+		ButtonAnnulla.setBounds(44, 290, 110, 24);
 		getContentPane().add(ButtonAnnulla);
 		
 		JComboBox comboBoxNome = new JComboBox();
-		comboBoxNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		comboBoxNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color(0,41,82)));
 		comboBoxNome.setOpaque(false);
-		comboBoxNome.setBackground(new Color(0,67,137));
-		comboBoxNome.setForeground(new Color(255, 213, 0));
+		comboBoxNome.setBackground(new Color(191,215,255));
+		comboBoxNome.setForeground(new Color(0,41,82));
 		comboBoxNome.setFocusable(false);
-		comboBoxNome.setBounds(220, 104, 267, 30);
+		comboBoxNome.setBounds(155, 93, 221, 30);
 		getContentPane().add(comboBoxNome);
 		
 		JComboBox comboBoxQuantita = new JComboBox();
-		comboBoxQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 213, 0), new Color(255, 213, 0)));
+		comboBoxQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color(0,41,82)));
 		comboBoxQuantita.setOpaque(false);
-		comboBoxQuantita.setBackground(new Color(0,67,137));
-		comboBoxQuantita.setForeground(new Color(255, 213, 0));
+		comboBoxQuantita.setBackground(new Color(191,215,255));
+		comboBoxQuantita.setForeground(new Color(0,41,82));
 		comboBoxQuantita.setFocusable(false);
-		comboBoxQuantita.setBounds(220, 178, 267, 30);
+		comboBoxQuantita.setBounds(155, 158, 221, 30);
 		getContentPane().add(comboBoxQuantita);
+		
+		JLabel LabelSfondo = new JLabel("");
+		LabelSfondo.setIcon(new ImageIcon(AggiungiAlCarrelloDialog.class.getResource("/scrimg/SfondoAggiungiAlnegozio.png")));
+		LabelSfondo.setBounds(-9, -9, 467, 376);
+		contentPane.add(LabelSfondo);
 	}
-
 }
