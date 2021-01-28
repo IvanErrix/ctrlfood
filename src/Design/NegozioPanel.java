@@ -57,19 +57,21 @@ public class NegozioPanel extends JPanel {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
-		scrollPane.getViewport().setBackground(new Color(191,215,255, 230));
+		scrollPane.getViewport().setBackground(new Color(191,215,255));
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(55, 88, 630, 419);
 		add(scrollPane);
 
 		table = new JTable(model);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setSelectionBackground(new Color(0, 41, 82));
+		table.setSelectionForeground(new Color(191, 215, 255));
 		table.setAutoCreateRowSorter(true);
 		table.setFont(new Font("Impact", Font.PLAIN, 13));
 		table.setForeground(new Color(0, 41, 82));
 		table.setOpaque(false);
 		table.setShowGrid(false);
-		table.setBackground(new Color(191, 215, 255, 0));
+		table.setBackground(new Color(191, 215, 255));
 		table.setBounds(302, 183, 150, 150);
 		scrollPane.setViewportView(table);
 		table.getTableHeader().setReorderingAllowed(false);
@@ -130,13 +132,19 @@ public class NegozioPanel extends JPanel {
 					} 
 				}
 			}
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if (textFieldSearch.getText().length()>=25 ) {
+					e.consume();
+				}
+			}
 		});
 		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
 		textFieldSearch.setForeground(new Color(191, 215, 255));
 		textFieldSearch.setOpaque(false);
 		textFieldSearch.setBorder(null);
-		textFieldSearch.setBounds(78, 28, 291, 34);
-		textFieldSearch.setCaretColor(new Color(0, 41, 82));
+		textFieldSearch.setBounds(85, 28, 276, 34);
+		textFieldSearch.setCaretColor(new Color(191, 215, 255));
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
 

@@ -77,7 +77,9 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setAlwaysOnTop(false);
 				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+				setAlwaysOnTop(true);
 			}
 		});
 		ButtonAggiugni.setBounds(288, 300, 110, 24);
@@ -142,15 +144,9 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		spinnerQuantita.setBounds(208, 174, 60, 24);
 		getContentPane().add(spinnerQuantita);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/SfondoAggiungiAlnegozio.png")));
-		lblNewLabel.setBounds(-8, -8, 467, 376);
-		getContentPane().add(lblNewLabel);
-		
-
-//		JLabel LabelSfondo = new JLabel("");
-//		LabelSfondo.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/Group 4.png")));
-//		LabelSfondo.setBounds(0, 0, 680, 490);
-//		getContentPane().add(LabelSfondo);
+		JLabel LabelSfondo = new JLabel("");
+		LabelSfondo.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/SfondoAggiungiAlnegozio.png")));
+		LabelSfondo.setBounds(-8, -8, 467, 376);
+		getContentPane().add(LabelSfondo);
 	}
 }

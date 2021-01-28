@@ -3,12 +3,14 @@ package main;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Panel;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -22,6 +24,7 @@ import Design.AggiungiAlCarrelloDialog;
 import Design.AggiungiAlDepositoDialog;
 import Design.AggiungiAlNegozioDialog;
 import Design.AggiungiClientiDialog;
+import Design.AnimazionePanel;
 import Design.CarrelloPanel;
 import Design.CassaPanel;
 import Design.ClientiPanel;
@@ -122,6 +125,15 @@ public class Controller {
 		PanelCaricamento.add(loading);
 	}
 	
+	public void ApriAnimazionePanel(Controller ctrl, JPanel PanelCaricamento) {
+		AnimazionePanel animazione = new AnimazionePanel(ctrl);
+		animazione.setVisible(true);
+		PanelCaricamento.removeAll();
+		PanelCaricamento.add(animazione);
+		PanelCaricamento.repaint();
+		PanelCaricamento.revalidate();
+	}
+	
 	//Funzioni per l'apertura delle dialog
 	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
 		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
@@ -189,5 +201,19 @@ public class Controller {
 		}
 	}
 	
-	
+	public void Movimento(JLabel label) {
+		int velocita = 2;
+    	if (label.getLocation().x>0 && label.getLocation().x<=690 && label.getLocation().y==490) {		//Sposta a sinistra
+    		label.setLocation(label.getLocation().x-velocita, label.getLocation().y);
+		}
+    	else if (label.getLocation().y>0 && label.getLocation().y<=490 && label.getLocation().x==0) {		//Sposta su
+    		label.setLocation(label.getLocation().x, label.getLocation().y-velocita);
+    	}
+    	else if(label.getLocation().x>=0 && label.getLocation().x<690 && label.getLocation().y==0) {		//Sposta a destra
+    		label.setLocation(label.getLocation().x+velocita, label.getLocation().y);
+    	}
+    	else if(label.getLocation().y>=0 && label.getLocation().y<489 && label.getLocation().x==690) {		//Sposta giu
+    		label.setLocation(label.getLocation().x, label.getLocation().y+velocita);
+    	}
+	}
 }

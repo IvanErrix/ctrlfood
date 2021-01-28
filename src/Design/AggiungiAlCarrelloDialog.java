@@ -17,6 +17,8 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EtchedBorder;
 
 import main.Controller;
@@ -67,7 +69,9 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlCarrelloDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setAlwaysOnTop(false);
 				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+				setAlwaysOnTop(true);
 			}
 		});
 		ButtonAggiugni.setBounds(258, 290, 110, 24);
@@ -107,14 +111,20 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		comboBoxNome.setBounds(155, 93, 221, 30);
 		getContentPane().add(comboBoxNome);
 		
-		JComboBox comboBoxQuantita = new JComboBox();
-		comboBoxQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color(0,41,82)));
-		comboBoxQuantita.setOpaque(false);
-		comboBoxQuantita.setBackground(new Color(191,215,255));
-		comboBoxQuantita.setForeground(new Color(0,41,82));
-		comboBoxQuantita.setFocusable(false);
-		comboBoxQuantita.setBounds(155, 158, 221, 30);
-		getContentPane().add(comboBoxQuantita);
+		SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 50, 1);
+		JSpinner spinnerQuantita = new JSpinner(model);
+		spinnerQuantita.setFocusable(false);
+		spinnerQuantita.setOpaque(false);
+		spinnerQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		spinnerQuantita.getComponent(0).setBackground(new Color(191,215,255));
+		spinnerQuantita.getComponent(1).setBackground(new Color(191,215,255));
+		spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191,215,255));
+		spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(0,41,82));
+		spinnerQuantita.setRequestFocusEnabled(false);
+		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 14));
+		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		spinnerQuantita.setBounds(155, 158, 60, 30);
+		getContentPane().add(spinnerQuantita);
 		
 		JLabel LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(AggiungiAlCarrelloDialog.class.getResource("/scrimg/SfondoAggiungiAlnegozio.png")));

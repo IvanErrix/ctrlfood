@@ -47,6 +47,7 @@ public class PagamentoConCartaDialog extends JDialog {
 	private JTextField textFieldNumeroCartaFedelta;
 
 	public PagamentoConCartaDialog(Controller ctrl) {
+		setAlwaysOnTop(true);
 
 		getContentPane().setBackground(new Color(0, 67, 137));
 		setUndecorated(true);
@@ -177,18 +178,24 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") ||datePickerScadenza.getJFormattedTextField().getValue().equals("YYYY-MM-GG") ) {
+					setAlwaysOnTop(false);
 					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
+					setAlwaysOnTop(true);
 				}
 				else {
 					if (passwordFieldPin.getText().length()<5 || textFieldNumeroCarta.getText().replace("-", "").length()==0) {
+						setAlwaysOnTop(false);
 						JOptionPane.showMessageDialog(null, "IL PIN DEVE CONTENERE 5 NUMERI E IL NUMERO DELLA CARTA NE DEVE CONTENERE 16", "", JOptionPane.ERROR_MESSAGE);
+						setAlwaysOnTop(true);
 					}
 					else {
-							JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
-							dispose();
-						} 
-					}
+						setAlwaysOnTop(false);
+						JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
+						setAlwaysOnTop(true);
+						dispose();
+					} 
 				}
+			}
 		});
 		ButtonPaga.setOpaque(false);
 		ButtonPaga.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga2.png")));

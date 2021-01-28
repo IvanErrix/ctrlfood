@@ -47,6 +47,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	public AggiungiAlDepositoDialog(Controller ctrl) {
+		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(710, 518);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
@@ -57,8 +58,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		setBackground(new Color(0, 67, 137, 0));
 		contentPane.setLayout(null);
 
-		
-		
 		JLabel LabelTipologia = new JLabel("Tipologia");
 		LabelTipologia.setForeground(new Color(0, 41, 82));
 		LabelTipologia.setFont(new Font("Impact", Font.PLAIN, 16));
@@ -124,7 +123,9 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(LabelFoto);
 		
 		JTextField textFieldNome = new JTextField(20) {
-			  @Override protected void paintComponent(Graphics g) {
+			private static final long serialVersionUID = 1L;
+			
+			@Override protected void paintComponent(Graphics g) {
 			    if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
 			      Graphics2D g2 = (Graphics2D) g.create();
 			      g2.setPaint(getBackground());
@@ -164,7 +165,10 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		
 		
 		JTextField textFieldPrezzo = new JTextField(20) {
-			  @Override protected void paintComponent(Graphics g) {
+			private static final long serialVersionUID = 1L;
+			
+			@Override 
+			  protected void paintComponent(Graphics g) {
 			    if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
 			      Graphics2D g2 = (Graphics2D) g.create();
 			      g2.setPaint(getBackground());
@@ -174,7 +178,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			    }
 			    super.paintComponent(g);
 			  }
-			  @Override public void updateUI() {
+			  @Override 
+			  public void updateUI() {
 			    super.updateUI();
 			    setOpaque(false);
 			    setBorder(new RoundedCornerBorder());
@@ -367,16 +372,22 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldNome.getText().length()==0 || textFieldPrezzo.getText().length()==0 ) {
+					setAlwaysOnTop(false);
 					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
+					setAlwaysOnTop(true);
 				}
 				else{
 					if(comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
 						String [] parti = datePickerScadenza.getJFormattedTextField().getValue().toString().split("-");
 						if(Integer.parseInt(parti[0])<2021 || Integer.parseInt(parti[1])>12 || Integer.parseInt(parti[1])==0 || Integer.parseInt(parti[2])>31 || Integer.parseInt(parti[2])==0) {
+							setAlwaysOnTop(false);
 							JOptionPane.showMessageDialog(null, "INSERIRE DATA CORRETTA", "", JOptionPane.ERROR_MESSAGE);
+							setAlwaysOnTop(true);
 						}
 						else {
+							setAlwaysOnTop(false);
 							JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+							setAlwaysOnTop(true);
 							textFieldNome.setText("");
 							textFieldPrezzo.setText("");
 							spinnerQuantita.setValue(1);
@@ -404,7 +415,9 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonRimuoviTutto.setPressedIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
 		ButtonRimuoviTutto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setAlwaysOnTop(false);
 				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
+				setAlwaysOnTop(true);
 				textFieldNome.setText("");
 				textFieldPrezzo.setText("");
 				spinnerQuantita.setValue(1);
@@ -458,15 +471,9 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiungiFoto.setBounds(595, 266, 20, 20);
 		getContentPane().add(ButtonAggiungiFoto);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/Sfondo.png")));
-		lblNewLabel.setBounds(-8, -8, 727, 536);
-		getContentPane().add(lblNewLabel);
-		
-//		JLabel LabelSfondo = new JLabel("");
-//		LabelSfondo.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/Group 4.png")));
-//		LabelSfondo.setBounds(0, 0, 680, 490);
-//		getContentPane().add(LabelSfondo);
-	
+		JLabel LabelSfondo = new JLabel("");
+		LabelSfondo.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/Sfondo.png")));
+		LabelSfondo.setBounds(-8, -8, 727, 536);
+		getContentPane().add(LabelSfondo);
 	}
 }

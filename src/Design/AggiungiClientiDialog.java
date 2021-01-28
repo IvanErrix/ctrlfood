@@ -42,147 +42,147 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
 		contentPane.setLayout(null);
-		
+
 		JLabel LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0, 41, 82));
 		LabelNome.setFont(new Font("Impact", Font.PLAIN, 16));
 		LabelNome.setBounds(64, 59, 46, 14);
 		getContentPane().add(LabelNome);
-		
+
 		JLabel LabelCognome = new JLabel("Cognome");
 		LabelCognome.setForeground(new Color(0, 41, 82));
 		LabelCognome.setFont(new Font("Impact", Font.PLAIN, 16));
 		LabelCognome.setBounds(64, 130, 68, 14);
 		getContentPane().add(LabelCognome);
-		
+
 		JLabel LabelCodiceFiscale = new JLabel("Codice Fiscale");
 		LabelCodiceFiscale.setForeground(new Color(0, 41, 82));
 		LabelCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 16));
 		LabelCodiceFiscale.setBounds(64, 204, 118, 14);
 		getContentPane().add(LabelCodiceFiscale);
-		
-		
+
+
 		JTextField textFieldNome = new JTextField(20) {
-			  @Override protected void paintComponent(Graphics g) {
-			    if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
-			      Graphics2D g2 = (Graphics2D) g.create();
-			      g2.setPaint(getBackground());
-			      g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
-			          0, 0, getWidth() - 1, getHeight() - 1));
-			      g2.dispose();
-			    }
-			    super.paintComponent(g);
-			  }
-			  @Override public void updateUI() {
-			    super.updateUI();
-			    setOpaque(false);
-			    setBorder(new RoundedCornerBorder());
-			  }
-			};
-			textFieldNome.addKeyListener(new KeyAdapter() {
-				@Override
-				public void keyTyped(KeyEvent e) {
-					if(textFieldNome.getText().length()<15) {
-						char c=e.getKeyChar();
-						if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
-							e.consume();
-					}
-					else {
-						char c=e.getKeyChar();
-						if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
-							e.consume();
-					}
-	
+			@Override protected void paintComponent(Graphics g) {
+				if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
+					Graphics2D g2 = (Graphics2D) g.create();
+					g2.setPaint(getBackground());
+					g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
+							0, 0, getWidth() - 1, getHeight() - 1));
+					g2.dispose();
 				}
-			});
-			textFieldNome.setFont(new Font("Impact", Font.PLAIN, 16));
-			textFieldNome.setForeground(new Color(0, 41, 82));
-			textFieldNome.setColumns(10);
-			textFieldNome.setBackground(new Color(191,215,255));
-			textFieldNome.setBounds(244, 43, 249, 30);
-			textFieldNome.setCaretColor(new Color(0,41,82));
-			getContentPane().add(textFieldNome);
-		
-			JTextField textFieldCognome = new JTextField(20) {
-				@Override protected void paintComponent(Graphics g) {
-					if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
-						Graphics2D g2 = (Graphics2D) g.create();
-						g2.setPaint(getBackground());
-						g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
-								0, 0, getWidth() - 1, getHeight() - 1));
-						g2.dispose();
-					}
-					super.paintComponent(g);
+				super.paintComponent(g);
+			}
+			@Override public void updateUI() {
+				super.updateUI();
+				setOpaque(false);
+				setBorder(new RoundedCornerBorder());
+			}
+		};
+		textFieldNome.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(textFieldNome.getText().length()<15) {
+					char c=e.getKeyChar();
+					if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
 				}
-				@Override public void updateUI() {
-					super.updateUI();
-					setOpaque(false);
-					setBorder(new RoundedCornerBorder());
+				else {
+					char c=e.getKeyChar();
+					if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
 				}
-			};;
-			textFieldCognome.addKeyListener(new KeyAdapter() {
-				@Override
-				public void keyTyped(KeyEvent e) {
-					if(textFieldCognome.getText().length()<15) {
-						char c=e.getKeyChar();
-						if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
-							e.consume();
-					}
-					else {
-						char c=e.getKeyChar();
-						if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
-							e.consume();
-					}
+
+			}
+		});
+		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 16));
+		textFieldNome.setForeground(new Color(0, 41, 82));
+		textFieldNome.setColumns(10);
+		textFieldNome.setBackground(new Color(191,215,255));
+		textFieldNome.setBounds(244, 43, 249, 30);
+		textFieldNome.setCaretColor(new Color(0,41,82));
+		getContentPane().add(textFieldNome);
+
+		JTextField textFieldCognome = new JTextField(20) {
+			@Override protected void paintComponent(Graphics g) {
+				if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
+					Graphics2D g2 = (Graphics2D) g.create();
+					g2.setPaint(getBackground());
+					g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
+							0, 0, getWidth() - 1, getHeight() - 1));
+					g2.dispose();
 				}
-			});
-			textFieldCognome.setFont(new Font("Impact", Font.PLAIN, 16));
-			textFieldCognome.setForeground(new Color(0, 41, 82));
-			textFieldCognome.setBackground(new Color(191,215,255));
-			textFieldCognome.setColumns(10);
-			textFieldCognome.setBounds(244, 114, 249, 30);
-			textFieldCognome.setCaretColor(new Color(0, 41, 82));
-			getContentPane().add(textFieldCognome);
-		
-			JTextField textFieldCodiceFiscale = new JTextField(20) {
-				@Override protected void paintComponent(Graphics g) {
-					if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
-						Graphics2D g2 = (Graphics2D) g.create();
-						g2.setPaint(getBackground());
-						g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
-								0, 0, getWidth() - 1, getHeight() - 1));
-						g2.dispose();
-					}
-					super.paintComponent(g);
+				super.paintComponent(g);
+			}
+			@Override public void updateUI() {
+				super.updateUI();
+				setOpaque(false);
+				setBorder(new RoundedCornerBorder());
+			}
+		};;
+		textFieldCognome.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(textFieldCognome.getText().length()<15) {
+					char c=e.getKeyChar();
+					if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
 				}
-				@Override public void updateUI() {
-					super.updateUI();
-					setOpaque(false);
-					setBorder(new RoundedCornerBorder());
+				else {
+					char c=e.getKeyChar();
+					if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
 				}
-			};;
-			textFieldCodiceFiscale.addKeyListener(new KeyAdapter() {
-				@Override
-				public void keyTyped(KeyEvent e) {
-					if(textFieldCodiceFiscale.getText().length()<16) {
-						char c=e.getKeyChar();
-						if(!(Character.isAlphabetic(c) || Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
-							e.consume();
-					}
-					else {
-						char c=e.getKeyChar();
-						if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
-							e.consume();
-					}
+			}
+		});
+		textFieldCognome.setFont(new Font("Impact", Font.PLAIN, 16));
+		textFieldCognome.setForeground(new Color(0, 41, 82));
+		textFieldCognome.setBackground(new Color(191,215,255));
+		textFieldCognome.setColumns(10);
+		textFieldCognome.setBounds(244, 114, 249, 30);
+		textFieldCognome.setCaretColor(new Color(0, 41, 82));
+		getContentPane().add(textFieldCognome);
+
+		JTextField textFieldCodiceFiscale = new JTextField(20) {
+			@Override protected void paintComponent(Graphics g) {
+				if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
+					Graphics2D g2 = (Graphics2D) g.create();
+					g2.setPaint(getBackground());
+					g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
+							0, 0, getWidth() - 1, getHeight() - 1));
+					g2.dispose();
 				}
-			});
-			textFieldCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 16));
-			textFieldCodiceFiscale.setForeground(new Color(0, 41, 82));
-			textFieldCodiceFiscale.setBackground(new Color(191, 215, 255));
-			textFieldCodiceFiscale.setColumns(10);
-			textFieldCodiceFiscale.setBounds(244, 188, 249, 30);
-			textFieldCodiceFiscale.setCaretColor(new Color(0, 41, 82));
-			getContentPane().add(textFieldCodiceFiscale);
-		
+				super.paintComponent(g);
+			}
+			@Override public void updateUI() {
+				super.updateUI();
+				setOpaque(false);
+				setBorder(new RoundedCornerBorder());
+			}
+		};;
+		textFieldCodiceFiscale.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(textFieldCodiceFiscale.getText().length()<16) {
+					char c=e.getKeyChar();
+					if(!(Character.isAlphabetic(c) || Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
+				else {
+					char c=e.getKeyChar();
+					if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
+			}
+		});
+		textFieldCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 16));
+		textFieldCodiceFiscale.setForeground(new Color(0, 41, 82));
+		textFieldCodiceFiscale.setBackground(new Color(191, 215, 255));
+		textFieldCodiceFiscale.setColumns(10);
+		textFieldCodiceFiscale.setBounds(244, 188, 249, 30);
+		textFieldCodiceFiscale.setCaretColor(new Color(0, 41, 82));
+		getContentPane().add(textFieldCodiceFiscale);
+
 		JButton ButtonAggiugni = new JButton("");
 		ButtonAggiugni.addMouseListener(new MouseAdapter() {
 			@Override
@@ -203,16 +203,20 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldNome.getText().length()==0 || textFieldCognome.getText().length()==0 || textFieldCodiceFiscale.getText().length()==0 ) {
+					setAlwaysOnTop(false);
 					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTE I CAMPI", "", JOptionPane.WARNING_MESSAGE);
+					setAlwaysOnTop(true);
 				}
 				else {
+					setAlwaysOnTop(false);
 					JOptionPane.showMessageDialog(null, "CLIENTE AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+					setAlwaysOnTop(true);
 				}
 			}
 		});
 		ButtonAggiugni.setBounds(401, 344, 110, 24);
 		getContentPane().add(ButtonAggiugni);
-		
+
 		JButton ButtonAnnulla = new JButton("");
 		ButtonAnnulla.addMouseListener(new MouseAdapter() {
 			@Override
@@ -237,20 +241,20 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonAnnulla.setContentAreaFilled(false);
 		ButtonAnnulla.setBounds(64, 344, 110, 24);
 		getContentPane().add(ButtonAnnulla);
-		
+
 		JCheckBox CheckBoxCartaFedelta = new JCheckBox("");
 		CheckBoxCartaFedelta.setForeground(new Color(0, 41, 82));
 		CheckBoxCartaFedelta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		CheckBoxCartaFedelta.setBackground(new Color(0,41,82));
+		CheckBoxCartaFedelta.setBackground(new Color(191, 215, 255));
 		CheckBoxCartaFedelta.setBounds(244, 262, 21, 23);
 		getContentPane().add(CheckBoxCartaFedelta);
-		
+
 		JLabel LabelCartaFedelta = new JLabel("Carta Fedelt\u00E0");
 		LabelCartaFedelta.setForeground(new Color(0, 41, 82));
 		LabelCartaFedelta.setFont(new Font("Impact", Font.PLAIN, 16));
 		LabelCartaFedelta.setBounds(64, 262, 93, 23);
 		getContentPane().add(LabelCartaFedelta);
-		
+
 		JButton ButtonCancellaTutto = new JButton("");
 		ButtonCancellaTutto.addMouseListener(new MouseAdapter() {
 			@Override
@@ -265,7 +269,9 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonCancellaTutto.setPressedIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
 		ButtonCancellaTutto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setAlwaysOnTop(false);
 				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
+				setAlwaysOnTop(true);
 				textFieldNome.setText("");
 				textFieldCognome.setText("");
 				textFieldCodiceFiscale.setText("");
@@ -279,7 +285,7 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonCancellaTutto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonCancellaTutto.setBounds(241, 344, 150, 24);
 		getContentPane().add(ButtonCancellaTutto);
-		
+
 		JLabel LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/SfondoClienti.png")));
 		LabelSfondo.setBounds(-8, -8, 580, 429);
