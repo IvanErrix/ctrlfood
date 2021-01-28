@@ -59,8 +59,8 @@ public class DepositoPanel extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
-		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
-		scrollPane.getViewport().setOpaque(false);
+		scrollPane.getViewport().setBackground(new Color(191, 215, 255, 230));
+		scrollPane.getViewport().setOpaque(true);
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(55, 88, 630, 419);
 		add(scrollPane);
@@ -72,7 +72,7 @@ public class DepositoPanel extends JPanel {
 		table.setForeground(new Color(0,41,82));
 		table.setShowGrid(false);
 		table.setOpaque(false);
-		table.setBackground(new Color(191, 215, 255));
+		table.setBackground(new Color(191, 215, 255, 0));
 		table.setBounds(302, 183, 150, 150);
 		scrollPane.setViewportView(table);
 		table.getTableHeader().setReorderingAllowed(false);
@@ -85,6 +85,8 @@ public class DepositoPanel extends JPanel {
 		model.addRow(new Object[] {"Ortofrutta","PERA", "002", "1.0", "1", "15/12/2021"});
 		model.addRow(new Object[] {"Ortofrutta","BANANA", "003", "1.5", "4", "05/8/2021"});
 		model.addRow(new Object[] {"Confezionati","CAFFE", "004", "4.0", "3", "03/6/2021"});
+		model.addRow(new Object[] {"Latticini","MOZZARELLA", "005", "10.0", "4", "10/6/2021"});
+		model.addRow(new Object[] {"Latticini","RICOTTA", "006", "5.0", "1", "18/6/2021"});
 		
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);

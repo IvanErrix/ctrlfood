@@ -127,8 +127,9 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxTipologia.setBounds(208, 57, 190, 24);
 		getContentPane().add(comboBoxTipologia);
 		
-		SpinnerNumberModel model = new SpinnerNumberModel(1, null, 50, 1);
-		JSpinner spinnerQuantita = new JSpinner(new SpinnerNumberModel(new Integer(1), null, null, new Integer(1)));
+		SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 50, 1);
+		JSpinner spinnerQuantita = new JSpinner(model);
+		spinnerQuantita.setFocusable(false);
 		spinnerQuantita.setOpaque(false);
 		spinnerQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
 		spinnerQuantita.getComponent(0).setBackground(new Color(191,215,255));

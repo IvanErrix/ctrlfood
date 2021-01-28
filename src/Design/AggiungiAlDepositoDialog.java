@@ -38,6 +38,7 @@ import javax.swing.DefaultComboBoxModel;
 import java.util.Properties;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.border.EmptyBorder;
 
 public class AggiungiAlDepositoDialog extends JDialog {
 
@@ -166,21 +167,14 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldPrezzo.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(textFieldPrezzo);
 		
-		MaskFormatter mf = null;
-		try {
-			mf = new MaskFormatter("####-##-##");
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
-		
-		SpinnerNumberModel spinnermodel = new SpinnerNumberModel(1, null, 50, 1);
+		SpinnerNumberModel spinnermodel = new SpinnerNumberModel(1, 1, 50, 1);
 		JSpinner spinnerQuantita = new JSpinner(spinnermodel);
 		spinnerQuantita.setOpaque(false);
-		spinnerQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(191,215,255), new Color (191,215,255)));
-		spinnerQuantita.getComponent(0).setBackground(new Color(0, 41, 82));
-		spinnerQuantita.getComponent(1).setBackground(new Color(0, 41, 82));
-		spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(0, 41, 82));
-		spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(191,215,255));
+		spinnerQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 41, 82), new Color (0, 41, 82)));
+		spinnerQuantita.getComponent(0).setBackground(new Color(191,215,255));
+		spinnerQuantita.getComponent(1).setBackground(new Color(191,215,255));
+		spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191,215,255));
+		spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(0, 41, 82));
 		spinnerQuantita.setRequestFocusEnabled(false);
 		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -203,52 +197,52 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		JDatePanelImpl datePanel5 = new JDatePanelImpl(model5, p);
 		
 		JDatePickerImpl datePickerScadenza = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-		datePickerScadenza.getJFormattedTextField().setBorder(null);
-		datePickerScadenza.getJFormattedTextField().setForeground(new Color(191,215,255));
+		datePickerScadenza.getJFormattedTextField().setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		datePickerScadenza.getJFormattedTextField().setForeground(new Color(0,41,82));
 		datePickerScadenza.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
-		datePickerScadenza.getJFormattedTextField().setBackground(new Color(0,41,82));
+		datePickerScadenza.getJFormattedTextField().setBackground(new Color(191,215,255));
 		datePickerScadenza.setLocation(219, 161);
-		datePickerScadenza.setSize(190, 20);
+		datePickerScadenza.setSize(190, 25);
 		datePickerScadenza.setVisible(true);
 		getContentPane().add(datePickerScadenza);
 		
 		JDatePickerImpl datePickerRaccolta = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
-		datePickerRaccolta.getJFormattedTextField().setBorder(null);
-		datePickerRaccolta.getJFormattedTextField().setForeground(new Color(191,215,255));
+		datePickerRaccolta.getJFormattedTextField().setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		datePickerRaccolta.getJFormattedTextField().setForeground(new Color(0,41,82));
 		datePickerRaccolta.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
-		datePickerRaccolta.getJFormattedTextField().setBackground(new Color(0, 41, 82));
+		datePickerRaccolta.getJFormattedTextField().setBackground(new Color(191,215,255));
 		datePickerRaccolta.setLocation(219, 247);
-		datePickerRaccolta.setSize(190, 20);
+		datePickerRaccolta.setSize(190, 25);
 		datePickerRaccolta.setVisible(true);
 		getContentPane().add(datePickerRaccolta);
 		
 		JDatePickerImpl datePickerProduzione = new JDatePickerImpl(datePanel3, new DateLabelFormatter());
-		datePickerProduzione.getJFormattedTextField().setBorder(null);
-		datePickerProduzione.getJFormattedTextField().setForeground(new Color(191,215,255));
+		datePickerProduzione.getJFormattedTextField().setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		datePickerProduzione.getJFormattedTextField().setForeground(new Color(0,41,82));
 		datePickerProduzione.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
-		datePickerProduzione.getJFormattedTextField().setBackground(new Color(0, 41, 82));
+		datePickerProduzione.getJFormattedTextField().setBackground(new Color(191,215,255));
 		datePickerProduzione.setLocation(219, 247);
-		datePickerProduzione.setSize(190, 20);
+		datePickerProduzione.setSize(190, 25);
 		datePickerProduzione.setVisible(false);
 		getContentPane().add(datePickerProduzione);
 		
 		JDatePickerImpl datePickerConfezionamento = new JDatePickerImpl(datePanel4, new DateLabelFormatter());
-		datePickerConfezionamento.getJFormattedTextField().setBorder(null);
-		datePickerConfezionamento.getJFormattedTextField().setForeground(new Color(191,215,255));
+		datePickerConfezionamento.getJFormattedTextField().setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		datePickerConfezionamento.getJFormattedTextField().setForeground(new Color(0,41,82));
 		datePickerConfezionamento.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
-		datePickerConfezionamento.getJFormattedTextField().setBackground(new Color(0, 41, 82));
+		datePickerConfezionamento.getJFormattedTextField().setBackground(new Color(191,215,255));
 		datePickerConfezionamento.setLocation(219, 247);
-		datePickerConfezionamento.setSize(190, 20);
+		datePickerConfezionamento.setSize(190, 25);
 		datePickerConfezionamento.setVisible(false);
 		getContentPane().add(datePickerConfezionamento);
 		
 		JDatePickerImpl datePickerMungitura = new JDatePickerImpl(datePanel5, new DateLabelFormatter());
-		datePickerMungitura.getJFormattedTextField().setBorder(null);
-		datePickerMungitura.getJFormattedTextField().setForeground(new Color(191,215,255));
+		datePickerMungitura.getJFormattedTextField().setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		datePickerMungitura.getJFormattedTextField().setForeground(new Color(0,41,82));
 		datePickerMungitura.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
-		datePickerMungitura.getJFormattedTextField().setBackground(new Color(0, 41, 82));
+		datePickerMungitura.getJFormattedTextField().setBackground(new Color(191,215,255));
 		datePickerMungitura.setLocation(219, 278);
-		datePickerMungitura.setSize(190, 20);
+		datePickerMungitura.setSize(190, 25);
 		datePickerMungitura.setVisible(false);
 		getContentPane().add(datePickerMungitura);
 		
@@ -290,14 +284,24 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		});
 		comboBoxTipologia.setFocusable(false);
 		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati"}));
-		comboBoxTipologia.setBackground(new Color(0,41,82));
-		comboBoxTipologia.setForeground(new Color(191,215,255));
+		comboBoxTipologia.setBackground(new Color(191,215,255));
+		comboBoxTipologia.setForeground(new Color(0, 41, 82));
 		comboBoxTipologia.setFont(new Font("Impact", Font.PLAIN, 11));
 		comboBoxTipologia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		comboBoxTipologia.setBorder(null);
 		comboBoxTipologia.setMaximumRowCount(3);
 		comboBoxTipologia.setBounds(219, 61, 190, 20);
 		getContentPane().add(comboBoxTipologia);
+		
+		JTextField textFieldFoto = new JTextField();
+		textFieldFoto.setBorder(null);
+		textFieldFoto.setFont(new Font("Impact", Font.PLAIN, 14));
+		textFieldFoto.setForeground(new Color(191,215,255));
+		textFieldFoto.setOpaque(false);
+		textFieldFoto.setColumns(10);
+		textFieldFoto.setBounds(229, 216, 179, 20);
+		textFieldFoto.setCaretColor(new Color(0, 41, 82));
+		getContentPane().add(textFieldFoto);
 		
 		JButton ButtonAggiugni = new JButton("");
 		ButtonAggiugni.addMouseListener(new MouseAdapter() {
@@ -360,7 +364,12 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				textFieldNome.setText("");
 				textFieldPrezzo.setText("");
 				spinnerQuantita.setValue(1);
-				LabelFoto.setText("");
+				textFieldFoto.setText("");
+				datePickerScadenza.getJFormattedTextField().setText("");
+				datePickerRaccolta.getJFormattedTextField().setText("");
+				datePickerProduzione.getJFormattedTextField().setText("");
+				datePickerMungitura.getJFormattedTextField().setText("");
+				datePickerConfezionamento.getJFormattedTextField().setText("");
 			}
 		});
 		ButtonRimuoviTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
@@ -395,16 +404,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAnnulla.setContentAreaFilled(false);
 		ButtonAnnulla.setBounds(25, 369, 110, 24);
 		getContentPane().add(ButtonAnnulla);
-		
-		JTextField textFieldFoto = new JTextField();
-		textFieldFoto.setBorder(null);
-		textFieldFoto.setFont(new Font("Impact", Font.PLAIN, 14));
-		textFieldFoto.setForeground(new Color(191,215,255));
-		textFieldFoto.setOpaque(false);
-		textFieldFoto.setColumns(10);
-		textFieldFoto.setBounds(229, 216, 179, 20);
-		textFieldFoto.setCaretColor(new Color(0, 41, 82));
-		getContentPane().add(textFieldFoto);
 		
 		JButton ButtonAggiungiFoto = new JButton("...");
 		ButtonAggiungiFoto.addActionListener(new ActionListener() {

@@ -3,3 +3,6 @@ Fare mockup
 risolvere il problema di always on top sulle dialog. Un soluzione potrebbe essere quella di utilizzare un metodo per settare il valore alwaysontop delle dialog
 aggiungere tipologia del prodotto in aggiungialdepositodialog
 Combobox cambiare color
+cambiare icona cassa
+aggiustare icona del programma
+aggiustare pagamentoconcartadialog

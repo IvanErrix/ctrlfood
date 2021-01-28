@@ -38,11 +38,11 @@ public class NegozioPanel extends JPanel {
 	private String Titoli[]= {"Tipologia","Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
 	private Object Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
+
 		private static final long serialVersionUID = 1L;
 
 		@Override
 		public boolean isCellEditable(int row, int column) {
-			//Only the third column
 			return false;
 		}
 	};
@@ -57,7 +57,7 @@ public class NegozioPanel extends JPanel {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
-		scrollPane.getViewport().setBackground(new Color(191,215,255));
+		scrollPane.getViewport().setBackground(new Color(191,215,255, 230));
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(55, 88, 630, 419);
 		add(scrollPane);
@@ -68,7 +68,8 @@ public class NegozioPanel extends JPanel {
 		table.setFont(new Font("Impact", Font.PLAIN, 13));
 		table.setForeground(new Color(0, 41, 82));
 		table.setOpaque(false);
-		table.setBackground(new Color(191, 215, 255));
+		table.setShowGrid(false);
+		table.setBackground(new Color(191, 215, 255, 0));
 		table.setBounds(302, 183, 150, 150);
 		scrollPane.setViewportView(table);
 		table.getTableHeader().setReorderingAllowed(false);
