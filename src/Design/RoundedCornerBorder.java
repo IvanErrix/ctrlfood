@@ -17,7 +17,8 @@ public class RoundedCornerBorder extends AbstractBorder {
 
 	private static final long serialVersionUID = 1L;
 	private static final Color ALPHA_ZERO = new Color(0x0, true);
-	  @Override public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+	  @Override 
+	  public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
 	    Graphics2D g2 = (Graphics2D) g.create();
 	    g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 	    Shape border = getBorderShape(x, y, width - 1, height - 1);
@@ -33,10 +34,12 @@ public class RoundedCornerBorder extends AbstractBorder {
 	    int r = h; //h / 2;
 	    return new RoundRectangle2D.Double(x, y, w, h, r, r);
 	  }
-	  @Override public Insets getBorderInsets(Component c) {
+	  @Override 
+	  public Insets getBorderInsets(Component c) {
 	    return new Insets(4, 8, 4, 8);
 	  }
-	  @Override public Insets getBorderInsets(Component c, Insets insets) {
+	  @Override 
+	  public Insets getBorderInsets(Component c, Insets insets) {
 	    insets.set(4, 8, 4, 8);
 	    return insets;
 	  }

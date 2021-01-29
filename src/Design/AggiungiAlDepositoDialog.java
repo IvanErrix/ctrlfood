@@ -122,25 +122,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelFoto.setBounds(106, 274, 46, 14);
 		getContentPane().add(LabelFoto);
 		
-		JTextField textFieldNome = new JTextField(20) {
-			private static final long serialVersionUID = 1L;
-			
-			@Override protected void paintComponent(Graphics g) {
-			    if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
-			      Graphics2D g2 = (Graphics2D) g.create();
-			      g2.setPaint(getBackground());
-			      g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
-			          0, 0, getWidth() - 1, getHeight() - 1));
-			      g2.dispose();
-			    }
-			    super.paintComponent(g);
-			  }
-			  @Override public void updateUI() {
-			    super.updateUI();
-			    setOpaque(false);
-			    setBorder(new RoundedCornerBorder());
-			  }
-			};
+		JTextField textFieldNome = new JTextField(20);
 		textFieldNome.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -156,6 +138,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			}
 		});
 		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 14));
+		textFieldNome.setBorder(new RoundedCornerBorder());
 		textFieldNome.setForeground(new Color(0,41,82));
 		textFieldNome.setBackground(new Color(191,215,255));
 		textFieldNome.setColumns(10);
@@ -164,27 +147,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(textFieldNome);
 		
 		
-		JTextField textFieldPrezzo = new JTextField(20) {
-			private static final long serialVersionUID = 1L;
-			
-			@Override 
-			  protected void paintComponent(Graphics g) {
-			    if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
-			      Graphics2D g2 = (Graphics2D) g.create();
-			      g2.setPaint(getBackground());
-			      g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
-			          0, 0, getWidth() - 1, getHeight() - 1));
-			      g2.dispose();
-			    }
-			    super.paintComponent(g);
-			  }
-			  @Override 
-			  public void updateUI() {
-			    super.updateUI();
-			    setOpaque(false);
-			    setBorder(new RoundedCornerBorder());
-			  }
-			};
+		JTextField textFieldPrezzo = new JTextField(20) ;
 		textFieldPrezzo.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -194,6 +157,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			}
 		});
 		textFieldPrezzo.setFont(new Font("Impact", Font.PLAIN, 14));
+		textFieldPrezzo.setBorder(new RoundedCornerBorder());
 		textFieldPrezzo.setForeground(new Color(0,41,82));
 		textFieldPrezzo.setBackground(new Color(191,215,255));
 		textFieldPrezzo.setColumns(10);
@@ -204,7 +168,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		SpinnerNumberModel spinnermodel = new SpinnerNumberModel(1, 1, 50, 1);
 		JSpinner spinnerQuantita = new JSpinner(spinnermodel);
 		spinnerQuantita.setOpaque(false);
-		spinnerQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 41, 82), new Color (0, 41, 82)));
+		spinnerQuantita.setBorder(new RoundedCornerBorder());
 		spinnerQuantita.getComponent(0).setBackground(new Color(191,215,255));
 		spinnerQuantita.getComponent(1).setBackground(new Color(191,215,255));
 		spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191,215,255));
@@ -231,52 +195,52 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		JDatePanelImpl datePanel5 = new JDatePanelImpl(model5, p);
 		
 		JDatePickerImpl datePickerScadenza = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-		datePickerScadenza.getJFormattedTextField().setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		datePickerScadenza.getJFormattedTextField().setBorder(new RoundedCornerBorder());
 		datePickerScadenza.getJFormattedTextField().setForeground(new Color(0,41,82));
 		datePickerScadenza.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
 		datePickerScadenza.getJFormattedTextField().setBackground(new Color(191,215,255));
 		datePickerScadenza.setLocation(340, 172);
-		datePickerScadenza.setSize(275, 25);
+		datePickerScadenza.setSize(275, 35);
 		datePickerScadenza.setVisible(true);
 		getContentPane().add(datePickerScadenza);
 		
 		JDatePickerImpl datePickerRaccolta = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
-		datePickerRaccolta.getJFormattedTextField().setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		datePickerRaccolta.getJFormattedTextField().setBorder(new RoundedCornerBorder());
 		datePickerRaccolta.getJFormattedTextField().setForeground(new Color(0,41,82));
 		datePickerRaccolta.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
 		datePickerRaccolta.getJFormattedTextField().setBackground(new Color(191,215,255));
 		datePickerRaccolta.setLocation(340, 315);
-		datePickerRaccolta.setSize(275, 25);
+		datePickerRaccolta.setSize(275, 35);
 		datePickerRaccolta.setVisible(true);
 		getContentPane().add(datePickerRaccolta);
 		
 		JDatePickerImpl datePickerProduzione = new JDatePickerImpl(datePanel3, new DateLabelFormatter());
-		datePickerProduzione.getJFormattedTextField().setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		datePickerProduzione.getJFormattedTextField().setBorder(new RoundedCornerBorder());
 		datePickerProduzione.getJFormattedTextField().setForeground(new Color(0,41,82));
 		datePickerProduzione.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
 		datePickerProduzione.getJFormattedTextField().setBackground(new Color(191,215,255));
 		datePickerProduzione.setLocation(340, 315);
-		datePickerProduzione.setSize(275, 25);
+		datePickerProduzione.setSize(275, 35);
 		datePickerProduzione.setVisible(false);
 		getContentPane().add(datePickerProduzione);
 		
 		JDatePickerImpl datePickerConfezionamento = new JDatePickerImpl(datePanel4, new DateLabelFormatter());
-		datePickerConfezionamento.getJFormattedTextField().setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		datePickerConfezionamento.getJFormattedTextField().setBorder(new RoundedCornerBorder());
 		datePickerConfezionamento.getJFormattedTextField().setForeground(new Color(0,41,82));
 		datePickerConfezionamento.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
 		datePickerConfezionamento.getJFormattedTextField().setBackground(new Color(191,215,255));
 		datePickerConfezionamento.setLocation(340, 315);
-		datePickerConfezionamento.setSize(275, 25);
+		datePickerConfezionamento.setSize(275, 35);
 		datePickerConfezionamento.setVisible(false);
 		getContentPane().add(datePickerConfezionamento);
 		
 		JDatePickerImpl datePickerMungitura = new JDatePickerImpl(datePanel5, new DateLabelFormatter());
-		datePickerMungitura.getJFormattedTextField().setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		datePickerMungitura.getJFormattedTextField().setBorder(new RoundedCornerBorder());
 		datePickerMungitura.getJFormattedTextField().setForeground(new Color(0,41,82));
 		datePickerMungitura.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
 		datePickerMungitura.getJFormattedTextField().setBackground(new Color(191,215,255));
 		datePickerMungitura.setLocation(340, 363);
-		datePickerMungitura.setSize(275, 25);
+		datePickerMungitura.setSize(275, 35);
 		datePickerMungitura.setVisible(false);
 		getContentPane().add(datePickerMungitura);
 		
@@ -322,29 +286,14 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		comboBoxTipologia.setForeground(new Color(0, 41, 82));
 		comboBoxTipologia.setFont(new Font("Impact", Font.PLAIN, 11));
 		comboBoxTipologia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		comboBoxTipologia.setBorder(null);
+		comboBoxTipologia.setBorder(new RoundedCornerBorder());
 		comboBoxTipologia.setMaximumRowCount(3);
 		comboBoxTipologia.setBounds(340, 29, 275, 25);
 		getContentPane().add(comboBoxTipologia);
 		
-		JTextField textFieldFoto = new JTextField(20) {
-			  @Override protected void paintComponent(Graphics g) {
-			    if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
-			      Graphics2D g2 = (Graphics2D) g.create();
-			      g2.setPaint(getBackground());
-			      g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
-			          0, 0, getWidth() - 1, getHeight() - 1));
-			      g2.dispose();
-			    }
-			    super.paintComponent(g);
-			  }
-			  @Override public void updateUI() {
-			    super.updateUI();
-			    setOpaque(false);
-			    setBorder(new RoundedCornerBorder());
-			  }
-			};
+		JTextField textFieldFoto = new JTextField(20) ;
 		textFieldFoto.setFont(new Font("Impact", Font.PLAIN, 14));
+		textFieldFoto.setBorder(new RoundedCornerBorder());
 		textFieldFoto.setBackground(new Color(191,215,255));
 		textFieldFoto.setForeground(new Color(0,41,82));
 		textFieldFoto.setColumns(10);

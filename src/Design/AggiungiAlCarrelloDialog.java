@@ -103,7 +103,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		getContentPane().add(ButtonAnnulla);
 		
 		JComboBox comboBoxNome = new JComboBox();
-		comboBoxNome.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color(0,41,82)));
+		comboBoxNome.setBorder(new RoundedCornerBorder());
 		comboBoxNome.setOpaque(false);
 		comboBoxNome.setBackground(new Color(191,215,255));
 		comboBoxNome.setForeground(new Color(0,41,82));
@@ -115,7 +115,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		JSpinner spinnerQuantita = new JSpinner(model);
 		spinnerQuantita.setFocusable(false);
 		spinnerQuantita.setOpaque(false);
-		spinnerQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		spinnerQuantita.setBorder(new RoundedCornerBorder());
 		spinnerQuantita.getComponent(0).setBackground(new Color(191,215,255));
 		spinnerQuantita.getComponent(1).setBackground(new Color(191,215,255));
 		spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191,215,255));

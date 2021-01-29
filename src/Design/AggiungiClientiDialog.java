@@ -62,23 +62,7 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(LabelCodiceFiscale);
 
 
-		JTextField textFieldNome = new JTextField(20) {
-			@Override protected void paintComponent(Graphics g) {
-				if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
-					Graphics2D g2 = (Graphics2D) g.create();
-					g2.setPaint(getBackground());
-					g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
-							0, 0, getWidth() - 1, getHeight() - 1));
-					g2.dispose();
-				}
-				super.paintComponent(g);
-			}
-			@Override public void updateUI() {
-				super.updateUI();
-				setOpaque(false);
-				setBorder(new RoundedCornerBorder());
-			}
-		};
+		JTextField textFieldNome = new JTextField() ;
 		textFieldNome.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -95,6 +79,7 @@ public class AggiungiClientiDialog extends JDialog {
 
 			}
 		});
+		textFieldNome.setBorder(new RoundedCornerBorder());
 		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 16));
 		textFieldNome.setForeground(new Color(0, 41, 82));
 		textFieldNome.setColumns(10);
@@ -103,23 +88,7 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldNome.setCaretColor(new Color(0,41,82));
 		getContentPane().add(textFieldNome);
 
-		JTextField textFieldCognome = new JTextField(20) {
-			@Override protected void paintComponent(Graphics g) {
-				if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
-					Graphics2D g2 = (Graphics2D) g.create();
-					g2.setPaint(getBackground());
-					g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
-							0, 0, getWidth() - 1, getHeight() - 1));
-					g2.dispose();
-				}
-				super.paintComponent(g);
-			}
-			@Override public void updateUI() {
-				super.updateUI();
-				setOpaque(false);
-				setBorder(new RoundedCornerBorder());
-			}
-		};;
+		JTextField textFieldCognome = new JTextField();
 		textFieldCognome.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -135,6 +104,7 @@ public class AggiungiClientiDialog extends JDialog {
 				}
 			}
 		});
+		textFieldCognome.setBorder(new RoundedCornerBorder());
 		textFieldCognome.setFont(new Font("Impact", Font.PLAIN, 16));
 		textFieldCognome.setForeground(new Color(0, 41, 82));
 		textFieldCognome.setBackground(new Color(191,215,255));
@@ -143,23 +113,7 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldCognome.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(textFieldCognome);
 
-		JTextField textFieldCodiceFiscale = new JTextField(20) {
-			@Override protected void paintComponent(Graphics g) {
-				if (!isOpaque() && getBorder() instanceof RoundedCornerBorder) {
-					Graphics2D g2 = (Graphics2D) g.create();
-					g2.setPaint(getBackground());
-					g2.fill(((RoundedCornerBorder) getBorder()).getBorderShape(
-							0, 0, getWidth() - 1, getHeight() - 1));
-					g2.dispose();
-				}
-				super.paintComponent(g);
-			}
-			@Override public void updateUI() {
-				super.updateUI();
-				setOpaque(false);
-				setBorder(new RoundedCornerBorder());
-			}
-		};;
+		JTextField textFieldCodiceFiscale = new JTextField() ;
 		textFieldCodiceFiscale.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -175,6 +129,7 @@ public class AggiungiClientiDialog extends JDialog {
 				}
 			}
 		});
+		textFieldCodiceFiscale.setBorder(new RoundedCornerBorder());
 		textFieldCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 16));
 		textFieldCodiceFiscale.setForeground(new Color(0, 41, 82));
 		textFieldCodiceFiscale.setBackground(new Color(191, 215, 255));

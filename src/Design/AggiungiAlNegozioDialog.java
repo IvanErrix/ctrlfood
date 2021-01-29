@@ -111,7 +111,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		getContentPane().add(ButtonAnnulla);
 		
 		JComboBox comboBoxNome = new JComboBox();
-		comboBoxNome.setBorder(null);
+		comboBoxNome.setBorder(new RoundedCornerBorder());
 		comboBoxNome.setFocusable(false);
 		comboBoxNome.setForeground(new Color(0,41,82));
 		comboBoxNome.setBackground(new Color(191,215,255));
@@ -124,7 +124,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxTipologia.setForeground(new Color(0,41,82));
 		comboBoxTipologia.setFont(new Font("Impact", Font.PLAIN, 11));
 		comboBoxTipologia.setFocusable(false);
-		comboBoxTipologia.setBorder(null);
+		comboBoxTipologia.setBorder(new RoundedCornerBorder());
 		comboBoxTipologia.setBackground(new Color(191,215,255));
 		comboBoxTipologia.setBounds(208, 57, 190, 24);
 		getContentPane().add(comboBoxTipologia);
@@ -133,7 +133,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		JSpinner spinnerQuantita = new JSpinner(model);
 		spinnerQuantita.setFocusable(false);
 		spinnerQuantita.setOpaque(false);
-		spinnerQuantita.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82), new Color (0,41,82)));
+		spinnerQuantita.setBorder(new RoundedCornerBorder());
 		spinnerQuantita.getComponent(0).setBackground(new Color(191,215,255));
 		spinnerQuantita.getComponent(1).setBackground(new Color(191,215,255));
 		spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191,215,255));
