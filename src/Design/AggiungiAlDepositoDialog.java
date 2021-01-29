@@ -281,6 +281,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			}
 		});
 		comboBoxTipologia.setFocusable(false);
+//		comboBoxTipologia.getComponent(0).setBackground(new Color(0, 41, 82));
+//		comboBoxTipologia.getComponent(0).setBackground(new Color(191, 215, 255));
 		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati"}));
 		comboBoxTipologia.setBackground(new Color(191,215,255));
 		comboBoxTipologia.setForeground(new Color(0, 41, 82));
