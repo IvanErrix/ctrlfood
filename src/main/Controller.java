@@ -57,30 +57,30 @@ public class Controller {
 		UIManager.put("Button.background", new Color(191, 215, 255));
 		UIManager.put("Button.foreground", new Color(0, 41, 82));
 		
-//		Connessione dao = new Connessione();
+		Connessione dao = new Connessione();
 		
-//		if(dao.getConn() != null) {
-//			EventQueue.invokeLater(new Runnable() {
-//	    		public void run() {
-//	    			try {
-//	    				Controller ctrl= new Controller();
-//	    				System.out.println("Connessione avvenuta");
-//	    				FramePrincipale frameprincipale = new FramePrincipale(ctrl);
-//	    				frameprincipale.setVisible(true);
-//	    			} catch (Exception e) {
-//	    				e.printStackTrace();
-//	    			}
-//	    		}
-//	    	});
-//		}
-//		else {
-//			System.exit(0);
-//		}
+		if(dao.getConn() != null) {
+			EventQueue.invokeLater(new Runnable() {
+	    		public void run() {
+	    			try {
+	    				Controller ctrl= new Controller();
+	    				System.out.println("Connessione avvenuta");
+	    				FramePrincipale frameprincipale = new FramePrincipale(ctrl);
+	    				frameprincipale.setVisible(true);
+	    			} catch (Exception e) {
+	    				e.printStackTrace();
+	    			}
+	    		}
+	    	});
+		}
+		else {
+			System.exit(0);
+		}
 		
-		Controller ctrl= new Controller();
-		System.out.println("Connessione avvenuta");
-		FramePrincipale frameprincipale = new FramePrincipale(ctrl);
-		frameprincipale.setVisible(true);
+//		Controller ctrl= new Controller();
+//		System.out.println("Connessione avvenuta");
+//		FramePrincipale frameprincipale = new FramePrincipale(ctrl);
+//		frameprincipale.setVisible(true);
 	}
 	
 	//Funzioni per l'apertura dei panel
@@ -212,7 +212,7 @@ public class Controller {
 	}
 	
 	//Consente il movimento delle icone all'interno di AnimazionePanel
-	public void Movimento(JLabel label) {
+	public void MovimentoIcone(JLabel label) {
 		int velocita = 2;
     	if (label.getLocation().x>0 && label.getLocation().x<=690 && label.getLocation().y==490) {		//Sposta a sinistra
     		label.setLocation(label.getLocation().x-velocita, label.getLocation().y);

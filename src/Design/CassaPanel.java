@@ -85,7 +85,7 @@ public class CassaPanel extends JPanel {
 		JLabel ButtonListaProdotti = new JLabel("Lista dei prodotti nel carrello:");
 		ButtonListaProdotti.setFont(new Font("Impact", Font.PLAIN, 19));
 		ButtonListaProdotti.setForeground(new Color(0, 41, 82));
-		ButtonListaProdotti.setBounds(30, 35, 239, 32);
+		ButtonListaProdotti.setBounds(40, 35, 239, 32);
 		add(ButtonListaProdotti);
 		
 		JButton ButtonPagaInContanti = new JButton("");

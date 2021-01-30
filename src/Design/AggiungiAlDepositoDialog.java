@@ -31,6 +31,8 @@ import javax.swing.ImageIcon;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.awt.event.KeyAdapter;
@@ -38,6 +40,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JSpinner;
+import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.SpinnerNumberModel;
 import javax.accessibility.AccessibleContext;
 import javax.swing.DefaultComboBoxModel;
@@ -164,8 +167,15 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c=e.getKeyChar();
-			    if(!(Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE || c==KeyEvent.VK_COMMA))
-			        e.consume();
+			    if (textFieldPrezzo.getText().length()<7) {
+					if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE
+							|| c == KeyEvent.VK_PERIOD))
+						e.consume();
+				}
+			    else {
+					if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+			    }
 			}
 		});
 		textFieldPrezzo.setFont(new Font("Impact", Font.PLAIN, 14));
@@ -335,6 +345,10 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				DecimalFormat df = new DecimalFormat("0.00");
+				String angleFormated = df.format(Double.parseDouble(textFieldPrezzo.getText()));
+				System.out.println(angleFormated);
 				if (comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
 					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {
@@ -375,25 +389,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(true);
 					}
 				}
-					//				else{
-					//					if(comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
-					//						String [] parti = datePickerScadenza.getJFormattedTextField().getValue().toString().split("-");
-					//						if(controllo se scadenza non è maggiore della data odierna && controllo se raccolta non è minore uguale della data odierna) {
-					//							setAlwaysOnTop(false);
-					//							JOptionPane.showMessageDialog(null, "INSERIRE DATA CORRETTA", "", JOptionPane.ERROR_MESSAGE);
-					//							setAlwaysOnTop(true);
-					//						}
-					//					}
-					//					else {
-					//						setAlwaysOnTop(false);
-					//						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
-					//						setAlwaysOnTop(true);
-					//						textFieldNome.setText("");
-					//						textFieldPrezzo.setText("");
-					//						spinnerQuantita.setValue(1);
-					//						LabelFoto.setText("");
-					//					}
-					//				}
+
 			}
 		});
 		ButtonAggiugni.setBounds(505, 441, 110, 24);

@@ -77,14 +77,14 @@ public class AnimazionePanel extends JPanel {
 		timer = new Timer(5, new ActionListener(){  
             @Override
             public void actionPerformed(ActionEvent e){
-            	ctrl.Movimento(banana);
-            	ctrl.Movimento(pera);
-            	ctrl.Movimento(uovo);
-            	ctrl.Movimento(caffe);
-            	ctrl.Movimento(latte);
-            	ctrl.Movimento(arancia);
-            	ctrl.Movimento(nutella);
-            	ctrl.Movimento(insalata);
+            	ctrl.MovimentoIcone(banana);
+            	ctrl.MovimentoIcone(pera);
+            	ctrl.MovimentoIcone(uovo);
+            	ctrl.MovimentoIcone(caffe);
+            	ctrl.MovimentoIcone(latte);
+            	ctrl.MovimentoIcone(arancia);
+            	ctrl.MovimentoIcone(nutella);
+            	ctrl.MovimentoIcone(insalata);
             }               
         });
 		timer.start();

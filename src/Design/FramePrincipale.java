@@ -21,6 +21,7 @@ public class FramePrincipale extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel PanelPrincipale;
+	private Boolean aperta = true;
 
 	public FramePrincipale(Controller ctrl) {
 		setUndecorated(true);
@@ -82,6 +83,7 @@ public class FramePrincipale extends JFrame {
 				ctrl.ApriDepositoPanel(ctrl, PanelCaricamento);
 				ctrl.CambiaIconaAiButton(new String("deposito"), LabelDeposito, LabelNegozio, LabelClienti, LabelCarrello, LabelCassa, 
 						ButtonDeposito, ButtonNegozio, ButtonClienti, ButtonCarrello, ButtonCassa);
+				aperta=false;
 			}
 		});
 		ButtonDeposito.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -100,6 +102,7 @@ public class FramePrincipale extends JFrame {
 				ctrl.ApriNegozioPanel(ctrl, PanelCaricamento);
 				ctrl.CambiaIconaAiButton(new String("negozio"), LabelDeposito, LabelNegozio, LabelClienti, LabelCarrello, LabelCassa, 
 						ButtonDeposito, ButtonNegozio, ButtonClienti, ButtonCarrello, ButtonCassa);
+				aperta=false;
 			}
 		});
 		ButtonNegozio.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -118,6 +121,7 @@ public class FramePrincipale extends JFrame {
 				ctrl.ApriClientiPanel(ctrl, PanelCaricamento);
 				ctrl.CambiaIconaAiButton(new String("clienti"), LabelDeposito, LabelNegozio, LabelClienti, LabelCarrello, LabelCassa, 
 						ButtonDeposito, ButtonNegozio, ButtonClienti, ButtonCarrello, ButtonCassa);
+				aperta=false;
 			}
 		});
 		ButtonClienti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -136,6 +140,7 @@ public class FramePrincipale extends JFrame {
 				ctrl.ApriCarrelloPanel(ctrl, PanelCaricamento);
 				ctrl.CambiaIconaAiButton(new String("carrello"), LabelDeposito, LabelNegozio, LabelClienti, LabelCarrello, LabelCassa, 
 						ButtonDeposito, ButtonNegozio, ButtonClienti, ButtonCarrello, ButtonCassa);
+				aperta=false;
 
 			}
 			
@@ -156,6 +161,7 @@ public class FramePrincipale extends JFrame {
 				ctrl.ApriCassaPanel(ctrl, PanelCaricamento);
 				ctrl.CambiaIconaAiButton(new String("cassa"), LabelDeposito, LabelNegozio, LabelClienti, LabelCarrello, LabelCassa, 
 						ButtonDeposito, ButtonNegozio, ButtonClienti, ButtonCarrello, ButtonCassa);
+				aperta=false;
 
 			}
 		});
@@ -222,9 +228,13 @@ public class FramePrincipale extends JFrame {
 		JButton ButtonHomepage = new JButton("");
 		ButtonHomepage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriAnimazionePanel(ctrl, PanelCaricamento);
-				ctrl.CambiaIconaAiButton(new String("homepage"), LabelDeposito, LabelNegozio, LabelClienti, LabelCarrello, LabelCassa, 
-						ButtonDeposito, ButtonNegozio, ButtonClienti, ButtonCarrello, ButtonCassa);
+				if (aperta==false) {
+					ctrl.ApriAnimazionePanel(ctrl, PanelCaricamento);
+					ctrl.CambiaIconaAiButton(new String("homepage"), LabelDeposito, LabelNegozio, LabelClienti,
+							LabelCarrello, LabelCassa, ButtonDeposito, ButtonNegozio, ButtonClienti, ButtonCarrello,
+							ButtonCassa);
+					aperta=true;
+				}
 			}
 		});
 		ButtonHomepage.setBorder(null);

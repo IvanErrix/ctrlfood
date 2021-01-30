@@ -20,6 +20,9 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
+
 import main.Controller;
 
 import java.awt.Cursor;
@@ -28,6 +31,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.Properties;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -42,6 +46,8 @@ public class PagamentoConCartaDialog extends JDialog {
 	private JTextField textFieldNumeroCartaFedelta;
 
 	public PagamentoConCartaDialog(Controller ctrl) {
+		
+		Date data_corrente = new Date();
 		
 		setAlwaysOnTop(true);
 		getContentPane().setBackground(new Color(0, 67, 137));
@@ -142,25 +148,19 @@ public class PagamentoConCartaDialog extends JDialog {
 		passwordFieldPin.setFont(new Font("Impact", Font.PLAIN, 15));
 		passwordFieldPin.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(passwordFieldPin);
-
 		
-		Properties p = new Properties();
-		UtilDateModel model = new UtilDateModel();
-		p.put("text.today", "Oggi");
-		p.put("text.month", "Mese");
-		p.put("text.year", "Anno");
-		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
-		JDatePickerImpl datePickerScadenza = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-		SpringLayout springLayout = (SpringLayout) datePickerScadenza.getLayout();
-		springLayout.putConstraint(SpringLayout.SOUTH, datePickerScadenza.getJFormattedTextField(), 0, SpringLayout.SOUTH, datePickerScadenza);
-		datePickerScadenza.getJFormattedTextField().setBorder(new RoundedCornerBorder());
-		datePickerScadenza.getJFormattedTextField().setForeground(new Color(0, 41, 82));
-		datePickerScadenza.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
-		datePickerScadenza.getJFormattedTextField().setBackground(new Color(191,215,255));
-		datePickerScadenza.setLocation(186, 140);
-		datePickerScadenza.setSize(267, 40);
-		datePickerScadenza.setVisible(true);
-		getContentPane().add(datePickerScadenza);
+		JDateChooser dateChooserMungitura = new JDateChooser();
+		JTextFieldDateEditor dateChooserEditorMungitura = ((JTextFieldDateEditor)dateChooserMungitura.getDateEditor());
+		dateChooserEditorMungitura.setBackground(new Color(191, 215, 255));
+		dateChooserEditorMungitura.setForeground(new Color(0, 41, 82));
+		dateChooserEditorMungitura.setBorder(new RoundedCornerBorder());
+		dateChooserEditorMungitura.setFont(new Font("Impact", Font.PLAIN, 12));
+		dateChooserMungitura.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		dateChooserMungitura.setMinSelectableDate(data_corrente);
+		dateChooserMungitura.setDateFormatString("dd-MM-yyyy");
+		dateChooserMungitura.setBounds(186, 140, 292, 30);
+		dateChooserMungitura.setVisible(true);
+		contentPane.add(dateChooserMungitura);
 
 		JButton ButtonPaga = new JButton("");
 		ButtonPaga.setBounds(345, 321, 110, 24);
@@ -178,7 +178,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") ||datePickerScadenza.getJFormattedTextField().getValue().equals("YYYY-MM-GG") ) {
+				if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") || dateChooserEditorMungitura.getText().length()==0 ) {
 					setAlwaysOnTop(false);
 					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
 					setAlwaysOnTop(true);
