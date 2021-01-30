@@ -52,8 +52,10 @@ public class Controller {
 		UIManager.put("OptionPane.messageFont",new Font("Impact", Font.PLAIN, 16));
 		UIManager.put("OptionPane.buttonFont",new Font("Impact", Font.PLAIN, 16));
 		UIManager.put("Panel.background", new Color(191, 215, 255));
-		UIManager.put("Button.background", new Color(0, 41, 82));
-		UIManager.put("Button.foreground", new Color(191, 215, 255));
+//		UIManager.put("Button.background", new Color(0, 41, 82));
+//		UIManager.put("Button.foreground", new Color(191, 215, 255));
+		UIManager.put("Button.background", new Color(191, 215, 255));
+		UIManager.put("Button.foreground", new Color(0, 41, 82));
 		
 //		Connessione dao = new Connessione();
 		

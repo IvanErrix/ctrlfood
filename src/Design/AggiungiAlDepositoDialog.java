@@ -32,6 +32,7 @@ import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JComboBox;
@@ -40,18 +41,24 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.accessibility.AccessibleContext;
 import javax.swing.DefaultComboBoxModel;
+
+import java.util.Date;
 import java.util.Properties;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
 
 public class AggiungiAlDepositoDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 
 	public AggiungiAlDepositoDialog(Controller ctrl) {
+		
+		 Date data_corrente = new Date();
+		
 		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(710, 518);
@@ -93,7 +100,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelQuantita.setBounds(106, 230, 68, 14);
 		getContentPane().add(LabelQuantita);
 		
-		JLabel LabelDataRaccolta = new JLabel("Data Raccolto");
+		JLabel LabelDataRaccolta = new JLabel("Data Raccolta");
 		LabelDataRaccolta.setVisible(true);
 		LabelDataRaccolta.setForeground(new Color(0, 41, 82));
 		LabelDataRaccolta.setFont(new Font("Impact", Font.PLAIN, 16));
@@ -184,70 +191,68 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		spinnerQuantita.setBounds(340, 219, 46, 25);
 		getContentPane().add(spinnerQuantita);
 		
-		Properties p = new Properties();
-		UtilDateModel model = new UtilDateModel();
-		UtilDateModel model2 = new UtilDateModel();
-		UtilDateModel model3 = new UtilDateModel();
-		UtilDateModel model4 = new UtilDateModel();
-		UtilDateModel model5 = new UtilDateModel();
-		p.put("text.today", "Oggi");
-		p.put("text.month", "Mese");
-		p.put("text.year", "Anno");
-		JDatePanelImpl datePanel = new JDatePanelImpl(model, p);
-		JDatePanelImpl datePanel2 = new JDatePanelImpl(model2, p);
-		JDatePanelImpl datePanel3 = new JDatePanelImpl(model3, p);
-		JDatePanelImpl datePanel4 = new JDatePanelImpl(model4, p);
-		JDatePanelImpl datePanel5 = new JDatePanelImpl(model5, p);
+		JDateChooser dateChooserScadenza = new JDateChooser();
+		JTextFieldDateEditor dateChooserEditorScadenza = ((JTextFieldDateEditor)dateChooserScadenza.getDateEditor());
+		dateChooserEditorScadenza.setBackground(new Color(191, 215, 255));
+		dateChooserEditorScadenza.setForeground(new Color(0, 41, 82));
+		dateChooserEditorScadenza.setBorder(new RoundedCornerBorder());
+		dateChooserEditorScadenza.setFont(new Font("Impact", Font.PLAIN, 12));
+		dateChooserScadenza.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		dateChooserScadenza.setMinSelectableDate(data_corrente);
+		dateChooserScadenza.setDateFormatString("dd-MM-yyyy");
+		dateChooserScadenza.setBounds(340, 172, 275, 25);
+		contentPane.add(dateChooserScadenza);
 		
-		JDatePickerImpl datePickerScadenza = new JDatePickerImpl(datePanel, new DateLabelFormatter());
-		datePickerScadenza.getJFormattedTextField().setBorder(new RoundedCornerBorder());
-		datePickerScadenza.getJFormattedTextField().setForeground(new Color(0,41,82));
-		datePickerScadenza.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
-		datePickerScadenza.getJFormattedTextField().setBackground(new Color(191,215,255));
-		datePickerScadenza.setLocation(340, 172);
-		datePickerScadenza.setSize(275, 35);
-		datePickerScadenza.setVisible(true);
-		getContentPane().add(datePickerScadenza);
+		JDateChooser dateChooserRaccolta = new JDateChooser();
+		JTextFieldDateEditor dateChooserEditorRaccolta = ((JTextFieldDateEditor)dateChooserRaccolta.getDateEditor());
+		dateChooserEditorRaccolta.setBackground(new Color(191, 215, 255));
+		dateChooserEditorRaccolta.setForeground(new Color(0, 41, 82));
+		dateChooserEditorRaccolta.setBorder(new RoundedCornerBorder());
+		dateChooserEditorRaccolta.setFont(new Font("Impact", Font.PLAIN, 12));
+		dateChooserRaccolta.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		dateChooserRaccolta.setMaxSelectableDate(data_corrente);
+		dateChooserRaccolta.setDateFormatString("dd-MM-yyyy");
+		dateChooserRaccolta.setBounds(340, 315, 275, 25);
+		contentPane.add(dateChooserRaccolta);
 		
-		JDatePickerImpl datePickerRaccolta = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
-		datePickerRaccolta.getJFormattedTextField().setBorder(new RoundedCornerBorder());
-		datePickerRaccolta.getJFormattedTextField().setForeground(new Color(0,41,82));
-		datePickerRaccolta.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
-		datePickerRaccolta.getJFormattedTextField().setBackground(new Color(191,215,255));
-		datePickerRaccolta.setLocation(340, 315);
-		datePickerRaccolta.setSize(275, 35);
-		datePickerRaccolta.setVisible(true);
-		getContentPane().add(datePickerRaccolta);
+		JDateChooser dateChooserProduzione = new JDateChooser();
+		JTextFieldDateEditor dateChooserEditorProduzione = ((JTextFieldDateEditor)dateChooserProduzione.getDateEditor());
+		dateChooserEditorProduzione.setBackground(new Color(191, 215, 255));
+		dateChooserEditorProduzione.setForeground(new Color(0, 41, 82));
+		dateChooserEditorProduzione.setBorder(new RoundedCornerBorder());
+		dateChooserEditorProduzione.setFont(new Font("Impact", Font.PLAIN, 12));
+		dateChooserProduzione.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		dateChooserProduzione.setMaxSelectableDate(data_corrente);
+		dateChooserProduzione.setDateFormatString("dd-MM-yyyy");
+		dateChooserProduzione.setBounds(340, 315, 275, 25);
+		dateChooserProduzione.setVisible(false);
+		contentPane.add(dateChooserProduzione);
 		
-		JDatePickerImpl datePickerProduzione = new JDatePickerImpl(datePanel3, new DateLabelFormatter());
-		datePickerProduzione.getJFormattedTextField().setBorder(new RoundedCornerBorder());
-		datePickerProduzione.getJFormattedTextField().setForeground(new Color(0,41,82));
-		datePickerProduzione.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
-		datePickerProduzione.getJFormattedTextField().setBackground(new Color(191,215,255));
-		datePickerProduzione.setLocation(340, 315);
-		datePickerProduzione.setSize(275, 35);
-		datePickerProduzione.setVisible(false);
-		getContentPane().add(datePickerProduzione);
+		JDateChooser dateChooserConfezionamento = new JDateChooser();
+		JTextFieldDateEditor dateChooserEditorConfezionamento = ((JTextFieldDateEditor)dateChooserConfezionamento.getDateEditor());
+		dateChooserEditorConfezionamento.setBackground(new Color(191, 215, 255));
+		dateChooserEditorConfezionamento.setForeground(new Color(0, 41, 82));
+		dateChooserEditorConfezionamento.setBorder(new RoundedCornerBorder());
+		dateChooserEditorConfezionamento.setFont(new Font("Impact", Font.PLAIN, 12));
+		dateChooserConfezionamento.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		dateChooserConfezionamento.setMaxSelectableDate(data_corrente);
+		dateChooserConfezionamento.setDateFormatString("dd-MM-yyyy");
+		dateChooserConfezionamento.setBounds(340, 315, 275, 25);
+		dateChooserConfezionamento.setVisible(false);
+		contentPane.add(dateChooserConfezionamento);
 		
-		JDatePickerImpl datePickerConfezionamento = new JDatePickerImpl(datePanel4, new DateLabelFormatter());
-		datePickerConfezionamento.getJFormattedTextField().setBorder(new RoundedCornerBorder());
-		datePickerConfezionamento.getJFormattedTextField().setForeground(new Color(0,41,82));
-		datePickerConfezionamento.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
-		datePickerConfezionamento.getJFormattedTextField().setBackground(new Color(191,215,255));
-		datePickerConfezionamento.setLocation(340, 315);
-		datePickerConfezionamento.setSize(275, 35);
-		datePickerConfezionamento.setVisible(false);
-		getContentPane().add(datePickerConfezionamento);
-		
-		JDatePickerImpl datePickerMungitura = new JDatePickerImpl(datePanel5, new DateLabelFormatter());
-		datePickerMungitura.getJFormattedTextField().setBorder(new RoundedCornerBorder());
-		datePickerMungitura.getJFormattedTextField().setForeground(new Color(0,41,82));
-		datePickerMungitura.getJFormattedTextField().setFont(new Font("Impact", Font.PLAIN, 14));
-		datePickerMungitura.getJFormattedTextField().setBackground(new Color(191,215,255));
-		datePickerMungitura.setLocation(340, 363);
-		datePickerMungitura.setSize(275, 35);
-		datePickerMungitura.setVisible(false);
-		getContentPane().add(datePickerMungitura);
+		JDateChooser dateChooserMungitura = new JDateChooser();
+		JTextFieldDateEditor dateChooserEditorMungitura = ((JTextFieldDateEditor)dateChooserMungitura.getDateEditor());
+		dateChooserEditorMungitura.setBackground(new Color(191, 215, 255));
+		dateChooserEditorMungitura.setForeground(new Color(0, 41, 82));
+		dateChooserEditorMungitura.setBorder(new RoundedCornerBorder());
+		dateChooserEditorMungitura.setFont(new Font("Impact", Font.PLAIN, 12));
+		dateChooserMungitura.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		dateChooserMungitura.setMaxSelectableDate(data_corrente);
+		dateChooserMungitura.setDateFormatString("dd-MM-yyyy");
+		dateChooserMungitura.setBounds(340, 363, 275, 25);
+		dateChooserMungitura.setVisible(false);
+		contentPane.add(dateChooserMungitura);
 		
 		JComboBox comboBoxTipologia = new JComboBox();
 		comboBoxTipologia.setOpaque(false);
@@ -258,37 +263,37 @@ public class AggiungiAlDepositoDialog extends JDialog {
 					LabelDataRaccolta.setVisible(true);
 					LabelDataMungitura.setVisible(false);
 					LabelDataProduzione.setVisible(false);
-					datePickerConfezionamento.setVisible(false);
-					datePickerRaccolta.setVisible(true);
-					datePickerMungitura.setVisible(false);
-					datePickerProduzione.setVisible(false);
+					dateChooserConfezionamento.setVisible(false);
+					dateChooserRaccolta.setVisible(true);
+					dateChooserMungitura.setVisible(false);
+					dateChooserProduzione.setVisible(false);
 				}
 				else if(comboBoxTipologia.getSelectedItem()=="Latticini") {
 					LabelDataConfezionamento.setVisible(false);
 					LabelDataRaccolta.setVisible(false);
 					LabelDataMungitura.setVisible(true);
 					LabelDataProduzione.setVisible(true);
-					datePickerConfezionamento.setVisible(false);
-					datePickerRaccolta.setVisible(false);
-					datePickerMungitura.setVisible(true);
-					datePickerProduzione.setVisible(true);
+					dateChooserConfezionamento.setVisible(false);
+					dateChooserRaccolta.setVisible(false);
+					dateChooserMungitura.setVisible(true);
+					dateChooserProduzione.setVisible(true);
 				}
 				else if(comboBoxTipologia.getSelectedItem()=="Confezionati") {
 					LabelDataConfezionamento.setVisible(true);
 					LabelDataRaccolta.setVisible(false);
 					LabelDataMungitura.setVisible(false);
 					LabelDataProduzione.setVisible(false);
-					datePickerConfezionamento.setVisible(true);
-					datePickerRaccolta.setVisible(false);
-					datePickerMungitura.setVisible(false);
-					datePickerProduzione.setVisible(false);
+					dateChooserConfezionamento.setVisible(true);
+					dateChooserRaccolta.setVisible(false);
+					dateChooserMungitura.setVisible(false);
+					dateChooserProduzione.setVisible(false);
 				}
 			}
 		});
 		comboBoxTipologia.setFocusable(false);
 		AccessibleContext ac = comboBoxTipologia.getAccessibleContext();
 		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
-		JList list = pop.getList();
+		JList<?> list = pop.getList();
 		list.setSelectionForeground(new Color(191, 215, 255));
 		list.setSelectionBackground(new Color(0, 41, 82));
 		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati"}));
@@ -330,47 +335,65 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldNome.getText().length()==0 || textFieldPrezzo.getText().length()==0) {
-					setAlwaysOnTop(false);
-					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
-					setAlwaysOnTop(true);
-				}
-				else {
-					try {
-						String [] parti = textFieldPrezzo.getText().split(",");
-						if(parti[1].length()>2) {
-							setAlwaysOnTop(false);
-							JOptionPane.showMessageDialog(null, "INSERIRE PREZZO CORRETTO", "", JOptionPane.WARNING_MESSAGE);
-							setAlwaysOnTop(true);
-						}
-						else {
-							System.out.println("Tutto OK");
-						}
-					} catch (Exception e2) {
-						System.out.println("Senza punto");
+				if (comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
+					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
+							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {
+						setAlwaysOnTop(false);
+						JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.ERROR_MESSAGE);
+						setAlwaysOnTop(true);
 					}
-
+					else {
+						setAlwaysOnTop(false);
+						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+						setAlwaysOnTop(true);
+					}
 				}
-//				else{
-//					if(comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
-//						String [] parti = datePickerScadenza.getJFormattedTextField().getValue().toString().split("-");
-//						if(controllo se scadenza non è maggiore della data odierna && controllo se raccolta non è minore uguale della data odierna) {
-//							setAlwaysOnTop(false);
-//							JOptionPane.showMessageDialog(null, "INSERIRE DATA CORRETTA", "", JOptionPane.ERROR_MESSAGE);
-//							setAlwaysOnTop(true);
-//						}
-//					}
-//					else {
-//						setAlwaysOnTop(false);
-//						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
-//						setAlwaysOnTop(true);
-//						textFieldNome.setText("");
-//						textFieldPrezzo.setText("");
-//						spinnerQuantita.setValue(1);
-//						LabelFoto.setText("");
-//					}
-//				}
-				
+				else if(comboBoxTipologia.getSelectedItem()=="Latticini") {
+					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
+							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 
+							|| dateChooserEditorMungitura.getText().length() == 0) {
+						setAlwaysOnTop(false);
+						JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.ERROR_MESSAGE);
+						setAlwaysOnTop(true);
+					}
+					else {
+						setAlwaysOnTop(false);
+						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+						setAlwaysOnTop(true);
+					}
+				}
+				else if(comboBoxTipologia.getSelectedItem()=="Confezionati") {
+					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
+							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorConfezionamento.getText().length() == 0) {
+						setAlwaysOnTop(false);
+						JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.ERROR_MESSAGE);
+						setAlwaysOnTop(true);
+					}
+					else {
+						setAlwaysOnTop(false);
+						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+						setAlwaysOnTop(true);
+					}
+				}
+					//				else{
+					//					if(comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
+					//						String [] parti = datePickerScadenza.getJFormattedTextField().getValue().toString().split("-");
+					//						if(controllo se scadenza non è maggiore della data odierna && controllo se raccolta non è minore uguale della data odierna) {
+					//							setAlwaysOnTop(false);
+					//							JOptionPane.showMessageDialog(null, "INSERIRE DATA CORRETTA", "", JOptionPane.ERROR_MESSAGE);
+					//							setAlwaysOnTop(true);
+					//						}
+					//					}
+					//					else {
+					//						setAlwaysOnTop(false);
+					//						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+					//						setAlwaysOnTop(true);
+					//						textFieldNome.setText("");
+					//						textFieldPrezzo.setText("");
+					//						spinnerQuantita.setValue(1);
+					//						LabelFoto.setText("");
+					//					}
+					//				}
 			}
 		});
 		ButtonAggiugni.setBounds(505, 441, 110, 24);
@@ -397,11 +420,11 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				textFieldPrezzo.setText("");
 				spinnerQuantita.setValue(1);
 				textFieldFoto.setText("");
-				datePickerScadenza.getJFormattedTextField().setText("");
-				datePickerRaccolta.getJFormattedTextField().setText("");
-				datePickerProduzione.getJFormattedTextField().setText("");
-				datePickerMungitura.getJFormattedTextField().setText("");
-				datePickerConfezionamento.getJFormattedTextField().setText("");
+				dateChooserScadenza.setDate(null);
+				dateChooserRaccolta.setDate(null);
+				dateChooserProduzione.setDate(null);
+				dateChooserMungitura.setDate(null);
+				dateChooserConfezionamento.setDate(null);
 			}
 		});
 		ButtonRimuoviTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
@@ -448,10 +471,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		});
 		ButtonAggiungiFoto.setBounds(595, 266, 20, 20);
 		getContentPane().add(ButtonAggiungiFoto);
-		
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(223, 274, 70, 20);
-		contentPane.add(dateChooser);
 		
 		JLabel LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/Sfondo.png")));
