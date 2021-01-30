@@ -9,15 +9,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.accessibility.AccessibleContext;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EtchedBorder;
+import javax.swing.plaf.basic.BasicComboPopup;
 
 import main.Controller;
 
@@ -111,6 +114,11 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		getContentPane().add(ButtonAnnulla);
 		
 		JComboBox comboBoxNome = new JComboBox();
+		AccessibleContext ac = comboBoxNome.getAccessibleContext();
+		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
+		JList list = pop.getList();
+		list.setSelectionForeground(new Color(191, 215, 255));
+		list.setSelectionBackground(new Color(0, 41, 82));
 		comboBoxNome.setBorder(new RoundedCornerBorder());
 		comboBoxNome.setFocusable(false);
 		comboBoxNome.setForeground(new Color(0,41,82));
@@ -119,6 +127,11 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		getContentPane().add(comboBoxNome);
 		
 		JComboBox comboBoxTipologia = new JComboBox();
+		AccessibleContext ac2 = comboBoxTipologia.getAccessibleContext();
+		BasicComboPopup pop2 = (BasicComboPopup) ac2.getAccessibleChild(0);
+		JList list2 = pop2.getList();
+		list2.setSelectionForeground(new Color(191, 215, 255));
+		list2.setSelectionBackground(new Color(0, 41, 82));
 		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati"}));
 		comboBoxTipologia.setMaximumRowCount(3);
 		comboBoxTipologia.setForeground(new Color(0,41,82));

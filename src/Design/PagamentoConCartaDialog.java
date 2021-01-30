@@ -42,8 +42,8 @@ public class PagamentoConCartaDialog extends JDialog {
 	private JTextField textFieldNumeroCartaFedelta;
 
 	public PagamentoConCartaDialog(Controller ctrl) {
+		
 		setAlwaysOnTop(true);
-
 		getContentPane().setBackground(new Color(0, 67, 137));
 		setUndecorated(true);
 		setSize(563, 414);

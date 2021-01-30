@@ -6,6 +6,7 @@ import javax.swing.JDialog;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -14,6 +15,7 @@ import java.awt.Toolkit;
 
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
+import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.text.MaskFormatter;
 
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -36,11 +38,14 @@ import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.accessibility.AccessibleContext;
 import javax.swing.DefaultComboBoxModel;
 import java.util.Properties;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.border.EmptyBorder;
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 
 public class AggiungiAlDepositoDialog extends JDialog {
 
@@ -152,7 +157,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c=e.getKeyChar();
-			    if(!(Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE || c==KeyEvent.VK_PERIOD))
+			    if(!(Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE || c==KeyEvent.VK_COMMA))
 			        e.consume();
 			}
 		});
@@ -281,8 +286,11 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			}
 		});
 		comboBoxTipologia.setFocusable(false);
-//		comboBoxTipologia.getComponent(0).setBackground(new Color(0, 41, 82));
-//		comboBoxTipologia.getComponent(0).setBackground(new Color(191, 215, 255));
+		AccessibleContext ac = comboBoxTipologia.getAccessibleContext();
+		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
+		JList list = pop.getList();
+		list.setSelectionForeground(new Color(191, 215, 255));
+		list.setSelectionBackground(new Color(0, 41, 82));
 		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati"}));
 		comboBoxTipologia.setBackground(new Color(191,215,255));
 		comboBoxTipologia.setForeground(new Color(0, 41, 82));
@@ -322,30 +330,46 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldNome.getText().length()==0 || textFieldPrezzo.getText().length()==0 ) {
+				if(textFieldNome.getText().length()==0 || textFieldPrezzo.getText().length()==0) {
 					setAlwaysOnTop(false);
 					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
 					setAlwaysOnTop(true);
 				}
-				else{
-					if(comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
-						String [] parti = datePickerScadenza.getJFormattedTextField().getValue().toString().split("-");
-						if(Integer.parseInt(parti[0])<2021 || Integer.parseInt(parti[1])>12 || Integer.parseInt(parti[1])==0 || Integer.parseInt(parti[2])>31 || Integer.parseInt(parti[2])==0) {
+				else {
+					try {
+						String [] parti = textFieldPrezzo.getText().split(",");
+						if(parti[1].length()>2) {
 							setAlwaysOnTop(false);
-							JOptionPane.showMessageDialog(null, "INSERIRE DATA CORRETTA", "", JOptionPane.ERROR_MESSAGE);
+							JOptionPane.showMessageDialog(null, "INSERIRE PREZZO CORRETTO", "", JOptionPane.WARNING_MESSAGE);
 							setAlwaysOnTop(true);
 						}
 						else {
-							setAlwaysOnTop(false);
-							JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
-							setAlwaysOnTop(true);
-							textFieldNome.setText("");
-							textFieldPrezzo.setText("");
-							spinnerQuantita.setValue(1);
-							LabelFoto.setText("");
+							System.out.println("Tutto OK");
 						}
+					} catch (Exception e2) {
+						System.out.println("Senza punto");
 					}
+
 				}
+//				else{
+//					if(comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
+//						String [] parti = datePickerScadenza.getJFormattedTextField().getValue().toString().split("-");
+//						if(controllo se scadenza non è maggiore della data odierna && controllo se raccolta non è minore uguale della data odierna) {
+//							setAlwaysOnTop(false);
+//							JOptionPane.showMessageDialog(null, "INSERIRE DATA CORRETTA", "", JOptionPane.ERROR_MESSAGE);
+//							setAlwaysOnTop(true);
+//						}
+//					}
+//					else {
+//						setAlwaysOnTop(false);
+//						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+//						setAlwaysOnTop(true);
+//						textFieldNome.setText("");
+//						textFieldPrezzo.setText("");
+//						spinnerQuantita.setValue(1);
+//						LabelFoto.setText("");
+//					}
+//				}
 				
 			}
 		});
@@ -416,11 +440,18 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		JButton ButtonAggiungiFoto = new JButton("...");
 		ButtonAggiungiFoto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setAlwaysOnTop(false);
 				ctrl.CaricaFileJPGDaPC(textFieldFoto);
+				setAlwaysOnTop(true);
+
 			}
 		});
 		ButtonAggiungiFoto.setBounds(595, 266, 20, 20);
 		getContentPane().add(ButtonAggiungiFoto);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(223, 274, 70, 20);
+		contentPane.add(dateChooser);
 		
 		JLabel LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/Sfondo.png")));

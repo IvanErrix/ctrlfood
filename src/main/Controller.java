@@ -55,25 +55,30 @@ public class Controller {
 		UIManager.put("Button.background", new Color(0, 41, 82));
 		UIManager.put("Button.foreground", new Color(191, 215, 255));
 		
-		Connessione dao = new Connessione();
+//		Connessione dao = new Connessione();
 		
-		if(dao.getConn() != null) {
-			EventQueue.invokeLater(new Runnable() {
-	    		public void run() {
-	    			try {
-	    				Controller ctrl= new Controller();
-	    				System.out.println("Connessione avvenuta");
-	    				FramePrincipale frameprincipale = new FramePrincipale(ctrl);
-	    				frameprincipale.setVisible(true);
-	    			} catch (Exception e) {
-	    				e.printStackTrace();
-	    			}
-	    		}
-	    	});
-		}
-		else {
-			System.exit(0);
-		}
+//		if(dao.getConn() != null) {
+//			EventQueue.invokeLater(new Runnable() {
+//	    		public void run() {
+//	    			try {
+//	    				Controller ctrl= new Controller();
+//	    				System.out.println("Connessione avvenuta");
+//	    				FramePrincipale frameprincipale = new FramePrincipale(ctrl);
+//	    				frameprincipale.setVisible(true);
+//	    			} catch (Exception e) {
+//	    				e.printStackTrace();
+//	    			}
+//	    		}
+//	    	});
+//		}
+//		else {
+//			System.exit(0);
+//		}
+		
+		Controller ctrl= new Controller();
+		System.out.println("Connessione avvenuta");
+		FramePrincipale frameprincipale = new FramePrincipale(ctrl);
+		frameprincipale.setVisible(true);
 	}
 	
 	//Funzioni per l'apertura dei panel
