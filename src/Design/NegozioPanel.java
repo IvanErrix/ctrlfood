@@ -213,13 +213,12 @@ public class NegozioPanel extends JPanel {
 		ButtonSposta.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSposta.png")));
 		ButtonSposta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					model.removeRow(table.getSelectedRow());
-					JOptionPane.showMessageDialog(null, "PRODOTTO SPOSTANTO IN DEPOSITO", "", JOptionPane.INFORMATION_MESSAGE);
-				} catch (Exception e2) {
+				if(table.getSelectionModel().isSelectionEmpty() == false) {
+					ctrl.ApriSpostaDalNegozioDialog();
+				}
+				else{
 					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
 				}
-
 			}
 		});
 		ButtonSposta.setBounds(550, 28, 90, 22);

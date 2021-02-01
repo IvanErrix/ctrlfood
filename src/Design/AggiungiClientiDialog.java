@@ -137,6 +137,13 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldCodiceFiscale.setBounds(244, 188, 249, 30);
 		textFieldCodiceFiscale.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(textFieldCodiceFiscale);
+		
+		JCheckBox CheckBoxCartaFedelta = new JCheckBox("");
+		CheckBoxCartaFedelta.setForeground(new Color(0, 41, 82));
+		CheckBoxCartaFedelta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		CheckBoxCartaFedelta.setBackground(new Color(191, 215, 255));
+		CheckBoxCartaFedelta.setBounds(244, 262, 21, 23);
+		getContentPane().add(CheckBoxCartaFedelta);
 
 		JButton ButtonAggiugni = new JButton("");
 		ButtonAggiugni.addMouseListener(new MouseAdapter() {
@@ -166,6 +173,7 @@ public class AggiungiClientiDialog extends JDialog {
 					setAlwaysOnTop(false);
 					JOptionPane.showMessageDialog(null, "CLIENTE AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 					setAlwaysOnTop(true);
+					ctrl.RimuoviTutto(textFieldNome, textFieldCognome, textFieldCodiceFiscale, CheckBoxCartaFedelta);
 				}
 			}
 		});
@@ -197,13 +205,6 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonAnnulla.setBounds(64, 344, 110, 24);
 		getContentPane().add(ButtonAnnulla);
 
-		JCheckBox CheckBoxCartaFedelta = new JCheckBox("");
-		CheckBoxCartaFedelta.setForeground(new Color(0, 41, 82));
-		CheckBoxCartaFedelta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		CheckBoxCartaFedelta.setBackground(new Color(191, 215, 255));
-		CheckBoxCartaFedelta.setBounds(244, 262, 21, 23);
-		getContentPane().add(CheckBoxCartaFedelta);
-
 		JLabel LabelCartaFedelta = new JLabel("Carta Fedelt\u00E0");
 		LabelCartaFedelta.setForeground(new Color(0, 41, 82));
 		LabelCartaFedelta.setFont(new Font("Impact", Font.PLAIN, 16));
@@ -227,10 +228,7 @@ public class AggiungiClientiDialog extends JDialog {
 				setAlwaysOnTop(false);
 				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
 				setAlwaysOnTop(true);
-				textFieldNome.setText("");
-				textFieldCognome.setText("");
-				textFieldCodiceFiscale.setText("");
-				CheckBoxCartaFedelta.setSelected(false);
+				ctrl.RimuoviTutto(textFieldNome, textFieldCognome, textFieldCodiceFiscale, CheckBoxCartaFedelta);
 			}
 		});
 		ButtonCancellaTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));

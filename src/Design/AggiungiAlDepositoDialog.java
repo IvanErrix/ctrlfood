@@ -5,6 +5,8 @@ import javax.swing.JDialog;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -16,6 +18,7 @@ import java.awt.Toolkit;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicComboPopup;
+import javax.swing.plaf.metal.MetalComboBoxButton;
 import javax.swing.text.MaskFormatter;
 
 import org.jdatepicker.impl.JDatePanelImpl;
@@ -39,6 +42,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.JComponent.AccessibleJComponent;
 import javax.swing.JSpinner;
 import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.SpinnerNumberModel;
@@ -305,7 +309,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
 		JList<?> list = pop.getList();
 		list.setSelectionForeground(new Color(191, 215, 255));
-		list.setSelectionBackground(new Color(0, 41, 82));
+		list.setSelectionBackground(new Color(0, 41, 82));	
 		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati"}));
 		comboBoxTipologia.setBackground(new Color(191,215,255));
 		comboBoxTipologia.setForeground(new Color(0, 41, 82));
@@ -346,9 +350,9 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				DecimalFormat df = new DecimalFormat("0.00");
-				String angleFormated = df.format(Double.parseDouble(textFieldPrezzo.getText()));
-				System.out.println(angleFormated);
+//				DecimalFormat df = new DecimalFormat("0.00");
+//				String angleFormated = df.format(Double.parseDouble(textFieldPrezzo.getText()));
+//				System.out.println(angleFormated);
 				if (comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
 					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {
@@ -360,6 +364,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(false);
 						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 						setAlwaysOnTop(true);
+						ctrl.RimuoviTutto(textFieldNome, textFieldPrezzo, spinnerQuantita, textFieldFoto, dateChooserScadenza, dateChooserRaccolta, 
+								dateChooserProduzione, dateChooserMungitura, dateChooserConfezionamento);
 					}
 				}
 				else if(comboBoxTipologia.getSelectedItem()=="Latticini") {
@@ -374,6 +380,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(false);
 						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 						setAlwaysOnTop(true);
+						ctrl.RimuoviTutto(textFieldNome, textFieldPrezzo, spinnerQuantita, textFieldFoto, dateChooserScadenza, dateChooserRaccolta, 
+								dateChooserProduzione, dateChooserMungitura, dateChooserConfezionamento);
 					}
 				}
 				else if(comboBoxTipologia.getSelectedItem()=="Confezionati") {
@@ -387,6 +395,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(false);
 						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 						setAlwaysOnTop(true);
+						ctrl.RimuoviTutto(textFieldNome, textFieldPrezzo, spinnerQuantita, textFieldFoto, dateChooserScadenza, dateChooserRaccolta,
+								dateChooserProduzione, dateChooserMungitura, dateChooserConfezionamento);
 					}
 				}
 
@@ -412,15 +422,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				setAlwaysOnTop(false);
 				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
 				setAlwaysOnTop(true);
-				textFieldNome.setText("");
-				textFieldPrezzo.setText("");
-				spinnerQuantita.setValue(1);
-				textFieldFoto.setText("");
-				dateChooserScadenza.setDate(null);
-				dateChooserRaccolta.setDate(null);
-				dateChooserProduzione.setDate(null);
-				dateChooserMungitura.setDate(null);
-				dateChooserConfezionamento.setDate(null);
+				ctrl.RimuoviTutto(textFieldNome, textFieldPrezzo, spinnerQuantita, textFieldFoto, dateChooserScadenza, dateChooserRaccolta, 
+						dateChooserProduzione, dateChooserMungitura, dateChooserConfezionamento);
 			}
 		});
 		ButtonRimuoviTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));

@@ -9,17 +9,22 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
+
+import com.toedter.calendar.JDateChooser;
 
 import Dao.Connessione;
 import Design.AggiungiAlCarrelloDialog;
@@ -35,6 +40,7 @@ import Design.FramePrincipale;
 import Design.LoadingPanel;
 import Design.NegozioPanel;
 import Design.PagamentoConCartaDialog;
+import Design.SpostaDalNegozioDialog;
 
 public class Controller {
 	
@@ -166,6 +172,11 @@ public class Controller {
 	
 	public void ApriPagamentoConCartaDialog(Controller ctrl) {
 		PagamentoConCartaDialog dialog = new PagamentoConCartaDialog(ctrl);
+		dialog.setVisible(true);
+	}
+	
+	public void ApriSpostaDalNegozioDialog() {
+		SpostaDalNegozioDialog dialog = new SpostaDalNegozioDialog();
 		dialog.setVisible(true);
 	}
 	
@@ -303,5 +314,25 @@ public class Controller {
 			ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CarrelloWhite.png")));
 			ButtonCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CassaWhite.png")));
 		}
+	}
+	
+	public void RimuoviTutto(JTextField textFieldNome, JTextField textFieldPrezzo, JSpinner spinnerQuantita, JTextField textFieldFoto, JDateChooser dateChooserScadenza, 
+			JDateChooser dateChooserRaccolta, JDateChooser dateChooserProduzione, JDateChooser dateChooserMungitura, JDateChooser dateChooserConfezionamento) {
+		textFieldNome.setText("");
+		textFieldPrezzo.setText("");
+		spinnerQuantita.setValue(1);
+		textFieldFoto.setText("");
+		dateChooserScadenza.setDate(null);
+		dateChooserRaccolta.setDate(null);
+		dateChooserProduzione.setDate(null);
+		dateChooserMungitura.setDate(null);
+		dateChooserConfezionamento.setDate(null);
+	}
+	
+	public void RimuoviTutto(JTextField textFieldNome, JTextField textFieldCognome, JTextField textFieldCodiceFiscale, JCheckBox CheckBoxCartaFedelta) {
+		textFieldNome.setText("");
+		textFieldCognome.setText("");
+		textFieldCodiceFiscale.setText("");
+		CheckBoxCartaFedelta.setSelected(false);
 	}
 }
