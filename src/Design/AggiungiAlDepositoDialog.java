@@ -3,27 +3,16 @@ package Design;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
-
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Toolkit;
 
 import javax.swing.JTextField;
-import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicComboPopup;
-import javax.swing.plaf.metal.MetalComboBoxButton;
-import javax.swing.text.MaskFormatter;
-
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
+import Main.Controller;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -32,32 +21,19 @@ import javax.swing.ImageIcon;
 import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.math.BigDecimal;
-import java.sql.SQLException;
-import java.text.DecimalFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JComponent.AccessibleJComponent;
 import javax.swing.JSpinner;
-import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.SpinnerNumberModel;
 import javax.accessibility.AccessibleContext;
 import javax.swing.DefaultComboBoxModel;
 
 import java.util.Date;
-import java.util.Properties;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import javax.swing.border.EmptyBorder;
-import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
-
-import Main.Controller;
 
 public class AggiungiAlDepositoDialog extends JDialog {
 
@@ -150,7 +126,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(LabelDataDeposizione);
 		
 		JTextField textFieldNome = new JTextField(20);
-		textFieldNome.addFocusListener(new FocusAdapter() {
+ 		textFieldNome.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
 				textFieldNome.setText(textFieldNome.getText().toUpperCase());
@@ -413,7 +389,10 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setContentAreaFilled(false);
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e)  {		
+			public void actionPerformed(ActionEvent e) {		
+//				DecimalFormat df = new DecimalFormat("0.00");
+//				String angleFormated = df.format(Double.parseDouble(textFieldPrezzo.getText()));
+//				System.out.println(angleFormated);
 				if (comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
 					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {
@@ -422,17 +401,11 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(true);
 					}
 					else {
-						try {
-							ctrl.InserisciProdottoDeposito(textFieldNome.getText(), textFieldPrezzo, spinnerQuantita, dateChooserEditorScadenza, dateChooserEditorRaccolta);
-							setAlwaysOnTop(false);
-							JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
-							setAlwaysOnTop(true);
-							ctrl.RimuoviTutto(textFieldNome, textFieldPrezzo, spinnerQuantita, textFieldFoto, dateChooserScadenza, dateChooserRaccolta, 
-									dateChooserProduzione, dateChooserMungitura, dateChooserConfezionamento, dateChooserDeposizione);
-						} catch (NumberFormatException e1) {
-							e1.printStackTrace();
-							System.out.println("errore");
-						}
+						setAlwaysOnTop(false);
+						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+						setAlwaysOnTop(true);
+						ctrl.RimuoviTutto(textFieldNome, textFieldPrezzo, spinnerQuantita, textFieldFoto, dateChooserScadenza, dateChooserRaccolta, 
+								dateChooserProduzione, dateChooserMungitura, dateChooserConfezionamento, dateChooserDeposizione);
 					}
 				}
 				else if(comboBoxTipologia.getSelectedItem()=="Latticini") {

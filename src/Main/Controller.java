@@ -45,6 +45,8 @@ import Design.ClientiPanel;
 import Design.DepositoPanel;
 import Design.FramePrincipale;
 import Design.LoadingPanel;
+import Design.LoginAmministratoreDialog;
+import Design.LoginDialog;
 import Design.NegozioPanel;
 import Design.PagamentoConCartaDialog;
 import Design.SpostaDalNegozioDialog;
@@ -79,8 +81,8 @@ public class Controller {
 				try {
 					Controller ctrl= new Controller();
 					System.out.println("Connessione avvenuta");
-					FramePrincipale frameprincipale = new FramePrincipale(ctrl);
-					frameprincipale.setVisible(true);
+					LoginDialog login = new LoginDialog(ctrl);
+					login.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -103,6 +105,11 @@ public class Controller {
 	
 	public static Connessione getConnessione() {
 		return connessione;
+	}
+	
+	public void ApriFramePrincipale(Controller ctrl) {
+		FramePrincipale frame = new FramePrincipale(ctrl);
+		frame.setVisible(true);
 	}
 	
 	//Funzioni per l'apertura dei panel
@@ -166,6 +173,12 @@ public class Controller {
 	}
 	
 	//Funzioni per l'apertura delle dialog
+	
+	public void ApriLoginAmministratoreDialog(Controller ctrl) {
+		LoginAmministratoreDialog dialog = new LoginAmministratoreDialog(ctrl);
+		dialog.setVisible(true);
+	}
+	
 	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
 		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
 		dialog.setVisible(true);
