@@ -33,6 +33,7 @@ import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -412,10 +413,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setContentAreaFilled(false);
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {		
-//				DecimalFormat df = new DecimalFormat("0.00");
-//				String angleFormated = df.format(Double.parseDouble(textFieldPrezzo.getText()));
-//				System.out.println(angleFormated);
+			public void actionPerformed(ActionEvent e)  {		
 				if (comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
 					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {
@@ -424,11 +422,17 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(true);
 					}
 					else {
-						setAlwaysOnTop(false);
-						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
-						setAlwaysOnTop(true);
-						ctrl.RimuoviTutto(textFieldNome, textFieldPrezzo, spinnerQuantita, textFieldFoto, dateChooserScadenza, dateChooserRaccolta, 
-								dateChooserProduzione, dateChooserMungitura, dateChooserConfezionamento, dateChooserDeposizione);
+						try {
+							ctrl.InserisciProdottoDeposito(textFieldNome.getText(), textFieldPrezzo, spinnerQuantita, dateChooserEditorScadenza, dateChooserEditorRaccolta);
+							setAlwaysOnTop(false);
+							JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+							setAlwaysOnTop(true);
+							ctrl.RimuoviTutto(textFieldNome, textFieldPrezzo, spinnerQuantita, textFieldFoto, dateChooserScadenza, dateChooserRaccolta, 
+									dateChooserProduzione, dateChooserMungitura, dateChooserConfezionamento, dateChooserDeposizione);
+						} catch (NumberFormatException e1) {
+							e1.printStackTrace();
+							System.out.println("errore");
+						}
 					}
 				}
 				else if(comboBoxTipologia.getSelectedItem()=="Latticini") {

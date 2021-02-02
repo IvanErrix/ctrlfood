@@ -8,6 +8,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.text.DecimalFormat;
 
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
@@ -25,8 +27,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
 import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
 
+import DAO.CarrelloDAO;
+import DAO.ClienteDAO;
 import DAO.Connessione;
+import DAO.DepositoDAO;
+import DAO.NegozioDAO;
 import Design.AggiungiAlCarrelloDialog;
 import Design.AggiungiAlDepositoDialog;
 import Design.AggiungiAlNegozioDialog;
@@ -44,6 +51,12 @@ import Design.SpostaDalNegozioDialog;
 
 public class Controller {
 	
+	private static Connessione connessione;
+	private static CarrelloDAO carrellodao;
+	private static ClienteDAO clientedao;
+	private static DepositoDAO depositodao;
+	private static NegozioDAO negoziodao;
+	
 	/*Prima di tutto il programma controlla la connessione. See la connessione è assente
 	 *Se invece la connessione è presente, la funzione main fa partire la prima schermata
 	 *del programma, ovvero FramePrincipale
@@ -58,35 +71,38 @@ public class Controller {
 		UIManager.put("OptionPane.messageFont",new Font("Impact", Font.PLAIN, 16));
 		UIManager.put("OptionPane.buttonFont",new Font("Impact", Font.PLAIN, 16));
 		UIManager.put("Panel.background", new Color(191, 215, 255));
-//		UIManager.put("Button.background", new Color(0, 41, 82));
-//		UIManager.put("Button.foreground", new Color(191, 215, 255));
 		UIManager.put("Button.background", new Color(191, 215, 255));
 		UIManager.put("Button.foreground", new Color(0, 41, 82));
 		
-		Connessione dao = new Connessione();
-		
-		if(dao.getConn() != null) {
-			EventQueue.invokeLater(new Runnable() {
-	    		public void run() {
-	    			try {
-	    				Controller ctrl= new Controller();
-	    				System.out.println("Connessione avvenuta");
-	    				FramePrincipale frameprincipale = new FramePrincipale(ctrl);
-	    				frameprincipale.setVisible(true);
-	    			} catch (Exception e) {
-	    				e.printStackTrace();
-	    			}
-	    		}
-	    	});
-		}
-		else {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Controller ctrl= new Controller();
+					System.out.println("Connessione avvenuta");
+					FramePrincipale frameprincipale = new FramePrincipale(ctrl);
+					frameprincipale.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	public Controller() {
+		try {
+			connessione = new Connessione();
+			carrellodao = new CarrelloDAO();
+			clientedao = new ClienteDAO();
+			depositodao = new DepositoDAO();
+			negoziodao = new NegozioDAO();
+		} catch (Exception e) {
 			System.exit(0);
+			e.printStackTrace();
 		}
-		
-//		Controller ctrl= new Controller();
-//		System.out.println("Connessione avvenuta");
-//		FramePrincipale frameprincipale = new FramePrincipale(ctrl);
-//		frameprincipale.setVisible(true);
+	}
+	
+	public static Connessione getConnessione() {
+		return connessione;
 	}
 	
 	//Funzioni per l'apertura dei panel
@@ -335,5 +351,17 @@ public class Controller {
 		textFieldCognome.setText("");
 		textFieldCodiceFiscale.setText("");
 		CheckBoxCartaFedelta.setSelected(false);
+	}
+	
+	//Funzioni per Database
+	public void InserisciProdottoDeposito(String nome, JTextField prezzo, JSpinner quantita, JTextFieldDateEditor data_scadenza, JTextFieldDateEditor data_raccolta) {
+		java.sql.Date scadenza = new java.sql.Date(data_raccolta.getDate().getTime());
+		java.sql.Date raccolta = new java.sql.Date(data_raccolta.getDate().getTime());
+		try {
+			depositodao.AggiungiOrtofruttaAlDeposito(nome, Double.parseDouble(prezzo.getText()), Integer.parseInt(quantita.getValue().toString()), scadenza, raccolta);
+		} catch (NumberFormatException | SQLException e) {
+			System.out.println("errore controller");
+			e.printStackTrace();
+		}
 	}
 }
