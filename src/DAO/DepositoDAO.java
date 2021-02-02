@@ -1,6 +1,6 @@
-package Dao;
+package DAO;
 
-import main.Controller;
+import Main.Controller;
 
 public class DepositoDAO {
 	

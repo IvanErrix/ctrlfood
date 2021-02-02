@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import main.Controller;
+import Main.Controller;
 
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;

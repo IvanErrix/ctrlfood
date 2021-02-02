@@ -24,7 +24,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicComboPopup;
 
-import main.Controller;
+import Main.Controller;
 
 public class AggiungiAlCarrelloDialog extends JDialog {
 

@@ -1,4 +1,4 @@
-package main;
+package Main;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -26,7 +26,7 @@ import javax.swing.filechooser.FileSystemView;
 
 import com.toedter.calendar.JDateChooser;
 
-import Dao.Connessione;
+import DAO.Connessione;
 import Design.AggiungiAlCarrelloDialog;
 import Design.AggiungiAlDepositoDialog;
 import Design.AggiungiAlNegozioDialog;

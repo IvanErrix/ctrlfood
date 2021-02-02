@@ -23,7 +23,7 @@ import org.jdatepicker.impl.UtilDateModel;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 
-import main.Controller;
+import Main.Controller;
 
 import java.awt.Cursor;
 import java.awt.event.ActionListener;

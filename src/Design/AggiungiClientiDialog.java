@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 
-import main.Controller;
+import Main.Controller;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;

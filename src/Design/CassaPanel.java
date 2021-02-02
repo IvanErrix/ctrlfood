@@ -15,7 +15,7 @@ import java.awt.Font;
 import java.awt.Cursor;
 import javax.swing.border.EtchedBorder;
 
-import main.Controller;
+import Main.Controller;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

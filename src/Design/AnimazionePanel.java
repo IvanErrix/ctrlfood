@@ -10,7 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import main.Controller;
+import Main.Controller;
+
 import javax.swing.ImageIcon;
 
 public class AnimazionePanel extends JPanel {

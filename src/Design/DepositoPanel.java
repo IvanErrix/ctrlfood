@@ -7,7 +7,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import main.Controller;
+import Main.Controller;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;

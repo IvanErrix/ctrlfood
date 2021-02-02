@@ -3,7 +3,7 @@ package Design;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import main.Controller;
+import Main.Controller;
 
 import javax.swing.JLabel;
 

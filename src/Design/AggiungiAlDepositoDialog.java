@@ -25,8 +25,6 @@ import org.jdatepicker.impl.JDatePanelImpl;
 import org.jdatepicker.impl.JDatePickerImpl;
 import org.jdatepicker.impl.UtilDateModel;
 
-import main.Controller;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -57,6 +55,8 @@ import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
+
+import Main.Controller;
 
 public class AggiungiAlDepositoDialog extends JDialog {
 
