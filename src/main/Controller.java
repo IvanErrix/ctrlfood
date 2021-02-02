@@ -317,7 +317,7 @@ public class Controller {
 	}
 	
 	public void RimuoviTutto(JTextField textFieldNome, JTextField textFieldPrezzo, JSpinner spinnerQuantita, JTextField textFieldFoto, JDateChooser dateChooserScadenza, 
-			JDateChooser dateChooserRaccolta, JDateChooser dateChooserProduzione, JDateChooser dateChooserMungitura, JDateChooser dateChooserConfezionamento) {
+			JDateChooser dateChooserRaccolta, JDateChooser dateChooserProduzione, JDateChooser dateChooserMungitura, JDateChooser dateChooserConfezionamento, JDateChooser dataChooserDeposizione) {
 		textFieldNome.setText("");
 		textFieldPrezzo.setText("");
 		spinnerQuantita.setValue(1);
@@ -327,6 +327,7 @@ public class Controller {
 		dateChooserProduzione.setDate(null);
 		dateChooserMungitura.setDate(null);
 		dateChooserConfezionamento.setDate(null);
+		dataChooserDeposizione.setDate(null);
 	}
 	
 	public void RimuoviTutto(JTextField textFieldNome, JTextField textFieldCognome, JTextField textFieldCodiceFiscale, JCheckBox CheckBoxCartaFedelta) {

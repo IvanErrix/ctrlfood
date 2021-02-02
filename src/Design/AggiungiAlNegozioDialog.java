@@ -132,7 +132,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		JList list2 = pop2.getList();
 		list2.setSelectionForeground(new Color(191, 215, 255));
 		list2.setSelectionBackground(new Color(0, 41, 82));
-		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati"}));
+		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati", "Farinacei", "Uova"}));
 		comboBoxTipologia.setMaximumRowCount(3);
 		comboBoxTipologia.setForeground(new Color(0,41,82));
 		comboBoxTipologia.setFont(new Font("Impact", Font.PLAIN, 11));
