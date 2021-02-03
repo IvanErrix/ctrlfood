@@ -44,7 +44,8 @@ import Design.CarrelloPanel;
 import Design.CassaPanel;
 import Design.ClientiPanel;
 import Design.DepositoPanel;
-import Design.FramePrincipale;
+import Design.FrameAmministratore;
+import Design.FrameCliente;
 import Design.LoadingPanel;
 import Design.LoginAmministratoreDialog;
 import Design.LoginDialog;
@@ -108,8 +109,13 @@ public class Controller {
 		return connessione;
 	}
 	
-	public void ApriFramePrincipale(Controller ctrl) {
-		FramePrincipale frame = new FramePrincipale(ctrl);
+	public void ApriFrameAmministratore(Controller ctrl) {
+		FrameAmministratore frame = new FrameAmministratore(ctrl);
+		frame.setVisible(true);
+	}
+	
+	public void ApriFrameCliente (Controller ctrl) {
+		FrameCliente frame = new FrameCliente(ctrl);
 		frame.setVisible(true);
 	}
 	
@@ -275,79 +281,58 @@ public class Controller {
 	}
 	
 	//Consente di cambiare le icone delle label e dei button nel FramePrincipale
-	public void CambiaIconaAiButton(String nome, JLabel LabelDeposito, JLabel LabelNegozio, JLabel LabelClienti, JLabel LabelCarrello,
-			JLabel LabelCassa, JButton ButtonDeposito, JButton ButtonNegozio, JButton ButtonClienti, JButton ButtonCarrello, JButton ButtonCassa) {
+	public void CambiaIconaAiButtonFramePrincipale(String nome, JLabel LabelDeposito, JLabel LabelNegozio, JLabel LabelClienti,JButton ButtonDeposito, JButton ButtonNegozio, JButton ButtonClienti) {
 		if(nome.equals("deposito")) {
-			LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IconHouse3D.png")));
-			LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShopWhite_32.png")));
-			LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoUserWhite_32.png")));
-			LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
-			LabelCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CheckoutWhite_32.png")));
-			ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonDeposito.png")));
-			ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/NegozioWhite.png")));
-			ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ClientiWhite.png")));
-			ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CarrelloWhite.png")));
-			ButtonCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CassaWhite.png")));
+			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconHouse3D.png")));
+			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
+			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
+			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonDeposito.png")));
+			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
+			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
 		}
 		else if(nome.equals("negozio")) {
-			LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-			LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IconShop3D.png")));
-			LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoUserWhite_32.png")));
-			LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
-			LabelCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CheckoutWhite_32.png")));
-			ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/DepositoWhite.png")));
-			ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonNegozio.png")));
-			ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ClientiWhite.png")));
-			ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CarrelloWhite.png")));
-			ButtonCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CassaWhite.png")));
+			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
+			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconShop3D.png")));
+			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
+			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
+			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonNegozio.png")));
+			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
 		}
 		else if(nome.equals("clienti")) {
-			LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-			LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShopWhite_32.png")));
-			LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IconUser3D.png")));
-			LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
-			LabelCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CheckoutWhite_32.png")));
-			ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/DepositoWhite.png")));
-			ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/NegozioWhite.png")));
-			ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonClienti.png")));
-			ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CarrelloWhite.png")));
-			ButtonCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CassaWhite.png")));
-		}
-		else if (nome.equals("carrello")) {
-			LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-			LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShopWhite_32.png")));
-			LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoUserWhite_32.png")));
-			LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IconShoppingCart3D.png")));
-			LabelCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CheckoutWhite_32.png")));
-			ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/DepositoWhite.png")));
-			ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/NegozioWhite.png")));
-			ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ClientiWhite.png")));
-			ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonCarrello.png")));
-			ButtonCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CassaWhite.png")));	
-		}
-		else if(nome.equals("cassa")) {
-			LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-			LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShopWhite_32.png")));
-			LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoUserWhite_32.png")));
-			LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
-			LabelCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IconCheckout3D.png")));
-			ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/DepositoWhite.png")));
-			ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/NegozioWhite.png")));
-			ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ClientiWhite.png")));
-			ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CarrelloWhite.png")));
-			ButtonCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ButtonCassa.png")));
+			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
+			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
+			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconUser3D.png")));
+			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
+			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
+			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonClienti.png")));
 		}
 		else if(nome.equals("homepage")) {
-			LabelDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-			LabelNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShopWhite_32.png")));
-			LabelClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoUserWhite_32.png")));
-			LabelCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
-			LabelCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CheckoutWhite_32.png")));
-			ButtonDeposito.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/DepositoWhite.png")));
-			ButtonNegozio.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/NegozioWhite.png")));
-			ButtonClienti.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/ClientiWhite.png")));
-			ButtonCarrello.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CarrelloWhite.png")));
-			ButtonCassa.setIcon(new ImageIcon(FramePrincipale.class.getResource("/scrimg/CassaWhite.png")));
+			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
+			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
+			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
+			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
+			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
+			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
+		}
+	}
+	
+	public void CambiaIconaAiButtonFrameClienti(String nome, JLabel LabelCarrello,JLabel LabelCassa,JButton ButtonCarrello, JButton ButtonCassa) {
+		 if (nome.equals("carrello")) {
+			LabelCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconShoppingCart3D.png")));
+			LabelCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CheckoutWhite_32.png")));
+			ButtonCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonCarrello.png")));
+			ButtonCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CassaWhite.png")));	
+		}
+		else if(nome.equals("cassa")) {
+			LabelCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
+			LabelCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconCheckout3D.png")));
+			ButtonCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CarrelloWhite.png")));
+			ButtonCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonCassa.png")));
+		}else if(nome.equals("homepage")) {
+			LabelCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
+			LabelCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CheckoutWhite_32.png")));
+			ButtonCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CarrelloWhite.png")));
+			ButtonCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CassaWhite.png")));
 		}
 	}
 	
@@ -374,10 +359,55 @@ public class Controller {
 	
 	//Funzioni per Database
 	public void InserisciProdottoDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_raccolta) {
-		java.sql.Date scadenza = new java.sql.Date(data_raccolta);
+		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
 		java.sql.Date raccolta = new java.sql.Date(data_raccolta);
 		try {
 			depositodao.AggiungiOrtofruttaAlDeposito(nome, prezzo, quantita, scadenza, raccolta);
+		} catch (NumberFormatException | SQLException e) {
+			System.out.println("errore controller");
+			e.printStackTrace();
+		}
+	}
+	
+	public void InserisciProdottoConfezionato(String nome, double prezzo, int quantita, long data_scadenza, long data_confezionamento) {
+		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
+		java.sql.Date confezionamento = new java.sql.Date(data_confezionamento);
+		try {
+			depositodao.AggiungiConfezionatoAlDeposito(nome, prezzo, quantita, scadenza, confezionamento);
+		} catch (NumberFormatException | SQLException e) {
+			System.out.println("errore controller");
+			e.printStackTrace();
+		}
+	}
+	
+	public void InserisciProdottoLatticino(String nome, double prezzo, int quantita, long data_scadenza, long data_mungitura, long data_produzione) {
+		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
+		java.sql.Date mungitura = new java.sql.Date(data_mungitura);
+		java.sql.Date produzione = new java.sql.Date(data_produzione);
+		try {
+			depositodao.AggiungiLatticinoAlDeposito(nome, prezzo, quantita, scadenza, mungitura, produzione);
+		} catch (NumberFormatException | SQLException e) {
+			System.out.println("errore controller");
+			e.printStackTrace();
+		}
+	}
+	
+	public void InserisciProdottoFarinaceo(String nome, double prezzo, int quantita, long data_scadenza, long data_produzione) {
+		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
+		java.sql.Date produzione = new java.sql.Date(data_produzione);
+		try {
+			depositodao.AggiungiFarinaceoAlDeposito(nome, prezzo, quantita, scadenza, produzione);
+		} catch (NumberFormatException | SQLException e) {
+			System.out.println("errore controller");
+			e.printStackTrace();
+		}
+	}
+	
+	public void InserisciProdottoUova(String nome, double prezzo, int quantita, long data_scadenza, long data_deposizione) {
+		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
+		java.sql.Date deposizione = new java.sql.Date(data_deposizione);
+		try {
+			depositodao.AggiungiUovaAlDeposito(nome, prezzo, quantita, scadenza, deposizione);
 		} catch (NumberFormatException | SQLException e) {
 			System.out.println("errore controller");
 			e.printStackTrace();

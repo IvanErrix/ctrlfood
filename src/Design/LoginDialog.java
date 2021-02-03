@@ -89,7 +89,7 @@ public class LoginDialog extends JDialog {
 		ButtonClienti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				ctrl.ApriFramePrincipale(ctrl);
+				ctrl.ApriFrameCliente(ctrl);
 			}
 		});
 		ButtonClienti.addMouseListener(new MouseAdapter() {

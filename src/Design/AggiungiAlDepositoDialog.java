@@ -401,7 +401,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(true);
 					}
 					else {
-						ctrl.InserisciProdottoDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorRaccolta.getDate().getTime());
+						ctrl.InserisciProdottoDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+								dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorRaccolta.getDate().getTime());
 						setAlwaysOnTop(false);
 						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 						setAlwaysOnTop(true);
@@ -418,6 +419,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(true);
 					}
 					else {
+						ctrl.InserisciProdottoLatticino(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+								dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorMungitura.getDate().getTime(), dateChooserEditorProduzione.getDate().getTime());
 						setAlwaysOnTop(false);
 						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 						setAlwaysOnTop(true);
@@ -433,6 +436,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(true);
 					}
 					else {
+						ctrl.InserisciProdottoConfezionato(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+								dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorConfezionamento.getDate().getTime());
 						setAlwaysOnTop(false);
 						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 						setAlwaysOnTop(true);
@@ -447,6 +452,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(true);
 					}
 					else {
+						ctrl.InserisciProdottoFarinaceo(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+								dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorProduzione.getDate().getTime());
 						setAlwaysOnTop(false);
 						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 						setAlwaysOnTop(true);
@@ -461,6 +468,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(true);
 					}
 					else {
+						ctrl.InserisciProdottoUova(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+								dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorDeposizione.getDate().getTime());
 						setAlwaysOnTop(false);
 						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 						setAlwaysOnTop(true);

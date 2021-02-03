@@ -110,7 +110,7 @@ public class LoginAmministratoreDialog extends JDialog {
 		ButtonLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriFramePrincipale(ctrl);
+				ctrl.ApriFrameAmministratore(ctrl);
 				setVisible(false);
 			}
 		});
