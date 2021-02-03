@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.Date;
 
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
@@ -372,11 +373,11 @@ public class Controller {
 	}
 	
 	//Funzioni per Database
-	public void InserisciProdottoDeposito(String nome, JTextField prezzo, JSpinner quantita, JTextFieldDateEditor data_scadenza, JTextFieldDateEditor data_raccolta) {
-		java.sql.Date scadenza = new java.sql.Date(data_raccolta.getDate().getTime());
-		java.sql.Date raccolta = new java.sql.Date(data_raccolta.getDate().getTime());
+	public void InserisciProdottoDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_raccolta) {
+		java.sql.Date scadenza = new java.sql.Date(data_raccolta);
+		java.sql.Date raccolta = new java.sql.Date(data_raccolta);
 		try {
-			depositodao.AggiungiOrtofruttaAlDeposito(nome, Double.parseDouble(prezzo.getText()), Integer.parseInt(quantita.getValue().toString()), scadenza, raccolta);
+			depositodao.AggiungiOrtofruttaAlDeposito(nome, prezzo, quantita, scadenza, raccolta);
 		} catch (NumberFormatException | SQLException e) {
 			System.out.println("errore controller");
 			e.printStackTrace();

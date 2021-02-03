@@ -401,6 +401,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(true);
 					}
 					else {
+						ctrl.InserisciProdottoDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorRaccolta.getDate().getTime());
 						setAlwaysOnTop(false);
 						JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 						setAlwaysOnTop(true);
