@@ -185,7 +185,7 @@ public class NegozioPanel extends JPanel {
 				ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
 			}
 		});
-		ButtonStampa.setPressedIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/ButtonStampaYellow.png")));
+		ButtonStampa.setPressedIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/ButtonStampa.png")));
 		ButtonStampa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.StampaListaProdotti(table, "negozio");

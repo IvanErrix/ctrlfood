@@ -1,2 +1,3 @@
 Fare mockup
 ombra nelle label in cassa
+Fare controlli nelle procedure

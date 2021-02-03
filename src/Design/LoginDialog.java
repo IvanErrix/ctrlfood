@@ -54,7 +54,7 @@ public class LoginDialog extends JDialog {
 		ButtonChiudi.setBorder(null);
 		ButtonChiudi.setContentAreaFilled(false);
 		ButtonChiudi.setIcon(new ImageIcon(LoginDialog.class.getResource("/scrimg/ButtonChiudi.png")));
-		ButtonChiudi.setBounds(302, 11, 18, 18);
+		ButtonChiudi.setBounds(295, 38, 18, 18);
 		contentPane.add(ButtonChiudi);
 		
 		JButton ButtonAmministratore = new JButton("");

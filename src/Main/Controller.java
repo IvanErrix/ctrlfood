@@ -179,6 +179,11 @@ public class Controller {
 		dialog.setVisible(true);
 	}
 	
+	public void ApriLoginDialog(Controller ctrl) {
+		LoginDialog login = new LoginDialog(ctrl);
+		login.setVisible(true);
+	}
+	
 	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
 		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
 		dialog.setVisible(true);
