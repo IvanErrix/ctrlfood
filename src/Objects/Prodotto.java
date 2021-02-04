@@ -4,24 +4,42 @@ import java.util.*;
 
 public class Prodotto{
 
-    public Prodotto() {
-    }
+    public Prodotto(int idprodotto, String nome, Double prezzo, int quantita, Date data_scadenza, Boolean ortofrutta,
+			Boolean latticino, Boolean farinaceo, Boolean uova, Boolean confezionato, Date data_mungitura,
+			Date data_produzione, Date data_confezionamento, Date data_raccolta, Date data_deposizione) {
+		super();
+		this.idprodotto = idprodotto;
+		this.nome = nome;
+		this.prezzo = prezzo;
+		this.quantita = quantita;
+		this.data_scadenza = data_scadenza;
+		this.ortofrutta = ortofrutta;
+		this.latticino = latticino;
+		this.farinaceo = farinaceo;
+		this.uova = uova;
+		this.confezionato = confezionato;
+		this.data_mungitura = data_mungitura;
+		this.data_produzione = data_produzione;
+		this.data_confezionamento = data_confezionamento;
+		this.data_raccolta = data_raccolta;
+		this.data_deposizione = data_deposizione;
+	}
 
-    private int idprodotto;
+	private int idprodotto;
     private String nome;
-    private Double prezzo = 0.0;
+    private Double prezzo;
     private int quantita;
     private Date data_scadenza;
+    private Boolean ortofrutta;
+    private Boolean latticino;
+    private Boolean farinaceo;
+    private Boolean uova;
+    private Boolean confezionato;
     private Date data_mungitura;
     private Date data_produzione;
     private Date data_confezionamento;
     private Date data_raccolta;
     private Date data_deposizione;
-    private Boolean ortofrutta;
-    private Boolean latticino;
-    private Boolean confezionato;
-    private Boolean farinaceo;
-    private Boolean uova;
     
 	public int getIdprodotto() {
 		return idprodotto;

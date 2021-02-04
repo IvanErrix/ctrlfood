@@ -27,6 +27,8 @@ import javax.swing.SwingConstants;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
@@ -35,9 +37,8 @@ import javax.swing.ScrollPaneConstants;
 public class DepositoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private String Titoli[]= {"Tipologia","Codice", "Nome", "Prezzo", "Quantità","Scadenza", "Produzione", "Mungitura", "Raccolta", "Confezionamento", "Deposizione"};
-	private Object Elementi[][]= {};
-	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
+	private String Titoli[]= {"Tipologia","IDProdotto", "Nome", "Prezzo", "Quantità","Scadenza", "Raccolta", "Produzione", "Mungitura", "Deposizione", "Confezionamento"};
+	public DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
 		
 		private static final long serialVersionUID = 1L;
 
@@ -85,12 +86,6 @@ public class DepositoPanel extends JPanel {
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
-//		model.addRow(new Object[] {"Ortofrutta","MELA", "001", "0.5", "2", "10/01/2021"});
-//		model.addRow(new Object[] {"Ortofrutta","PERA", "002", "1.0", "1", "15/12/2021"});
-//		model.addRow(new Object[] {"Ortofrutta","BANANA", "003", "1.5", "4", "05/8/2021"});
-//		model.addRow(new Object[] {"Confezionati","CAFFE", "004", "4.0", "3", "03/6/2021"});
-//		model.addRow(new Object[] {"Latticini","MOZZARELLA", "005", "10.0", "4", "10/6/2021"});
-//		model.addRow(new Object[] {"Latticini","RICOTTA", "006", "5.0", "1", "18/6/2021"});
 		
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);
@@ -239,5 +234,44 @@ public class DepositoPanel extends JPanel {
 		LabelSfondo.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/SfondoPanel.png")));
 		LabelSfondo.setBounds(0, 0, 748, 552);
 		add(LabelSfondo);
+		
+		CaricaProdottiInTabella(ctrl);
+		
+	}
+	
+	public void CaricaProdottiInTabella(Controller ctrl) {
+		try {
+			for(int i=0; i<ctrl.CaricaProdottiDeposito().size(); i++) {
+				 int id = ctrl.CaricaProdottiDeposito().get(i).getIdprodotto();
+				 String nome = ctrl.CaricaProdottiDeposito().get(i).getNome();
+				 double prezzo = ctrl.CaricaProdottiDeposito().get(i).getPrezzo();
+				 int quantita = ctrl.CaricaProdottiDeposito().get(i).getQuantita();
+				 Date scadenza = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_scadenza();
+				 Date raccolta = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_raccolta();
+				 Date produzione = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_produzione();
+				 Date mungitura = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_mungitura();
+				 Date deposizione = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_deposizione();
+				 Date confezionamento = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_confezionamento();
+				 Boolean valore;
+				if((valore=ctrl.CaricaProdottiDeposito().get(i).getOrtofrutta())==true) {
+					model.addRow(new Object[] {"Ortofrutta", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+				}
+				else if((valore=ctrl.CaricaProdottiDeposito().get(i).getLatticino())==true) {
+					model.addRow(new Object[] {"Latticini", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+				}
+				else if((valore=ctrl.CaricaProdottiDeposito().get(i).getFarinaceo())==true) {
+					model.addRow(new Object[] {"Farinacei", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+				}
+				else if((valore=ctrl.CaricaProdottiDeposito().get(i).getUova())==true) {
+					model.addRow(new Object[] {"Uova", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+				}
+				else if((valore=ctrl.CaricaProdottiDeposito().get(i).getConfezionato())==true) {
+					model.addRow(new Object[] {"Confezionati", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+				}
+				 
+			}
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 	}
 }

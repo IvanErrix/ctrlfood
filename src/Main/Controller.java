@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.AbstractButton;
@@ -54,6 +55,7 @@ import Design.LoginDialog;
 import Design.NegozioPanel;
 import Design.PagamentoConCartaDialog;
 import Design.SpostaDalNegozioDialog;
+import Objects.Prodotto;
 
 public class Controller {
 	
@@ -362,6 +364,11 @@ public class Controller {
 	}
 	
 	//Funzioni per Database
+	public String ControllaDatiLogin(String username, String password) throws SQLException {
+		String rs = loginamministratoredao.ControllaDatiLogin(username, password);
+		return rs;
+	}
+	
 	public void InserisciProdottoDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_raccolta) {
 		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
 		java.sql.Date raccolta = new java.sql.Date(data_raccolta);
@@ -417,10 +424,10 @@ public class Controller {
 			e.printStackTrace();
 		}
 	}
-
-	public String ControllaDatiLogin(String username, String password) throws SQLException {
-		String rs = loginamministratoredao.ControllaDatiLogin(username, password);
-		return rs;
+	
+	public ArrayList<Prodotto> CaricaProdottiDeposito() throws SQLException {
+		ArrayList<Prodotto> prodotti = depositodao.CaricaProdottiDeposito();
 		
+		return prodotti;
 	}
 }
