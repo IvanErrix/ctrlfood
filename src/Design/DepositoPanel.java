@@ -120,6 +120,33 @@ public class DepositoPanel extends JPanel {
 		ButtonSearch.setBounds(379, 28, 34, 34);
 		add(ButtonSearch);
 		
+		JButton ButtonRefresh = new JButton("");
+		ButtonRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CaricaProdottiInTabella(ctrl);
+			}
+		});
+		ButtonRefresh.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefreshAzzurro.png")));
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+
+			}
+		});
+		ButtonRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+		ButtonRefresh.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+		ButtonRefresh.setOpaque(false);
+		ButtonRefresh.setBorder(null);
+		ButtonRefresh.setContentAreaFilled(false);
+		ButtonRefresh.setBounds(423, 28, 34, 34);
+		add(ButtonRefresh);
+		
 		textFieldSearch = new JTextField();
 		textFieldSearch.addKeyListener(new KeyAdapter() {
 			@Override
@@ -171,7 +198,7 @@ public class DepositoPanel extends JPanel {
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
-		ButtonAggiungi.setBounds(450, 55, 90, 22);
+		ButtonAggiungi.setBounds(495, 55, 90, 22);
 		add(ButtonAggiungi);
 		
 		JButton ButtonStampa = new JButton("");
@@ -193,7 +220,7 @@ public class DepositoPanel extends JPanel {
 		});
 		ButtonStampa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
-		ButtonStampa.setBounds(450, 28, 90, 22);
+		ButtonStampa.setBounds(495, 28, 90, 22);
 		ButtonStampa.setOpaque(false);
 		ButtonStampa.setBorder(null);
 		ButtonStampa.setContentAreaFilled(false);
@@ -222,7 +249,7 @@ public class DepositoPanel extends JPanel {
 				
 			}
 		});
-		ButtonElimina.setBounds(550, 55, 90, 22);
+		ButtonElimina.setBounds(595, 55, 90, 22);
 		ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
 		ButtonElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonElimina.setOpaque(false);
@@ -233,7 +260,7 @@ public class DepositoPanel extends JPanel {
 		JLabel LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/SfondoPanel.png")));
 		LabelSfondo.setBounds(0, 0, 748, 552);
-		add(LabelSfondo);
+		add(LabelSfondo);	
 		
 		CaricaProdottiInTabella(ctrl);
 		
@@ -241,6 +268,7 @@ public class DepositoPanel extends JPanel {
 	
 	public void CaricaProdottiInTabella(Controller ctrl) {
 		try {
+			model.setRowCount(0);
 			for(int i=0; i<ctrl.CaricaProdottiDeposito().size(); i++) {
 				 int id = ctrl.CaricaProdottiDeposito().get(i).getIdprodotto();
 				 String nome = ctrl.CaricaProdottiDeposito().get(i).getNome();

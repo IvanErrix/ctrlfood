@@ -79,6 +79,21 @@ public class FrameAmministratore extends JFrame {
 		PanelPrincipale.add(PanelCaricamento);
 		PanelCaricamento.setLayout(null);
 		
+		JButton ButtonIndietro = new JButton("");
+		ButtonIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonIndietro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				ctrl.ApriLoginDialog(ctrl);
+			}
+		});
+		ButtonIndietro.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonIndietroAzzurro.png")));
+		ButtonIndietro.setOpaque(false);
+		ButtonIndietro.setBorder(null);
+		ButtonIndietro.setContentAreaFilled(false);
+		ButtonIndietro.setBounds(246, 36, 34, 34);
+		PanelPrincipale.add(ButtonIndietro);
+		
 		/*BUTTON DEPOSITO*/
 		ButtonDeposito.setFocusable(false);
 		ButtonDeposito.addActionListener(new ActionListener() {
