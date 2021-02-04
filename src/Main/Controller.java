@@ -8,6 +8,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.Date;
@@ -34,6 +35,7 @@ import DAO.CarrelloDAO;
 import DAO.ClienteDAO;
 import DAO.Connessione;
 import DAO.DepositoDAO;
+import DAO.LoginAmministratoreDAO;
 import DAO.NegozioDAO;
 import Design.AggiungiAlCarrelloDialog;
 import Design.AggiungiAlDepositoDialog;
@@ -60,6 +62,7 @@ public class Controller {
 	private static ClienteDAO clientedao;
 	private static DepositoDAO depositodao;
 	private static NegozioDAO negoziodao;
+	private static LoginAmministratoreDAO loginamministratoredao;
 	
 	/*Prima di tutto il programma controlla la connessione. See la connessione è assente
 	 *Se invece la connessione è presente, la funzione main fa partire la prima schermata
@@ -99,6 +102,7 @@ public class Controller {
 			clientedao = new ClienteDAO();
 			depositodao = new DepositoDAO();
 			negoziodao = new NegozioDAO();
+			loginamministratoredao = new LoginAmministratoreDAO();
 		} catch (Exception e) {
 			System.exit(0);
 			e.printStackTrace();
@@ -407,10 +411,16 @@ public class Controller {
 		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
 		java.sql.Date deposizione = new java.sql.Date(data_deposizione);
 		try {
-			depositodao.AggiungiUovaAlDeposito(nome, prezzo, quantita, scadenza, deposizione);
+			depositodao.AggiungiUovoAlDeposito(nome, prezzo, quantita, scadenza, deposizione);
 		} catch (NumberFormatException | SQLException e) {
 			System.out.println("errore controller");
 			e.printStackTrace();
 		}
+	}
+
+	public String ControllaDatiLogin(String username, String password) throws SQLException {
+		String rs = loginamministratoredao.ControllaDatiLogin(username, password);
+		return rs;
+		
 	}
 }

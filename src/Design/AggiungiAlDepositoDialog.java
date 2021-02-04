@@ -390,9 +390,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		
-//				DecimalFormat df = new DecimalFormat("0.00");
-//				String angleFormated = df.format(Double.parseDouble(textFieldPrezzo.getText()));
-//				System.out.println(angleFormated);
 				if (comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
 					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {

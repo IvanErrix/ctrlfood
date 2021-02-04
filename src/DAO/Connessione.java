@@ -20,6 +20,7 @@ public class Connessione {
 				conn = DriverManager.getConnection("jdbc:mysql://den1.mysql4.gear.host/ctrlfood", "ctrlfood", "Po3IZ79Y?C_6");
 			} catch (SQLException e) {
 				JOptionPane.showMessageDialog(null, "Connessione al server fallita", "ERRORE", JOptionPane.ERROR_MESSAGE);
+				System.exit(0);
 			}
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();

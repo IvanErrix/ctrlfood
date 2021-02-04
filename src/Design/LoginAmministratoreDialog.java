@@ -6,18 +6,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import Main.Controller;
 
 import javax.swing.JPasswordField;
 import java.awt.Font;
+import java.awt.HeadlessException;
 import java.awt.Cursor;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class LoginAmministratoreDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -90,12 +96,18 @@ public class LoginAmministratoreDialog extends JDialog {
 		contentPane.add(ButtonIndietro);
 		
 		textFieldUsername = new JTextField();
+		textFieldUsername.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				textFieldUsername.setText(textFieldUsername.getText().toUpperCase());
+			}
+		});
 		textFieldUsername.setFont(new Font("Impact", Font.PLAIN, 15));
 		textFieldUsername.setForeground(new Color(0,41,82));
 		textFieldUsername.setOpaque(false);
 		textFieldUsername.setBorder(null);
 		textFieldUsername.setColumns(10);
-		textFieldUsername.setBounds(94, 136, 188, 29);
+		textFieldUsername.setBounds(94, 140, 188, 29);
 		contentPane.add(textFieldUsername);
 		
 		passwordField = new JPasswordField();
@@ -110,8 +122,26 @@ public class LoginAmministratoreDialog extends JDialog {
 		ButtonLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriFrameAmministratore(ctrl);
-				setVisible(false);
+				if (textFieldUsername.getText().equals("") && passwordField.getText().equals("")) {
+					setAlwaysOnTop(false);
+					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
+					setAlwaysOnTop(true);
+				}
+				else {
+					try {
+						if(ctrl.ControllaDatiLogin(textFieldUsername.getText(), passwordField.getText())==null) {
+							setAlwaysOnTop(false);
+							JOptionPane.showMessageDialog(null, "USERNAME O PASSWORD ERRATI", "", JOptionPane.WARNING_MESSAGE);
+							setAlwaysOnTop(true);
+						}
+						else {
+							ctrl.ApriFrameAmministratore(ctrl);
+							dispose();
+						}
+					} catch (HeadlessException | SecurityException | SQLException e1) {
+						e1.printStackTrace();
+					}
+				}
 			}
 		});
 		ButtonLogin.addMouseListener(new MouseAdapter() {

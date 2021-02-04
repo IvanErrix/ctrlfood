@@ -30,11 +30,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
+import javax.swing.ScrollPaneConstants;
 
 public class DepositoPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private String Titoli[]= {"Tipologia","Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
+	private String Titoli[]= {"Tipologia","Codice", "Nome", "Prezzo", "Quantità","Scadenza", "Produzione", "Mungitura", "Raccolta", "Confezionamento", "Deposizione"};
 	private Object Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
 		
@@ -57,6 +58,7 @@ public class DepositoPanel extends JPanel {
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
 		scrollPane.getViewport().setOpaque(true);
@@ -80,14 +82,15 @@ public class DepositoPanel extends JPanel {
 		table.getTableHeader().setBackground(new Color(191, 215, 255));
 		table.getTableHeader().setForeground(new Color(0,41,82));
 		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
-		model.addRow(new Object[] {"Ortofrutta","MELA", "001", "0.5", "2", "10/01/2021"});
-		model.addRow(new Object[] {"Ortofrutta","PERA", "002", "1.0", "1", "15/12/2021"});
-		model.addRow(new Object[] {"Ortofrutta","BANANA", "003", "1.5", "4", "05/8/2021"});
-		model.addRow(new Object[] {"Confezionati","CAFFE", "004", "4.0", "3", "03/6/2021"});
-		model.addRow(new Object[] {"Latticini","MOZZARELLA", "005", "10.0", "4", "10/6/2021"});
-		model.addRow(new Object[] {"Latticini","RICOTTA", "006", "5.0", "1", "18/6/2021"});
+//		model.addRow(new Object[] {"Ortofrutta","MELA", "001", "0.5", "2", "10/01/2021"});
+//		model.addRow(new Object[] {"Ortofrutta","PERA", "002", "1.0", "1", "15/12/2021"});
+//		model.addRow(new Object[] {"Ortofrutta","BANANA", "003", "1.5", "4", "05/8/2021"});
+//		model.addRow(new Object[] {"Confezionati","CAFFE", "004", "4.0", "3", "03/6/2021"});
+//		model.addRow(new Object[] {"Latticini","MOZZARELLA", "005", "10.0", "4", "10/6/2021"});
+//		model.addRow(new Object[] {"Latticini","RICOTTA", "006", "5.0", "1", "18/6/2021"});
 		
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);
