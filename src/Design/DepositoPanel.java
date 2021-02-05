@@ -51,7 +51,7 @@ public class DepositoPanel extends JPanel {
 	private JTable table;
 	private JTextField textFieldSearch;
 
-	public DepositoPanel(Controller ctrl) {
+	public DepositoPanel(Controller ctrl) throws SQLException {
 		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		setOpaque(false);
 		setBackground(Color.BLACK);
@@ -123,7 +123,12 @@ public class DepositoPanel extends JPanel {
 		JButton ButtonRefresh = new JButton("");
 		ButtonRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				CaricaProdottiInTabella(ctrl);
+				try {
+					CaricaProdottiInTabella(ctrl);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		ButtonRefresh.addMouseListener(new MouseAdapter() {
@@ -262,44 +267,42 @@ public class DepositoPanel extends JPanel {
 		LabelSfondo.setBounds(0, 0, 748, 552);
 		add(LabelSfondo);	
 		
+
 		CaricaProdottiInTabella(ctrl);
+
 		
 	}
 	
-	public void CaricaProdottiInTabella(Controller ctrl) {
-		try {
-			model.setRowCount(0);
-			for(int i=0; i<ctrl.CaricaProdottiDeposito().size(); i++) {
-				 int id = ctrl.CaricaProdottiDeposito().get(i).getIdprodotto();
-				 String nome = ctrl.CaricaProdottiDeposito().get(i).getNome();
-				 double prezzo = ctrl.CaricaProdottiDeposito().get(i).getPrezzo();
-				 int quantita = ctrl.CaricaProdottiDeposito().get(i).getQuantita();
-				 Date scadenza = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_scadenza();
-				 Date raccolta = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_raccolta();
-				 Date produzione = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_produzione();
-				 Date mungitura = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_mungitura();
-				 Date deposizione = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_deposizione();
-				 Date confezionamento = (Date) ctrl.CaricaProdottiDeposito().get(i).getData_confezionamento();
-				 Boolean valore;
-				if((valore=ctrl.CaricaProdottiDeposito().get(i).getOrtofrutta())==true) {
-					model.addRow(new Object[] {"Ortofrutta", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
-				}
-				else if((valore=ctrl.CaricaProdottiDeposito().get(i).getLatticino())==true) {
-					model.addRow(new Object[] {"Latticini", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
-				}
-				else if((valore=ctrl.CaricaProdottiDeposito().get(i).getFarinaceo())==true) {
-					model.addRow(new Object[] {"Farinacei", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
-				}
-				else if((valore=ctrl.CaricaProdottiDeposito().get(i).getUova())==true) {
-					model.addRow(new Object[] {"Uova", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
-				}
-				else if((valore=ctrl.CaricaProdottiDeposito().get(i).getConfezionato())==true) {
-					model.addRow(new Object[] {"Confezionati", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
-				}
-				 
+	public void CaricaProdottiInTabella(Controller ctrl) throws SQLException {
+		model.setRowCount(0);
+		for(int i=0; i<ctrl.CaricaProdottiDeposito(ctrl).size(); i++) {
+			 int id = ctrl.CaricaProdottiDeposito(ctrl).get(i).getIdprodotto();
+			 String nome = ctrl.CaricaProdottiDeposito(ctrl).get(i).getNome();
+			 double prezzo = ctrl.CaricaProdottiDeposito(ctrl).get(i).getPrezzo();
+			 int quantita = ctrl.CaricaProdottiDeposito(ctrl).get(i).getQuantita();
+			 Date scadenza = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_scadenza();
+			 Date raccolta = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_raccolta();
+			 Date produzione = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_produzione();
+			 Date mungitura = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_mungitura();
+			 Date deposizione = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_deposizione();
+			 Date confezionamento = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_confezionamento();
+			 Boolean valore;
+			if((valore=ctrl.CaricaProdottiDeposito(ctrl).get(i).getOrtofrutta())==true) {
+				model.addRow(new Object[] {"Ortofrutta", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
-		} catch (SQLException e1) {
-			e1.printStackTrace();
+			else if((valore=ctrl.CaricaProdottiDeposito(ctrl).get(i).getLatticino())==true) {
+				model.addRow(new Object[] {"Latticini", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			else if((valore=ctrl.CaricaProdottiDeposito(ctrl).get(i).getFarinaceo())==true) {
+				model.addRow(new Object[] {"Farinacei", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			else if((valore=ctrl.CaricaProdottiDeposito(ctrl).get(i).getUova())==true) {
+				model.addRow(new Object[] {"Uova", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			else if((valore=ctrl.CaricaProdottiDeposito(ctrl).get(i).getConfezionato())==true) {
+				model.addRow(new Object[] {"Confezionati", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			 
 		}
 	}
 }

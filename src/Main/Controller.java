@@ -18,6 +18,7 @@ import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingWorker;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
@@ -49,7 +51,7 @@ import Design.ClientiPanel;
 import Design.DepositoPanel;
 import Design.FrameAmministratore;
 import Design.FrameCliente;
-import Design.LoadingPanel;
+import Design.LoadingDialog;
 import Design.LoginAmministratoreDialog;
 import Design.LoginDialog;
 import Design.NegozioPanel;
@@ -126,7 +128,7 @@ public class Controller {
 	}
 	
 	//Funzioni per l'apertura dei panel
-	public void ApriDepositoPanel(Controller ctrl, JPanel PanelCaricamento) {
+	public void ApriDepositoPanel(Controller ctrl, JPanel PanelCaricamento) throws SQLException {
 		DepositoPanel deposito = new DepositoPanel(ctrl);
 		deposito.setVisible(true);
 		PanelCaricamento.removeAll();
@@ -169,11 +171,6 @@ public class Controller {
 		PanelCaricamento.add(cassa);
 		PanelCaricamento.repaint();
 		PanelCaricamento.revalidate();
-	}
-	
-	public void ApriLoadingPanel(Controller ctrl, JPanel PanelCaricamento) {
-		LoadingPanel loading = new LoadingPanel(ctrl);
-		PanelCaricamento.add(loading);
 	}
 	
 	public void ApriAnimazionePanel(Controller ctrl, JPanel PanelCaricamento) {
@@ -425,9 +422,18 @@ public class Controller {
 		}
 	}
 	
-	public ArrayList<Prodotto> CaricaProdottiDeposito() throws SQLException {
-		ArrayList<Prodotto> prodotti = depositodao.CaricaProdottiDeposito();
+	public ArrayList<Prodotto> CaricaProdottiDeposito(Controller ctrl) throws SQLException {
+		ArrayList<Prodotto> prodotti = depositodao.CaricaProdottiDeposito(ctrl);
 		
 		return prodotti;
+	}
+
+	public JDialog ApriLoadingDialog(Controller ctrl) {
+		LoadingDialog dialog = new LoadingDialog(ctrl);
+		return dialog;
+	}
+	
+	public void ChiudiLoadingDialog(Controller ctrl, JDialog dialog) {
+		dialog.dispose();
 	}
 }

@@ -1,3 +1,12 @@
 Fare mockup
 ombra nelle label in cassa
 Fare controlli nelle procedure
+
+SwingWorker<Boolean, Integer> worker = new SwingWorker<Boolean, Integer>() {
+			  @Override
+			  protected Boolean doInBackground() {
+			  }
+			    return true;
+			  }
+			};
+			worker.execute();

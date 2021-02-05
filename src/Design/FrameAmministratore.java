@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.awt.event.MouseAdapter;
 
 public class FrameAmministratore extends JFrame {
@@ -98,7 +99,11 @@ public class FrameAmministratore extends JFrame {
 		ButtonDeposito.setFocusable(false);
 		ButtonDeposito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriDepositoPanel(ctrl, PanelCaricamento);
+				try {
+					ctrl.ApriDepositoPanel(ctrl, PanelCaricamento);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 				ctrl.CambiaIconaAiButtonFramePrincipale(new String("deposito"), LabelDeposito, LabelNegozio, LabelClienti,
 						ButtonDeposito, ButtonNegozio, ButtonClienti);
 				aperta=false;
