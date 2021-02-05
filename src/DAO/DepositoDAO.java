@@ -7,12 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JDialog;
+import javax.swing.SwingUtilities;
 
 import Main.Controller;
 import Objects.Prodotto;
 
 public class DepositoDAO {
 	
+	private ArrayList<Prodotto> prodotti;
+
 	public void AggiungiOrtofruttaAlDeposito(String nome, double prezzo, int quantita, Date data_scadenza, Date data_raccolta) throws SQLException {
 		String sql = "CALL aggiungi_ortofrutta_deposito(?, ?, ?, ?, ?, ?)";
 		
@@ -85,23 +88,26 @@ public class DepositoDAO {
 	}
 	
 	public ArrayList<Prodotto> CaricaProdottiDeposito(Controller ctrl) throws SQLException{
-		Thread worker = new Thread();
-		worker.start();
+		Thread thread = new Thread();
+		thread.start();
 		JDialog dialog = ctrl.ApriLoadingDialog(ctrl);
 		dialog.setVisible(true);
 		ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
 		String sql = "CALL recupera_prodotti_deposito()";
-		
-		PreparedStatement query;
+
+		PreparedStatement query = null;
 		query = Controller.getConnessione().getConn().prepareStatement(sql);
-		ResultSet datiRecuperati = query.executeQuery();
-		
+		ResultSet datiRecuperati = null;
+		datiRecuperati = query.executeQuery();
+
 		while(datiRecuperati.next())
 			prodotti.add(new Prodotto(datiRecuperati.getInt(1), datiRecuperati.getString(2), datiRecuperati.getDouble(3), datiRecuperati.getInt(4), datiRecuperati.getDate(5),
 					datiRecuperati.getBoolean(6), datiRecuperati.getBoolean(7), datiRecuperati.getBoolean(8), datiRecuperati.getBoolean(9), datiRecuperati.getBoolean(10),
 					datiRecuperati.getDate(11), datiRecuperati.getDate(12), datiRecuperati.getDate(13), datiRecuperati.getDate(14), datiRecuperati.getDate(15)));
-		ctrl.ChiudiLoadingDialog(ctrl, dialog);
+
+
 		return prodotti;
+
 	}
 
 	public void EliminaProdottoDeposito() {

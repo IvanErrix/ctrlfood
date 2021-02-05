@@ -84,6 +84,8 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldNome.setForeground(new Color(0, 41, 82));
 		textFieldNome.setColumns(10);
 		textFieldNome.setBackground(new Color(191,215,255));
+		textFieldNome.setSelectedTextColor(new Color (191,215,255));
+		textFieldNome.setSelectionColor(new Color (0,41,82));
 		textFieldNome.setBounds(244, 43, 249, 30);
 		textFieldNome.setCaretColor(new Color(0,41,82));
 		getContentPane().add(textFieldNome);
@@ -108,6 +110,8 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldCognome.setFont(new Font("Impact", Font.PLAIN, 16));
 		textFieldCognome.setForeground(new Color(0, 41, 82));
 		textFieldCognome.setBackground(new Color(191,215,255));
+		textFieldCognome.setSelectedTextColor(new Color (191,215,255));
+		textFieldCognome.setSelectionColor(new Color (0,41,82));
 		textFieldCognome.setColumns(10);
 		textFieldCognome.setBounds(244, 114, 249, 30);
 		textFieldCognome.setCaretColor(new Color(0, 41, 82));
@@ -133,6 +137,8 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 16));
 		textFieldCodiceFiscale.setForeground(new Color(0, 41, 82));
 		textFieldCodiceFiscale.setBackground(new Color(191, 215, 255));
+		textFieldCodiceFiscale.setSelectedTextColor(new Color (191,215,255));
+		textFieldCodiceFiscale.setSelectionColor(new Color (0,41,82));
 		textFieldCodiceFiscale.setColumns(10);
 		textFieldCodiceFiscale.setBounds(244, 188, 249, 30);
 		textFieldCodiceFiscale.setCaretColor(new Color(0, 41, 82));

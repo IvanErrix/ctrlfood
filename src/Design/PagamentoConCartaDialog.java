@@ -120,6 +120,8 @@ public class PagamentoConCartaDialog extends JDialog {
 		textFieldNumeroCarta.setFont(new Font("Impact", Font.PLAIN, 11));
 		textFieldNumeroCarta.setForeground(new Color(0,41,82));
 		textFieldNumeroCarta.setBackground(new Color(191,215,255));
+		textFieldNumeroCarta.setSelectedTextColor(new Color (191,215,255));
+		textFieldNumeroCarta.setSelectionColor(new Color (0,41,82));
 		textFieldNumeroCarta.setColumns(10);
 		textFieldNumeroCarta.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(textFieldNumeroCarta);
@@ -143,24 +145,28 @@ public class PagamentoConCartaDialog extends JDialog {
 			}
 		});
 		passwordFieldPin.setBackground(new Color(191,215,255));
+		passwordFieldPin.setSelectedTextColor(new Color (191,215,255));
+		passwordFieldPin.setSelectionColor(new Color (0,41,82));
 		passwordFieldPin.setBorder(new RoundedCornerBorder());
 		passwordFieldPin.setForeground(new Color(0,41,82));
 		passwordFieldPin.setFont(new Font("Impact", Font.PLAIN, 15));
 		passwordFieldPin.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(passwordFieldPin);
 		
-		JDateChooser dateChooserMungitura = new JDateChooser();
-		JTextFieldDateEditor dateChooserEditorMungitura = ((JTextFieldDateEditor)dateChooserMungitura.getDateEditor());
-		dateChooserEditorMungitura.setBackground(new Color(191, 215, 255));
-		dateChooserEditorMungitura.setForeground(new Color(0, 41, 82));
-		dateChooserEditorMungitura.setBorder(new RoundedCornerBorder());
-		dateChooserEditorMungitura.setFont(new Font("Impact", Font.PLAIN, 12));
-		dateChooserMungitura.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		dateChooserMungitura.setMinSelectableDate(data_corrente);
-		dateChooserMungitura.setDateFormatString("dd-MM-yyyy");
-		dateChooserMungitura.setBounds(186, 140, 292, 30);
-		dateChooserMungitura.setVisible(true);
-		contentPane.add(dateChooserMungitura);
+		JDateChooser dateChooserScadenzaCarta = new JDateChooser();
+		JTextFieldDateEditor dateChooserEditorScadenzaCarta = ((JTextFieldDateEditor)dateChooserScadenzaCarta.getDateEditor());
+		dateChooserEditorScadenzaCarta.setBackground(new Color(191, 215, 255));
+		dateChooserEditorScadenzaCarta.setForeground(new Color (0,41,82));
+		dateChooserEditorScadenzaCarta.setSelectedTextColor(new Color (191,215,255));
+		dateChooserEditorScadenzaCarta.setSelectionColor(new Color (0,41,82));
+		dateChooserEditorScadenzaCarta.setBorder(new RoundedCornerBorder());
+		dateChooserEditorScadenzaCarta.setFont(new Font("Impact", Font.PLAIN, 12));
+		dateChooserScadenzaCarta.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		dateChooserScadenzaCarta.setMinSelectableDate(data_corrente);
+		dateChooserScadenzaCarta.setDateFormatString("dd-MM-yyyy");
+		dateChooserScadenzaCarta.setBounds(186, 140, 292, 30);
+		dateChooserScadenzaCarta.setVisible(true);
+		contentPane.add(dateChooserScadenzaCarta);
 
 		JButton ButtonPaga = new JButton("");
 		ButtonPaga.setBounds(345, 321, 110, 24);
@@ -178,7 +184,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") || dateChooserEditorMungitura.getText().length()==0 ) {
+				if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") || dateChooserEditorScadenzaCarta.getText().length()==0 ) {
 					setAlwaysOnTop(false);
 					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
 					setAlwaysOnTop(true);
@@ -259,6 +265,8 @@ public class PagamentoConCartaDialog extends JDialog {
 		textFieldNumeroCartaFedelta.setColumns(10);
 		textFieldNumeroCartaFedelta.setCaretColor(new Color(0, 41, 82));
 		textFieldNumeroCartaFedelta.setBackground(new Color(191,215,255));
+		textFieldNumeroCartaFedelta.setSelectedTextColor(new Color (191,215,255));
+		textFieldNumeroCartaFedelta.setSelectionColor(new Color (0,41,82));
 		getContentPane().add(textFieldNumeroCartaFedelta);
 		
 		JLabel LabelSfondo = new JLabel("");

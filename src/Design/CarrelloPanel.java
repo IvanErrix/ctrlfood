@@ -134,11 +134,13 @@ public class CarrelloPanel extends JPanel {
 			}
 		});
 		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
-		textFieldSearch.setForeground(new Color(191, 215, 255));
+		textFieldSearch.setForeground(new Color(0, 41, 82));
+		textFieldSearch.setSelectedTextColor(new Color (191,215,255));
+		textFieldSearch.setSelectionColor(new Color (0,41,82));
+		textFieldSearch.setBorder(new RoundedCornerBorder());
 		textFieldSearch.setOpaque(false);
-		textFieldSearch.setBorder(null);
-		textFieldSearch.setBounds(85, 28, 276, 34);
-		textFieldSearch.setCaretColor(new Color(191, 215, 255));
+		textFieldSearch.setBounds(72, 28, 301, 34);
+		textFieldSearch.setCaretColor(new Color(0, 41, 82));
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
 		
@@ -164,7 +166,7 @@ public class CarrelloPanel extends JPanel {
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(CarrelloPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
-		ButtonAggiungi.setBounds(450, 55, 90, 22);
+		ButtonAggiungi.setBounds(495, 55, 90, 22);
 		add(ButtonAggiungi);
 		
 		JButton ButtonElimina = new JButton("");
@@ -189,7 +191,7 @@ public class CarrelloPanel extends JPanel {
 				
 			}
 		});
-		ButtonElimina.setBounds(450, 28, 90, 22);
+		ButtonElimina.setBounds(495, 28, 90, 22);
 		ButtonElimina.setIcon(new ImageIcon(CarrelloPanel.class.getResource("/scrimg/ButtonElimina.png")));
 		ButtonElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonElimina.setOpaque(false);

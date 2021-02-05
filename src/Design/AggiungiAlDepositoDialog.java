@@ -144,6 +144,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldNome.setBorder(new RoundedCornerBorder());
 		textFieldNome.setForeground(new Color(0,41,82));
 		textFieldNome.setBackground(new Color(191,215,255));
+		textFieldNome.setSelectedTextColor(new Color (191,215,255));
+		textFieldNome.setSelectionColor(new Color (0,41,82));
 		textFieldNome.setColumns(10);
 		textFieldNome.setBounds(340, 78, 275, 25);
 		textFieldNome.setCaretColor(new Color(0, 41, 82));
@@ -170,6 +172,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldPrezzo.setBorder(new RoundedCornerBorder());
 		textFieldPrezzo.setForeground(new Color(0,41,82));
 		textFieldPrezzo.setBackground(new Color(191,215,255));
+		textFieldPrezzo.setSelectedTextColor(new Color (191,215,255));
+		textFieldPrezzo.setSelectionColor(new Color (0,41,82));
 		textFieldPrezzo.setColumns(10);
 		textFieldPrezzo.setBounds(340, 124, 275, 25);
 		textFieldPrezzo.setCaretColor(new Color(0, 41, 82));
@@ -195,6 +199,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserEditorScadenza.setForeground(new Color(0, 41, 82));
 		dateChooserEditorScadenza.setBorder(new RoundedCornerBorder());
 		dateChooserEditorScadenza.setFont(new Font("Impact", Font.PLAIN, 12));
+		dateChooserEditorScadenza.setSelectedTextColor(new Color (191,215,255));
+		dateChooserEditorScadenza.setSelectionColor(new Color (0,41,82));
 		dateChooserScadenza.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		dateChooserScadenza.setMinSelectableDate(data_corrente);
 		dateChooserScadenza.setDateFormatString("dd-MM-yyyy");
@@ -205,6 +211,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		JTextFieldDateEditor dateChooserEditorRaccolta = ((JTextFieldDateEditor)dateChooserRaccolta.getDateEditor());
 		dateChooserEditorRaccolta.setBackground(new Color(191, 215, 255));
 		dateChooserEditorRaccolta.setForeground(new Color(0, 41, 82));
+		dateChooserEditorRaccolta.setSelectedTextColor(new Color (191,215,255));
+		dateChooserEditorRaccolta.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorRaccolta.setBorder(new RoundedCornerBorder());
 		dateChooserEditorRaccolta.setFont(new Font("Impact", Font.PLAIN, 12));
 		dateChooserRaccolta.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -217,6 +225,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		JTextFieldDateEditor dateChooserEditorProduzione = ((JTextFieldDateEditor)dateChooserProduzione.getDateEditor());
 		dateChooserEditorProduzione.setBackground(new Color(191, 215, 255));
 		dateChooserEditorProduzione.setForeground(new Color(0, 41, 82));
+		dateChooserEditorProduzione.setSelectedTextColor(new Color (191,215,255));
+		dateChooserEditorProduzione.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorProduzione.setBorder(new RoundedCornerBorder());
 		dateChooserEditorProduzione.setFont(new Font("Impact", Font.PLAIN, 12));
 		dateChooserProduzione.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -230,6 +240,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		JTextFieldDateEditor dateChooserEditorConfezionamento = ((JTextFieldDateEditor)dateChooserConfezionamento.getDateEditor());
 		dateChooserEditorConfezionamento.setBackground(new Color(191, 215, 255));
 		dateChooserEditorConfezionamento.setForeground(new Color(0, 41, 82));
+		dateChooserEditorConfezionamento.setSelectedTextColor(new Color (191,215,255));
+		dateChooserEditorConfezionamento.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorConfezionamento.setBorder(new RoundedCornerBorder());
 		dateChooserEditorConfezionamento.setFont(new Font("Impact", Font.PLAIN, 12));
 		dateChooserConfezionamento.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -243,6 +255,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		JTextFieldDateEditor dateChooserEditorMungitura = ((JTextFieldDateEditor)dateChooserMungitura.getDateEditor());
 		dateChooserEditorMungitura.setBackground(new Color(191, 215, 255));
 		dateChooserEditorMungitura.setForeground(new Color(0, 41, 82));
+		dateChooserEditorMungitura.setSelectedTextColor(new Color (191,215,255));
+		dateChooserEditorMungitura.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorMungitura.setBorder(new RoundedCornerBorder());
 		dateChooserEditorMungitura.setFont(new Font("Impact", Font.PLAIN, 12));
 		dateChooserMungitura.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -256,6 +270,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		JTextFieldDateEditor dateChooserEditorDeposizione = ((JTextFieldDateEditor)dateChooserDeposizione.getDateEditor());
 		dateChooserEditorDeposizione.setBackground(new Color(191, 215, 255));
 		dateChooserEditorDeposizione.setForeground(new Color(0, 41, 82));
+		dateChooserEditorDeposizione.setSelectedTextColor(new Color (191,215,255));
+		dateChooserEditorDeposizione.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorDeposizione.setBorder(new RoundedCornerBorder());
 		dateChooserEditorDeposizione.setFont(new Font("Impact", Font.PLAIN, 12));
 		dateChooserDeposizione.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -366,6 +382,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldFoto.setBorder(new RoundedCornerBorder());
 		textFieldFoto.setBackground(new Color(191,215,255));
 		textFieldFoto.setForeground(new Color(0,41,82));
+		textFieldFoto.setSelectedTextColor(new Color (191,215,255));
+		textFieldFoto.setSelectionColor(new Color (0,41,82));
 		textFieldFoto.setColumns(10);
 		textFieldFoto.setBounds(340, 263, 254, 25);
 		textFieldFoto.setCaretColor(new Color(0, 41, 82));

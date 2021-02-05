@@ -29,6 +29,7 @@ public class LoginAmministratoreDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private JTextField textFieldUsername;
 	private JPasswordField passwordField;
+	private boolean visible=false;
 
 	public LoginAmministratoreDialog(Controller ctrl) {
 		setAlwaysOnTop(true);
@@ -95,6 +96,30 @@ public class LoginAmministratoreDialog extends JDialog {
 		ButtonIndietro.setBounds(27, 29, 34, 34);
 		contentPane.add(ButtonIndietro);
 		
+		JButton ButtonVediPassword = new JButton("");
+		ButtonVediPassword.setBounds(250, 190, 32, 32);
+		ButtonVediPassword.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(visible==false) {
+					visible=true;
+					ButtonVediPassword.setIcon(new ImageIcon(LoginAmministratoreDialog.class.getResource("/scrimg/ButtonUnviewPassword.png")));
+					passwordField.setEchoChar((char) 0);
+					passwordField.setFont(new Font("Impact", Font.PLAIN, 13));
+				}
+				else if(visible==true) {
+					visible=false;
+					ButtonVediPassword.setIcon(new ImageIcon(LoginAmministratoreDialog.class.getResource("/scrimg/ButtonViewPassword.png")));
+					passwordField.setEchoChar('●');
+					passwordField.setFont(new Font("Impact", Font.PLAIN, 13));
+				}
+			}
+		});
+		ButtonVediPassword.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonVediPassword.setIcon(new ImageIcon(LoginAmministratoreDialog.class.getResource("/scrimg/ButtonViewPassword.png")));
+		ButtonVediPassword.setBorder(null);
+		ButtonVediPassword.setContentAreaFilled(false);
+		contentPane.add(ButtonVediPassword);
+		
 		textFieldUsername = new JTextField();
 		textFieldUsername.addFocusListener(new FocusAdapter() {
 			@Override
@@ -105,6 +130,8 @@ public class LoginAmministratoreDialog extends JDialog {
 		textFieldUsername.setFont(new Font("Impact", Font.PLAIN, 15));
 		textFieldUsername.setForeground(new Color(0,41,82));
 		textFieldUsername.setOpaque(false);
+		textFieldUsername.setSelectedTextColor(new Color (191,215,255));
+		textFieldUsername.setSelectionColor(new Color (0,41,82));
 		textFieldUsername.setBorder(null);
 		textFieldUsername.setColumns(10);
 		textFieldUsername.setBounds(94, 140, 188, 29);
@@ -114,8 +141,10 @@ public class LoginAmministratoreDialog extends JDialog {
 		passwordField.setFont(new Font("Impact", Font.PLAIN, 15));
 		passwordField.setForeground(new Color(0,41,82));
 		passwordField.setOpaque(false);
+		passwordField.setSelectedTextColor(new Color (191,215,255));
+		passwordField.setSelectionColor(new Color (0,41,82));
 		passwordField.setBorder(null);
-		passwordField.setBounds(94, 193, 188, 29);
+		passwordField.setBounds(94, 193, 153, 29);
 		contentPane.add(passwordField);
 		
 		JButton ButtonLogin = new JButton("");

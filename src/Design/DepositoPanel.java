@@ -173,11 +173,13 @@ public class DepositoPanel extends JPanel {
 			}
 		});
 		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
-		textFieldSearch.setForeground(new Color(191, 215, 255));
+		textFieldSearch.setForeground(new Color(0, 41, 82));
+		textFieldSearch.setSelectedTextColor(new Color (191,215,255));
+		textFieldSearch.setSelectionColor(new Color (0,41,82));
+		textFieldSearch.setBorder(new RoundedCornerBorder());
 		textFieldSearch.setOpaque(false);
-		textFieldSearch.setBorder(null);
-		textFieldSearch.setBounds(85, 28, 276, 34);
-		textFieldSearch.setCaretColor(new Color(191, 215, 255));
+		textFieldSearch.setBounds(72, 28, 301, 34);
+		textFieldSearch.setCaretColor(new Color(0, 41, 82));
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
 		

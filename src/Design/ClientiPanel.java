@@ -168,11 +168,13 @@ public class ClientiPanel extends JPanel {
 			}
 		});
 		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
-		textFieldSearch.setForeground(new Color(191, 215, 255));
+		textFieldSearch.setForeground(new Color(0, 41, 82));
+		textFieldSearch.setSelectedTextColor(new Color (191,215,255));
+		textFieldSearch.setSelectionColor(new Color (0,41,82));
+		textFieldSearch.setBorder(new RoundedCornerBorder());
 		textFieldSearch.setOpaque(false);
-		textFieldSearch.setBorder(null);
-		textFieldSearch.setBounds(85, 28, 276, 34);
-		textFieldSearch.setCaretColor(new Color(191, 215, 255));
+		textFieldSearch.setBounds(72, 28, 301, 34);
+		textFieldSearch.setCaretColor(new Color(0, 41, 82));
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
 		
@@ -198,7 +200,7 @@ public class ClientiPanel extends JPanel {
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
-		ButtonAggiungi.setBounds(450, 55, 90, 22);
+		ButtonAggiungi.setBounds(495, 55, 90, 22);
 		add(ButtonAggiungi);
 		
 		JButton ButtonModifica = new JButton("");
@@ -227,7 +229,7 @@ public class ClientiPanel extends JPanel {
 				
 			}
 		});
-		ButtonModifica.setBounds(550, 28, 90, 22);
+		ButtonModifica.setBounds(595, 28, 90, 22);
 		ButtonModifica.setIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonModifica.png")));
 		ButtonModifica.setOpaque(false);
 		ButtonModifica.setBorder(null);
@@ -253,7 +255,7 @@ public class ClientiPanel extends JPanel {
 		});
 		ButtonStampa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
-		ButtonStampa.setBounds(450, 28, 90, 22);
+		ButtonStampa.setBounds(495, 28, 90, 22);
 		ButtonStampa.setOpaque(false);
 		ButtonStampa.setBorder(null);
 		ButtonStampa.setContentAreaFilled(false);
@@ -281,7 +283,7 @@ public class ClientiPanel extends JPanel {
 				
 			}
 		});
-		ButtonElimina.setBounds(550, 55, 90, 22);
+		ButtonElimina.setBounds(595, 55, 90, 22);
 		ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
 		ButtonElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonElimina.setOpaque(false);
