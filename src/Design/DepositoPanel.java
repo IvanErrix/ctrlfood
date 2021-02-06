@@ -8,6 +8,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import Main.Controller;
+import Objects.Prodotto;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -29,16 +30,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
 import javax.swing.ScrollPaneConstants;
 
 public class DepositoPanel extends JPanel {
-
+	
 	private static final long serialVersionUID = 1L;
+	
+	private ArrayList<Prodotto> prodotti;
 	private String Titoli[]= {"Tipologia","IDProdotto", "Nome", "Prezzo", "Quantità","Scadenza", "Raccolta", "Produzione", "Mungitura", "Deposizione", "Confezionamento"};
-	public DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
+	private DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
 		
 		private static final long serialVersionUID = 1L;
 
@@ -248,10 +252,11 @@ public class DepositoPanel extends JPanel {
 		ButtonElimina.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					model.removeRow(table.getSelectedRow());
+					ctrl.EliminaProdottoDeposito(Integer.parseInt(model.getValueAt(table.getSelectedRow(), 1).toString()));
 					JOptionPane.showMessageDialog(null, "RIGA ELIMINATA CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
+					e2.printStackTrace();
 				}
 				
 			}
@@ -277,31 +282,32 @@ public class DepositoPanel extends JPanel {
 	
 	public void CaricaProdottiInTabella(Controller ctrl) throws SQLException {
 		model.setRowCount(0);
-		for(int i=0; i<ctrl.CaricaProdottiDeposito(ctrl).size(); i++) {
-			 int id = ctrl.CaricaProdottiDeposito(ctrl).get(i).getIdprodotto();
-			 String nome = ctrl.CaricaProdottiDeposito(ctrl).get(i).getNome();
-			 double prezzo = ctrl.CaricaProdottiDeposito(ctrl).get(i).getPrezzo();
-			 int quantita = ctrl.CaricaProdottiDeposito(ctrl).get(i).getQuantita();
-			 Date scadenza = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_scadenza();
-			 Date raccolta = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_raccolta();
-			 Date produzione = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_produzione();
-			 Date mungitura = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_mungitura();
-			 Date deposizione = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_deposizione();
-			 Date confezionamento = (Date) ctrl.CaricaProdottiDeposito(ctrl).get(i).getData_confezionamento();
+		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
+		for(int i=0; i<prodotti.size(); i++) {
+			 int id = prodotti.get(i).getIdprodotto();
+			 String nome = prodotti.get(i).getNome();
+			 double prezzo = prodotti.get(i).getPrezzo();
+			 int quantita = prodotti.get(i).getQuantita();
+			 Date scadenza = (Date) prodotti.get(i).getData_scadenza();
+			 Date raccolta = (Date) prodotti.get(i).getData_raccolta();
+			 Date produzione = (Date) prodotti.get(i).getData_produzione();
+			 Date mungitura = (Date) prodotti.get(i).getData_mungitura();
+			 Date deposizione = (Date) prodotti.get(i).getData_deposizione();
+			 Date confezionamento = (Date) prodotti.get(i).getData_confezionamento();
 			 Boolean valore;
-			if((valore=ctrl.CaricaProdottiDeposito(ctrl).get(i).getOrtofrutta())==true) {
+			if((valore=prodotti.get(i).getOrtofrutta())==true) {
 				model.addRow(new Object[] {"Ortofrutta", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
-			else if((valore=ctrl.CaricaProdottiDeposito(ctrl).get(i).getLatticino())==true) {
+			else if((valore=prodotti.get(i).getLatticino())==true) {
 				model.addRow(new Object[] {"Latticini", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
-			else if((valore=ctrl.CaricaProdottiDeposito(ctrl).get(i).getFarinaceo())==true) {
+			else if((valore=prodotti.get(i).getFarinaceo())==true) {
 				model.addRow(new Object[] {"Farinacei", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
-			else if((valore=ctrl.CaricaProdottiDeposito(ctrl).get(i).getUova())==true) {
+			else if((valore=prodotti.get(i).getUova())==true) {
 				model.addRow(new Object[] {"Uova", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
-			else if((valore=ctrl.CaricaProdottiDeposito(ctrl).get(i).getConfezionato())==true) {
+			else if((valore=prodotti.get(i).getConfezionato())==true) {
 				model.addRow(new Object[] {"Confezionati", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
 			 

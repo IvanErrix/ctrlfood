@@ -137,7 +137,7 @@ public class Controller {
 		PanelCaricamento.revalidate();
 	}
 	
-	public void ApriNegozioPanel(Controller ctrl, JPanel PanelCaricamento) {
+	public void ApriNegozioPanel(Controller ctrl, JPanel PanelCaricamento) throws SQLException {
 		NegozioPanel negozio = new NegozioPanel(ctrl);
 		negozio.setVisible(true);
 		PanelCaricamento.removeAll();
@@ -199,7 +199,7 @@ public class Controller {
 		dialog.setVisible(true);
 	}
 	
-	public void ApriAggiungiAlNegozioDialog(Controller ctrl) {
+	public void ApriAggiungiAlNegozioDialog(Controller ctrl) throws SQLException {
 		AggiungiAlNegozioDialog dialog = new AggiungiAlNegozioDialog(ctrl);
 		dialog.setVisible(true);
 	}
@@ -222,6 +222,15 @@ public class Controller {
 	public void ApriSpostaDalNegozioDialog() {
 		SpostaDalNegozioDialog dialog = new SpostaDalNegozioDialog();
 		dialog.setVisible(true);
+	}
+	
+	public JDialog ApriLoadingDialog(Controller ctrl) {
+		LoadingDialog dialog = new LoadingDialog(ctrl);
+		return dialog;
+	}
+	
+	public void ChiudiLoadingDialog(Controller ctrl, JDialog dialog) {
+		dialog.dispose();
 	}
 	
 	//Stampa all'interno di un file txt che si trova sul desktop, il contenuto della tabella passata come argomento
@@ -423,17 +432,15 @@ public class Controller {
 	}
 	
 	public ArrayList<Prodotto> CaricaProdottiDeposito(Controller ctrl) throws SQLException {
-		ArrayList<Prodotto> prodotti = depositodao.CaricaProdottiDeposito(ctrl);
-		
-		return prodotti;
+		return depositodao.CaricaProdottiDeposito(ctrl);
 	}
 
-	public JDialog ApriLoadingDialog(Controller ctrl) {
-		LoadingDialog dialog = new LoadingDialog(ctrl);
-		return dialog;
+	public void EliminaProdottoDeposito(int idprodotto) {
+		depositodao.EliminaProdottoDeposito(idprodotto);
 	}
 	
-	public void ChiudiLoadingDialog(Controller ctrl, JDialog dialog) {
-		dialog.dispose();
+	public ArrayList<Prodotto> CaricaProdottiNegozio() throws SQLException {
+		return negoziodao.CaricaProdottiNegozio();
 	}
+
 }

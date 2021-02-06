@@ -13,8 +13,6 @@ import Main.Controller;
 import Objects.Prodotto;
 
 public class DepositoDAO {
-	
-	private ArrayList<Prodotto> prodotti;
 
 	public void AggiungiOrtofruttaAlDeposito(String nome, double prezzo, int quantita, Date data_scadenza, Date data_raccolta) throws SQLException {
 		String sql = "CALL aggiungi_ortofrutta_deposito(?, ?, ?, ?, ?, ?)";
@@ -88,10 +86,7 @@ public class DepositoDAO {
 	}
 	
 	public ArrayList<Prodotto> CaricaProdottiDeposito(Controller ctrl) throws SQLException{
-		Thread thread = new Thread();
-		thread.start();
-		JDialog dialog = ctrl.ApriLoadingDialog(ctrl);
-		dialog.setVisible(true);
+
 		ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
 		String sql = "CALL recupera_prodotti_deposito()";
 
@@ -110,7 +105,16 @@ public class DepositoDAO {
 
 	}
 
-	public void EliminaProdottoDeposito() {
+	public void EliminaProdottoDeposito(int idprodotto) {
+		String sql = "CALL elimina_prodotto_deposito(?)";
 		
+		PreparedStatement query;
+		try {
+			query = Controller.getConnessione().getConn().prepareStatement(sql);
+			query.setInt(1, idprodotto);
+			query.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

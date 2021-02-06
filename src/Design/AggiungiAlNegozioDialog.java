@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.accessibility.AccessibleContext;
 import javax.swing.BorderFactory;
@@ -23,6 +25,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicComboPopup;
 
 import Main.Controller;
+import Objects.Prodotto;
 
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -31,8 +34,13 @@ import javax.swing.DefaultComboBoxModel;
 public class AggiungiAlNegozioDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	
+	private ArrayList<Prodotto> prodotti;
+	private JComboBox comboBoxTipologia;
+	private JComboBox comboBoxNome;
+	private JSpinner spinnerQuantita;
 
-	public AggiungiAlNegozioDialog(Controller ctrl) {
+	public AggiungiAlNegozioDialog(Controller ctrl) throws SQLException {
 		setUndecorated(true);
 		setSize(453, 364);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
@@ -113,7 +121,11 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonAnnulla.setBounds(41, 300, 110, 24);
 		getContentPane().add(ButtonAnnulla);
 		
-		JComboBox comboBoxNome = new JComboBox();
+		comboBoxNome = new JComboBox();
+		comboBoxNome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		AccessibleContext ac = comboBoxNome.getAccessibleContext();
 		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
 		JList list = pop.getList();
@@ -126,13 +138,23 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxNome.setBounds(208, 108, 190, 24);
 		getContentPane().add(comboBoxNome);
 		
-		JComboBox comboBoxTipologia = new JComboBox();
+		comboBoxTipologia = new JComboBox();
+		comboBoxTipologia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					CaricaComboBoxNome(ctrl);
+//					CaricaSpinnerQuantita(ctrl);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		AccessibleContext ac2 = comboBoxTipologia.getAccessibleContext();
 		BasicComboPopup pop2 = (BasicComboPopup) ac2.getAccessibleChild(0);
 		JList list2 = pop2.getList();
 		list2.setSelectionForeground(new Color(191, 215, 255));
 		list2.setSelectionBackground(new Color(0, 41, 82));
-		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati", "Farinacei", "Uova"}));
+		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Farinacei", "Uova", "Confezionati"}));
 		comboBoxTipologia.setMaximumRowCount(3);
 		comboBoxTipologia.setForeground(new Color(0,41,82));
 		comboBoxTipologia.setFont(new Font("Impact", Font.PLAIN, 11));
@@ -143,7 +165,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		getContentPane().add(comboBoxTipologia);
 		
 		SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 50, 1);
-		JSpinner spinnerQuantita = new JSpinner(model);
+		spinnerQuantita = new JSpinner(model);
 		spinnerQuantita.setFocusable(false);
 		spinnerQuantita.setOpaque(false);
 		spinnerQuantita.setBorder(new RoundedCornerBorder());
@@ -161,5 +183,39 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		LabelSfondo.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/SfondoAggiungiAlnegozio.png")));
 		LabelSfondo.setBounds(-8, -8, 467, 376);
 		getContentPane().add(LabelSfondo);
+		
+		CaricaComboBoxNome(ctrl);
+//		CaricaSpinnerQuantita(ctrl);
+	}
+	
+	public void CaricaComboBoxNome(Controller ctrl) throws SQLException {
+		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
+		comboBoxNome.removeAllItems();
+		for(int i=0; i<prodotti.size(); i++) {
+			if(prodotti.get(i).getOrtofrutta()==true && comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
+				comboBoxNome.addItem(prodotti.get(i).getNome());
+			}
+			else if(prodotti.get(i).getLatticino()==true && comboBoxTipologia.getSelectedItem()=="Latticini") {
+				comboBoxNome.addItem(prodotti.get(i).getNome());
+			}
+			else if(prodotti.get(i).getFarinaceo()==true && comboBoxTipologia.getSelectedItem()=="Farinacei") {
+				comboBoxNome.addItem(prodotti.get(i).getNome());
+			}
+			else if(prodotti.get(i).getUova()==true && comboBoxTipologia.getSelectedItem()=="Uova") {
+				comboBoxNome.addItem(prodotti.get(i).getNome());
+			}
+			else if(prodotti.get(i).getConfezionato()==true && comboBoxTipologia.getSelectedItem()=="Confezionati") {
+				comboBoxNome.addItem(prodotti.get(i).getNome());
+			}
+		}
+	}
+	
+	public void CaricaSpinnerQuantita(Controller ctrl) throws SQLException {
+		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
+		for(int i=0; i<prodotti.size(); i++) {
+			if(comboBoxNome.getSelectedItem().toString().equals(prodotti.get(i).getNome())) {
+				spinnerQuantita.setValue(prodotti.get(i).getQuantita());
+			}
+		}
 	}
 }

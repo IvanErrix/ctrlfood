@@ -122,10 +122,14 @@ public class FrameAmministratore extends JFrame {
 		ButtonNegozio.setFocusable(false);
 		ButtonNegozio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriNegozioPanel(ctrl, PanelCaricamento);
-				ctrl.CambiaIconaAiButtonFramePrincipale(new String("negozio"), LabelDeposito, LabelNegozio, LabelClienti,
-						ButtonDeposito, ButtonNegozio, ButtonClienti);
-				aperta=false;
+				try {
+					ctrl.ApriNegozioPanel(ctrl, PanelCaricamento);
+					ctrl.CambiaIconaAiButtonFramePrincipale(new String("negozio"), LabelDeposito, LabelNegozio, LabelClienti,
+							ButtonDeposito, ButtonNegozio, ButtonClienti);
+					aperta=false;
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		ButtonNegozio.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

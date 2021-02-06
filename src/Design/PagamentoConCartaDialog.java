@@ -156,7 +156,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		JDateChooser dateChooserScadenzaCarta = new JDateChooser();
 		JTextFieldDateEditor dateChooserEditorScadenzaCarta = ((JTextFieldDateEditor)dateChooserScadenzaCarta.getDateEditor());
 		dateChooserEditorScadenzaCarta.setBackground(new Color(191, 215, 255));
-		dateChooserEditorScadenzaCarta.setForeground(new Color (0,41,82));
+//		dateChooserEditorScadenzaCarta.setForeground(new Color (0,41,82));
 		dateChooserEditorScadenzaCarta.setSelectedTextColor(new Color (191,215,255));
 		dateChooserEditorScadenzaCarta.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorScadenzaCarta.setBorder(new RoundedCornerBorder());
@@ -165,7 +165,6 @@ public class PagamentoConCartaDialog extends JDialog {
 		dateChooserScadenzaCarta.setMinSelectableDate(data_corrente);
 		dateChooserScadenzaCarta.setDateFormatString("dd-MM-yyyy");
 		dateChooserScadenzaCarta.setBounds(186, 140, 292, 30);
-		dateChooserScadenzaCarta.setVisible(true);
 		contentPane.add(dateChooserScadenzaCarta);
 
 		JButton ButtonPaga = new JButton("");
@@ -272,10 +271,6 @@ public class PagamentoConCartaDialog extends JDialog {
 		JLabel LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/SfondoClienti.png")));
 		LabelSfondo.setBounds(-9, -9, 580, 429);
-		contentPane.add(LabelSfondo);
-		
-		
-		
-		
+		contentPane.add(LabelSfondo);	
 	}
 }

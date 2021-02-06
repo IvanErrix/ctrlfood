@@ -6,6 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,6 +24,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 import Main.Controller;
+import Objects.Prodotto;
 
 import java.awt.Font;
 import javax.swing.ListSelectionModel;
@@ -35,9 +39,9 @@ public class NegozioPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private String Titoli[]= {"Tipologia","Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
-	private Object Elementi[][]= {};
-	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
+	private ArrayList<Prodotto> prodotti;
+	private String Titoli[]= {"Tipologia","IDProdotto", "Nome", "Prezzo", "Quantità","Scadenza", "Raccolta", "Produzione", "Mungitura", "Deposizione", "Confezionamento"};
+	private DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
 
 		private static final long serialVersionUID = 1L;
 
@@ -49,7 +53,7 @@ public class NegozioPanel extends JPanel {
 	private JTable table;
 	private JTextField textFieldSearch;
 
-	public NegozioPanel(Controller ctrl) {
+	public NegozioPanel(Controller ctrl) throws SQLException {
 		setOpaque(false);
 		setBackground(Color.BLACK);
 		setBounds(0, 0, 754, 553);
@@ -78,12 +82,9 @@ public class NegozioPanel extends JPanel {
 		table.getTableHeader().setBackground(new Color(191,215,255));
 		table.getTableHeader().setForeground(new Color(0, 41, 82));
 		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 		renderer.setHorizontalAlignment( SwingConstants.CENTER );
-		model.addRow(new Object[] {"Ortofrutta","Mela", "001", "0.5", "2", "10/01/2021"});
-		model.addRow(new Object[] {"Ortofrutta","PERA", "002", "1.0", "1", "15/12/2021"});
-		model.addRow(new Object[] {"Ortofrutta","BANANA", "003", "1.5", "4", "05/8/2021"});
-		model.addRow(new Object[] {"Confezionati","CAFFE", "004", "4.0", "3", "03/6/2021"});
 
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);
@@ -167,7 +168,11 @@ public class NegozioPanel extends JPanel {
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriAggiungiAlNegozioDialog(ctrl);
+				try {
+					ctrl.ApriAggiungiAlNegozioDialog(ctrl);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 		ButtonAggiungi.setBorder(null);
@@ -235,5 +240,41 @@ public class NegozioPanel extends JPanel {
 		LabelSfondo.setIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/SfondoPanel.png")));
 		LabelSfondo.setBounds(0, 0, 748, 552);
 		add(LabelSfondo);
+		
+		CaricaProdottiNegozio(ctrl);
+	}
+	
+	public void CaricaProdottiNegozio(Controller ctrl) throws SQLException {
+		model.setRowCount(0);
+		prodotti=ctrl.CaricaProdottiNegozio();
+		for(int i=0; i<prodotti.size(); i++) {
+			 int id = prodotti.get(i).getIdprodotto();
+			 String nome = prodotti.get(i).getNome();
+			 double prezzo = prodotti.get(i).getPrezzo();
+			 int quantita = prodotti.get(i).getQuantita();
+			 Date scadenza = (Date) prodotti.get(i).getData_scadenza();
+			 Date raccolta = (Date) prodotti.get(i).getData_raccolta();
+			 Date produzione = (Date) prodotti.get(i).getData_produzione();
+			 Date mungitura = (Date) prodotti.get(i).getData_mungitura();
+			 Date deposizione = (Date) prodotti.get(i).getData_deposizione();
+			 Date confezionamento = (Date) prodotti.get(i).getData_confezionamento();
+			 Boolean valore;
+			if((valore=prodotti.get(i).getOrtofrutta())==true) {
+				model.addRow(new Object[] {"Ortofrutta", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			else if((valore=prodotti.get(i).getLatticino())==true) {
+				model.addRow(new Object[] {"Latticini", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			else if((valore=prodotti.get(i).getFarinaceo())==true) {
+				model.addRow(new Object[] {"Farinacei", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			else if((valore=prodotti.get(i).getUova())==true) {
+				model.addRow(new Object[] {"Uova", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			else if((valore=prodotti.get(i).getConfezionato())==true) {
+				model.addRow(new Object[] {"Confezionati", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			 
+		}
 	}
 }
