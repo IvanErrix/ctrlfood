@@ -375,6 +375,7 @@ public class Controller {
 		return rs;
 	}
 	
+	//Funzioni Database Deposito
 	public void InserisciProdottoDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_raccolta) {
 		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
 		java.sql.Date raccolta = new java.sql.Date(data_raccolta);
@@ -439,8 +440,14 @@ public class Controller {
 		depositodao.EliminaProdottoDeposito(idprodotto);
 	}
 	
+	//Funzioni Database Negozio
 	public ArrayList<Prodotto> CaricaProdottiNegozio() throws SQLException {
 		return negoziodao.CaricaProdottiNegozio();
+	}
+	
+	//Funzioni Database Clienti
+	public void AggiungiCliente(String nome, String cognome, String codice_fiscale) {
+		clientedao.AggiungiCliente(nome, cognome, codice_fiscale);
 	}
 
 }

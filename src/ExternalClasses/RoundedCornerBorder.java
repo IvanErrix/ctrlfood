@@ -1,4 +1,4 @@
-package Design;
+package ExternalClasses;
 
 import java.awt.Color;
 import java.awt.Component;

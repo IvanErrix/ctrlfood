@@ -35,6 +35,8 @@ import java.awt.event.FocusEvent;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 
+import ExternalClasses.RoundedCornerBorder;
+
 public class AggiungiAlDepositoDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;

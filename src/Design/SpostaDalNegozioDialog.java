@@ -10,6 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
+import ExternalClasses.RoundedCornerBorder;
+
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;

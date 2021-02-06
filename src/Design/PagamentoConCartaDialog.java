@@ -23,6 +23,7 @@ import org.jdatepicker.impl.UtilDateModel;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 
+import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
 
 import java.awt.Cursor;

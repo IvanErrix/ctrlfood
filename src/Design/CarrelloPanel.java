@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
 
 import java.awt.Font;
