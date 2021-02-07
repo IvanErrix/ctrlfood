@@ -41,7 +41,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private JComboBox comboBoxNome;
 	private JSpinner spinnerQuantita;
 
-	public AggiungiAlNegozioDialog(Controller ctrl) throws SQLException {
+	public AggiungiAlNegozioDialog(Controller ctrl) {
 		setUndecorated(true);
 		setSize(453, 364);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
@@ -142,12 +142,8 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxTipologia = new JComboBox();
 		comboBoxTipologia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					CaricaComboBoxNome(ctrl);
+				CaricaComboBoxNome(ctrl);
 //					CaricaSpinnerQuantita(ctrl);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
 			}
 		});
 		AccessibleContext ac2 = comboBoxTipologia.getAccessibleContext();
@@ -189,7 +185,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 //		CaricaSpinnerQuantita(ctrl);
 	}
 	
-	public void CaricaComboBoxNome(Controller ctrl) throws SQLException {
+	public void CaricaComboBoxNome(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
 		comboBoxNome.removeAllItems();
 		for(int i=0; i<prodotti.size(); i++) {
@@ -211,7 +207,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		}
 	}
 	
-	public void CaricaSpinnerQuantita(Controller ctrl) throws SQLException {
+	public void CaricaSpinnerQuantita(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
 		for(int i=0; i<prodotti.size(); i++) {
 			if(comboBoxNome.getSelectedItem().toString().equals(prodotti.get(i).getNome())) {

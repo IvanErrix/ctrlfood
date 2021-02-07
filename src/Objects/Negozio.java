@@ -3,11 +3,15 @@ package Objects;
 import java.util.*;
 
 public class Negozio {
-
-    public Negozio() {
-    }
-
-    private int idnegozio;
+	
+    public Negozio(int idnegozio, String nome, String luogo, int grandezza) {
+		super();
+		this.idnegozio = idnegozio;
+		this.nome = nome;
+		this.luogo = luogo;
+		this.grandezza = grandezza;
+	}
+	private int idnegozio;
     private String nome;
     private String luogo;
     private int grandezza;

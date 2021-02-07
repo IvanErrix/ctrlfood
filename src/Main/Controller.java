@@ -57,6 +57,7 @@ import Design.LoginDialog;
 import Design.NegozioPanel;
 import Design.PagamentoConCartaDialog;
 import Design.SpostaDalNegozioDialog;
+import Objects.Cliente;
 import Objects.Prodotto;
 
 public class Controller {
@@ -128,7 +129,7 @@ public class Controller {
 	}
 	
 	//Funzioni per l'apertura dei panel
-	public void ApriDepositoPanel(Controller ctrl, JPanel PanelCaricamento) throws SQLException {
+	public void ApriDepositoPanel(Controller ctrl, JPanel PanelCaricamento) {
 		DepositoPanel deposito = new DepositoPanel(ctrl);
 		deposito.setVisible(true);
 		PanelCaricamento.removeAll();
@@ -137,7 +138,7 @@ public class Controller {
 		PanelCaricamento.revalidate();
 	}
 	
-	public void ApriNegozioPanel(Controller ctrl, JPanel PanelCaricamento) throws SQLException {
+	public void ApriNegozioPanel(Controller ctrl, JPanel PanelCaricamento) {
 		NegozioPanel negozio = new NegozioPanel(ctrl);
 		negozio.setVisible(true);
 		PanelCaricamento.removeAll();
@@ -199,7 +200,7 @@ public class Controller {
 		dialog.setVisible(true);
 	}
 	
-	public void ApriAggiungiAlNegozioDialog(Controller ctrl) throws SQLException {
+	public void ApriAggiungiAlNegozioDialog(Controller ctrl) {
 		AggiungiAlNegozioDialog dialog = new AggiungiAlNegozioDialog(ctrl);
 		dialog.setVisible(true);
 	}
@@ -370,9 +371,8 @@ public class Controller {
 	}
 	
 	//Funzioni per Database
-	public String ControllaDatiLogin(String username, String password) throws SQLException {
-		String rs = loginamministratoredao.ControllaDatiLogin(username, password);
-		return rs;
+	public String ControllaDatiLogin(String username, String password) {
+		return loginamministratoredao.ControllaDatiLogin(username, password);
 	}
 	
 	//Funzioni Database Deposito
@@ -381,7 +381,7 @@ public class Controller {
 		java.sql.Date raccolta = new java.sql.Date(data_raccolta);
 		try {
 			depositodao.AggiungiOrtofruttaAlDeposito(nome, prezzo, quantita, scadenza, raccolta);
-		} catch (NumberFormatException | SQLException e) {
+		} catch (NumberFormatException e) {
 			System.out.println("errore controller");
 			e.printStackTrace();
 		}
@@ -392,7 +392,7 @@ public class Controller {
 		java.sql.Date confezionamento = new java.sql.Date(data_confezionamento);
 		try {
 			depositodao.AggiungiConfezionatoAlDeposito(nome, prezzo, quantita, scadenza, confezionamento);
-		} catch (NumberFormatException | SQLException e) {
+		} catch (NumberFormatException e) {
 			System.out.println("errore controller");
 			e.printStackTrace();
 		}
@@ -404,7 +404,7 @@ public class Controller {
 		java.sql.Date produzione = new java.sql.Date(data_produzione);
 		try {
 			depositodao.AggiungiLatticinoAlDeposito(nome, prezzo, quantita, scadenza, mungitura, produzione);
-		} catch (NumberFormatException | SQLException e) {
+		} catch (NumberFormatException e) {
 			System.out.println("errore controller");
 			e.printStackTrace();
 		}
@@ -415,7 +415,7 @@ public class Controller {
 		java.sql.Date produzione = new java.sql.Date(data_produzione);
 		try {
 			depositodao.AggiungiFarinaceoAlDeposito(nome, prezzo, quantita, scadenza, produzione);
-		} catch (NumberFormatException | SQLException e) {
+		} catch (NumberFormatException e) {
 			System.out.println("errore controller");
 			e.printStackTrace();
 		}
@@ -426,13 +426,13 @@ public class Controller {
 		java.sql.Date deposizione = new java.sql.Date(data_deposizione);
 		try {
 			depositodao.AggiungiUovoAlDeposito(nome, prezzo, quantita, scadenza, deposizione);
-		} catch (NumberFormatException | SQLException e) {
+		} catch (NumberFormatException e) {
 			System.out.println("errore controller");
 			e.printStackTrace();
 		}
 	}
 	
-	public ArrayList<Prodotto> CaricaProdottiDeposito(Controller ctrl) throws SQLException {
+	public ArrayList<Prodotto> CaricaProdottiDeposito(Controller ctrl) {
 		return depositodao.CaricaProdottiDeposito(ctrl);
 	}
 
@@ -441,7 +441,7 @@ public class Controller {
 	}
 	
 	//Funzioni Database Negozio
-	public ArrayList<Prodotto> CaricaProdottiNegozio() throws SQLException {
+	public ArrayList<Prodotto> CaricaProdottiNegozio() {
 		return negoziodao.CaricaProdottiNegozio();
 	}
 	
@@ -449,5 +449,12 @@ public class Controller {
 	public void AggiungiCliente(String nome, String cognome, String codice_fiscale) {
 		clientedao.AggiungiCliente(nome, cognome, codice_fiscale);
 	}
+	
+	public ArrayList<Cliente> CaricaClienti() {
+		return clientedao.CaricaClienti();
+	}
 
+	public void EliminaCliente(int idcliente) {
+		clientedao.EliminaCliente(idcliente);
+	}
 }

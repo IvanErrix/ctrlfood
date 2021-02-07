@@ -178,6 +178,7 @@ public class AggiungiClientiDialog extends JDialog {
 				}
 				else {
 					setAlwaysOnTop(false);
+					ctrl.AggiungiCliente(textFieldNome.getText(), textFieldCognome.getText(), textFieldCodiceFiscale.getText());
 					JOptionPane.showMessageDialog(null, "CLIENTE AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 					setAlwaysOnTop(true);
 					ctrl.RimuoviTutto(textFieldNome, textFieldCognome, textFieldCodiceFiscale, CheckBoxCartaFedelta);

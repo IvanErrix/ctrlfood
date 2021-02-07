@@ -4,10 +4,14 @@ import java.util.*;
 
 public class Deposito {
 
-    public Deposito() {
-    }
-
-    private int iddeposito;
+    public Deposito(int iddeposito, String luogo, int grandezza) {
+		super();
+		this.iddeposito = iddeposito;
+		this.luogo = luogo;
+		this.grandezza = grandezza;
+	}
+    
+	private int iddeposito;
     private String luogo;
     private int grandezza;
     

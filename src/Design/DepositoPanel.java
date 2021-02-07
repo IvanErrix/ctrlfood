@@ -56,7 +56,7 @@ public class DepositoPanel extends JPanel {
 	private JTable table;
 	private JTextField textFieldSearch;
 
-	public DepositoPanel(Controller ctrl) throws SQLException {
+	public DepositoPanel(Controller ctrl) {
 		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		setOpaque(false);
 		setBackground(Color.BLACK);
@@ -128,12 +128,7 @@ public class DepositoPanel extends JPanel {
 		JButton ButtonRefresh = new JButton("");
 		ButtonRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					CaricaProdottiInTabella(ctrl);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				CaricaProdottiInTabella(ctrl);
 			}
 		});
 		ButtonRefresh.addMouseListener(new MouseAdapter() {
@@ -281,7 +276,7 @@ public class DepositoPanel extends JPanel {
 		
 	}
 	
-	public void CaricaProdottiInTabella(Controller ctrl) throws SQLException {
+	public void CaricaProdottiInTabella(Controller ctrl) {
 		model.setRowCount(0);
 		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
 		for(int i=0; i<prodotti.size(); i++) {

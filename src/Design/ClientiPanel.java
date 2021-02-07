@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,7 @@ import javax.swing.table.TableRowSorter;
 
 import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
+import Objects.Cliente;
 
 import java.awt.Font;
 import javax.swing.ListSelectionModel;
@@ -37,18 +39,20 @@ import javax.swing.JLabel;
 public class ClientiPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private String Titoli[]= {"Nome", "Cognome", "Codice Fiscale", "Carta", "ID Carta","Punti"};
-	private Object Elementi[][]= {};
+	
+	private ArrayList<Cliente> clienti;
+	private String Titoli[]= {"IDCliente", "Nome", "Cognome", "Codice Fiscale", "ID Carta", "Punti"};
 	private boolean editable = false;
-	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
+	public DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
+
 		
 		private static final long serialVersionUID = 1L;
 
-			@Override
-			   public boolean isCellEditable(int row, int column) {
-				
-				return editable;
-			   }
+		@Override
+		public boolean isCellEditable(int row, int column) {
+
+			return editable;
+		}
 	};
 			
 	private JTable table;
@@ -68,28 +72,29 @@ public class ClientiPanel extends JPanel {
 		scrollPane.setBounds(55, 88, 630, 419);
 		add(scrollPane);
 		
-		table = new JTable(model) {
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            public Class<?> getColumnClass(int column) {
-                switch (column) {
-                    case 0:
-                        return String.class;
-                    case 1:
-                        return String.class;
-                    case 2:
-                        return String.class;
-                    case 3:
-                        return Boolean.class;
-                    case 4:
-                    	return Integer.class;
-                    case 5:
-                    	return Integer.class;
-                }
-				return null;
-            }
-        };
+		table = new JTable(model);
+//		{
+//            private static final long serialVersionUID = 1L;
+//
+//            @Override
+//            public Class<?> getColumnClass(int column) {
+//                switch (column) {
+//                    case 0:
+//                        return String.class;
+//                    case 1:
+//                        return String.class;
+//                    case 2:
+//                        return String.class;
+//                    case 3:
+//                        return Boolean.class;
+//                    case 4:
+//                    	return Integer.class;
+//                    case 5:
+//                    	return Integer.class;
+//                }
+//				return null;
+//            }
+//        };
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setSelectionBackground(new Color(0, 41, 82));
 		table.setSelectionForeground(new Color(191, 215, 255));
@@ -108,8 +113,6 @@ public class ClientiPanel extends JPanel {
 		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
-		model.addRow(new Object[] {"Giovanni", "Erricis", "RRCVNI99B11F839C", false,1, 110});
-		model.addRow(new Object[] {"Carlo", "Spazio", "CRVNNWEPB387VISV", true,2, 0});
 		
 		TableRowSorter<TableModel> sorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(sorter);
@@ -147,6 +150,33 @@ public class ClientiPanel extends JPanel {
 		ButtonSearch.setContentAreaFilled(false);
 		ButtonSearch.setBounds(379, 28, 34, 34);
 		add(ButtonSearch);
+		
+		JButton ButtonRefresh = new JButton("");
+		ButtonRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CaricaClientiInTabella(ctrl);
+			}
+		});
+		ButtonRefresh.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefreshAzzurro.png")));
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+
+			}
+		});
+		ButtonRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+		ButtonRefresh.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+		ButtonRefresh.setOpaque(false);
+		ButtonRefresh.setBorder(null);
+		ButtonRefresh.setContentAreaFilled(false);
+		ButtonRefresh.setBounds(423, 28, 34, 34);
+		add(ButtonRefresh);
 		
 		textFieldSearch = new JTextField();
 		textFieldSearch.addKeyListener(new KeyAdapter() {
@@ -277,7 +307,8 @@ public class ClientiPanel extends JPanel {
 		ButtonElimina.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					model.removeRow(table.getSelectedRow());
+					ctrl.EliminaCliente(Integer.parseInt(model.getValueAt(table.getSelectedRow(), 0).toString()));
+					JOptionPane.showMessageDialog(null, "CLIENTE ELIMINATO", "", JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
 				}
@@ -296,5 +327,23 @@ public class ClientiPanel extends JPanel {
 		LabelSfondo.setIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/SfondoPanel.png")));
 		LabelSfondo.setBounds(0, 0, 748, 552);
 		add(LabelSfondo);
+		
+		CaricaClientiInTabella(ctrl);
+	}
+	
+	public void CaricaClientiInTabella(Controller ctrl) {
+		model.setRowCount(0);
+		clienti=ctrl.CaricaClienti();
+		
+		for(int i=0; i<clienti.size(); i++) {
+			int id = clienti.get(i).getIdcliente();
+			String nome = clienti.get(i).getNome();
+			String cognome = clienti.get(i).getCognome();
+			String codice_fiscale = clienti.get(i).getCodice_fiscale();
+			int idcarta = clienti.get(i).getChiavecarta_fedelta();
+			
+			model.addRow(new Object [] {id, nome, cognome, codice_fiscale, idcarta, ""});
+		}
+		
 	}
 }

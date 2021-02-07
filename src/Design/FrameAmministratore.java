@@ -99,11 +99,7 @@ public class FrameAmministratore extends JFrame {
 		ButtonDeposito.setFocusable(false);
 		ButtonDeposito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					ctrl.ApriDepositoPanel(ctrl, PanelCaricamento);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+				ctrl.ApriDepositoPanel(ctrl, PanelCaricamento);
 				ctrl.CambiaIconaAiButtonFramePrincipale(new String("deposito"), LabelDeposito, LabelNegozio, LabelClienti,
 						ButtonDeposito, ButtonNegozio, ButtonClienti);
 				aperta=false;
@@ -122,14 +118,10 @@ public class FrameAmministratore extends JFrame {
 		ButtonNegozio.setFocusable(false);
 		ButtonNegozio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					ctrl.ApriNegozioPanel(ctrl, PanelCaricamento);
-					ctrl.CambiaIconaAiButtonFramePrincipale(new String("negozio"), LabelDeposito, LabelNegozio, LabelClienti,
-							ButtonDeposito, ButtonNegozio, ButtonClienti);
-					aperta=false;
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+				ctrl.ApriNegozioPanel(ctrl, PanelCaricamento);
+				ctrl.CambiaIconaAiButtonFramePrincipale(new String("negozio"), LabelDeposito, LabelNegozio, LabelClienti,
+						ButtonDeposito, ButtonNegozio, ButtonClienti);
+				aperta=false;
 			}
 		});
 		ButtonNegozio.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

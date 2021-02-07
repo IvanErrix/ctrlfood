@@ -167,7 +167,7 @@ public class LoginAmministratoreDialog extends JDialog {
 							ctrl.ApriFrameAmministratore(ctrl);
 							dispose();
 						}
-					} catch (HeadlessException | SecurityException | SQLException e1) {
+					} catch (HeadlessException | SecurityException e1) {
 						e1.printStackTrace();
 					}
 				}

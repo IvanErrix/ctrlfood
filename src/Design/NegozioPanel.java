@@ -54,7 +54,7 @@ public class NegozioPanel extends JPanel {
 	private JTable table;
 	private JTextField textFieldSearch;
 
-	public NegozioPanel(Controller ctrl) throws SQLException {
+	public NegozioPanel(Controller ctrl) {
 		setOpaque(false);
 		setBackground(Color.BLACK);
 		setBounds(0, 0, 754, 553);
@@ -120,6 +120,33 @@ public class NegozioPanel extends JPanel {
 		ButtonSearch.setContentAreaFilled(false);
 		ButtonSearch.setBounds(379, 28, 34, 34);
 		add(ButtonSearch);
+		
+		JButton ButtonRefresh = new JButton("");
+		ButtonRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CaricaProdottiNegozio(ctrl);
+			}
+		});
+		ButtonRefresh.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefreshAzzurro.png")));
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+
+			}
+		});
+		ButtonRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+		ButtonRefresh.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+		ButtonRefresh.setOpaque(false);
+		ButtonRefresh.setBorder(null);
+		ButtonRefresh.setContentAreaFilled(false);
+		ButtonRefresh.setBounds(423, 28, 34, 34);
+		add(ButtonRefresh);
 
 		textFieldSearch = new JTextField();
 		textFieldSearch.addKeyListener(new KeyAdapter() {
@@ -169,11 +196,7 @@ public class NegozioPanel extends JPanel {
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					ctrl.ApriAggiungiAlNegozioDialog(ctrl);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
+				ctrl.ApriAggiungiAlNegozioDialog(ctrl);
 			}
 		});
 		ButtonAggiungi.setBorder(null);
@@ -245,7 +268,7 @@ public class NegozioPanel extends JPanel {
 		CaricaProdottiNegozio(ctrl);
 	}
 	
-	public void CaricaProdottiNegozio(Controller ctrl) throws SQLException {
+	public void CaricaProdottiNegozio(Controller ctrl) {
 		model.setRowCount(0);
 		prodotti=ctrl.CaricaProdottiNegozio();
 		for(int i=0; i<prodotti.size(); i++) {
