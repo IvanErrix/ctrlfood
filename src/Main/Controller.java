@@ -441,6 +441,9 @@ public class Controller {
 	}
 	
 	//Funzioni Database Negozio
+	public void AggiungiProdottoAlNegozio(int idprodotto,int quantita) {
+		negoziodao.AggiungiProdottoAlNegozio(idprodotto, quantita);
+	}
 	public ArrayList<Prodotto> CaricaProdottiNegozio() {
 		return negoziodao.CaricaProdottiNegozio();
 	}
@@ -453,8 +456,13 @@ public class Controller {
 	public ArrayList<Cliente> CaricaClienti() {
 		return clientedao.CaricaClienti();
 	}
+	
+	public ArrayList<Integer> CaricaPunti() {
+		return clientedao.CaricaPuntidFedelta();
+	}
 
 	public void EliminaCliente(int idcliente) {
 		clientedao.EliminaCliente(idcliente);
 	}
+	
 }

@@ -116,6 +116,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(LabelDataConfezionamento);
 		
 		JLabel LabelFoto = new JLabel("Foto");
+		LabelFoto.setVisible(false);
 		LabelFoto.setForeground(new Color(0, 41, 82));
 		LabelFoto.setFont(new Font("Impact", Font.PLAIN, 16));
 		LabelFoto.setBounds(106, 274, 46, 14);
@@ -381,6 +382,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(comboBoxTipologia);
 		
 		JTextField textFieldFoto = new JTextField(20) ;
+		textFieldFoto.setVisible(false);
 		textFieldFoto.setFont(new Font("Impact", Font.PLAIN, 14));
 		textFieldFoto.setBorder(new RoundedCornerBorder());
 		textFieldFoto.setBackground(new Color(191,215,255));
@@ -555,6 +557,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().add(ButtonAnnulla);
 		
 		JButton ButtonAggiungiFoto = new JButton("...");
+		ButtonAggiungiFoto.setVisible(false);
 		ButtonAggiungiFoto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setAlwaysOnTop(false);

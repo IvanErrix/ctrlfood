@@ -93,7 +93,6 @@ public class NegozioPanel extends JPanel {
 		JButton ButtonSearch = new JButton("");
 		ButtonSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(textFieldSearch.getText());
 				String text = textFieldSearch.getText();
 				if (text.trim().length() == 0) {
 					rowSorter.setRowFilter(null);

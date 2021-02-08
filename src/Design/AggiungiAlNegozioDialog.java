@@ -67,38 +67,45 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		LabelNome.setBounds(41, 118, 46, 14);
 		getContentPane().add(LabelNome);
 		
-		JLabel lblQuantita = new JLabel("Quantit\u00E0");
-		lblQuantita.setForeground(new Color(0,41,82));
-		lblQuantita.setFont(new Font("Impact", Font.PLAIN, 16));
-		lblQuantita.setBounds(41, 178, 68, 14);
-		getContentPane().add(lblQuantita);
+		JLabel LabelQuantita = new JLabel("Quantit\u00E0");
+		LabelQuantita.setForeground(new Color(0,41,82));
+		LabelQuantita.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelQuantita.setBounds(41, 211, 68, 14);
+		getContentPane().add(LabelQuantita);
 		
-		JButton ButtonAggiugni = new JButton("");
-		ButtonAggiugni.addMouseListener(new MouseAdapter() {
+		JLabel LabelIDProdotto = new JLabel("ID Prodotto");
+		LabelIDProdotto.setForeground(new Color(0,41,82));
+		LabelIDProdotto.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelIDProdotto.setBounds(41, 169, 92, 21);
+		contentPane.add(LabelIDProdotto);
+		
+		JButton ButtonAggiungi = new JButton("");
+		ButtonAggiungi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2Azzurro.png")));
+				ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2Azzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
+				ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 			}
 		});
-		ButtonAggiugni.setPressedIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
-		ButtonAggiugni.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonAggiugni.setOpaque(false);
-		ButtonAggiugni.setBorder(null);
-		ButtonAggiugni.setContentAreaFilled(false);
-		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
-		ButtonAggiugni.addActionListener(new ActionListener() {
+		ButtonAggiungi.setPressedIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
+		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonAggiungi.setOpaque(false);
+		ButtonAggiungi.setBorder(null);
+		ButtonAggiungi.setContentAreaFilled(false);
+		ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
+		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setAlwaysOnTop(false);
+				ctrl.AggiungiProdottoAlNegozio(Integer.parseInt(LabelID.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()));
 				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 				setAlwaysOnTop(true);
 			}
 		});
-		ButtonAggiugni.setBounds(288, 300, 110, 24);
-		getContentPane().add(ButtonAggiugni);
+		ButtonAggiungi.setBounds(288, 300, 110, 24);
+		getContentPane().add(ButtonAggiungi);
 		
 		JButton ButtonAnnulla = new JButton("");
 		ButtonAnnulla.addMouseListener(new MouseAdapter() {
@@ -177,18 +184,23 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		spinnerQuantita.setRequestFocusEnabled(false);
 		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		spinnerQuantita.setBounds(208, 174, 60, 24);
+		spinnerQuantita.setBounds(208, 207, 60, 24);
 		((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
 		getContentPane().add(spinnerQuantita);
 		
 		LabelID = new JLabel("");
-		LabelID.setBounds(208, 232, 46, 14);
+		LabelID.setForeground(new Color(0,41,82));
+		LabelID.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelID.setBorder(new RoundedCornerBorder());
+		LabelID.setBounds(208, 166, 68, 24);
 		contentPane.add(LabelID);
 		
 		JLabel LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/SfondoAggiungiAlnegozio.png")));
 		LabelSfondo.setBounds(-8, -8, 467, 376);
 		getContentPane().add(LabelSfondo);
+		
+		
 		
 		CaricaComboBoxNome(ctrl);
 		CaricaSpinnerQuantita(ctrl);

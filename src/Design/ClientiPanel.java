@@ -41,6 +41,7 @@ public class ClientiPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private ArrayList<Cliente> clienti;
+	private ArrayList<Integer> punti;
 	private String Titoli[]= {"IDCliente", "Nome", "Cognome", "Codice Fiscale", "ID Carta", "Punti"};
 	private boolean editable = false;
 	public DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
@@ -334,6 +335,7 @@ public class ClientiPanel extends JPanel {
 	public void CaricaClientiInTabella(Controller ctrl) {
 		model.setRowCount(0);
 		clienti=ctrl.CaricaClienti();
+		punti=ctrl.CaricaPunti();
 		
 		for(int i=0; i<clienti.size(); i++) {
 			int id = clienti.get(i).getIdcliente();
@@ -341,8 +343,9 @@ public class ClientiPanel extends JPanel {
 			String cognome = clienti.get(i).getCognome();
 			String codice_fiscale = clienti.get(i).getCodice_fiscale();
 			int idcarta = clienti.get(i).getChiavecarta_fedelta();
+			int punticarta = punti.get(i);
 			
-			model.addRow(new Object [] {id, nome, cognome, codice_fiscale, idcarta, ""});
+			model.addRow(new Object [] {id, nome, cognome, codice_fiscale, idcarta, punticarta});
 		}
 		
 	}

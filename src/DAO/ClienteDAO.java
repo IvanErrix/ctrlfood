@@ -46,6 +46,26 @@ public class ClienteDAO {
 		return clienti;
 	}
 	
+	public ArrayList<Integer> CaricaPuntidFedelta() {
+		
+		ArrayList<Integer> punti = new ArrayList<Integer>();
+		String sql = "CALL recupera_punti_fedelta";
+		
+		try {
+			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
+			ResultSet datirecuperati = null;
+			datirecuperati = query.executeQuery();
+			
+			while(datirecuperati.next()) {
+				punti.add(new Integer(datirecuperati.getInt(1)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return punti;
+	}
+	
 	public void EliminaCliente(int idcliente) {
 		String sql = "CALL elimina_cliente(?)";
 		

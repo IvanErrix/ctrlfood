@@ -15,6 +15,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
 
 import ExternalClasses.ContentPane;
 import Main.Controller;
@@ -25,6 +26,8 @@ import java.awt.HeadlessException;
 import java.awt.Cursor;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class LoginAmministratoreDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
@@ -122,6 +125,14 @@ public class LoginAmministratoreDialog extends JDialog {
 		contentPane.add(ButtonVediPassword);
 		
 		textFieldUsername = new JTextField();
+		textFieldUsername.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+					EffettuaLogin(ctrl);
+				}
+			}
+		});
 		textFieldUsername.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -139,6 +150,14 @@ public class LoginAmministratoreDialog extends JDialog {
 		contentPane.add(textFieldUsername);
 		
 		passwordField = new JPasswordField();
+		passwordField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode()==KeyEvent.VK_ENTER) {
+					EffettuaLogin(ctrl);
+				}
+			}
+		});
 		passwordField.setFont(new Font("Impact", Font.PLAIN, 15));
 		passwordField.setForeground(new Color(0,41,82));
 		passwordField.setOpaque(false);
@@ -152,26 +171,7 @@ public class LoginAmministratoreDialog extends JDialog {
 		ButtonLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (textFieldUsername.getText().equals("") && passwordField.getText().equals("")) {
-					setAlwaysOnTop(false);
-					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
-					setAlwaysOnTop(true);
-				}
-				else {
-					try {
-						if(ctrl.ControllaDatiLogin(textFieldUsername.getText(), passwordField.getText())==null) {
-							setAlwaysOnTop(false);
-							JOptionPane.showMessageDialog(null, "USERNAME O PASSWORD ERRATI", "", JOptionPane.WARNING_MESSAGE);
-							setAlwaysOnTop(true);
-						}
-						else {
-							ctrl.ApriFrameAmministratore(ctrl);
-							dispose();
-						}
-					} catch (HeadlessException | SecurityException e1) {
-						e1.printStackTrace();
-					}
-				}
+				EffettuaLogin(ctrl);
 			}
 		});
 		ButtonLogin.addMouseListener(new MouseAdapter() {
@@ -198,5 +198,28 @@ public class LoginAmministratoreDialog extends JDialog {
 		LabelSfondo.setBounds(-9, 0, 364, 467);
 		contentPane.add(LabelSfondo);
 		
+	}
+	
+	public void EffettuaLogin(Controller ctrl) {
+		if (textFieldUsername.getText().equals("") && passwordField.getText().equals("")) {
+			setAlwaysOnTop(false);
+			JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
+			setAlwaysOnTop(true);
+		}
+		else {
+			try {
+				if(ctrl.ControllaDatiLogin(textFieldUsername.getText(), passwordField.getText())==null) {
+					setAlwaysOnTop(false);
+					JOptionPane.showMessageDialog(null, "USERNAME O PASSWORD ERRATI", "", JOptionPane.WARNING_MESSAGE);
+					setAlwaysOnTop(true);
+				}
+				else {
+					ctrl.ApriFrameAmministratore(ctrl);
+					dispose();
+				}
+			} catch (HeadlessException | SecurityException e1) {
+				e1.printStackTrace();
+			}
+		}
 	}
 }

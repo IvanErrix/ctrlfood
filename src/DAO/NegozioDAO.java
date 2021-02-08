@@ -31,4 +31,18 @@ public class NegozioDAO {
 
 		return prodotti;
 	}
+	
+	public void AggiungiProdottoAlNegozio(int idprodotto, int quantita) {
+		String sql ="CALL aggiungi_prodotto_negozio(?,?)";
+		
+		try {
+			PreparedStatement query= Controller.getConnessione().getConn().prepareStatement(sql);
+			query.setInt(1,idprodotto);
+			query.setInt(2, quantita);
+			query.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }
