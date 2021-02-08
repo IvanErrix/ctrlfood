@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 
+import ExternalClasses.ContentPane;
 import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
 

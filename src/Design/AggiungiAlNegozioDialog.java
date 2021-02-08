@@ -20,10 +20,12 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
+import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicComboPopup;
 
+import ExternalClasses.ContentPane;
 import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
 import Objects.Prodotto;
@@ -40,6 +42,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private JComboBox comboBoxTipologia;
 	private JComboBox comboBoxNome;
 	private JSpinner spinnerQuantita;
+	private JLabel LabelID;
 
 	public AggiungiAlNegozioDialog(Controller ctrl) {
 		setUndecorated(true);
@@ -78,7 +81,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2Azzurro.png")));
+				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 			}
 		});
 		ButtonAggiugni.setPressedIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
@@ -125,6 +128,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxNome = new JComboBox();
 		comboBoxNome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				CaricaSpinnerQuantita(ctrl);
 			}
 		});
 		AccessibleContext ac = comboBoxNome.getAccessibleContext();
@@ -143,7 +147,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxTipologia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CaricaComboBoxNome(ctrl);
-//					CaricaSpinnerQuantita(ctrl);
+				CaricaSpinnerQuantita(ctrl);
 			}
 		});
 		AccessibleContext ac2 = comboBoxTipologia.getAccessibleContext();
@@ -174,7 +178,12 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		spinnerQuantita.setBounds(208, 174, 60, 24);
+		((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
 		getContentPane().add(spinnerQuantita);
+		
+		LabelID = new JLabel("");
+		LabelID.setBounds(208, 232, 46, 14);
+		contentPane.add(LabelID);
 		
 		JLabel LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/SfondoAggiungiAlnegozio.png")));
@@ -182,7 +191,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		getContentPane().add(LabelSfondo);
 		
 		CaricaComboBoxNome(ctrl);
-//		CaricaSpinnerQuantita(ctrl);
+		CaricaSpinnerQuantita(ctrl);
 	}
 	
 	public void CaricaComboBoxNome(Controller ctrl) {
@@ -209,10 +218,17 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	
 	public void CaricaSpinnerQuantita(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
-		for(int i=0; i<prodotti.size(); i++) {
-			if(comboBoxNome.getSelectedItem().toString().equals(prodotti.get(i).getNome())) {
-				spinnerQuantita.setValue(prodotti.get(i).getQuantita());
-			}
+		if (comboBoxNome.getSelectedItem()!=null) {
+			for (int i = 0; i < prodotti.size(); i++) {
+				if (comboBoxNome.getSelectedItem().toString().equals(prodotti.get(i).getNome())) {
+					System.out.println(prodotti.get(i).getQuantita());
+					spinnerQuantita.setModel(new SpinnerNumberModel(1, 1, prodotti.get(i).getQuantita(), 1));
+					((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
+					spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191, 215, 255));
+					spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(0, 41, 82));
+					LabelID.setText(Integer.toString(prodotti.get(i).getIdprodotto()));
+				}
+			} 
 		}
 	}
 }

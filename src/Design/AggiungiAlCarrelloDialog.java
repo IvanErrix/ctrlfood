@@ -24,6 +24,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicComboPopup;
 
+import ExternalClasses.ContentPane;
 import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
 

@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
+import ExternalClasses.ContentPane;
 import Main.Controller;
 
 import javax.swing.ImageIcon;

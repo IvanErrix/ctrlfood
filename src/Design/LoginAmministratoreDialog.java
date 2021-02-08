@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import ExternalClasses.ContentPane;
 import Main.Controller;
 
 import javax.swing.JPasswordField;

@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
+import ExternalClasses.ContentPane;
 import Main.Controller;
 
 import javax.swing.JLabel;
