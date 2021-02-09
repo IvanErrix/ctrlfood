@@ -244,7 +244,8 @@ public class NegozioPanel extends JPanel {
 		ButtonSposta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectionModel().isSelectionEmpty() == false) {
-					ctrl.ApriSpostaDalNegozioDialog();
+					ctrl.SpostaProdotto(Integer.parseInt(table.getModel().getValueAt(table.getSelectedRow(), 1).toString()));
+					JOptionPane.showMessageDialog(null, "PRODOTTO SPOSTATO IN DEPOSITO", "", JOptionPane.WARNING_MESSAGE);
 				}
 				else{
 					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);

@@ -28,6 +28,8 @@ import Main.Controller;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 public class AggiungiClientiDialog extends JDialog {
 
@@ -65,6 +67,12 @@ public class AggiungiClientiDialog extends JDialog {
 
 
 		JTextField textFieldNome = new JTextField() ;
+		textFieldNome.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				textFieldNome.setText(textFieldNome.getText().toUpperCase());
+			}
+		});
 		textFieldNome.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -93,6 +101,12 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(textFieldNome);
 
 		JTextField textFieldCognome = new JTextField();
+		textFieldCognome.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				textFieldCognome.setText(textFieldCognome.getText().toUpperCase());
+			}
+		});
 		textFieldCognome.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -120,6 +134,12 @@ public class AggiungiClientiDialog extends JDialog {
 		getContentPane().add(textFieldCognome);
 
 		JTextField textFieldCodiceFiscale = new JTextField() ;
+		textFieldCodiceFiscale.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				textFieldCodiceFiscale.setText(textFieldCodiceFiscale.getText().toUpperCase());
+			}
+		});
 		textFieldCodiceFiscale.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -145,13 +165,6 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldCodiceFiscale.setBounds(244, 188, 249, 30);
 		textFieldCodiceFiscale.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(textFieldCodiceFiscale);
-		
-		JCheckBox CheckBoxCartaFedelta = new JCheckBox("");
-		CheckBoxCartaFedelta.setForeground(new Color(0, 41, 82));
-		CheckBoxCartaFedelta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		CheckBoxCartaFedelta.setBackground(new Color(191, 215, 255));
-		CheckBoxCartaFedelta.setBounds(244, 262, 21, 23);
-		getContentPane().add(CheckBoxCartaFedelta);
 
 		JButton ButtonAggiugni = new JButton("");
 		ButtonAggiugni.addMouseListener(new MouseAdapter() {
@@ -172,7 +185,7 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldNome.getText().length()==0 || textFieldCognome.getText().length()==0 || textFieldCodiceFiscale.getText().length()==0 ) {
+				if(textFieldNome.getText().length()==0 || textFieldCognome.getText().length()==0 || textFieldCodiceFiscale.getText().length()==0 || textFieldCodiceFiscale.getText().length()<16 ) {
 					setAlwaysOnTop(false);
 					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTE I CAMPI", "", JOptionPane.WARNING_MESSAGE);
 					setAlwaysOnTop(true);
@@ -182,7 +195,7 @@ public class AggiungiClientiDialog extends JDialog {
 					ctrl.AggiungiCliente(textFieldNome.getText(), textFieldCognome.getText(), textFieldCodiceFiscale.getText());
 					JOptionPane.showMessageDialog(null, "CLIENTE AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 					setAlwaysOnTop(true);
-					ctrl.RimuoviTutto(textFieldNome, textFieldCognome, textFieldCodiceFiscale, CheckBoxCartaFedelta);
+					ctrl.RimuoviTutto(textFieldNome, textFieldCognome, textFieldCodiceFiscale);
 				}
 			}
 		});
@@ -214,12 +227,6 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonAnnulla.setBounds(64, 344, 110, 24);
 		getContentPane().add(ButtonAnnulla);
 
-		JLabel LabelCartaFedelta = new JLabel("Carta Fedelt\u00E0");
-		LabelCartaFedelta.setForeground(new Color(0, 41, 82));
-		LabelCartaFedelta.setFont(new Font("Impact", Font.PLAIN, 16));
-		LabelCartaFedelta.setBounds(64, 262, 93, 23);
-		getContentPane().add(LabelCartaFedelta);
-
 		JButton ButtonCancellaTutto = new JButton("");
 		ButtonCancellaTutto.addMouseListener(new MouseAdapter() {
 			@Override
@@ -237,7 +244,7 @@ public class AggiungiClientiDialog extends JDialog {
 				setAlwaysOnTop(false);
 				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
 				setAlwaysOnTop(true);
-				ctrl.RimuoviTutto(textFieldNome, textFieldCognome, textFieldCodiceFiscale, CheckBoxCartaFedelta);
+				ctrl.RimuoviTutto(textFieldNome, textFieldCognome, textFieldCodiceFiscale);
 			}
 		});
 		ButtonCancellaTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));

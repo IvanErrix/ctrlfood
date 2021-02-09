@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Main.Controller;
+import Objects.CartaFedelta;
 import Objects.Cliente;
 
 public class ClienteDAO {
@@ -46,9 +47,9 @@ public class ClienteDAO {
 		return clienti;
 	}
 	
-	public ArrayList<Integer> CaricaPuntidFedelta() {
+	public ArrayList<CartaFedelta> CaricaPuntidFedelta() {
 		
-		ArrayList<Integer> punti = new ArrayList<Integer>();
+		ArrayList<CartaFedelta> carte = new ArrayList<CartaFedelta>();
 		String sql = "CALL recupera_punti_fedelta";
 		
 		try {
@@ -57,13 +58,13 @@ public class ClienteDAO {
 			datirecuperati = query.executeQuery();
 			
 			while(datirecuperati.next()) {
-				punti.add(new Integer(datirecuperati.getInt(1)));
+				carte.add(new CartaFedelta(datirecuperati.getInt(1), datirecuperati.getInt(2), datirecuperati.getDate(3), datirecuperati.getInt(4)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		return punti;
+		return carte;
 	}
 	
 	public void EliminaCliente(int idcliente) {
@@ -73,7 +74,7 @@ public class ClienteDAO {
 		try {
 			query = Controller.getConnessione().getConn().prepareStatement(sql);
 			query.setInt(1, idcliente);
-			query.execute();
+			query.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

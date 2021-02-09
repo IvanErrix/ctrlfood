@@ -233,7 +233,6 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		if (comboBoxNome.getSelectedItem()!=null) {
 			for (int i = 0; i < prodotti.size(); i++) {
 				if (comboBoxNome.getSelectedItem().toString().equals(prodotti.get(i).getNome())) {
-					System.out.println(prodotti.get(i).getQuantita());
 					spinnerQuantita.setModel(new SpinnerNumberModel(1, 1, prodotti.get(i).getQuantita(), 1));
 					((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
 					spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191, 215, 255));
@@ -241,6 +240,9 @@ public class AggiungiAlNegozioDialog extends JDialog {
 					LabelID.setText(Integer.toString(prodotti.get(i).getIdprodotto()));
 				}
 			} 
+		}
+		else {
+			LabelID.setText("");
 		}
 	}
 }

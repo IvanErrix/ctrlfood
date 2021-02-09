@@ -55,12 +55,6 @@ public class SpostaDalNegozioDialog extends JDialog {
 		LabelQuantita.setBounds(40, 115, 84, 24);
 		getContentPane().add(LabelQuantita);
 		
-		JLabel LabelNomeProdotto = new JLabel("");
-		LabelNomeProdotto.setFont(new Font("Impact", Font.PLAIN, 20));
-		LabelNomeProdotto.setForeground(new Color(0, 41, 82));
-		LabelNomeProdotto.setBounds(89, 32, 170, 37);
-		contentPane.add(LabelNomeProdotto);
-		
 		JButton ButtonSposta = new JButton("");
 		ButtonSposta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -110,6 +104,22 @@ public class SpostaDalNegozioDialog extends JDialog {
 		ButtonAnnulla.setContentAreaFilled(false);
 		ButtonAnnulla.setBounds(40, 227, 110, 24);
 		getContentPane().add(ButtonAnnulla);
+		
+		JLabel LabelIDProdotto = new JLabel("ID Prodotto");
+		LabelIDProdotto.setBounds(40, 32, 84, 14);
+		contentPane.add(LabelIDProdotto);
+		
+		JLabel LabelID = new JLabel("");
+		LabelID.setBounds(194, 32, 46, 14);
+		contentPane.add(LabelID);
+		
+		JLabel LabelNomeProdotto = new JLabel("Nome Prodotto");
+		LabelNomeProdotto.setBounds(40, 75, 84, 14);
+		contentPane.add(LabelNomeProdotto);
+		
+		JLabel LabelNome = new JLabel("");
+		LabelNome.setBounds(194, 75, 46, 14);
+		contentPane.add(LabelNome);
 		
 		JLabel LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(SpostaDalNegozioDialog.class.getResource("/scrimg/SfondoSpostaDalNegozio.png")));

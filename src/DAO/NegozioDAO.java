@@ -45,4 +45,16 @@ public class NegozioDAO {
 		}
 		
 	}
+	
+	public void SpostaProdottoDalNegozio(int idprodotto) {
+		String sql = "CALL sposta_prodotto_dal_negozio(?)";
+		
+		try {
+			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
+			query.setInt(1, idprodotto);
+			query.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

@@ -25,6 +25,7 @@ import javax.swing.table.TableRowSorter;
 
 import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
+import Objects.CartaFedelta;
 import Objects.Cliente;
 
 import java.awt.Font;
@@ -41,17 +42,16 @@ public class ClientiPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private ArrayList<Cliente> clienti;
-	private ArrayList<Integer> punti;
+	private ArrayList<CartaFedelta> carte;
 	private String Titoli[]= {"IDCliente", "Nome", "Cognome", "Codice Fiscale", "ID Carta", "Punti"};
 	private boolean editable = false;
 	public DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
-
 		
 		private static final long serialVersionUID = 1L;
 
 		@Override
 		public boolean isCellEditable(int row, int column) {
-
+			
 			return editable;
 		}
 	};
@@ -74,28 +74,6 @@ public class ClientiPanel extends JPanel {
 		add(scrollPane);
 		
 		table = new JTable(model);
-//		{
-//            private static final long serialVersionUID = 1L;
-//
-//            @Override
-//            public Class<?> getColumnClass(int column) {
-//                switch (column) {
-//                    case 0:
-//                        return String.class;
-//                    case 1:
-//                        return String.class;
-//                    case 2:
-//                        return String.class;
-//                    case 3:
-//                        return Boolean.class;
-//                    case 4:
-//                    	return Integer.class;
-//                    case 5:
-//                    	return Integer.class;
-//                }
-//				return null;
-//            }
-//        };
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setSelectionBackground(new Color(0, 41, 82));
 		table.setSelectionForeground(new Color(191, 215, 255));
@@ -335,17 +313,18 @@ public class ClientiPanel extends JPanel {
 	public void CaricaClientiInTabella(Controller ctrl) {
 		model.setRowCount(0);
 		clienti=ctrl.CaricaClienti();
-		punti=ctrl.CaricaPunti();
+		carte=ctrl.CaricaPunti();
 		
 		for(int i=0; i<clienti.size(); i++) {
 			int id = clienti.get(i).getIdcliente();
 			String nome = clienti.get(i).getNome();
 			String cognome = clienti.get(i).getCognome();
 			String codice_fiscale = clienti.get(i).getCodice_fiscale();
-			int idcarta = clienti.get(i).getChiavecarta_fedelta();
-			int punticarta = punti.get(i);
+//			int idcarta = clienti.get(i).getChiavecarta_fedelta();
+			int idcarta = carte.get(i).getIdcarta_fedelta();
+			int punti = carte.get(i).getPunti();
 			
-			model.addRow(new Object [] {id, nome, cognome, codice_fiscale, idcarta, punticarta});
+			model.addRow(new Object [] {id, nome, cognome, codice_fiscale, idcarta, punti});
 		}
 		
 	}

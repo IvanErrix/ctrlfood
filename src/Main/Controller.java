@@ -57,6 +57,7 @@ import Design.LoginDialog;
 import Design.NegozioPanel;
 import Design.PagamentoConCartaDialog;
 import Design.SpostaDalNegozioDialog;
+import Objects.CartaFedelta;
 import Objects.Cliente;
 import Objects.Prodotto;
 
@@ -363,11 +364,10 @@ public class Controller {
 		dataChooserDeposizione.setDate(null);
 	}
 	
-	public void RimuoviTutto(JTextField textFieldNome, JTextField textFieldCognome, JTextField textFieldCodiceFiscale, JCheckBox CheckBoxCartaFedelta) {
+	public void RimuoviTutto(JTextField textFieldNome, JTextField textFieldCognome, JTextField textFieldCodiceFiscale) {
 		textFieldNome.setText("");
 		textFieldCognome.setText("");
 		textFieldCodiceFiscale.setText("");
-		CheckBoxCartaFedelta.setSelected(false);
 	}
 	
 	//Funzioni per Database
@@ -444,8 +444,13 @@ public class Controller {
 	public void AggiungiProdottoAlNegozio(int idprodotto,int quantita) {
 		negoziodao.AggiungiProdottoAlNegozio(idprodotto, quantita);
 	}
+	
 	public ArrayList<Prodotto> CaricaProdottiNegozio() {
 		return negoziodao.CaricaProdottiNegozio();
+	}
+	
+	public void SpostaProdotto(int idprodotto) {
+		negoziodao.SpostaProdottoDalNegozio(idprodotto);
 	}
 	
 	//Funzioni Database Clienti
@@ -457,7 +462,7 @@ public class Controller {
 		return clientedao.CaricaClienti();
 	}
 	
-	public ArrayList<Integer> CaricaPunti() {
+	public ArrayList<CartaFedelta> CaricaPunti() {
 		return clientedao.CaricaPuntidFedelta();
 	}
 
