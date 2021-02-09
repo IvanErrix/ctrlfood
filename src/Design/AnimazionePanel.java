@@ -22,7 +22,7 @@ public class AnimazionePanel extends JPanel {
 
 	public AnimazionePanel(Controller ctrl) {
 		setSize(754, 553);
-		setLocation(0, 0);
+		setLocation(77, 0);
 		setBackground(new Color(191, 215, 255));
 		setOpaque(false);
 		setLayout(null);

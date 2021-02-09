@@ -65,20 +65,20 @@ public class PagamentoConCartaDialog extends JDialog {
 		contentPane.setLayout(null);
 		
 		JButton ButtonVediPassword = new JButton("");
-		ButtonVediPassword.setBounds(423, 84, 32, 32);
+		ButtonVediPassword.setBounds(444, 96, 32, 32);
 		ButtonVediPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(visible==false) {
 					visible=true;
 					ButtonVediPassword.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonUnviewPassword.png")));
 					passwordFieldPin.setEchoChar((char) 0);
-					passwordFieldPin.setFont(new Font("Impact", Font.PLAIN, 15));
+					passwordFieldPin.setFont(new Font("Cambria", Font.BOLD, 15));
 				}
 				else if(visible==true) {
 					visible=false;
 					ButtonVediPassword.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonViewPassword.png")));
 					passwordFieldPin.setEchoChar('●');
-					passwordFieldPin.setFont(new Font("Impact", Font.PLAIN, 15));
+					passwordFieldPin.setFont(new Font("Cambria", Font.BOLD, 15));
 				}
 			}
 		});
@@ -91,21 +91,21 @@ public class PagamentoConCartaDialog extends JDialog {
 		
 
 		JLabel LabelNumeroCarta = new JLabel("N° Carta");
-		LabelNumeroCarta.setBounds(50, 40, 76, 20);
+		LabelNumeroCarta.setBounds(50, 52, 76, 20);
 		LabelNumeroCarta.setForeground(new Color(0,41,82));
-		LabelNumeroCarta.setFont(new Font("Impact", Font.PLAIN, 18));
+		LabelNumeroCarta.setFont(new Font("Cambria", Font.BOLD, 18));
 		getContentPane().add(LabelNumeroCarta);
 
 		JLabel LabelPin = new JLabel("Pin");
-		LabelPin.setBounds(50, 96, 70, 20);
+		LabelPin.setBounds(50, 108, 70, 20);
 		LabelPin.setForeground(new Color(0,41,82));
-		LabelPin.setFont(new Font("Impact", Font.PLAIN, 18));
+		LabelPin.setFont(new Font("Cambria", Font.BOLD, 18));
 		getContentPane().add(LabelPin);
 
 		JLabel LabelScadenza = new JLabel("Scadenza");
-		LabelScadenza.setBounds(50, 152, 70, 20);
+		LabelScadenza.setBounds(50, 164, 97, 20);
 		LabelScadenza.setForeground(new Color(0,41,82));
-		LabelScadenza.setFont(new Font("Impact", Font.PLAIN, 18));
+		LabelScadenza.setFont(new Font("Cambria", Font.BOLD, 18));
 		getContentPane().add(LabelScadenza);
 
 		
@@ -117,9 +117,9 @@ public class PagamentoConCartaDialog extends JDialog {
 			e1.printStackTrace();
 		}
 		JFormattedTextField textFieldNumeroCarta = new JFormattedTextField(mf) ;
-		textFieldNumeroCarta.setBounds(186, 28, 269, 30);
+		textFieldNumeroCarta.setBounds(207, 40, 269, 30);
 		textFieldNumeroCarta.setBorder(new RoundedCornerBorder());
-		textFieldNumeroCarta.setFont(new Font("Impact", Font.PLAIN, 11));
+		textFieldNumeroCarta.setFont(new Font("Cambria", Font.BOLD, 11));
 		textFieldNumeroCarta.setForeground(new Color(0,41,82));
 		textFieldNumeroCarta.setBackground(new Color(191,215,255));
 		textFieldNumeroCarta.setSelectedTextColor(new Color (191,215,255));
@@ -129,7 +129,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		getContentPane().add(textFieldNumeroCarta);
 		
 		passwordFieldPin = new JPasswordField() ;
-		passwordFieldPin.setBounds(186, 84, 234, 30);
+		passwordFieldPin.setBounds(207, 96, 234, 30);
 		passwordFieldPin.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -151,26 +151,26 @@ public class PagamentoConCartaDialog extends JDialog {
 		passwordFieldPin.setSelectionColor(new Color (0,41,82));
 		passwordFieldPin.setBorder(new RoundedCornerBorder());
 		passwordFieldPin.setForeground(new Color(0,41,82));
-		passwordFieldPin.setFont(new Font("Impact", Font.PLAIN, 15));
+		passwordFieldPin.setFont(new Font("Cambria", Font.BOLD, 15));
 		passwordFieldPin.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(passwordFieldPin);
 		
 		JDateChooser dateChooserScadenzaCarta = new JDateChooser();
 		JTextFieldDateEditor dateChooserEditorScadenzaCarta = ((JTextFieldDateEditor)dateChooserScadenzaCarta.getDateEditor());
 		dateChooserEditorScadenzaCarta.setBackground(new Color(191, 215, 255));
-//		dateChooserEditorScadenzaCarta.setForeground(new Color (0,41,82));
+		dateChooserEditorScadenzaCarta.setForeground(new Color(0, 41, 82));
 		dateChooserEditorScadenzaCarta.setSelectedTextColor(new Color (191,215,255));
 		dateChooserEditorScadenzaCarta.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorScadenzaCarta.setBorder(new RoundedCornerBorder());
-		dateChooserEditorScadenzaCarta.setFont(new Font("Impact", Font.PLAIN, 12));
+		dateChooserEditorScadenzaCarta.setFont(new Font("Cambria", Font.BOLD, 12));
 		dateChooserScadenzaCarta.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		dateChooserScadenzaCarta.setMinSelectableDate(data_corrente);
 		dateChooserScadenzaCarta.setDateFormatString("dd-MM-yyyy");
-		dateChooserScadenzaCarta.setBounds(186, 140, 292, 30);
+		dateChooserScadenzaCarta.setBounds(207, 152, 292, 30);
 		contentPane.add(dateChooserScadenzaCarta);
 
 		JButton ButtonPaga = new JButton("");
-		ButtonPaga.setBounds(345, 321, 110, 24);
+		ButtonPaga.setBounds(366, 321, 110, 24);
 		ButtonPaga.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -237,13 +237,13 @@ public class PagamentoConCartaDialog extends JDialog {
 		getContentPane().add(ButtonAnnulla);
 
 		JLabel LabelNumeroCartaFedelta = new JLabel("N° Carta Fedeltà");
-		LabelNumeroCartaFedelta.setBounds(52, 208, 114, 20);
+		LabelNumeroCartaFedelta.setBounds(52, 220, 145, 20);
 		LabelNumeroCartaFedelta.setForeground(new Color(0,41,82));
-		LabelNumeroCartaFedelta.setFont(new Font("Impact", Font.PLAIN, 18));
+		LabelNumeroCartaFedelta.setFont(new Font("Cambria", Font.BOLD, 18));
 		getContentPane().add(LabelNumeroCartaFedelta);		
 		
 		textFieldNumeroCartaFedelta = new JTextField() ;
-		textFieldNumeroCartaFedelta.setBounds(186, 198, 269, 30);
+		textFieldNumeroCartaFedelta.setBounds(207, 210, 269, 30);
 		textFieldNumeroCartaFedelta.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -262,7 +262,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		});
 		textFieldNumeroCartaFedelta.setForeground(new Color(0,41,82));
 		textFieldNumeroCartaFedelta.setBorder(new RoundedCornerBorder());
-		textFieldNumeroCartaFedelta.setFont(new Font("Impact", Font.PLAIN, 15));
+		textFieldNumeroCartaFedelta.setFont(new Font("Cambria", Font.BOLD, 15));
 		textFieldNumeroCartaFedelta.setColumns(10);
 		textFieldNumeroCartaFedelta.setCaretColor(new Color(0, 41, 82));
 		textFieldNumeroCartaFedelta.setBackground(new Color(191,215,255));

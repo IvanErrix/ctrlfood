@@ -81,8 +81,8 @@ public class Controller {
 		UIManager.put("Table.gridColor", new Color(0,41,82));
 		UIManager.put("OptionPane.background", new Color(191, 215, 255));    
 		UIManager.put("OptionPane.messageForeground", new Color(0, 41, 82));
-		UIManager.put("OptionPane.messageFont",new Font("Impact", Font.PLAIN, 16));
-		UIManager.put("OptionPane.buttonFont",new Font("Impact", Font.PLAIN, 16));
+		UIManager.put("OptionPane.messageFont",new Font("Cambria", Font.BOLD, 16));
+		UIManager.put("OptionPane.buttonFont",new Font("Cambria", Font.BOLD, 16));
 		UIManager.put("Panel.background", new Color(191, 215, 255));
 		UIManager.put("Button.background", new Color(191, 215, 255));
 		UIManager.put("Button.foreground", new Color(0, 41, 82));
@@ -292,82 +292,6 @@ public class Controller {
     	else if(label.getLocation().y>=0 && label.getLocation().y<489 && label.getLocation().x==690) {		//Sposta giu
     		label.setLocation(label.getLocation().x, label.getLocation().y+velocita);
     	}
-	}
-	
-	//Consente di cambiare le icone delle label e dei button nel FramePrincipale
-	public void CambiaIconaAiButtonFramePrincipale(String nome, JLabel LabelDeposito, JLabel LabelNegozio, JLabel LabelClienti,JButton ButtonDeposito, JButton ButtonNegozio, JButton ButtonClienti) {
-		if(nome.equals("deposito")) {
-			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconHouse3D.png")));
-			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
-			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
-			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonDeposito.png")));
-			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
-			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
-		}
-		else if(nome.equals("negozio")) {
-			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconShop3D.png")));
-			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
-			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
-			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonNegozio.png")));
-			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
-		}
-		else if(nome.equals("clienti")) {
-			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
-			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconUser3D.png")));
-			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
-			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
-			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonClienti.png")));
-		}
-		else if(nome.equals("homepage")) {
-			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
-			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
-			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
-			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
-			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
-		}
-	}
-	
-	public void CambiaIconaAiButtonFrameClienti(String nome, JLabel LabelCarrello,JLabel LabelCassa,JButton ButtonCarrello, JButton ButtonCassa) {
-		 if (nome.equals("carrello")) {
-			LabelCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconShoppingCart3D.png")));
-			LabelCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CheckoutWhite_32.png")));
-			ButtonCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonCarrello.png")));
-			ButtonCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CassaWhite.png")));	
-		}
-		else if(nome.equals("cassa")) {
-			LabelCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
-			LabelCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconCheckout3D.png")));
-			ButtonCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CarrelloWhite.png")));
-			ButtonCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonCassa.png")));
-		}else if(nome.equals("homepage")) {
-			LabelCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
-			LabelCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CheckoutWhite_32.png")));
-			ButtonCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CarrelloWhite.png")));
-			ButtonCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CassaWhite.png")));
-		}
-	}
-	
-	public void RimuoviTutto(JTextField textFieldNome, JTextField textFieldPrezzo, JSpinner spinnerQuantita, JTextField textFieldFoto, JDateChooser dateChooserScadenza, 
-			JDateChooser dateChooserRaccolta, JDateChooser dateChooserProduzione, JDateChooser dateChooserMungitura, JDateChooser dateChooserConfezionamento, JDateChooser dataChooserDeposizione) {
-		textFieldNome.setText("");
-		textFieldPrezzo.setText("");
-		spinnerQuantita.setValue(1);
-		textFieldFoto.setText("");
-		dateChooserScadenza.setDate(null);
-		dateChooserRaccolta.setDate(null);
-		dateChooserProduzione.setDate(null);
-		dateChooserMungitura.setDate(null);
-		dateChooserConfezionamento.setDate(null);
-		dataChooserDeposizione.setDate(null);
-	}
-	
-	public void RimuoviTutto(JTextField textFieldNome, JTextField textFieldCognome, JTextField textFieldCodiceFiscale) {
-		textFieldNome.setText("");
-		textFieldCognome.setText("");
-		textFieldCodiceFiscale.setText("");
 	}
 	
 	//Funzioni per Database

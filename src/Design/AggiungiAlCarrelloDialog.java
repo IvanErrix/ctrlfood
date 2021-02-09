@@ -45,13 +45,13 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		
 		JLabel LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0,41,82));
-		LabelNome.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelNome.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelNome.setBounds(44, 109, 46, 14);
 		getContentPane().add(LabelNome);
 		
 		JLabel lblQuantita = new JLabel("Quantit\u00E0");
 		lblQuantita.setForeground(new Color(0,41,82));
-		lblQuantita.setFont(new Font("Impact", Font.PLAIN, 16));
+		lblQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
 		lblQuantita.setBounds(44, 174, 68, 14);
 		getContentPane().add(lblQuantita);
 		
@@ -117,6 +117,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		comboBoxNome.setOpaque(false);
 		comboBoxNome.setBackground(new Color(191,215,255));
 		comboBoxNome.setForeground(new Color(0,41,82));
+		comboBoxNome.setFont(new Font("Cambria", Font.BOLD, 16));
 		comboBoxNome.setFocusable(false);
 		comboBoxNome.setBounds(155, 93, 221, 30);
 		getContentPane().add(comboBoxNome);
@@ -131,7 +132,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191,215,255));
 		spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(0,41,82));
 		spinnerQuantita.setRequestFocusEnabled(false);
-		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 14));
+		spinnerQuantita.setFont(new Font("Cambria", Font.BOLD, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		spinnerQuantita.setBounds(155, 158, 60, 30);
 		getContentPane().add(spinnerQuantita);

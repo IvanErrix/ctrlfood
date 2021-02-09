@@ -22,6 +22,15 @@ public class FrameAmministratore extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel PanelPrincipale;
+	private JLabel LabelDeposito;
+	private JLabel LabelNegozio;
+	private JLabel LabelClienti;
+	private JLabel LabelLogout;
+	private JLabel LabelSfondoButton;
+	private JButton ButtonDeposito = new JButton("");
+	private JButton ButtonNegozio = new JButton("");
+	private JButton ButtonClienti = new JButton("");
+	private JButton ButtonLogout;
 	private Boolean aperta = true;
 
 	public FrameAmministratore(Controller ctrl) {
@@ -39,69 +48,39 @@ public class FrameAmministratore extends JFrame {
 		PanelPrincipale.setLayout(null);
 		setContentPane(PanelPrincipale);
 		
-		JButton ButtonDeposito = new JButton("");
-		JButton ButtonNegozio = new JButton("");
-		JButton ButtonClienti = new JButton("");
-		
-		JPanel panelAmministatore = new JPanel();
-		panelAmministatore.setBounds(20, 126, 235, 326);
-		PanelPrincipale.add(panelAmministatore);
-		panelAmministatore.setOpaque(false);
-		panelAmministatore.setBorder(null);
-		panelAmministatore.setLayout(null);
-		
-		JPanel panelClienti = new JPanel();
-		panelClienti.setVisible(false);
-		panelClienti.setBounds(20, 126, 235, 200);
-		PanelPrincipale.add(panelClienti);
-		panelClienti.setOpaque(false);
-		panelClienti.setBorder(null);
-		panelClienti.setLayout(null);
-		
-		JLabel LabelDeposito = new JLabel("");
+		LabelDeposito = new JLabel("");
 		LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-		LabelDeposito.setBounds(10, 48, 53, 55);
-		panelAmministatore.add(LabelDeposito);
+		LabelDeposito.setBounds(0, 151, 44, 44);
+		PanelPrincipale.add(LabelDeposito);
 		
-		JLabel LabelNegozio = new JLabel("");
+		LabelNegozio = new JLabel("");
 		LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
-		LabelNegozio.setBounds(10, 121, 53, 55);
-		panelAmministatore.add(LabelNegozio);
+		LabelNegozio.setBounds(0, 214, 44, 44);
+		PanelPrincipale.add(LabelNegozio);
 		
-		JLabel LabelClienti = new JLabel("");
+		LabelClienti = new JLabel("");
 		LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
-		LabelClienti.setBounds(10, 187, 53, 55);
-		panelAmministatore.add(LabelClienti);
+		LabelClienti.setBounds(0, 280, 44, 44);
+		PanelPrincipale.add(LabelClienti);
+		
+		LabelLogout = new JLabel("");
+		LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoLogout_32.png")));
+		LabelLogout.setBounds(0, 498, 44, 44);
+		PanelPrincipale.add(LabelLogout);
 		
 		JPanel PanelCaricamento = new JPanel();
 		PanelCaricamento.setOpaque(false);
 		PanelCaricamento.setBorder(null);
-		PanelCaricamento.setBounds(388, 36, 754, 553);
+		PanelCaricamento.setBounds(194, 26, 948, 563);
 		PanelPrincipale.add(PanelCaricamento);
 		PanelCaricamento.setLayout(null);
-		
-		JButton ButtonIndietro = new JButton("");
-		ButtonIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonIndietro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				ctrl.ApriLoginDialog(ctrl);
-			}
-		});
-		ButtonIndietro.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonIndietroAzzurro.png")));
-		ButtonIndietro.setOpaque(false);
-		ButtonIndietro.setBorder(null);
-		ButtonIndietro.setContentAreaFilled(false);
-		ButtonIndietro.setBounds(246, 36, 34, 34);
-		PanelPrincipale.add(ButtonIndietro);
 		
 		/*BUTTON DEPOSITO*/
 		ButtonDeposito.setFocusable(false);
 		ButtonDeposito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriDepositoPanel(ctrl, PanelCaricamento);
-				ctrl.CambiaIconaAiButtonFramePrincipale(new String("deposito"), LabelDeposito, LabelNegozio, LabelClienti,
-						ButtonDeposito, ButtonNegozio, ButtonClienti);
+				CambiaIconaAiButtonFramePrincipale(new String("deposito"));
 				aperta=false;
 			}
 		});
@@ -111,16 +90,15 @@ public class FrameAmministratore extends JFrame {
 		ButtonDeposito.setVisible(true);
 		ButtonDeposito.setOpaque(false);
 		ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
-		ButtonDeposito.setBounds(53, 58, 143, 45);
-		panelAmministatore.add(ButtonDeposito);
+		ButtonDeposito.setBounds(51, 156, 107, 39);
+		PanelPrincipale.add(ButtonDeposito);
 		
 		/*BUTTON NEGOZIO*/
 		ButtonNegozio.setFocusable(false);
 		ButtonNegozio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriNegozioPanel(ctrl, PanelCaricamento);
-				ctrl.CambiaIconaAiButtonFramePrincipale(new String("negozio"), LabelDeposito, LabelNegozio, LabelClienti,
-						ButtonDeposito, ButtonNegozio, ButtonClienti);
+				CambiaIconaAiButtonFramePrincipale(new String("negozio"));
 				aperta=false;
 			}
 		});
@@ -130,16 +108,15 @@ public class FrameAmministratore extends JFrame {
 		ButtonNegozio.setOpaque(false);
 		ButtonNegozio.setContentAreaFilled(false);
 		ButtonNegozio.setBorderPainted(false);
-		ButtonNegozio.setBounds(53, 131, 129, 45);
-		panelAmministatore.add(ButtonNegozio);
+		ButtonNegozio.setBounds(51, 219, 97, 39);
+		PanelPrincipale.add(ButtonNegozio);
 		
 		/*BUTTON CLIENTI*/
 		ButtonClienti.setFocusable(false);
 		ButtonClienti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriClientiPanel(ctrl, PanelCaricamento);
-				ctrl.CambiaIconaAiButtonFramePrincipale(new String("clienti"), LabelDeposito, LabelNegozio, LabelClienti,
-						ButtonDeposito, ButtonNegozio, ButtonClienti);
+				CambiaIconaAiButtonFramePrincipale(new String("clienti"));
 				aperta=false;
 			}
 		});
@@ -149,8 +126,27 @@ public class FrameAmministratore extends JFrame {
 		ButtonClienti.setOpaque(false);
 		ButtonClienti.setContentAreaFilled(false);
 		ButtonClienti.setBorderPainted(false);
-		ButtonClienti.setBounds(53, 197, 115, 45);
-		panelAmministatore.add(ButtonClienti);
+		ButtonClienti.setBounds(51, 285, 82, 39);
+		PanelPrincipale.add(ButtonClienti);
+		
+		/*BUTTON LOGOUT*/
+		ButtonLogout = new JButton("");
+		ButtonLogout.setFocusable(false);
+		ButtonLogout.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CambiaIconaAiButtonFramePrincipale(new String("logout"));
+				dispose();
+				ctrl.ApriLoginDialog(ctrl);
+			}
+		});
+		ButtonLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/LogoutWhite.png")));
+		ButtonLogout.setOpaque(false);
+		ButtonLogout.setBorder(null);
+		ButtonLogout.setContentAreaFilled(false);
+		ButtonLogout.setBorderPainted(false);
+		ButtonLogout.setBounds(51, 503, 86, 39);
+		PanelPrincipale.add(ButtonLogout);
 		
 
 		JButton ButtonChiudi = new JButton("");
@@ -209,8 +205,7 @@ public class FrameAmministratore extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (aperta==false) {
 					ctrl.ApriAnimazionePanel(ctrl, PanelCaricamento);
-					ctrl.CambiaIconaAiButtonFramePrincipale(new String("homepage"), LabelDeposito, LabelNegozio, LabelClienti, 
-							ButtonDeposito, ButtonNegozio, ButtonClienti);
+					CambiaIconaAiButtonFramePrincipale(new String("homepage"));
 					aperta=true;
 				}
 			}
@@ -218,16 +213,89 @@ public class FrameAmministratore extends JFrame {
 		ButtonHomepage.setBorder(null);
 		ButtonHomepage.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonHomepage.setOpaque(false);
-		ButtonHomepage.setBounds(36, 20, 195, 58);
+		ButtonHomepage.setBounds(10, 11, 159, 53);
 		ButtonHomepage.setContentAreaFilled(false);
 		ButtonHomepage.setFocusable(false);
 		PanelPrincipale.add(ButtonHomepage);
 		
+		LabelSfondoButton = new JLabel("");
+		LabelSfondoButton.setVisible(false);
+		LabelSfondoButton.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/SfondoButton.png")));
+		LabelSfondoButton.setBounds(0, 140, 177, 43);
+		PanelPrincipale.add(LabelSfondoButton);
+		
 		JLabel Sfondo = new JLabel("");
-		Sfondo.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/custom \u2013 1.png")));
-		Sfondo.setBounds(0, 0, 1162, 600);
+		Sfondo.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/SfondoFrame.png")));
+		Sfondo.setBounds(-2, 0, 1162, 600);
 		PanelPrincipale.add(Sfondo);
 		
 		ctrl.ApriAnimazionePanel(ctrl, PanelCaricamento);
+	}
+	
+	public void CambiaIconaAiButtonFramePrincipale(String nome) {
+		if(nome.equals("deposito")) {
+			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconHouse3D.png")));
+			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
+			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
+			LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoLogout_32.png")));
+			LabelSfondoButton.setVisible(true);
+			LabelSfondoButton.setBounds(-1, 147, 177, 43);
+			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonDeposito.png")));
+			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
+			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
+			ButtonLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/LogoutWhite.png")));
+
+		}
+		else if(nome.equals("negozio")) {
+			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
+			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconShop3D.png")));
+			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
+			LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoLogout_32.png")));
+			LabelSfondoButton.setVisible(true);
+			LabelSfondoButton.setBounds(-1, 210, 177, 43);
+			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
+			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonNegozio.png")));
+			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
+			ButtonLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/LogoutWhite.png")));
+
+		}
+		else if(nome.equals("clienti")) {
+			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
+			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
+			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconUser3D.png")));
+			LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoLogout_32.png")));
+			LabelSfondoButton.setVisible(true);
+			LabelSfondoButton.setBounds(-1, 277, 177, 43);
+			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
+			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
+			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonClienti.png")));
+			ButtonLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/LogoutWhite.png")));
+
+		}
+		else if(nome.equals("logout")) {
+			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
+			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
+			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
+			LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconLogout3D.png")));
+			LabelSfondoButton.setVisible(true);
+			LabelSfondoButton.setBounds(-1, 400, 177, 43);
+			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
+			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
+			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
+			ButtonLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonLogout.png")));
+			
+		}
+		else if(nome.equals("homepage")) {
+			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
+			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
+			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
+			LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoLogout_32.png")));
+			LabelSfondoButton.setVisible(false);
+			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
+			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
+			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
+			ButtonLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/LogoutWhite.png")));
+
+		}
 	}
 }

@@ -60,7 +60,7 @@ public class DepositoPanel extends JPanel {
 		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		setOpaque(false);
 		setBackground(Color.BLACK);
-		setBounds(0, 0, 754, 553);
+		setBounds(77, 0, 836, 569);
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -69,7 +69,7 @@ public class DepositoPanel extends JPanel {
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
 		scrollPane.getViewport().setOpaque(true);
 		scrollPane.setOpaque(false);
-		scrollPane.setBounds(55, 88, 630, 419);
+		scrollPane.setBounds(43, 88, 747, 432);
 		add(scrollPane);
 		
 		table = new JTable(model);
@@ -78,7 +78,7 @@ public class DepositoPanel extends JPanel {
 		table.setSelectionBackground(new Color(0, 41, 82));
 		table.setSelectionForeground(new Color(191, 215, 255));
 		table.setAutoCreateRowSorter(true);
-		table.setFont(new Font("Impact", Font.PLAIN, 13));
+		table.setFont(new Font("Cambria", Font.PLAIN, 13));
 		table.setForeground(new Color(0,41,82));
 		table.setOpaque(false);
 		table.setBackground(new Color(191, 215, 255));
@@ -87,7 +87,7 @@ public class DepositoPanel extends JPanel {
 		table.getTableHeader().setReorderingAllowed(false);
 		table.getTableHeader().setBackground(new Color(191, 215, 255));
 		table.getTableHeader().setForeground(new Color(0,41,82));
-		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
+		table.getTableHeader().setFont(new Font("Cambria", Font.BOLD, 15));
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
@@ -172,13 +172,13 @@ public class DepositoPanel extends JPanel {
 				}
 			}
 		});
-		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
+		textFieldSearch.setFont(new Font("Cambria", Font.BOLD, 20));
 		textFieldSearch.setForeground(new Color(0, 41, 82));
 		textFieldSearch.setSelectedTextColor(new Color (191,215,255));
 		textFieldSearch.setSelectionColor(new Color (0,41,82));
 		textFieldSearch.setBorder(new RoundedCornerBorder());
 		textFieldSearch.setOpaque(false);
-		textFieldSearch.setBounds(72, 28, 301, 34);
+		textFieldSearch.setBounds(43, 28, 326, 34);
 		textFieldSearch.setCaretColor(new Color(0, 41, 82));
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
@@ -205,7 +205,7 @@ public class DepositoPanel extends JPanel {
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
-		ButtonAggiungi.setBounds(495, 55, 90, 22);
+		ButtonAggiungi.setBounds(500, 40, 90, 22);
 		add(ButtonAggiungi);
 		
 		JButton ButtonStampa = new JButton("");
@@ -227,7 +227,7 @@ public class DepositoPanel extends JPanel {
 		});
 		ButtonStampa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
-		ButtonStampa.setBounds(495, 28, 90, 22);
+		ButtonStampa.setBounds(700, 40, 90, 22);
 		ButtonStampa.setOpaque(false);
 		ButtonStampa.setBorder(null);
 		ButtonStampa.setContentAreaFilled(false);
@@ -257,7 +257,7 @@ public class DepositoPanel extends JPanel {
 				
 			}
 		});
-		ButtonElimina.setBounds(595, 55, 90, 22);
+		ButtonElimina.setBounds(600, 40, 90, 22);
 		ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
 		ButtonElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonElimina.setOpaque(false);
@@ -267,7 +267,7 @@ public class DepositoPanel extends JPanel {
 		
 		JLabel LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/SfondoPanel.png")));
-		LabelSfondo.setBounds(0, 0, 748, 552);
+		LabelSfondo.setBounds(-2, -2, 836, 569);
 		add(LabelSfondo);	
 		
 
@@ -292,19 +292,19 @@ public class DepositoPanel extends JPanel {
 			 Date confezionamento = (Date) prodotti.get(i).getData_confezionamento();
 			 Boolean valore;
 			if((valore=prodotti.get(i).getOrtofrutta())==true) {
-				model.addRow(new Object[] {"Ortofrutta", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+				model.addRow(new Object[] {"ORTOFRUTTA", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
 			else if((valore=prodotti.get(i).getLatticino())==true) {
-				model.addRow(new Object[] {"Latticini", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+				model.addRow(new Object[] {"LATTICINI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
 			else if((valore=prodotti.get(i).getFarinaceo())==true) {
-				model.addRow(new Object[] {"Farinacei", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+				model.addRow(new Object[] {"FARINACEI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
 			else if((valore=prodotti.get(i).getUova())==true) {
-				model.addRow(new Object[] {"Uova", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+				model.addRow(new Object[] {"UOVA", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
 			else if((valore=prodotti.get(i).getConfezionato())==true) {
-				model.addRow(new Object[] {"Confezionati", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+				model.addRow(new Object[] {"CONFEZIONATI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
 			 
 		}

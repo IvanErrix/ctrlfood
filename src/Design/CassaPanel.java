@@ -31,21 +31,21 @@ public class CassaPanel extends JPanel {
 		
 		setOpaque(false);
 		setBackground(new Color(0, 80, 157));
-		setBounds(0, 0, 754, 553);
+		setBounds(77, 0, 836, 569);
 		setLayout(null);
 		
 		JLabel ButtonTotale = new JLabel("Totale");
-		ButtonTotale.setFont(new Font("Impact", Font.PLAIN, 19));
+		ButtonTotale.setFont(new Font("Cambria", Font.BOLD, 19));
 		ButtonTotale.setForeground(new Color(0, 41, 82));
 		ButtonTotale.setHorizontalAlignment(SwingConstants.CENTER);
-		ButtonTotale.setBounds(30, 477, 68, 23);
+		ButtonTotale.setBounds(631, 505, 68, 23);
 		add(ButtonTotale);
 		
 		JLabel ButtonTotaleNumero = new JLabel("0 \u20AC");
-		ButtonTotaleNumero.setFont(new Font("Impact", Font.PLAIN, 19));
+		ButtonTotaleNumero.setFont(new Font("Cambria", Font.BOLD, 19));
 		ButtonTotaleNumero.setForeground(new Color(0, 41, 82));
 		ButtonTotaleNumero.setHorizontalAlignment(SwingConstants.CENTER);
-		ButtonTotaleNumero.setBounds(108, 477, 68, 23);
+		ButtonTotaleNumero.setBounds(709, 505, 68, 23);
 		add(ButtonTotaleNumero);
 		
 		JButton ButtonPagaConCarta = new JButton("");
@@ -67,7 +67,7 @@ public class CassaPanel extends JPanel {
 		});
 		ButtonPagaConCarta.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
 		ButtonPagaConCarta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonPagaConCarta.setBounds(585, 477, 98, 30);
+		ButtonPagaConCarta.setBounds(679, 35, 98, 30);
 		ButtonPagaConCarta.setOpaque(false);
 		ButtonPagaConCarta.setBorder(null);
 		ButtonPagaConCarta.setContentAreaFilled(false);
@@ -79,13 +79,13 @@ public class CassaPanel extends JPanel {
 		scrollPaneProdottiCarrello.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 41, 82), new Color(0, 41, 82)));
 		scrollPaneProdottiCarrello.setOpaque(false);
 		scrollPaneProdottiCarrello.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPaneProdottiCarrello.setBounds(40, 78, 643, 382);
+		scrollPaneProdottiCarrello.setBounds(40, 78, 737, 416);
 		add(scrollPaneProdottiCarrello);
 		
 		JLabel ButtonListaProdotti = new JLabel("Lista dei prodotti nel carrello:");
-		ButtonListaProdotti.setFont(new Font("Impact", Font.PLAIN, 19));
+		ButtonListaProdotti.setFont(new Font("Cambria", Font.BOLD, 20));
 		ButtonListaProdotti.setForeground(new Color(0, 41, 82));
-		ButtonListaProdotti.setBounds(40, 35, 239, 32);
+		ButtonListaProdotti.setBounds(40, 35, 271, 32);
 		add(ButtonListaProdotti);
 		
 		JButton ButtonPagaInContanti = new JButton("");
@@ -110,12 +110,12 @@ public class CassaPanel extends JPanel {
 		ButtonPagaInContanti.setBorder(null);
 		ButtonPagaInContanti.setOpaque(false);
 		ButtonPagaInContanti.setContentAreaFilled(false);
-		ButtonPagaInContanti.setBounds(462, 477, 98, 32);
+		ButtonPagaInContanti.setBounds(556, 35, 98, 32);
 		add(ButtonPagaInContanti);
 		
 		JLabel LabelSfondo = new JLabel("");
-		LabelSfondo.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/SfondoCassa.png")));
-		LabelSfondo.setBounds(0, 0, 748, 552);
+		LabelSfondo.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/SfondoPanel.png")));
+		LabelSfondo.setBounds(-2, -2, 836, 569);
 		add(LabelSfondo);
 	}
 }

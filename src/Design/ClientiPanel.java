@@ -63,14 +63,14 @@ public class ClientiPanel extends JPanel {
 		
 		setOpaque(false);
 		setBackground(Color.BLACK);
-		setBounds(0, 0, 754, 553);
+		setBounds(77, 0, 836, 569);
 		setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
 		scrollPane.setOpaque(false);
-		scrollPane.setBounds(55, 88, 630, 419);
+		scrollPane.setBounds(43, 88, 747, 432);
 		add(scrollPane);
 		
 		table = new JTable(model);
@@ -79,7 +79,7 @@ public class ClientiPanel extends JPanel {
 		table.setSelectionForeground(new Color(191, 215, 255));
 		table.setAutoCreateRowSorter(true);
 		/*Metodo per ordinare per colonna*/
-		table.setFont(new Font("Impact", Font.PLAIN, 13));
+		table.setFont(new Font("Cambria", Font.PLAIN, 13));
 		table.setForeground(new Color(0,41,82));
 		table.setOpaque(false);
 		table.setShowGrid(false);
@@ -89,7 +89,7 @@ public class ClientiPanel extends JPanel {
 		table.getTableHeader().setReorderingAllowed(false);
 		table.getTableHeader().setBackground(new Color(191, 215, 255));
 		table.getTableHeader().setForeground(new Color(0,41,82));
-		table.getTableHeader().setFont(new Font("Impact", Font.PLAIN, 15));
+		table.getTableHeader().setFont(new Font("Cambria", Font.BOLD, 15));
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
 		
@@ -177,13 +177,13 @@ public class ClientiPanel extends JPanel {
 				}
 			}
 		});
-		textFieldSearch.setFont(new Font("Impact", Font.PLAIN, 20));
+		textFieldSearch.setFont(new Font("Cambria", Font.BOLD, 20));
 		textFieldSearch.setForeground(new Color(0, 41, 82));
 		textFieldSearch.setSelectedTextColor(new Color (191,215,255));
 		textFieldSearch.setSelectionColor(new Color (0,41,82));
 		textFieldSearch.setBorder(new RoundedCornerBorder());
 		textFieldSearch.setOpaque(false);
-		textFieldSearch.setBounds(72, 28, 301, 34);
+		textFieldSearch.setBounds(43, 28, 326, 34);
 		textFieldSearch.setCaretColor(new Color(0, 41, 82));
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
@@ -239,7 +239,7 @@ public class ClientiPanel extends JPanel {
 				
 			}
 		});
-		ButtonModifica.setBounds(595, 28, 90, 22);
+		ButtonModifica.setBounds(495, 26, 90, 22);
 		ButtonModifica.setIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/ButtonModifica.png")));
 		ButtonModifica.setOpaque(false);
 		ButtonModifica.setBorder(null);
@@ -265,7 +265,7 @@ public class ClientiPanel extends JPanel {
 		});
 		ButtonStampa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
-		ButtonStampa.setBounds(495, 28, 90, 22);
+		ButtonStampa.setBounds(700, 55, 90, 22);
 		ButtonStampa.setOpaque(false);
 		ButtonStampa.setBorder(null);
 		ButtonStampa.setContentAreaFilled(false);
@@ -304,7 +304,7 @@ public class ClientiPanel extends JPanel {
 		
 		JLabel LabelSfondo = new JLabel("New label");
 		LabelSfondo.setIcon(new ImageIcon(ClientiPanel.class.getResource("/scrimg/SfondoPanel.png")));
-		LabelSfondo.setBounds(0, 0, 748, 552);
+		LabelSfondo.setBounds(-2, -2, 836, 569);
 		add(LabelSfondo);
 		
 		CaricaClientiInTabella(ctrl);

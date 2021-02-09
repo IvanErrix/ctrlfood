@@ -34,6 +34,9 @@ import java.awt.event.FocusEvent;
 public class AggiungiClientiDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	private JTextField textFieldNome;
+	private JTextField textFieldCognome;
+	private JTextField textFieldCodiceFiscale;
 
 	public AggiungiClientiDialog(Controller ctrl) {
 		
@@ -49,24 +52,24 @@ public class AggiungiClientiDialog extends JDialog {
 
 		JLabel LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0, 41, 82));
-		LabelNome.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelNome.setFont(new Font("Cambria", Font.BOLD, 14));
 		LabelNome.setBounds(64, 59, 46, 14);
 		getContentPane().add(LabelNome);
 
 		JLabel LabelCognome = new JLabel("Cognome");
 		LabelCognome.setForeground(new Color(0, 41, 82));
-		LabelCognome.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelCognome.setFont(new Font("Cambria", Font.BOLD, 14));
 		LabelCognome.setBounds(64, 130, 68, 14);
 		getContentPane().add(LabelCognome);
 
 		JLabel LabelCodiceFiscale = new JLabel("Codice Fiscale");
 		LabelCodiceFiscale.setForeground(new Color(0, 41, 82));
-		LabelCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelCodiceFiscale.setFont(new Font("Cambria", Font.BOLD, 14));
 		LabelCodiceFiscale.setBounds(64, 204, 118, 14);
 		getContentPane().add(LabelCodiceFiscale);
 
-
-		JTextField textFieldNome = new JTextField() ;
+		/*TEXTFIELD NOME*/
+		textFieldNome = new JTextField() ;
 		textFieldNome.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -90,7 +93,7 @@ public class AggiungiClientiDialog extends JDialog {
 			}
 		});
 		textFieldNome.setBorder(new RoundedCornerBorder());
-		textFieldNome.setFont(new Font("Impact", Font.PLAIN, 16));
+		textFieldNome.setFont(new Font("Cambria", Font.BOLD, 14));
 		textFieldNome.setForeground(new Color(0, 41, 82));
 		textFieldNome.setColumns(10);
 		textFieldNome.setBackground(new Color(191,215,255));
@@ -100,7 +103,8 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldNome.setCaretColor(new Color(0,41,82));
 		getContentPane().add(textFieldNome);
 
-		JTextField textFieldCognome = new JTextField();
+		/*TEXTFIELDCOGNOME*/
+		textFieldCognome = new JTextField();
 		textFieldCognome.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -123,7 +127,7 @@ public class AggiungiClientiDialog extends JDialog {
 			}
 		});
 		textFieldCognome.setBorder(new RoundedCornerBorder());
-		textFieldCognome.setFont(new Font("Impact", Font.PLAIN, 16));
+		textFieldCognome.setFont(new Font("Cambria", Font.BOLD, 14));
 		textFieldCognome.setForeground(new Color(0, 41, 82));
 		textFieldCognome.setBackground(new Color(191,215,255));
 		textFieldCognome.setSelectedTextColor(new Color (191,215,255));
@@ -133,7 +137,8 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldCognome.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(textFieldCognome);
 
-		JTextField textFieldCodiceFiscale = new JTextField() ;
+		/*TEXTFIELD CODICE FISCALE*/
+		textFieldCodiceFiscale = new JTextField() ;
 		textFieldCodiceFiscale.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent e) {
@@ -156,7 +161,7 @@ public class AggiungiClientiDialog extends JDialog {
 			}
 		});
 		textFieldCodiceFiscale.setBorder(new RoundedCornerBorder());
-		textFieldCodiceFiscale.setFont(new Font("Impact", Font.PLAIN, 16));
+		textFieldCodiceFiscale.setFont(new Font("Cambria", Font.BOLD, 14));
 		textFieldCodiceFiscale.setForeground(new Color(0, 41, 82));
 		textFieldCodiceFiscale.setBackground(new Color(191, 215, 255));
 		textFieldCodiceFiscale.setSelectedTextColor(new Color (191,215,255));
@@ -195,7 +200,7 @@ public class AggiungiClientiDialog extends JDialog {
 					ctrl.AggiungiCliente(textFieldNome.getText(), textFieldCognome.getText(), textFieldCodiceFiscale.getText());
 					JOptionPane.showMessageDialog(null, "CLIENTE AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 					setAlwaysOnTop(true);
-					ctrl.RimuoviTutto(textFieldNome, textFieldCognome, textFieldCodiceFiscale);
+					RimuoviTutto();
 				}
 			}
 		});
@@ -244,7 +249,7 @@ public class AggiungiClientiDialog extends JDialog {
 				setAlwaysOnTop(false);
 				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
 				setAlwaysOnTop(true);
-				ctrl.RimuoviTutto(textFieldNome, textFieldCognome, textFieldCodiceFiscale);
+				RimuoviTutto();
 			}
 		});
 		ButtonCancellaTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
@@ -259,5 +264,11 @@ public class AggiungiClientiDialog extends JDialog {
 		LabelSfondo.setIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/SfondoClienti.png")));
 		LabelSfondo.setBounds(-8, -8, 580, 429);
 		getContentPane().add(LabelSfondo);
+	}
+	
+	public void RimuoviTutto() {
+		textFieldNome.setText("");
+		textFieldCognome.setText("");
+		textFieldCodiceFiscale.setText("");
 	}
 }

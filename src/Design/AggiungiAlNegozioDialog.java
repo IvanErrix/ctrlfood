@@ -57,25 +57,25 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		
 		JLabel LabelTipologia = new JLabel("Tipologia");
 		LabelTipologia.setForeground(new Color(0,41,82));
-		LabelTipologia.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelTipologia.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelTipologia.setBounds(41, 57, 92, 21);
 		getContentPane().add(LabelTipologia);
 		
 		JLabel LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0,41,82));
-		LabelNome.setFont(new Font("Impact", Font.PLAIN, 16));
-		LabelNome.setBounds(41, 118, 46, 14);
+		LabelNome.setFont(new Font("Cambria", Font.BOLD, 16));
+		LabelNome.setBounds(41, 107, 46, 24);
 		getContentPane().add(LabelNome);
 		
 		JLabel LabelQuantita = new JLabel("Quantit\u00E0");
 		LabelQuantita.setForeground(new Color(0,41,82));
-		LabelQuantita.setFont(new Font("Impact", Font.PLAIN, 16));
-		LabelQuantita.setBounds(41, 211, 68, 14);
+		LabelQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
+		LabelQuantita.setBounds(41, 220, 68, 14);
 		getContentPane().add(LabelQuantita);
 		
 		JLabel LabelIDProdotto = new JLabel("ID Prodotto");
 		LabelIDProdotto.setForeground(new Color(0,41,82));
-		LabelIDProdotto.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelIDProdotto.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelIDProdotto.setBounds(41, 169, 92, 21);
 		contentPane.add(LabelIDProdotto);
 		
@@ -144,7 +144,9 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		list.setSelectionForeground(new Color(191, 215, 255));
 		list.setSelectionBackground(new Color(0, 41, 82));
 		comboBoxNome.setBorder(new RoundedCornerBorder());
+		comboBoxNome.setFont(new Font("Cambria", Font.BOLD, 14));
 		comboBoxNome.setFocusable(false);
+		comboBoxNome.setMaximumRowCount(3);
 		comboBoxNome.setForeground(new Color(0,41,82));
 		comboBoxNome.setBackground(new Color(191,215,255));
 		comboBoxNome.setBounds(208, 108, 190, 24);
@@ -163,9 +165,9 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		list2.setSelectionForeground(new Color(191, 215, 255));
 		list2.setSelectionBackground(new Color(0, 41, 82));
 		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Farinacei", "Uova", "Confezionati"}));
-		comboBoxTipologia.setMaximumRowCount(3);
+		comboBoxNome.setMaximumRowCount(5);
 		comboBoxTipologia.setForeground(new Color(0,41,82));
-		comboBoxTipologia.setFont(new Font("Impact", Font.PLAIN, 11));
+		comboBoxTipologia.setFont(new Font("Cambria", Font.BOLD, 14));
 		comboBoxTipologia.setFocusable(false);
 		comboBoxTipologia.setBorder(new RoundedCornerBorder());
 		comboBoxTipologia.setBackground(new Color(191,215,255));
@@ -182,15 +184,15 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191,215,255));
 		spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(0,41,82));
 		spinnerQuantita.setRequestFocusEnabled(false);
-		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 14));
+		spinnerQuantita.setFont(new Font("Cambria", Font.BOLD, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		spinnerQuantita.setBounds(208, 207, 60, 24);
+		spinnerQuantita.setBounds(208, 216, 60, 24);
 		((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
 		getContentPane().add(spinnerQuantita);
 		
 		LabelID = new JLabel("");
 		LabelID.setForeground(new Color(0,41,82));
-		LabelID.setFont(new Font("Impact", Font.PLAIN, 16));
+		LabelID.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelID.setBorder(new RoundedCornerBorder());
 		LabelID.setBounds(208, 166, 68, 24);
 		contentPane.add(LabelID);
