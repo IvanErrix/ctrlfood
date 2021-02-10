@@ -114,7 +114,7 @@ public class LoginAmministratoreDialog extends JDialog {
 					visible=false;
 					ButtonVediPassword.setIcon(new ImageIcon(LoginAmministratoreDialog.class.getResource("/scrimg/ButtonViewPassword.png")));
 					passwordField.setEchoChar('●');
-					passwordField.setFont(new Font("Cambria", Font.BOLD, 13));
+					passwordField.setFont(new Font("Impact", Font.PLAIN, 13));
 				}
 			}
 		});

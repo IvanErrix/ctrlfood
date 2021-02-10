@@ -78,7 +78,7 @@ public class PagamentoConCartaDialog extends JDialog {
 					visible=false;
 					ButtonVediPassword.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonViewPassword.png")));
 					passwordFieldPin.setEchoChar('●');
-					passwordFieldPin.setFont(new Font("Cambria", Font.BOLD, 15));
+					passwordFieldPin.setFont(new Font("Impact", Font.PLAIN, 15));
 				}
 			}
 		});

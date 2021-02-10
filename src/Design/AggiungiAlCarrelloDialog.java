@@ -115,6 +115,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		list.setSelectionBackground(new Color(0, 41, 82));
 		comboBoxNome.setBorder(new RoundedCornerBorder());
 		comboBoxNome.setOpaque(false);
+		comboBoxNome.setMaximumRowCount(3);
 		comboBoxNome.setBackground(new Color(191,215,255));
 		comboBoxNome.setForeground(new Color(0,41,82));
 		comboBoxNome.setFont(new Font("Cambria", Font.BOLD, 16));
