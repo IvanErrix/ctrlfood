@@ -70,10 +70,25 @@ public class ClienteDAO {
 	public void EliminaCliente(int idcliente) {
 		String sql = "CALL elimina_cliente(?)";
 		
-		PreparedStatement query;
+		
 		try {
-			query = Controller.getConnessione().getConn().prepareStatement(sql);
+			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
 			query.setInt(1, idcliente);
+			query.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void AggiornaDatiCliente (int idcliente, String nome, String cognome, String codicefiscale) {
+		String sql = "CALL aggiorna_dati_cliente(?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
+			query.setInt(1,idcliente);
+			query.setString(2, nome);
+			query.setString(3, cognome);
+			query.setString(4, codicefiscale);
 			query.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();

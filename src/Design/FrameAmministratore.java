@@ -27,9 +27,9 @@ public class FrameAmministratore extends JFrame {
 	private JLabel LabelClienti;
 	private JLabel LabelLogout;
 	private JLabel LabelSfondoButton;
-	private JButton ButtonDeposito = new JButton("");
-	private JButton ButtonNegozio = new JButton("");
-	private JButton ButtonClienti = new JButton("");
+	private JButton ButtonDeposito;
+	private JButton ButtonNegozio;
+	private JButton ButtonClienti;
 	private JButton ButtonLogout;
 	private Boolean aperta = true;
 
@@ -50,22 +50,22 @@ public class FrameAmministratore extends JFrame {
 		
 		LabelDeposito = new JLabel("");
 		LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
-		LabelDeposito.setBounds(0, 151, 44, 44);
+		LabelDeposito.setBounds(10, 151, 44, 44);
 		PanelPrincipale.add(LabelDeposito);
 		
 		LabelNegozio = new JLabel("");
 		LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
-		LabelNegozio.setBounds(0, 214, 44, 44);
+		LabelNegozio.setBounds(10, 214, 44, 44);
 		PanelPrincipale.add(LabelNegozio);
 		
 		LabelClienti = new JLabel("");
 		LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
-		LabelClienti.setBounds(0, 280, 44, 44);
+		LabelClienti.setBounds(10, 280, 44, 44);
 		PanelPrincipale.add(LabelClienti);
 		
 		LabelLogout = new JLabel("");
 		LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoLogout_32.png")));
-		LabelLogout.setBounds(0, 498, 44, 44);
+		LabelLogout.setBounds(10, 498, 44, 44);
 		PanelPrincipale.add(LabelLogout);
 		
 		JPanel PanelCaricamento = new JPanel();
@@ -76,6 +76,7 @@ public class FrameAmministratore extends JFrame {
 		PanelCaricamento.setLayout(null);
 		
 		/*BUTTON DEPOSITO*/
+		ButtonDeposito = new JButton("");
 		ButtonDeposito.setFocusable(false);
 		ButtonDeposito.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -94,6 +95,7 @@ public class FrameAmministratore extends JFrame {
 		PanelPrincipale.add(ButtonDeposito);
 		
 		/*BUTTON NEGOZIO*/
+		ButtonNegozio = new JButton("");
 		ButtonNegozio.setFocusable(false);
 		ButtonNegozio.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -112,6 +114,7 @@ public class FrameAmministratore extends JFrame {
 		PanelPrincipale.add(ButtonNegozio);
 		
 		/*BUTTON CLIENTI*/
+		ButtonClienti = new JButton("");
 		ButtonClienti.setFocusable(false);
 		ButtonClienti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

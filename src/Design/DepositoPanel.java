@@ -252,9 +252,7 @@ public class DepositoPanel extends JPanel {
 					JOptionPane.showMessageDialog(null, "RIGA ELIMINATA CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
-					e2.printStackTrace();
 				}
-				
 			}
 		});
 		ButtonElimina.setBounds(600, 40, 90, 22);

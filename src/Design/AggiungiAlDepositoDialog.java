@@ -285,6 +285,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		
 		/*JDATECHOOSER MUNGITURA*/ 
 		dateChooserMungitura = new JDateChooser();
+		dateChooserMungitura.setVisible(false);
 		JTextFieldDateEditor dateChooserEditorMungitura = ((JTextFieldDateEditor)dateChooserMungitura.getDateEditor());
 		dateChooserEditorMungitura.setBackground(new Color(191, 215, 255));
 		dateChooserEditorMungitura.setForeground(new Color(0, 41, 82));
@@ -296,7 +297,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserMungitura.setMaxSelectableDate(data_corrente);
 		dateChooserMungitura.setDateFormatString("dd-MM-yyyy");
 		dateChooserMungitura.setBounds(340, 363, 275, 25);
-		dateChooserMungitura.setVisible(false);
 		contentPane.add(dateChooserMungitura);
 		
 		/*JDATECHOOSER DEPOSIZIONE*/ 
@@ -328,7 +328,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		JList<?> list = pop.getList();
 		list.setSelectionForeground(new Color(191, 215, 255));
 		list.setSelectionBackground(new Color(0, 41, 82));	
-		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Confezionati", "Farinacei", "Uova"}));
+		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"ORTOFRUTTA", "LATTICINI", "CONFEZIONATI", "FARINACEI", "UOVA"}));
 		comboBoxTipologia.setBackground(new Color(191,215,255));
 		comboBoxTipologia.setForeground(new Color(0, 41, 82));
 		comboBoxTipologia.setFont(new Font("Cambria", Font.BOLD, 14));
@@ -370,7 +370,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {		
-				if (comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
+				if (comboBoxTipologia.getSelectedItem()=="ORTOFRUTTA") {
 					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {
 						setAlwaysOnTop(false);
@@ -386,7 +386,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						RimuoviTutto();
 					}
 				}
-				else if(comboBoxTipologia.getSelectedItem()=="Latticini") {
+				else if(comboBoxTipologia.getSelectedItem()=="LATTICINI") {
 					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 
 							|| dateChooserEditorMungitura.getText().length() == 0) {
@@ -403,7 +403,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						RimuoviTutto();
 					}
 				}
-				else if(comboBoxTipologia.getSelectedItem()=="Confezionati") {
+				else if(comboBoxTipologia.getSelectedItem()=="CONFEZIONATI") {
 					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorConfezionamento.getText().length() == 0) {
 						setAlwaysOnTop(false);
@@ -418,7 +418,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(true);
 						RimuoviTutto();
 					}
-				}else if(comboBoxTipologia.getSelectedItem()=="Farinacei") {
+				}else if(comboBoxTipologia.getSelectedItem()=="FARINACEI") {
 					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 ) {
 						setAlwaysOnTop(false);
@@ -433,7 +433,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 						setAlwaysOnTop(true);
 						RimuoviTutto();
 					}
-				}else if(comboBoxTipologia.getSelectedItem()=="Uova") {
+				}else if(comboBoxTipologia.getSelectedItem()=="UOVA") {
 					if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 							|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorDeposizione.getText().length() == 0 ) {
 						setAlwaysOnTop(false);
@@ -540,7 +540,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 	}
 	
 	public void VisibilitaLabel() {
-		if(comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
+		if(comboBoxTipologia.getSelectedItem()=="ORTOFRUTTA") {
 			LabelDataConfezionamento.setVisible(false);
 			LabelDataRaccolta.setVisible(true);
 			LabelDataMungitura.setVisible(false);
@@ -554,7 +554,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			dateChooserProduzione.setVisible(false);
 			dateChooserDeposizione.setVisible(false);
 		}
-		else if(comboBoxTipologia.getSelectedItem()=="Latticini") {
+		else if(comboBoxTipologia.getSelectedItem()=="LATTICINI") {
 			LabelDataConfezionamento.setVisible(false);
 			LabelDataRaccolta.setVisible(false);
 			LabelDataMungitura.setVisible(true);
@@ -569,7 +569,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			dateChooserProduzione.setVisible(true);
 			dateChooserDeposizione.setVisible(false);
 		}
-		else if(comboBoxTipologia.getSelectedItem()=="Confezionati") {
+		else if(comboBoxTipologia.getSelectedItem()=="CONFEZIONATI") {
 			LabelDataConfezionamento.setVisible(true);
 			LabelDataRaccolta.setVisible(false);
 			LabelDataMungitura.setVisible(false);
@@ -584,7 +584,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			dateChooserProduzione.setVisible(false);
 			dateChooserDeposizione.setVisible(false);
 		
-		}else if(comboBoxTipologia.getSelectedItem()=="Farinacei") {
+		}else if(comboBoxTipologia.getSelectedItem()=="FARINACEI") {
 			LabelDataConfezionamento.setVisible(false);
 			LabelDataRaccolta.setVisible(false);
 			LabelDataMungitura.setVisible(false);
@@ -599,7 +599,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			dateChooserProduzione.setVisible(true);
 			dateChooserDeposizione.setVisible(false);
 			
-		}else if(comboBoxTipologia.getSelectedItem()=="Uova") {
+		}else if(comboBoxTipologia.getSelectedItem()=="UOVA") {
 			LabelDataConfezionamento.setVisible(false);
 			LabelDataRaccolta.setVisible(false);
 			LabelDataMungitura.setVisible(false);

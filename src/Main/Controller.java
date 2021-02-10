@@ -394,4 +394,8 @@ public class Controller {
 		clientedao.EliminaCliente(idcliente);
 	}
 	
+	public void AggiornaDatiCliente(int idcliente, String nome, String cognome, String codicefiscale) {
+		clientedao.AggiornaDatiCliente(idcliente, nome, cognome, codicefiscale);
+	}
+	
 }

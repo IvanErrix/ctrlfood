@@ -34,7 +34,7 @@ import javax.swing.JLabel;
 public class CarrelloPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
-	private String Titoli[]= {"Tipologia","Nome", "Codice", "Prezzo", "Quantità","Data acquisto"};
+	private String Titoli[]= {"Tipologia","IDProdotto", "Nome", "Prezzo", "Quantità","Scadenza", "Raccolta", "Produzione", "Mungitura", "Deposizione", "Confezionamento"};
 	private String Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
 		private static final long serialVersionUID = 1L;
@@ -79,8 +79,6 @@ public class CarrelloPanel extends JPanel {
 		table.getTableHeader().setFont(new Font("Cambria", Font.BOLD, 15));
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
-		model.addRow(new Object[] {"Ortofrutta","Mela", "001", "0.5", "2", "10/01/2021"});
-
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);
 		
@@ -113,6 +111,32 @@ public class CarrelloPanel extends JPanel {
 		ButtonSearch.setContentAreaFilled(false);
 		ButtonSearch.setBounds(379, 28, 34, 34);
 		add(ButtonSearch);
+		
+		JButton ButtonRefresh = new JButton("");
+		ButtonRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		ButtonRefresh.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefreshAzzurro.png")));
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+
+			}
+		});
+		ButtonRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+		ButtonRefresh.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+		ButtonRefresh.setOpaque(false);
+		ButtonRefresh.setBorder(null);
+		ButtonRefresh.setContentAreaFilled(false);
+		ButtonRefresh.setBounds(423, 28, 34, 34);
+		add(ButtonRefresh);
 		
 		JTextField textFieldSearch = new JTextField();
 		textFieldSearch.addKeyListener(new KeyAdapter() {
@@ -167,7 +191,7 @@ public class CarrelloPanel extends JPanel {
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(CarrelloPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
-		ButtonAggiungi.setBounds(495, 55, 90, 22);
+		ButtonAggiungi.setBounds(518, 40, 90, 22);
 		add(ButtonAggiungi);
 		
 		JButton ButtonElimina = new JButton("");
@@ -192,7 +216,7 @@ public class CarrelloPanel extends JPanel {
 				
 			}
 		});
-		ButtonElimina.setBounds(595, 55, 90, 22);
+		ButtonElimina.setBounds(618, 40, 90, 22);
 		ButtonElimina.setIcon(new ImageIcon(CarrelloPanel.class.getResource("/scrimg/ButtonElimina.png")));
 		ButtonElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonElimina.setOpaque(false);

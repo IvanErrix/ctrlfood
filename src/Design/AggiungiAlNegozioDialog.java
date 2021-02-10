@@ -33,6 +33,7 @@ import Objects.Prodotto;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.SwingConstants;
 
 public class AggiungiAlNegozioDialog extends JDialog {
 
@@ -149,7 +150,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxNome.setMaximumRowCount(3);
 		comboBoxNome.setForeground(new Color(0,41,82));
 		comboBoxNome.setBackground(new Color(191,215,255));
-		comboBoxNome.setBounds(208, 108, 190, 24);
+		comboBoxNome.setBounds(208, 107, 190, 25);
 		getContentPane().add(comboBoxNome);
 		
 		comboBoxTipologia = new JComboBox();
@@ -164,14 +165,14 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		JList list2 = pop2.getList();
 		list2.setSelectionForeground(new Color(191, 215, 255));
 		list2.setSelectionBackground(new Color(0, 41, 82));
-		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"Ortofrutta", "Latticini", "Farinacei", "Uova", "Confezionati"}));
+		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"ORTOFRUTTA", "LATTICINI", "FARINACEI", "UOVA", "CONFEZIONATI"}));
 		comboBoxNome.setMaximumRowCount(5);
 		comboBoxTipologia.setForeground(new Color(0,41,82));
 		comboBoxTipologia.setFont(new Font("Cambria", Font.BOLD, 14));
 		comboBoxTipologia.setFocusable(false);
 		comboBoxTipologia.setBorder(new RoundedCornerBorder());
 		comboBoxTipologia.setBackground(new Color(191,215,255));
-		comboBoxTipologia.setBounds(208, 57, 190, 24);
+		comboBoxTipologia.setBounds(208, 56, 190, 25);
 		getContentPane().add(comboBoxTipologia);
 		
 		SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 50, 1);
@@ -191,6 +192,8 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		getContentPane().add(spinnerQuantita);
 		
 		LabelID = new JLabel("");
+		LabelID.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelID.setHorizontalTextPosition(SwingConstants.CENTER);
 		LabelID.setForeground(new Color(0,41,82));
 		LabelID.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelID.setBorder(new RoundedCornerBorder());
@@ -212,19 +215,19 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
 		comboBoxNome.removeAllItems();
 		for(int i=0; i<prodotti.size(); i++) {
-			if(prodotti.get(i).getOrtofrutta()==true && comboBoxTipologia.getSelectedItem()=="Ortofrutta") {
+			if(prodotti.get(i).getOrtofrutta()==true && comboBoxTipologia.getSelectedItem()=="ORTOFRUTTA") {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getLatticino()==true && comboBoxTipologia.getSelectedItem()=="Latticini") {
+			else if(prodotti.get(i).getLatticino()==true && comboBoxTipologia.getSelectedItem()=="LATTICINI") {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getFarinaceo()==true && comboBoxTipologia.getSelectedItem()=="Farinacei") {
+			else if(prodotti.get(i).getFarinaceo()==true && comboBoxTipologia.getSelectedItem()=="FARINACEI") {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getUova()==true && comboBoxTipologia.getSelectedItem()=="Uova") {
+			else if(prodotti.get(i).getUova()==true && comboBoxTipologia.getSelectedItem()=="UOVA") {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getConfezionato()==true && comboBoxTipologia.getSelectedItem()=="Confezionati") {
+			else if(prodotti.get(i).getConfezionato()==true && comboBoxTipologia.getSelectedItem()=="CONFEZIONATI") {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
 		}

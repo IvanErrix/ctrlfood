@@ -47,12 +47,12 @@ public class FrameCliente extends JFrame {
 		
 		LabelCarrello = new JLabel("");
 		LabelCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
-		LabelCarrello.setBounds(0, 151, 44, 44);
+		LabelCarrello.setBounds(10, 151, 44, 44);
 		PanelPrincipale.add(LabelCarrello);
 		
 		LabelCassa = new JLabel("");
 		LabelCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CheckoutWhite_32.png")));
-		LabelCassa.setBounds(0, 214, 44, 44);
+		LabelCassa.setBounds(10, 214, 44, 44);
 		PanelPrincipale.add(LabelCassa);
 		
 		JPanel PanelCaricamento = new JPanel();

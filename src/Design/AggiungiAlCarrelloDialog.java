@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.accessibility.AccessibleContext;
 import javax.swing.BorderFactory;
@@ -27,8 +28,18 @@ import javax.swing.plaf.basic.BasicComboPopup;
 import ExternalClasses.ContentPane;
 import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
+import Objects.Prodotto;
+
+import javax.swing.SwingConstants;
+import javax.swing.JSpinner.DefaultEditor;
 
 public class AggiungiAlCarrelloDialog extends JDialog {
+	
+	private ArrayList<Prodotto> prodotti;
+	private JComboBox comboBoxNome;
+	private JSpinner spinnerQuantita;
+	private JLabel LabelID;
+	private JLabel LabelPrezzo;
 
 	private static final long serialVersionUID = 1L;
 
@@ -46,14 +57,14 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		JLabel LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0,41,82));
 		LabelNome.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelNome.setBounds(44, 109, 46, 14);
+		LabelNome.setBounds(44, 41, 46, 14);
 		getContentPane().add(LabelNome);
 		
-		JLabel lblQuantita = new JLabel("Quantit\u00E0");
-		lblQuantita.setForeground(new Color(0,41,82));
-		lblQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
-		lblQuantita.setBounds(44, 174, 68, 14);
-		getContentPane().add(lblQuantita);
+		JLabel LabelQuantita = new JLabel("Quantit\u00E0");
+		LabelQuantita.setForeground(new Color(0,41,82));
+		LabelQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
+		LabelQuantita.setBounds(44, 214, 68, 14);
+		getContentPane().add(LabelQuantita);
 		
 		JButton ButtonAggiugni = new JButton("");
 		ButtonAggiugni.addMouseListener(new MouseAdapter() {
@@ -107,7 +118,12 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonAnnulla.setBounds(44, 290, 110, 24);
 		getContentPane().add(ButtonAnnulla);
 		
-		JComboBox comboBoxNome = new JComboBox();
+		comboBoxNome = new JComboBox();
+		comboBoxNome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CaricaSpinnerQuantita(ctrl);
+			}
+		});
 		AccessibleContext ac = comboBoxNome.getAccessibleContext();
 		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
 		JList list = pop.getList();
@@ -120,11 +136,11 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		comboBoxNome.setForeground(new Color(0,41,82));
 		comboBoxNome.setFont(new Font("Cambria", Font.BOLD, 16));
 		comboBoxNome.setFocusable(false);
-		comboBoxNome.setBounds(155, 93, 221, 30);
+		comboBoxNome.setBounds(155, 25, 221, 30);
 		getContentPane().add(comboBoxNome);
 		
 		SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 50, 1);
-		JSpinner spinnerQuantita = new JSpinner(model);
+		spinnerQuantita = new JSpinner(model);
 		spinnerQuantita.setFocusable(false);
 		spinnerQuantita.setOpaque(false);
 		spinnerQuantita.setBorder(new RoundedCornerBorder());
@@ -135,12 +151,73 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		spinnerQuantita.setRequestFocusEnabled(false);
 		spinnerQuantita.setFont(new Font("Cambria", Font.BOLD, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		spinnerQuantita.setBounds(155, 158, 60, 30);
+		spinnerQuantita.setBounds(155, 198, 60, 30);
 		getContentPane().add(spinnerQuantita);
+		
+		JLabel LabelIDProdotto = new JLabel("ID Prodotto");
+		LabelIDProdotto.setFont(new Font("Cambria", Font.BOLD, 16));
+		LabelIDProdotto.setBounds(44, 102, 94, 14);
+		LabelIDProdotto.setForeground(new Color(0,41,82));
+		contentPane.add(LabelIDProdotto);
+		
+		LabelID = new JLabel("");
+		LabelID.setHorizontalTextPosition(SwingConstants.CENTER);
+		LabelID.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelID.setFont(new Font("Cambria", Font.BOLD, 16));
+		LabelID.setBounds(155, 96, 94, 24);
+		LabelID.setForeground(new Color(0,41,82));
+		LabelID.setBorder(new RoundedCornerBorder());
+		contentPane.add(LabelID);
+		
+		LabelPrezzo = new JLabel("");
+		LabelPrezzo.setHorizontalTextPosition(SwingConstants.CENTER);
+		LabelPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelPrezzo.setFont(new Font("Cambria", Font.BOLD, 16));
+		LabelPrezzo.setBounds(155, 152, 94, 24);
+		LabelPrezzo.setForeground(new Color(0,41,82));
+		LabelPrezzo.setBorder(new RoundedCornerBorder());
+		contentPane.add(LabelPrezzo);
+		
+		JLabel LabelPrezzoProdotto = new JLabel("Prezzo");
+		LabelPrezzoProdotto.setFont(new Font("Cambria", Font.BOLD, 16));
+		LabelPrezzoProdotto.setBounds(44, 156, 68, 14);
+		LabelPrezzoProdotto.setForeground(new Color(0,41,82));
+		contentPane.add(LabelPrezzoProdotto);
 		
 		JLabel LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(AggiungiAlCarrelloDialog.class.getResource("/scrimg/SfondoAggiungiAlnegozio.png")));
 		LabelSfondo.setBounds(-9, -9, 467, 376);
 		contentPane.add(LabelSfondo);
+		
+		CaricaComboBoxNome(ctrl);
+		CaricaSpinnerQuantita(ctrl);
+		
+	}
+	public void CaricaComboBoxNome(Controller ctrl) {
+		prodotti=ctrl.CaricaProdottiNegozio();
+		comboBoxNome.removeAllItems();
+		for(int i=0; i<prodotti.size(); i++) {
+				comboBoxNome.addItem(prodotti.get(i).getNome());
+				
+		}
+	}
+	
+	public void CaricaSpinnerQuantita(Controller ctrl) {
+		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
+		if (comboBoxNome.getSelectedItem()!=null) {
+			for (int i = 0; i < prodotti.size(); i++) {
+				if (comboBoxNome.getSelectedItem().toString().equals(prodotti.get(i).getNome())) {
+					spinnerQuantita.setModel(new SpinnerNumberModel(1, 1, prodotti.get(i).getQuantita(), 1));
+					((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
+					spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191, 215, 255));
+					spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(0, 41, 82));
+					LabelID.setText(Integer.toString(prodotti.get(i).getIdprodotto()));
+					LabelPrezzo.setText(Double.toString(prodotti.get(i).getPrezzo())+"€");
+				}
+			} 
+		}
+		else {
+			LabelID.setText("");
+		}
 	}
 }

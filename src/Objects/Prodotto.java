@@ -5,9 +5,10 @@ import java.util.*;
 public class Prodotto{
 
     public Prodotto(int idprodotto, String nome, Double prezzo, int quantita, Date data_scadenza, Boolean ortofrutta,
-			Boolean latticino, Boolean farinaceo, Boolean uova, Boolean confezionato, Date data_mungitura,
-			Date data_produzione, Date data_confezionamento, Date data_raccolta, Date data_deposizione) {
-		super();
+			Boolean latticino, Boolean farinaceo, Boolean uova, Boolean confezionato, Date data_raccolta,
+			Date data_produzione, Date data_mungitura, Date data_deposizione, Date data_confezionamento) {
+		
+    	super();
 		this.idprodotto = idprodotto;
 		this.nome = nome;
 		this.prezzo = prezzo;
@@ -18,11 +19,11 @@ public class Prodotto{
 		this.farinaceo = farinaceo;
 		this.uova = uova;
 		this.confezionato = confezionato;
-		this.data_mungitura = data_mungitura;
-		this.data_produzione = data_produzione;
-		this.data_confezionamento = data_confezionamento;
 		this.data_raccolta = data_raccolta;
+		this.data_produzione = data_produzione;
+		this.data_mungitura = data_mungitura;
 		this.data_deposizione = data_deposizione;
+		this.data_confezionamento = data_confezionamento;
 	}
 
 	private int idprodotto;
@@ -35,11 +36,11 @@ public class Prodotto{
     private Boolean farinaceo;
     private Boolean uova;
     private Boolean confezionato;
-    private Date data_mungitura;
-    private Date data_produzione;
-    private Date data_confezionamento;
     private Date data_raccolta;
+    private Date data_produzione;
+    private Date data_mungitura;
     private Date data_deposizione;
+    private Date data_confezionamento;
     
 	public int getIdprodotto() {
 		return idprodotto;
@@ -71,36 +72,6 @@ public class Prodotto{
 	public void setData_scadenza(Date data_scadenza) {
 		this.data_scadenza = data_scadenza;
 	}
-	public Date getData_mungitura() {
-		return data_mungitura;
-	}
-	public void setData_mungitura(Date data_mungitura) {
-		this.data_mungitura = data_mungitura;
-	}
-	public Date getData_produzione() {
-		return data_produzione;
-	}
-	public void setData_produzione(Date data_produzione) {
-		this.data_produzione = data_produzione;
-	}
-	public Date getData_confezionamento() {
-		return data_confezionamento;
-	}
-	public void setData_confezionamento(Date data_confezionamento) {
-		this.data_confezionamento = data_confezionamento;
-	}
-	public Date getData_raccolta() {
-		return data_raccolta;
-	}
-	public void setData_raccolta(Date data_raccolta) {
-		this.data_raccolta = data_raccolta;
-	}
-	public Date getData_deposizione() {
-		return data_deposizione;
-	}
-	public void setData_deposizione(Date data_deposizione) {
-		this.data_deposizione = data_deposizione;
-	}
 	public Boolean getOrtofrutta() {
 		return ortofrutta;
 	}
@@ -112,12 +83,6 @@ public class Prodotto{
 	}
 	public void setLatticino(Boolean latticino) {
 		this.latticino = latticino;
-	}
-	public Boolean getConfezionato() {
-		return confezionato;
-	}
-	public void setConfezionato(Boolean confezionato) {
-		this.confezionato = confezionato;
 	}
 	public Boolean getFarinaceo() {
 		return farinaceo;
@@ -131,4 +96,42 @@ public class Prodotto{
 	public void setUova(Boolean uova) {
 		this.uova = uova;
 	}
+	public Boolean getConfezionato() {
+		return confezionato;
+	}
+	public void setConfezionato(Boolean confezionato) {
+		this.confezionato = confezionato;
+	}
+	public Date getData_raccolta() {
+		return data_raccolta;
+	}
+	public void setData_raccolta(Date data_raccolta) {
+		this.data_raccolta = data_raccolta;
+	}
+	public Date getData_produzione() {
+		return data_produzione;
+	}
+	public void setData_produzione(Date data_produzione) {
+		this.data_produzione = data_produzione;
+	}
+	public Date getData_mungitura() {
+		return data_mungitura;
+	}
+	public void setData_mungitura(Date data_mungitura) {
+		this.data_mungitura = data_mungitura;
+	}
+	public Date getData_deposizione() {
+		return data_deposizione;
+	}
+	public void setData_deposizione(Date data_deposizione) {
+		this.data_deposizione = data_deposizione;
+	}
+	public Date getData_confezionamento() {
+		return data_confezionamento;
+	}
+	public void setData_confezionamento(Date data_confezionamento) {
+		this.data_confezionamento = data_confezionamento;
+	}
+    
+
 }
