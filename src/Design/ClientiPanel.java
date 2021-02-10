@@ -228,15 +228,16 @@ public class ClientiPanel extends JPanel {
 		ButtonModifica.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(editable==false) {
-					editable=true;
-					table.setRowSelectionAllowed(false);
-					JOptionPane.showMessageDialog(null, "LA TABELLA È ORA MODIFICABILE", "", JOptionPane.INFORMATION_MESSAGE);
-				}
-				else {
-					editable=false;
-					JOptionPane.showMessageDialog(null, "LA TABELLA NON È MODIFICABILE,\n I DATI SONO STATI AGGIORNATI", "", JOptionPane.INFORMATION_MESSAGE);
-				}
+				ctrl.ApriModificaClienteDialog(ctrl);
+//				if(editable==false) {
+//					editable=true;
+//					table.setRowSelectionAllowed(false);
+//					JOptionPane.showMessageDialog(null, "LA TABELLA È ORA MODIFICABILE", "", JOptionPane.INFORMATION_MESSAGE);
+//				}
+//				else {
+//					editable=false;
+//					JOptionPane.showMessageDialog(null, "LA TABELLA NON È MODIFICABILE,\n I DATI SONO STATI AGGIORNATI", "", JOptionPane.INFORMATION_MESSAGE);
+//				}
 			}
 		});
 		ButtonModifica.setBounds(495, 26, 90, 22);

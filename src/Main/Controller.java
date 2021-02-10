@@ -54,6 +54,7 @@ import Design.FrameCliente;
 import Design.LoadingDialog;
 import Design.LoginAmministratoreDialog;
 import Design.LoginDialog;
+import Design.ModificaClienteDialog;
 import Design.NegozioPanel;
 import Design.PagamentoConCartaDialog;
 import Design.SpostaDalNegozioDialog;
@@ -223,6 +224,11 @@ public class Controller {
 	
 	public void ApriSpostaDalNegozioDialog() {
 		SpostaDalNegozioDialog dialog = new SpostaDalNegozioDialog();
+		dialog.setVisible(true);
+	}
+	
+	public void ApriModificaClienteDialog(Controller ctrl) {
+		ModificaClienteDialog dialog = new ModificaClienteDialog(ctrl);
 		dialog.setVisible(true);
 	}
 	
