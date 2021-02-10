@@ -61,7 +61,7 @@ public class LoginDialog extends JDialog {
 		JButton ButtonAmministratore = new JButton("");
 		ButtonAmministratore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				dispose();
 				ctrl.ApriLoginAmministratoreDialog(ctrl);
 			}
 		});
@@ -89,7 +89,7 @@ public class LoginDialog extends JDialog {
 		ButtonClienti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonClienti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
+				dispose();
 				ctrl.ApriFrameCliente(ctrl);
 			}
 		});

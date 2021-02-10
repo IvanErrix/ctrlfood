@@ -91,7 +91,7 @@ public class Controller {
 			public void run() {
 				try {
 					Controller ctrl= new Controller();
-					System.out.println("Connessione avvenuta");
+//					System.out.println("Connessione avvenuta");
 					LoginDialog login = new LoginDialog(ctrl);
 					login.setVisible(true);
 				} catch (Exception e) {
