@@ -17,6 +17,14 @@ public class AnimazionePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private Timer timer;
+	private JLabel banana;
+	private JLabel pera;
+	private JLabel uovo;
+	private JLabel caffe;
+	private JLabel latte;
+	private JLabel arancia;
+	private JLabel nutella;
+	private JLabel insalata;
 
 	public AnimazionePanel(Controller ctrl) {
 		setSize(754, 553);
@@ -25,49 +33,57 @@ public class AnimazionePanel extends JPanel {
 		setOpaque(false);
 		setLayout(null);
 		
-		JLabel banana = new JLabel();
+		/*LABEL BANANA*/
+		banana = new JLabel();
 		banana.setIcon(new ImageIcon(AnimazionePanel.class.getResource("/scrimg/bananas.png")));
 		banana.setSize(64, 64);
 		banana.setLocation(0, 0);
 		add(banana);
 		
-		JLabel pera = new JLabel();
+		/*LABEL PERA*/
+		pera = new JLabel();
 		pera.setIcon(new ImageIcon(AnimazionePanel.class.getResource("/scrimg/pear.png")));
 		pera.setSize(64, 64);
 		pera.setLocation(690, 0);
 		add(pera);
 		
-		JLabel uovo = new JLabel();
+		/*LABEL UOVO*/
+		uovo = new JLabel();
 		uovo.setIcon(new ImageIcon(AnimazionePanel.class.getResource("/scrimg/egg.png")));
 		uovo.setSize(64, 64);
 		uovo.setLocation(690, 490);
 		add(uovo);
 		
-		JLabel caffe = new JLabel();
+		/*LABEL CAFFE*/
+		caffe = new JLabel();
 		caffe.setIcon(new ImageIcon(AnimazionePanel.class.getResource("/scrimg/coffee.png")));
 		caffe.setSize(64, 64);
 		caffe.setLocation(0, 490);
 		add(caffe);
 		
-		JLabel latte = new JLabel();
+		/*LABEL LATTE*/
+		latte = new JLabel();
 		latte.setIcon(new ImageIcon(AnimazionePanel.class.getResource("/scrimg/milk.png")));
 		latte.setSize(64, 64);
 		latte.setLocation(344, 0);
 		add(latte);
 		
-		JLabel arancia = new JLabel();
+		/*LABEL ARANCIA*/
+		arancia = new JLabel();
 		arancia.setIcon(new ImageIcon(AnimazionePanel.class.getResource("/scrimg/orange.png")));
 		arancia.setSize(64, 64);
 		arancia.setLocation(690, 244);
 		add(arancia);
 		
-		JLabel nutella = new JLabel();
+		/*LABEL NUTELLA*/
+		nutella = new JLabel();
 		nutella.setIcon(new ImageIcon(AnimazionePanel.class.getResource("/scrimg/nutella.png")));
 		nutella.setSize(64, 64);
 		nutella.setLocation(344, 490);
 		add(nutella);
 		
-		JLabel insalata = new JLabel();
+		/*LABEL INSALATA*/
+		insalata = new JLabel();
 		insalata.setIcon(new ImageIcon(AnimazionePanel.class.getResource("/scrimg/salad.png")));
 		insalata.setSize(64, 64);
 		insalata.setLocation(0, 244);

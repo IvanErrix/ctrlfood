@@ -36,48 +36,75 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 	
 	private ArrayList<Prodotto> prodotti;
+	private JLabel LabelTipologia;
+	private JLabel LabelNome;
+	private JLabel LabelQuantita;
+	private JLabel LabelIDProdotto;
+	private JButton ButtonAggiungi;
+	private JButton ButtonAnnulla;
 	private JComboBox comboBoxTipologia;
+	private JList<?> list;
 	private JComboBox comboBoxNome;
+	private JList<?> list2;
+	private SpinnerNumberModel model;
 	private JSpinner spinnerQuantita;
 	private JLabel LabelID;
+	private JLabel LabelSfondo;
 
 	@SuppressWarnings("unchecked")
 	public AggiungiAlNegozioDialog(Controller ctrl) {
+		
 		setUndecorated(true);
 		setSize(453, 364);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
+		
 		ContentPane contentPane = new ContentPane();
 		setContentPane(contentPane);
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
 		contentPane.setLayout(null);
 		
-		JLabel LabelTipologia = new JLabel("Tipologia");
+		/*LABEL TIPOLOGIA*/
+		LabelTipologia = new JLabel("Tipologia");
 		LabelTipologia.setForeground(new Color(0,41,82));
 		LabelTipologia.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelTipologia.setBounds(41, 57, 92, 21);
 		getContentPane().add(LabelTipologia);
 		
-		JLabel LabelNome = new JLabel("Nome");
+		/*LABEL NOME*/
+		LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0,41,82));
 		LabelNome.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelNome.setBounds(41, 107, 46, 24);
 		getContentPane().add(LabelNome);
 		
-		JLabel LabelQuantita = new JLabel("Quantit\u00E0");
+		/*LABEL QUANTITA*/
+		LabelQuantita = new JLabel("Quantit\u00E0");
 		LabelQuantita.setForeground(new Color(0,41,82));
 		LabelQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelQuantita.setBounds(41, 220, 68, 14);
 		getContentPane().add(LabelQuantita);
 		
-		JLabel LabelIDProdotto = new JLabel("ID Prodotto");
+		/*LABEL ID PRODOTTO*/
+		LabelIDProdotto = new JLabel("ID Prodotto");
 		LabelIDProdotto.setForeground(new Color(0,41,82));
 		LabelIDProdotto.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelIDProdotto.setBounds(41, 169, 92, 21);
 		contentPane.add(LabelIDProdotto);
 		
-		JButton ButtonAggiungi = new JButton("");
+		/*BUTTON AGGIUNGI*/
+		ButtonAggiungi = new JButton("");
+		ButtonAggiungi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setAlwaysOnTop(false);
+				ctrl.AggiungiProdottoAlNegozio(Integer.parseInt(LabelID.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()));
+				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+				setAlwaysOnTop(true);
+				CaricaComboBoxNome(ctrl);
+				CaricaSpinnerQuantita(ctrl);
+			}
+		});
 		ButtonAggiungi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -94,20 +121,16 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
-		ButtonAggiungi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setAlwaysOnTop(false);
-				ctrl.AggiungiProdottoAlNegozio(Integer.parseInt(LabelID.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()));
-				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
-				setAlwaysOnTop(true);
-				CaricaComboBoxNome(ctrl);
-				CaricaSpinnerQuantita(ctrl);
-			}
-		});
 		ButtonAggiungi.setBounds(288, 300, 110, 24);
 		getContentPane().add(ButtonAggiungi);
 		
-		JButton ButtonAnnulla = new JButton("");
+		/*BUTTON ANNULLA*/
+		ButtonAnnulla = new JButton("");
+		ButtonAnnulla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		ButtonAnnulla.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -119,11 +142,6 @@ public class AggiungiAlNegozioDialog extends JDialog {
 			}
 		});
 		ButtonAnnulla.setPressedIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
-		ButtonAnnulla.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
 		ButtonAnnulla.setOpaque(false);
 		ButtonAnnulla.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -132,6 +150,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonAnnulla.setBounds(41, 300, 110, 24);
 		getContentPane().add(ButtonAnnulla);
 		
+		/*COMBOBOX NOME*/
 		comboBoxNome = new JComboBox();
 		comboBoxNome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -140,7 +159,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		});
 		AccessibleContext ac = comboBoxNome.getAccessibleContext();
 		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
-		JList list = pop.getList();
+		list = pop.getList();
 		list.setSelectionForeground(new Color(191, 215, 255));
 		list.setSelectionBackground(new Color(0, 41, 82));
 		comboBoxNome.setBorder(new RoundedCornerBorder());
@@ -152,6 +171,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxNome.setBounds(208, 107, 190, 25);
 		getContentPane().add(comboBoxNome);
 		
+		/*COMBOBOX TIPOLOGIA*/
 		comboBoxTipologia = new JComboBox();
 		comboBoxTipologia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -161,7 +181,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		});
 		AccessibleContext ac2 = comboBoxTipologia.getAccessibleContext();
 		BasicComboPopup pop2 = (BasicComboPopup) ac2.getAccessibleChild(0);
-		JList list2 = pop2.getList();
+		list2 = pop2.getList();
 		list2.setSelectionForeground(new Color(191, 215, 255));
 		list2.setSelectionBackground(new Color(0, 41, 82));
 		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"ORTOFRUTTA", "LATTICINI", "FARINACEI", "UOVA", "CONFEZIONATI"}));
@@ -174,7 +194,8 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxTipologia.setBounds(208, 56, 190, 25);
 		getContentPane().add(comboBoxTipologia);
 		
-		SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 50, 1);
+		/*SPINNER QUANTITA*/
+		model = new SpinnerNumberModel(1, 1, 50, 1);
 		spinnerQuantita = new JSpinner(model);
 		spinnerQuantita.setFocusable(false);
 		spinnerQuantita.setOpaque(false);
@@ -190,6 +211,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
 		getContentPane().add(spinnerQuantita);
 		
+		/*LABEL ID*/
 		LabelID = new JLabel("");
 		LabelID.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelID.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -199,12 +221,11 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		LabelID.setBounds(208, 166, 68, 24);
 		contentPane.add(LabelID);
 		
-		JLabel LabelSfondo = new JLabel("");
+		/*LABEL SFONDO*/
+		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/SfondoAggiungiAlnegozio.png")));
 		LabelSfondo.setBounds(-8, -8, 467, 376);
 		getContentPane().add(LabelSfondo);
-		
-		
 		
 		CaricaComboBoxNome(ctrl);
 		CaricaSpinnerQuantita(ctrl);

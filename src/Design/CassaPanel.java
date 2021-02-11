@@ -23,6 +23,13 @@ import java.awt.event.MouseEvent;
 public class CassaPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private JLabel LabelIntestazione;
+	private JLabel LabelTotale;
+	private JLabel LabelTotaleNumero;
+	private JButton ButtonPagaConCarta;
+	private JButton ButtonPagaInContanti;
+	private JScrollPane scrollPaneProdottiCarrello;
+	private JLabel LabelSfondo;
 
 	public CassaPanel(Controller ctrl) {
 		
@@ -34,21 +41,36 @@ public class CassaPanel extends JPanel {
 		setBounds(77, 0, 836, 569);
 		setLayout(null);
 		
-		JLabel ButtonTotale = new JLabel("Totale");
-		ButtonTotale.setFont(new Font("Cambria", Font.BOLD, 19));
-		ButtonTotale.setForeground(new Color(0, 41, 82));
-		ButtonTotale.setHorizontalAlignment(SwingConstants.CENTER);
-		ButtonTotale.setBounds(631, 505, 68, 23);
-		add(ButtonTotale);
+		/*LABEL INTESTAZIONE*/
+		LabelIntestazione = new JLabel("Lista dei prodotti nel carrello:");
+		LabelIntestazione.setFont(new Font("Cambria", Font.BOLD, 20));
+		LabelIntestazione.setForeground(new Color(0, 41, 82));
+		LabelIntestazione.setBounds(40, 35, 271, 32);
+		add(LabelIntestazione);
 		
-		JLabel ButtonTotaleNumero = new JLabel("0 \u20AC");
-		ButtonTotaleNumero.setFont(new Font("Cambria", Font.BOLD, 19));
-		ButtonTotaleNumero.setForeground(new Color(0, 41, 82));
-		ButtonTotaleNumero.setHorizontalAlignment(SwingConstants.CENTER);
-		ButtonTotaleNumero.setBounds(709, 505, 68, 23);
-		add(ButtonTotaleNumero);
+		/*LABEL TOTALE*/
+		LabelTotale = new JLabel("Totale");
+		LabelTotale.setFont(new Font("Cambria", Font.BOLD, 19));
+		LabelTotale.setForeground(new Color(0, 41, 82));
+		LabelTotale.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelTotale.setBounds(631, 505, 68, 23);
+		add(LabelTotale);
 		
-		JButton ButtonPagaConCarta = new JButton("");
+		/*LABEL TOTALE NUMERO*/
+		LabelTotaleNumero = new JLabel("0 \u20AC");
+		LabelTotaleNumero.setFont(new Font("Cambria", Font.BOLD, 19));
+		LabelTotaleNumero.setForeground(new Color(0, 41, 82));
+		LabelTotaleNumero.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelTotaleNumero.setBounds(709, 505, 68, 23);
+		add(LabelTotaleNumero);
+		
+		/*BUTTON PAGA CON CARTA*/
+		ButtonPagaConCarta = new JButton("");
+		ButtonPagaConCarta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.ApriPagamentoConCartaDialog(ctrl);
+			}
+		});
 		ButtonPagaConCarta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -60,11 +82,6 @@ public class CassaPanel extends JPanel {
 			}
 		});
 		ButtonPagaConCarta.setSelectedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
-		ButtonPagaConCarta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriPagamentoConCartaDialog(ctrl);
-			}
-		});
 		ButtonPagaConCarta.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
 		ButtonPagaConCarta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonPagaConCarta.setBounds(679, 35, 98, 30);
@@ -73,23 +90,13 @@ public class CassaPanel extends JPanel {
 		ButtonPagaConCarta.setContentAreaFilled(false);
 		add(ButtonPagaConCarta);
 		
-		JScrollPane scrollPaneProdottiCarrello = new JScrollPane();
-		scrollPaneProdottiCarrello.setBackground(new Color(191, 215, 255));
-		scrollPaneProdottiCarrello.getViewport().setBackground(new Color(191, 215, 255));
-		scrollPaneProdottiCarrello.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 41, 82), new Color(0, 41, 82)));
-		scrollPaneProdottiCarrello.setOpaque(false);
-		scrollPaneProdottiCarrello.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPaneProdottiCarrello.setBounds(40, 78, 737, 416);
-		add(scrollPaneProdottiCarrello);
-		
-		JLabel ButtonListaProdotti = new JLabel("Lista dei prodotti nel carrello:");
-		ButtonListaProdotti.setFont(new Font("Cambria", Font.BOLD, 20));
-		ButtonListaProdotti.setForeground(new Color(0, 41, 82));
-		ButtonListaProdotti.setBounds(40, 35, 271, 32);
-		add(ButtonListaProdotti);
-		
-		JButton ButtonPagaInContanti = new JButton("");
-		ButtonPagaInContanti.setSelectedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
+		/*BUTTON PAGA IN CONTANTI*/
+		ButtonPagaInContanti = new JButton("");
+		ButtonPagaInContanti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
 		ButtonPagaInContanti.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -101,19 +108,26 @@ public class CassaPanel extends JPanel {
 			}
 		});
 		ButtonPagaInContanti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonPagaInContanti.setSelectedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
 		ButtonPagaInContanti.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
-		ButtonPagaInContanti.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
-			}
-		});
 		ButtonPagaInContanti.setBorder(null);
 		ButtonPagaInContanti.setOpaque(false);
 		ButtonPagaInContanti.setContentAreaFilled(false);
 		ButtonPagaInContanti.setBounds(556, 35, 98, 32);
 		add(ButtonPagaInContanti);
 		
-		JLabel LabelSfondo = new JLabel("");
+		/*SCROLLPANE PRODOTTI CARRELLO*/
+		scrollPaneProdottiCarrello = new JScrollPane();
+		scrollPaneProdottiCarrello.setBackground(new Color(191, 215, 255));
+		scrollPaneProdottiCarrello.getViewport().setBackground(new Color(191, 215, 255));
+		scrollPaneProdottiCarrello.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 41, 82), new Color(0, 41, 82)));
+		scrollPaneProdottiCarrello.setOpaque(false);
+		scrollPaneProdottiCarrello.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPaneProdottiCarrello.setBounds(40, 78, 737, 416);
+		add(scrollPaneProdottiCarrello);
+		
+		/*LABEL SFONDO*/
+		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/SfondoPanel.png")));
 		LabelSfondo.setBounds(-2, -2, 836, 569);
 		add(LabelSfondo);

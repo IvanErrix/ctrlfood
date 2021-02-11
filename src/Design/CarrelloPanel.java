@@ -34,6 +34,7 @@ import javax.swing.JLabel;
 public class CarrelloPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
+	private JScrollPane scrollPane;
 	private String Titoli[]= {"Tipologia","IDProdotto", "Nome", "Prezzo", "Quantità","Scadenza", "Raccolta", "Produzione", "Mungitura", "Deposizione", "Confezionamento"};
 	private String Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
@@ -46,7 +47,12 @@ public class CarrelloPanel extends JPanel {
 			   }
 			};
 	private JTable table;
+	private JButton ButtonSearch;
+	private JButton ButtonRefresh;
 	private JTextField textFieldSearch;
+	private JButton ButtonAggiungi;
+	private JButton ButtonElimina;
+	private JLabel LabelSfondo;
 	
 	public CarrelloPanel(Controller ctrl) {
 
@@ -55,13 +61,15 @@ public class CarrelloPanel extends JPanel {
 		setBounds(77, 0, 836, 569);
 		setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		/*SCROLLPANE*/
+		scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(43, 88, 747, 432);
 		add(scrollPane);
 		
+		/*TABLE PRODOTTI*/
 		table = new JTable(model);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setSelectionBackground(new Color(0, 41, 82));
@@ -82,7 +90,8 @@ public class CarrelloPanel extends JPanel {
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);
 		
-		JButton ButtonSearch = new JButton("");
+		/*BUTTON SEARCH*/
+		ButtonSearch = new JButton("");
 		ButtonSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String text = textFieldSearch.getText();
@@ -93,7 +102,6 @@ public class CarrelloPanel extends JPanel {
 				}
 			}
 		});
-		ButtonSearch.setSelectedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
 		ButtonSearch.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -105,6 +113,7 @@ public class CarrelloPanel extends JPanel {
 			}
 		});
 		ButtonSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonSearch.setSelectedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
 		ButtonSearch.setIcon(new ImageIcon(CarrelloPanel.class.getResource("/scrimg/ButtonSearch.png")));
 		ButtonSearch.setOpaque(false);
 		ButtonSearch.setBorder(null);
@@ -112,7 +121,8 @@ public class CarrelloPanel extends JPanel {
 		ButtonSearch.setBounds(379, 28, 34, 34);
 		add(ButtonSearch);
 		
-		JButton ButtonRefresh = new JButton("");
+		/*BUTTON REFRESH*/
+		ButtonRefresh = new JButton("");
 		ButtonRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -138,7 +148,8 @@ public class CarrelloPanel extends JPanel {
 		ButtonRefresh.setBounds(423, 28, 34, 34);
 		add(ButtonRefresh);
 		
-		JTextField textFieldSearch = new JTextField();
+		/*TEXTFIELD SEARCH*/
+		textFieldSearch = new JTextField();
 		textFieldSearch.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -169,7 +180,13 @@ public class CarrelloPanel extends JPanel {
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
 		
-		JButton ButtonAggiungi = new JButton("");
+		/*BUTTON AGGIUNGI*/
+		ButtonAggiungi = new JButton("");
+		ButtonAggiungi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.ApriAggiungiAlCarrelloDialog(ctrl);
+			}
+		});
 		ButtonAggiungi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -183,18 +200,24 @@ public class CarrelloPanel extends JPanel {
 		ButtonAggiungi.setPressedIcon(new ImageIcon(CarrelloPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonAggiungi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriAggiungiAlCarrelloDialog(ctrl);
-			}
-		});
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(CarrelloPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiungi.setBounds(518, 40, 90, 22);
 		add(ButtonAggiungi);
 		
-		JButton ButtonElimina = new JButton("");
+		/*BUTTON ELIMINA*/
+		ButtonElimina = new JButton("");
+		ButtonElimina.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					model.removeRow(table.getSelectedRow());
+				} catch (Exception e2) {
+					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
+				}
+				
+			}
+		});
 		ButtonElimina.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -206,16 +229,6 @@ public class CarrelloPanel extends JPanel {
 			}
 		});
 		ButtonElimina.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
-		ButtonElimina.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					model.removeRow(table.getSelectedRow());
-				} catch (Exception e2) {
-					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
-				}
-				
-			}
-		});
 		ButtonElimina.setBounds(618, 40, 90, 22);
 		ButtonElimina.setIcon(new ImageIcon(CarrelloPanel.class.getResource("/scrimg/ButtonElimina.png")));
 		ButtonElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -224,7 +237,8 @@ public class CarrelloPanel extends JPanel {
 		ButtonElimina.setContentAreaFilled(false);
 		add(ButtonElimina);
 		
-		JLabel LabelSfondo = new JLabel("New label");
+		/*LABEL SFONDO*/
+		LabelSfondo = new JLabel("New label");
 		LabelSfondo.setIcon(new ImageIcon(CarrelloPanel.class.getResource("/scrimg/SfondoPanel.png")));
 		LabelSfondo.setBounds(-2, -2, 836, 569);
 		add(LabelSfondo);

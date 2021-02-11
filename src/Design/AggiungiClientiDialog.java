@@ -27,9 +27,16 @@ import java.awt.event.FocusEvent;
 public class AggiungiClientiDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	private JLabel LabelNome;
+	private JLabel LabelCognome;
+	private JLabel LabelCodiceFiscale;
 	private JTextField textFieldNome;
 	private JTextField textFieldCognome;
 	private JTextField textFieldCodiceFiscale;
+	private JButton ButtonAggiungi;
+	private JButton ButtonAnnulla;
+	private JButton ButtonCancellaTutto;
+	private JLabel LabelSfondo;
 
 	public AggiungiClientiDialog(Controller ctrl) {
 		
@@ -37,25 +44,29 @@ public class AggiungiClientiDialog extends JDialog {
 		setSize(563, 411);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
+		
 		ContentPane contentPane = new ContentPane();
 		setContentPane(contentPane);
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
 		contentPane.setLayout(null);
 
-		JLabel LabelNome = new JLabel("Nome");
+		/*LABEL NOME*/
+		LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0, 41, 82));
 		LabelNome.setFont(new Font("Cambria", Font.BOLD, 14));
 		LabelNome.setBounds(64, 59, 46, 14);
 		getContentPane().add(LabelNome);
 
-		JLabel LabelCognome = new JLabel("Cognome");
+		/*LABEL COGNOME*/
+		LabelCognome = new JLabel("Cognome");
 		LabelCognome.setForeground(new Color(0, 41, 82));
 		LabelCognome.setFont(new Font("Cambria", Font.BOLD, 14));
 		LabelCognome.setBounds(64, 130, 68, 14);
 		getContentPane().add(LabelCognome);
 
-		JLabel LabelCodiceFiscale = new JLabel("Codice Fiscale");
+		/*LABEL CODICE FISCALE*/
+		LabelCodiceFiscale = new JLabel("Codice Fiscale");
 		LabelCodiceFiscale.setForeground(new Color(0, 41, 82));
 		LabelCodiceFiscale.setFont(new Font("Cambria", Font.BOLD, 14));
 		LabelCodiceFiscale.setBounds(64, 204, 118, 14);
@@ -164,43 +175,39 @@ public class AggiungiClientiDialog extends JDialog {
 		textFieldCodiceFiscale.setCaretColor(new Color(0, 41, 82));
 		getContentPane().add(textFieldCodiceFiscale);
 
-		JButton ButtonAggiugni = new JButton("");
-		ButtonAggiugni.addMouseListener(new MouseAdapter() {
+		/*BUTTON AGGIUNGI*/
+		ButtonAggiungi = new JButton("");
+		ButtonAggiungi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControlliAggiungiCliente(ctrl);
+			}
+		});
+		ButtonAggiungi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2Azzurro.png")));
+				ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2Azzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
+				ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 			}
 		});
-		ButtonAggiugni.setPressedIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
-		ButtonAggiugni.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonAggiugni.setOpaque(false);
-		ButtonAggiugni.setBorder(null);
-		ButtonAggiugni.setContentAreaFilled(false);
-		ButtonAggiugni.setIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
-		ButtonAggiugni.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(textFieldNome.getText().length()==0 || textFieldCognome.getText().length()==0 || textFieldCodiceFiscale.getText().length()==0 || textFieldCodiceFiscale.getText().length()<16 ) {
-					setAlwaysOnTop(false);
-					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTE I CAMPI", "", JOptionPane.WARNING_MESSAGE);
-					setAlwaysOnTop(true);
-				}
-				else {
-					setAlwaysOnTop(false);
-					ctrl.AggiungiCliente(textFieldNome.getText(), textFieldCognome.getText(), textFieldCodiceFiscale.getText());
-					JOptionPane.showMessageDialog(null, "CLIENTE AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
-					setAlwaysOnTop(true);
-					RimuoviTutto();
-				}
-			}
-		});
-		ButtonAggiugni.setBounds(401, 344, 110, 24);
-		getContentPane().add(ButtonAggiugni);
+		ButtonAggiungi.setPressedIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
+		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonAggiungi.setOpaque(false);
+		ButtonAggiungi.setBorder(null);
+		ButtonAggiungi.setContentAreaFilled(false);
+		ButtonAggiungi.setIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
+		ButtonAggiungi.setBounds(401, 344, 110, 24);
+		getContentPane().add(ButtonAggiungi);
 
-		JButton ButtonAnnulla = new JButton("");
+		/*BUTTON ANNULLA*/
+		ButtonAnnulla = new JButton("");
+		ButtonAnnulla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		ButtonAnnulla.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -212,11 +219,6 @@ public class AggiungiClientiDialog extends JDialog {
 			}
 		});
 		ButtonAnnulla.setPressedIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
-		ButtonAnnulla.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
 		ButtonAnnulla.setOpaque(false);
 		ButtonAnnulla.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -225,7 +227,16 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonAnnulla.setBounds(64, 344, 110, 24);
 		getContentPane().add(ButtonAnnulla);
 
-		JButton ButtonCancellaTutto = new JButton("");
+		/*BUTTON CANELLA TUTTO*/
+		ButtonCancellaTutto = new JButton("");
+		ButtonCancellaTutto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setAlwaysOnTop(false);
+				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
+				setAlwaysOnTop(true);
+				RimuoviTutto();
+			}
+		});
 		ButtonCancellaTutto.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -237,14 +248,6 @@ public class AggiungiClientiDialog extends JDialog {
 			}
 		});
 		ButtonCancellaTutto.setPressedIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
-		ButtonCancellaTutto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setAlwaysOnTop(false);
-				JOptionPane.showMessageDialog(null, "TUTTI I CAMPI VERRANNO CANCELLATI", "ATTENZIONE", JOptionPane.WARNING_MESSAGE);
-				setAlwaysOnTop(true);
-				RimuoviTutto();
-			}
-		});
 		ButtonCancellaTutto.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonRimuoviTutto.png")));
 		ButtonCancellaTutto.setOpaque(false);
 		ButtonCancellaTutto.setBorder(null);
@@ -253,10 +256,26 @@ public class AggiungiClientiDialog extends JDialog {
 		ButtonCancellaTutto.setBounds(241, 344, 150, 24);
 		getContentPane().add(ButtonCancellaTutto);
 
-		JLabel LabelSfondo = new JLabel("");
+		/*LABEL SFONDO*/
+		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(AggiungiClientiDialog.class.getResource("/scrimg/SfondoClienti.png")));
 		LabelSfondo.setBounds(-8, -8, 580, 429);
 		getContentPane().add(LabelSfondo);
+	}
+	
+	public void ControlliAggiungiCliente(Controller ctrl) {
+		if(textFieldNome.getText().length()==0 || textFieldCognome.getText().length()==0 || textFieldCodiceFiscale.getText().length()==0 || textFieldCodiceFiscale.getText().length()<16 ) {
+			setAlwaysOnTop(false);
+			JOptionPane.showMessageDialog(null, "COMPLETARE TUTTE I CAMPI", "", JOptionPane.WARNING_MESSAGE);
+			setAlwaysOnTop(true);
+		}
+		else {
+			setAlwaysOnTop(false);
+			ctrl.AggiungiCliente(textFieldNome.getText(), textFieldCognome.getText(), textFieldCodiceFiscale.getText());
+			JOptionPane.showMessageDialog(null, "CLIENTE AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+			setAlwaysOnTop(true);
+			RimuoviTutto();
+		}
 	}
 	
 	public void RimuoviTutto() {
