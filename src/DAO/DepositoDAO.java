@@ -6,9 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.swing.JDialog;
-import javax.swing.SwingUtilities;
-
 import Main.Controller;
 import Objects.Prodotto;
 

@@ -8,11 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.accessibility.AccessibleContext;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -22,7 +20,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicComboPopup;
 
 import ExternalClasses.ContentPane;
@@ -31,7 +28,6 @@ import Main.Controller;
 import Objects.Prodotto;
 
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 
@@ -45,6 +41,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private JSpinner spinnerQuantita;
 	private JLabel LabelID;
 
+	@SuppressWarnings("unchecked")
 	public AggiungiAlNegozioDialog(Controller ctrl) {
 		setUndecorated(true);
 		setSize(453, 364);

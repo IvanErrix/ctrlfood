@@ -1,7 +1,5 @@
 package Objects;
 
-import java.util.*;
-
 public class Cassa {
 
 

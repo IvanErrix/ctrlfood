@@ -6,17 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.RowFilter;
-
 import ExternalClasses.ContentPane;
 import Main.Controller;
 
@@ -200,6 +195,7 @@ public class LoginAmministratoreDialog extends JDialog {
 		
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void EffettuaLogin(Controller ctrl) {
 		if (textFieldUsername.getText().equals("") && passwordField.getText().equals("")) {
 			setAlwaysOnTop(false);

@@ -2,8 +2,6 @@ package Objects;
 
 import java.util.*;
 
-import Main.Controller;
-
 public class CartaFedelta{
 
     public CartaFedelta(int idcarta_fedelta, int punti, Date data, int chiave_cliente) {

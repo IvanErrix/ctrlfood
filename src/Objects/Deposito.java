@@ -1,7 +1,5 @@
 package Objects;
 
-import java.util.*;
-
 public class Deposito {
 
     public Deposito(int iddeposito, String luogo, int grandezza) {

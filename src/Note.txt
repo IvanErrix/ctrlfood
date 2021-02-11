@@ -10,3 +10,6 @@ SwingWorker<Boolean, Integer> worker = new SwingWorker<Boolean, Integer>() {
 			  }
 			};
 			worker.execute();
+			
+			
+Bug in aggiungi al carrello quando ci sono due prodotti in negozio con lo stesso nome nella label id non carica i due diversi id

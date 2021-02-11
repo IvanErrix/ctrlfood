@@ -16,10 +16,6 @@ import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.text.MaskFormatter;
 
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
-
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
 
@@ -34,10 +30,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
 import java.util.Date;
-import java.util.Properties;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.SpringLayout;
 
 public class PagamentoConCartaDialog extends JDialog {
 
@@ -131,6 +125,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		passwordFieldPin = new JPasswordField() ;
 		passwordFieldPin.setBounds(207, 96, 234, 30);
 		passwordFieldPin.addKeyListener(new KeyAdapter() {
+			@SuppressWarnings("deprecation")
 			@Override
 			public void keyTyped(KeyEvent e) {
 				if(passwordFieldPin.getText().length()<5) {
@@ -184,6 +179,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonPaga.setPressedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga.png")));
 		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonPaga.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") || dateChooserEditorScadenzaCarta.getText().length()==0 ) {
 					setAlwaysOnTop(false);

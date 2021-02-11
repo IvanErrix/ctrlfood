@@ -11,18 +11,15 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.accessibility.AccessibleContext;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.border.EtchedBorder;
 import javax.swing.plaf.basic.BasicComboPopup;
 
 import ExternalClasses.ContentPane;
@@ -36,7 +33,7 @@ import javax.swing.JSpinner.DefaultEditor;
 public class AggiungiAlCarrelloDialog extends JDialog {
 	
 	private ArrayList<Prodotto> prodotti;
-	private JComboBox comboBoxNome;
+	private JComboBox<String> comboBoxNome;
 	private JSpinner spinnerQuantita;
 	private JLabel LabelID;
 	private JLabel LabelPrezzo;
@@ -119,7 +116,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonAnnulla.setBounds(44, 290, 110, 24);
 		getContentPane().add(ButtonAnnulla);
 		
-		comboBoxNome = new JComboBox();
+		comboBoxNome = new JComboBox<String>();
 		comboBoxNome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CaricaSpinnerELabels(ctrl);
@@ -127,7 +124,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		});
 		AccessibleContext ac = comboBoxNome.getAccessibleContext();
 		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
-		JList list = pop.getList();
+		JList<?> list = pop.getList();
 		list.setSelectionForeground(new Color(191, 215, 255));
 		list.setSelectionBackground(new Color(0, 41, 82));
 		comboBoxNome.setBorder(new RoundedCornerBorder());

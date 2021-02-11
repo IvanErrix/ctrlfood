@@ -6,8 +6,6 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import Main.Controller;
-
 public class Connessione {
 	
 	private Connection conn;

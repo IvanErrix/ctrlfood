@@ -1,7 +1,5 @@
 package Objects;
 
-import java.util.*;
-
 public class Cliente {
 
     public Cliente(int idcliente, String nome, String cognome, String codice_fiscale, int chiavecarta_fedelta) {

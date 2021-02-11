@@ -1,7 +1,5 @@
 package Objects;
 
-import java.util.*;
-
 public class Negozio {
 	
     public Negozio(int idnegozio, String nome, String luogo, int grandezza) {
