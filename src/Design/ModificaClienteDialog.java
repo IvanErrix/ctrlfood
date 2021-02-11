@@ -72,10 +72,13 @@ public class ModificaClienteDialog extends JDialog {
 		JButton ButtonAggiorna = new JButton("Aggiorna");
 		ButtonAggiorna.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String valore = comboBoxCliente.getSelectedItem().toString();
+				valore = valore.replaceAll("\\s+","");
+				String[] parts = valore.split("-");
+				String part1 = parts[0];
 				if (textFieldNome.getText().length()!=0 && textFieldCognome.getText().length()!=0 && textFieldCodiceFiscale.getText().length()!=0 && textFieldCodiceFiscale.getText().length()==16) {
 					setAlwaysOnTop(false);
-					ctrl.AggiornaDatiCliente(Integer.parseInt(comboBoxCliente.getSelectedItem().toString()),
-							textFieldNome.getText(), textFieldCognome.getText(), textFieldCodiceFiscale.getText());
+					ctrl.AggiornaDatiCliente(Integer.parseInt(part1), textFieldNome.getText(), textFieldCognome.getText(), textFieldCodiceFiscale.getText());
 					JOptionPane.showMessageDialog(null, "DATI AGGIORNATI", "", JOptionPane.INFORMATION_MESSAGE);
 					setAlwaysOnTop(true);
 					CaricaClienti(ctrl);
@@ -163,7 +166,7 @@ public class ModificaClienteDialog extends JDialog {
 		comboBoxCliente.removeAllItems();
 		
 		for(int i=0; i<clienti.size(); i++) {
-			comboBoxCliente.addItem(clienti.get(i).getIdcliente());
+			comboBoxCliente.addItem(clienti.get(i).getIdcliente()+" - "+clienti.get(i).getNome()+" - "+clienti.get(i).getCognome());
 		}
 	}
 	
@@ -171,7 +174,11 @@ public class ModificaClienteDialog extends JDialog {
 		clienti=ctrl.CaricaClienti();
 		if (comboBoxCliente.getSelectedItem()!=null) {
 			for (int i = 0; i < clienti.size(); i++) {
-				if (comboBoxCliente.getSelectedItem().toString().equals(Integer.toString(clienti.get(i).getIdcliente()))) {
+				String valore = comboBoxCliente.getSelectedItem().toString();
+				valore = valore.replaceAll("\\s+","");
+				String[] parts = valore.split("-");
+				String part1 = parts[0];
+				if(part1.equals(Integer.toString(clienti.get(i).getIdcliente()))) {
 					textFieldNome.setText(clienti.get(i).getNome());
 					textFieldCognome.setText(clienti.get(i).getCognome());
 					textFieldCodiceFiscale.setText(clienti.get(i).getCodice_fiscale());

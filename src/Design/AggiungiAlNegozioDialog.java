@@ -103,6 +103,8 @@ public class AggiungiAlNegozioDialog extends JDialog {
 				ctrl.AggiungiProdottoAlNegozio(Integer.parseInt(LabelID.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()));
 				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 				setAlwaysOnTop(true);
+				CaricaComboBoxNome(ctrl);
+				CaricaSpinnerQuantita(ctrl);
 			}
 		});
 		ButtonAggiungi.setBounds(288, 300, 110, 24);

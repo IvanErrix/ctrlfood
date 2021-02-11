@@ -44,8 +44,15 @@ public class ClientiPanel extends JPanel {
 	private ArrayList<Cliente> clienti;
 	private ArrayList<CartaFedelta> carte;
 	private String Titoli[]= {"IDCliente", "Nome", "Cognome", "Codice Fiscale", "ID Carta", "Punti"};
-	private boolean editable = false;
-	public DefaultTableModel model = new DefaultTableModel(Titoli, 0);
+	public DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
+		
+		private static final long serialVersionUID = 1L;
+
+		@Override
+		public boolean isCellEditable(int row, int column) {
+			return false;
+		}
+	};
 	private JTable table;
 	private JTextField textFieldSearch;
 	
@@ -64,16 +71,7 @@ public class ClientiPanel extends JPanel {
 		scrollPane.setBounds(43, 88, 747, 432);
 		add(scrollPane);
 		
-		table = new JTable(model) {
-			public boolean isCellEditable(int row, int column) {
-				if(column != 0 && column != 4 && column != 5 && editable == true ) {
-					return true;
-				}
-				else {
-					return false;
-				}
-			}
-		};
+		table = new JTable(model);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setSelectionBackground(new Color(0, 41, 82));
 		table.setSelectionForeground(new Color(191, 215, 255));
@@ -229,15 +227,6 @@ public class ClientiPanel extends JPanel {
 		ButtonModifica.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriModificaClienteDialog(ctrl);
-//				if(editable==false) {
-//					editable=true;
-//					table.setRowSelectionAllowed(false);
-//					JOptionPane.showMessageDialog(null, "LA TABELLA È ORA MODIFICABILE", "", JOptionPane.INFORMATION_MESSAGE);
-//				}
-//				else {
-//					editable=false;
-//					JOptionPane.showMessageDialog(null, "LA TABELLA NON È MODIFICABILE,\n I DATI SONO STATI AGGIORNATI", "", JOptionPane.INFORMATION_MESSAGE);
-//				}
 			}
 		});
 		ButtonModifica.setBounds(495, 26, 90, 22);

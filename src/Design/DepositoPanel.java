@@ -47,11 +47,11 @@ public class DepositoPanel extends JPanel {
 		
 		private static final long serialVersionUID = 1L;
 
-			@Override
-			   public boolean isCellEditable(int row, int column) {
-			       return false;
-			   }
-			};
+		@Override
+		public boolean isCellEditable(int row, int column) {
+			return false;
+		}
+	};
 			
 	private JTable table;
 	private JTextField textFieldSearch;
