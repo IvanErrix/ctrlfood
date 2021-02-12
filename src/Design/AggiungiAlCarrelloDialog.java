@@ -37,8 +37,6 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 	private JSpinner spinnerQuantita;
 	private JLabel LabelNome;
 	private JLabel LabelQuantita;
-	private JLabel LabelIDProdotto; //Label fissa
-	private JLabel LabelID; //Label caricamento dell'ID del prodotto
 	private JLabel LabelPrezzoProdotto; //Label fissa
 	private JLabel LabelPrezzo; //Label caricamento del prezzo del prodotto
 	private JLabel LabelDataScadenzaProdotto; //Label fissa
@@ -166,29 +164,12 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		spinnerQuantita.setBounds(193, 224, 60, 30);
 		getContentPane().add(spinnerQuantita);
 		
-		/*LABEL ID PRODOTTO*/
-		LabelIDProdotto = new JLabel("ID Prodotto");
-		LabelIDProdotto.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelIDProdotto.setBounds(44, 102, 94, 14);
-		LabelIDProdotto.setForeground(new Color(0,41,82));
-		contentPane.add(LabelIDProdotto);
-		
-		/*LABEL ID*/
-		LabelID = new JLabel("");
-		LabelID.setHorizontalTextPosition(SwingConstants.CENTER);
-		LabelID.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelID.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelID.setBounds(193, 96, 94, 24);
-		LabelID.setForeground(new Color(0,41,82));
-		LabelID.setBorder(new RoundedCornerBorder());
-		contentPane.add(LabelID);
-		
 		/*LABEL PREZZO*/
 		LabelPrezzo = new JLabel("");
 		LabelPrezzo.setHorizontalTextPosition(SwingConstants.CENTER);
 		LabelPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelPrezzo.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelPrezzo.setBounds(193, 152, 94, 24);
+		LabelPrezzo.setBounds(193, 103, 94, 24);
 		LabelPrezzo.setForeground(new Color(0,41,82));
 		LabelPrezzo.setBorder(new RoundedCornerBorder());
 		contentPane.add(LabelPrezzo);
@@ -198,7 +179,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		LabelDataScadenza.setHorizontalTextPosition(SwingConstants.CENTER);
 		LabelDataScadenza.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelDataScadenza.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelDataScadenza.setBounds(193, 189, 124, 24);
+		LabelDataScadenza.setBounds(193, 163, 124, 24);
 		LabelDataScadenza.setForeground(new Color(0,41,82));
 		LabelDataScadenza.setBorder(new RoundedCornerBorder());
 		contentPane.add(LabelDataScadenza);
@@ -206,14 +187,14 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		/*LABEL PREZZO PRODOTTO*/
 		LabelPrezzoProdotto = new JLabel("Prezzo");
 		LabelPrezzoProdotto.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelPrezzoProdotto.setBounds(44, 162, 68, 14);
+		LabelPrezzoProdotto.setBounds(44, 113, 68, 14);
 		LabelPrezzoProdotto.setForeground(new Color(0,41,82));
 		contentPane.add(LabelPrezzoProdotto);
 		
 		/*LABEL DATA SCADENZA PRODOTTO*/
 		LabelDataScadenzaProdotto = new JLabel("Data Scadenza");
 		LabelDataScadenzaProdotto.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelDataScadenzaProdotto.setBounds(44, 203, 110, 14);
+		LabelDataScadenzaProdotto.setBounds(44, 177, 110, 14);
 		LabelDataScadenzaProdotto.setForeground(new Color(0,41,82));
 		contentPane.add(LabelDataScadenzaProdotto);
 		
@@ -231,7 +212,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		prodotti=ctrl.CaricaProdottiNegozio();
 		comboBoxNome.removeAllItems();
 		for(int i=0; i<prodotti.size(); i++) {
-				comboBoxNome.addItem(prodotti.get(i).getNome());
+				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
 				
 		}
 	}
@@ -240,19 +221,21 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		prodotti=ctrl.CaricaProdottiNegozio();
 		if (comboBoxNome.getSelectedItem()!=null) {
 			for (int i = 0; i < prodotti.size(); i++) {
-				if (comboBoxNome.getSelectedItem().toString().equals(prodotti.get(i).getNome())) {
+				String valore = comboBoxNome.getSelectedItem().toString();
+				valore = valore.replaceAll("\\s+","");
+				String[] parts = valore.split("-");
+				String part1 = parts[0];
+				if (part1.equals(Integer.toString(prodotti.get(i).getIdprodotto()))) {
 					spinnerQuantita.setModel(new SpinnerNumberModel(1, 1, prodotti.get(i).getQuantita(), 1));
 					((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
 					spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191, 215, 255));
 					spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(0, 41, 82));
-					LabelID.setText(Integer.toString(prodotti.get(i).getIdprodotto()));
 					LabelPrezzo.setText(Double.toString(prodotti.get(i).getPrezzo())+"€");
 					LabelDataScadenza.setText(prodotti.get(i).getData_scadenza().toString());
 				}
 			} 
 		}
 		else {
-			LabelID.setText("");
 			LabelPrezzo.setText("");
 		}
 	}

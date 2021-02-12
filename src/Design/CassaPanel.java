@@ -94,7 +94,7 @@ public class CassaPanel extends JPanel {
 		ButtonPagaInContanti = new JButton("");
 		ButtonPagaInContanti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
+				ctrl.ApriPagamentoInContantiDialog(ctrl);
 			}
 		});
 		ButtonPagaInContanti.addMouseListener(new MouseAdapter() {

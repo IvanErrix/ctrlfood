@@ -53,10 +53,11 @@ import Design.FrameAmministratore;
 import Design.FrameCliente;
 import Design.LoadingDialog;
 import Design.LoginAmministratoreDialog;
-import Design.LoginDialog;
+import Design.LoginFrame;
 import Design.ModificaClienteDialog;
 import Design.NegozioPanel;
 import Design.PagamentoConCartaDialog;
+import Design.PagamentoInContantiDialog;
 import Design.SpostaDalNegozioDialog;
 import Objects.CartaFedelta;
 import Objects.Cliente;
@@ -93,7 +94,7 @@ public class Controller {
 				try {
 					Controller ctrl= new Controller();
 //					System.out.println("Connessione avvenuta");
-					LoginDialog login = new LoginDialog(ctrl);
+					LoginFrame login = new LoginFrame(ctrl);
 					login.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -192,8 +193,8 @@ public class Controller {
 		dialog.setVisible(true);
 	}
 	
-	public void ApriLoginDialog(Controller ctrl) {
-		LoginDialog login = new LoginDialog(ctrl);
+	public void ApriLoginFrame(Controller ctrl) {
+		LoginFrame login = new LoginFrame(ctrl);
 		login.setVisible(true);
 	}
 	
@@ -229,6 +230,11 @@ public class Controller {
 	
 	public void ApriModificaClienteDialog(Controller ctrl) {
 		ModificaClienteDialog dialog = new ModificaClienteDialog(ctrl);
+		dialog.setVisible(true);
+	}
+	
+	public void ApriPagamentoInContantiDialog(Controller ctrl) {
+		PagamentoInContantiDialog dialog = new PagamentoInContantiDialog(ctrl);
 		dialog.setVisible(true);
 	}
 	

@@ -139,7 +139,7 @@ public class FrameAmministratore extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				CambiaIconaAiButtonFramePrincipale(new String("logout"));
 				dispose();
-				ctrl.ApriLoginDialog(ctrl);
+				ctrl.ApriLoginFrame(ctrl);
 			}
 		});
 		ButtonLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/LogoutWhite.png")));

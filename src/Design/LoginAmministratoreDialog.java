@@ -52,19 +52,19 @@ public class LoginAmministratoreDialog extends JDialog {
 		ButtonChiudi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonChiudi.setIcon(new ImageIcon(LoginDialog.class.getResource("/scrimg/ButtonChiudiAzzurro.png")));
+				ButtonChiudi.setIcon(new ImageIcon(LoginFrame.class.getResource("/scrimg/ButtonChiudiAzzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ButtonChiudi.setIcon(new ImageIcon(LoginDialog.class.getResource("/scrimg/ButtonChiudi.png")));
+				ButtonChiudi.setIcon(new ImageIcon(LoginFrame.class.getResource("/scrimg/ButtonChiudi.png")));
 			}
 		});
-		ButtonChiudi.setPressedIcon(new ImageIcon(LoginDialog.class.getResource("/scrimg/ButtonChiudi.png")));
+		ButtonChiudi.setPressedIcon(new ImageIcon(LoginFrame.class.getResource("/scrimg/ButtonChiudi.png")));
 		ButtonChiudi.setFocusable(false);
 		ButtonChiudi.setOpaque(false);
 		ButtonChiudi.setBorder(null);
 		ButtonChiudi.setContentAreaFilled(false);
-		ButtonChiudi.setIcon(new ImageIcon(LoginDialog.class.getResource("/scrimg/ButtonChiudi.png")));
+		ButtonChiudi.setIcon(new ImageIcon(LoginFrame.class.getResource("/scrimg/ButtonChiudi.png")));
 		ButtonChiudi.setBounds(295, 38, 18, 18);
 		contentPane.add(ButtonChiudi);
 		
@@ -72,7 +72,7 @@ public class LoginAmministratoreDialog extends JDialog {
 		ButtonIndietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				ctrl.ApriLoginDialog(ctrl);
+				ctrl.ApriLoginFrame(ctrl);
 			}
 		});
 		ButtonIndietro.addMouseListener(new MouseAdapter() {

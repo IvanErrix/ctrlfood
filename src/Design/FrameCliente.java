@@ -63,7 +63,7 @@ public class FrameCliente extends JFrame {
 		ButtonIndietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				ctrl.ApriLoginDialog(ctrl);
+				ctrl.ApriLoginFrame(ctrl);
 			}
 		});
 		ButtonIndietro.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonIndietroAzzurro.png")));
