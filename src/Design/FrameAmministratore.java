@@ -47,26 +47,31 @@ public class FrameAmministratore extends JFrame {
 		setSize(1152, 600);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);	
 		
+		/*PANEL PRINCIPALE*/
 		PanelPrincipale = new JPanel();
 		PanelPrincipale.setBorder(null);
 		PanelPrincipale.setLayout(null);
 		setContentPane(PanelPrincipale);
 		
+		/*LABEL DEPOSITO*/
 		LabelDeposito = new JLabel("");
 		LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoHomeWhite_32.png")));
 		LabelDeposito.setBounds(10, 151, 44, 44);
 		PanelPrincipale.add(LabelDeposito);
 		
+		/*LABEL NEGOZIO*/
 		LabelNegozio = new JLabel("");
 		LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));
 		LabelNegozio.setBounds(10, 214, 44, 44);
 		PanelPrincipale.add(LabelNegozio);
 		
+		/*LABEL CLIENTI*/
 		LabelClienti = new JLabel("");
 		LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
 		LabelClienti.setBounds(10, 280, 44, 44);
 		PanelPrincipale.add(LabelClienti);
 		
+		/*LABEL LOGOUT*/
 		LabelLogout = new JLabel("");
 		LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoLogout_32.png")));
 		LabelLogout.setBounds(10, 498, 44, 44);

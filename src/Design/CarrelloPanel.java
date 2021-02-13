@@ -130,6 +130,7 @@ public class CarrelloPanel extends JPanel {
 		ButtonRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CaricaProdottiCarrello(ctrl);
+				
 			}
 		});
 		ButtonRefresh.addMouseListener(new MouseAdapter() {

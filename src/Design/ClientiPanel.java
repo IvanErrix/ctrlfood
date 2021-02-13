@@ -52,6 +52,7 @@ public class ClientiPanel extends JPanel {
 			return false;
 		}
 	};
+	private JScrollPane scrollPane;
 	private JTable table;
 	private JTextField textFieldSearch;
 	private JButton ButtonSearch;
@@ -70,7 +71,8 @@ public class ClientiPanel extends JPanel {
 		setBounds(77, 0, 836, 569);
 		setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		/*SCROLLPANE*/
+		scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
 		scrollPane.setOpaque(false);

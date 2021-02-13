@@ -36,6 +36,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 	
 	private ArrayList<Prodotto> prodotti;
+	private ContentPane contentPane;
 	private JLabel LabelTipologia;
 	private JLabel LabelNome;
 	private JLabel LabelQuantita;
@@ -59,7 +60,8 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
 		
-		ContentPane contentPane = new ContentPane();
+		/*CONTENTPANE*/
+		contentPane = new ContentPane();
 		setContentPane(contentPane);
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
@@ -70,21 +72,21 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		LabelTipologia.setForeground(new Color(0,41,82));
 		LabelTipologia.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelTipologia.setBounds(41, 57, 92, 21);
-		getContentPane().add(LabelTipologia);
+		contentPane.add(LabelTipologia);
 		
 		/*LABEL NOME*/
 		LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0,41,82));
 		LabelNome.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelNome.setBounds(41, 107, 46, 24);
-		getContentPane().add(LabelNome);
+		contentPane.add(LabelNome);
 		
 		/*LABEL QUANTITA*/
 		LabelQuantita = new JLabel("Quantit\u00E0");
 		LabelQuantita.setForeground(new Color(0,41,82));
 		LabelQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelQuantita.setBounds(41, 220, 68, 14);
-		getContentPane().add(LabelQuantita);
+		contentPane.add(LabelQuantita);
 		
 		/*LABEL ID PRODOTTO*/
 		LabelIDProdotto = new JLabel("ID Prodotto");
@@ -122,7 +124,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiungi.setBounds(288, 300, 110, 24);
-		getContentPane().add(ButtonAggiungi);
+		contentPane.add(ButtonAggiungi);
 		
 		/*BUTTON ANNULLA*/
 		ButtonAnnulla = new JButton("");
@@ -148,7 +150,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
 		ButtonAnnulla.setBounds(41, 300, 110, 24);
-		getContentPane().add(ButtonAnnulla);
+		contentPane.add(ButtonAnnulla);
 		
 		/*COMBOBOX NOME*/
 		comboBoxNome = new JComboBox();
@@ -169,7 +171,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxNome.setForeground(new Color(0,41,82));
 		comboBoxNome.setBackground(new Color(191,215,255));
 		comboBoxNome.setBounds(208, 107, 190, 25);
-		getContentPane().add(comboBoxNome);
+		contentPane.add(comboBoxNome);
 		
 		/*COMBOBOX TIPOLOGIA*/
 		comboBoxTipologia = new JComboBox();
@@ -192,7 +194,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxTipologia.setBorder(new RoundedCornerBorder());
 		comboBoxTipologia.setBackground(new Color(191,215,255));
 		comboBoxTipologia.setBounds(208, 56, 190, 25);
-		getContentPane().add(comboBoxTipologia);
+		contentPane.add(comboBoxTipologia);
 		
 		/*SPINNER QUANTITA*/
 		model = new SpinnerNumberModel(1, 1, 50, 1);
@@ -209,7 +211,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		spinnerQuantita.setBounds(208, 216, 60, 24);
 		((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
-		getContentPane().add(spinnerQuantita);
+		contentPane.add(spinnerQuantita);
 		
 		/*LABEL ID*/
 		LabelID = new JLabel("");
@@ -225,7 +227,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/SfondoAggiungiAlnegozio.png")));
 		LabelSfondo.setBounds(-8, -8, 467, 376);
-		getContentPane().add(LabelSfondo);
+		contentPane.add(LabelSfondo);
 		
 		CaricaComboBoxNome(ctrl);
 		CaricaSpinnerQuantita(ctrl);

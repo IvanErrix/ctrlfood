@@ -33,7 +33,9 @@ import javax.swing.JSpinner.DefaultEditor;
 public class AggiungiAlCarrelloDialog extends JDialog {
 	
 	private ArrayList<Prodotto> prodotti;
+	private JList<?> list;
 	private JComboBox<String> comboBoxNome;
+	private ContentPane contentPane;
 	private JSpinner spinnerQuantita;
 	private JLabel LabelNome;
 	private JLabel LabelQuantita;
@@ -52,7 +54,9 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		setSize(449, 357);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
-		ContentPane contentPane = new ContentPane();
+		
+		/*CONTENTPANE*/
+		contentPane = new ContentPane();
 		setContentPane(contentPane);
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
@@ -63,14 +67,14 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		LabelNome.setForeground(new Color(0,41,82));
 		LabelNome.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelNome.setBounds(44, 41, 46, 14);
-		getContentPane().add(LabelNome);
+		contentPane.add(LabelNome);
 		
 		/*LABEL QUANTITA*/
 		LabelQuantita = new JLabel("Quantit\u00E0");
 		LabelQuantita.setForeground(new Color(0,41,82));
 		LabelQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelQuantita.setBounds(44, 240, 68, 14);
-		getContentPane().add(LabelQuantita);
+		contentPane.add(LabelQuantita);
 		
 		/*BUTTON AGGIUNGI*/
 		ButtonAggiungi = new JButton("");
@@ -103,7 +107,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlCarrelloDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiungi.setBounds(258, 290, 110, 24);
-		getContentPane().add(ButtonAggiungi);
+		contentPane.add(ButtonAggiungi);
 		
 		/*BUTTON ANNULLA*/
 		ButtonAnnulla = new JButton("");
@@ -129,7 +133,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
 		ButtonAnnulla.setBounds(44, 290, 110, 24);
-		getContentPane().add(ButtonAnnulla);
+		contentPane.add(ButtonAnnulla);
 		
 		/*COMBOBOX NOME*/
 		comboBoxNome = new JComboBox<String>();
@@ -140,7 +144,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		});
 		AccessibleContext ac = comboBoxNome.getAccessibleContext();
 		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
-		JList<?> list = pop.getList();
+		list = pop.getList();
 		list.setSelectionForeground(new Color(191, 215, 255));
 		list.setSelectionBackground(new Color(0, 41, 82));
 		comboBoxNome.setBorder(new RoundedCornerBorder());
@@ -151,7 +155,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		comboBoxNome.setFont(new Font("Cambria", Font.BOLD, 16));
 		comboBoxNome.setFocusable(false);
 		comboBoxNome.setBounds(155, 25, 221, 30);
-		getContentPane().add(comboBoxNome);
+		contentPane.add(comboBoxNome);
 		
 		/*SPINNER QUANTITA*/
 		SpinnerNumberModel model = new SpinnerNumberModel(1, 1, 50, 1);
@@ -167,7 +171,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		spinnerQuantita.setFont(new Font("Cambria", Font.BOLD, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		spinnerQuantita.setBounds(193, 224, 60, 30);
-		getContentPane().add(spinnerQuantita);
+		contentPane.add(spinnerQuantita);
 		
 		/*LABEL PREZZO*/
 		LabelPrezzo = new JLabel("");

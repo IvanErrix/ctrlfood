@@ -41,6 +41,7 @@ import ExternalClasses.RoundedCornerBorder;
 public class AggiungiAlDepositoDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	private ContentPane contentPane;
 	private JLabel LabelTipologia;
 	private JLabel LabelNome;
 	private JLabel LabelPrezzo;
@@ -54,6 +55,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 	private JLabel LabelFoto;
 	private JTextField textFieldNome;
 	private JTextField textFieldPrezzo;
+	private SpinnerNumberModel spinnermodel;
 	private JSpinner spinnerQuantita;
 	private JTextField textFieldFoto;
 	private JComboBox comboBoxTipologia;
@@ -85,7 +87,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
 		
-		ContentPane contentPane = new ContentPane();
+		/*CONTENTPANE*/
+		contentPane = new ContentPane();
 		setContentPane(contentPane);
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
@@ -96,35 +99,35 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelTipologia.setForeground(new Color(0, 41, 82));
 		LabelTipologia.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelTipologia.setBounds(106, 40, 92, 14);
-		getContentPane().add(LabelTipologia);
+		contentPane.add(LabelTipologia);
 		
 		/*LABEL NOME*/
 		LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0, 41, 82));
 		LabelNome.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelNome.setBounds(106, 89, 46, 14);
-		getContentPane().add(LabelNome);
+		contentPane.add(LabelNome);
 		
 		/*LABEL PREZZO*/
 		LabelPrezzo = new JLabel("Prezzo");
 		LabelPrezzo.setForeground(new Color(0, 41, 82));
 		LabelPrezzo.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelPrezzo.setBounds(106, 136, 50, 14);
-		getContentPane().add(LabelPrezzo);
+		contentPane.add(LabelPrezzo);
 		
 		/*LABEL DATA SCADENZA*/
 		LabelDataScadenza = new JLabel("Data Scadenza");
 		LabelDataScadenza.setForeground(new Color(0, 41, 82));
 		LabelDataScadenza.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelDataScadenza.setBounds(106, 180, 118, 14);
-		getContentPane().add(LabelDataScadenza);
+		contentPane.add(LabelDataScadenza);
 		
 		/*LABEL QUANTITA*/
 		LabelQuantita = new JLabel("Quantit\u00E0");
 		LabelQuantita.setForeground(new Color(0, 41, 82));
 		LabelQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelQuantita.setBounds(106, 230, 68, 14);
-		getContentPane().add(LabelQuantita);
+		contentPane.add(LabelQuantita);
 		
 		/*LABEL RACCOLTA*/
 		LabelDataRaccolta = new JLabel("Data Raccolta");
@@ -132,7 +135,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelDataRaccolta.setForeground(new Color(0, 41, 82));
 		LabelDataRaccolta.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelDataRaccolta.setBounds(106, 326, 118, 14);
-		getContentPane().add(LabelDataRaccolta);
+		contentPane.add(LabelDataRaccolta);
 		
 		/*LABEL PRODUZIONE*/
 		LabelDataProduzione = new JLabel("Data Produzione");
@@ -140,7 +143,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelDataProduzione.setForeground(new Color(0, 41, 82));
 		LabelDataProduzione.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelDataProduzione.setBounds(106, 326, 141, 14);
-		getContentPane().add(LabelDataProduzione);
+		contentPane.add(LabelDataProduzione);
 		
 		/*LABEL MUNGITURA*/
 		LabelDataMungitura = new JLabel("Data Mungitura");
@@ -148,7 +151,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelDataMungitura.setForeground(new Color(0, 41, 82));
 		LabelDataMungitura.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelDataMungitura.setBounds(106, 374, 118, 14);
-		getContentPane().add(LabelDataMungitura);
+		contentPane.add(LabelDataMungitura);
 		
 		/*LABEL CONFEZIONAMENTO*/
 		LabelDataConfezionamento = new JLabel("Data Confezionamento");
@@ -156,7 +159,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelDataConfezionamento.setForeground(new Color(0, 41, 82));
 		LabelDataConfezionamento.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelDataConfezionamento.setBounds(106, 326, 180, 14);
-		getContentPane().add(LabelDataConfezionamento);
+		contentPane.add(LabelDataConfezionamento);
 		
 		/*LABEL DEPOSIZIONE*/
 		LabelDataDeposizione = new JLabel ("Data Deposizione");
@@ -164,7 +167,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelDataDeposizione.setForeground(new Color(0, 41, 82));
 		LabelDataDeposizione.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelDataDeposizione.setBounds(106, 326, 161, 14);
-		getContentPane().add(LabelDataDeposizione);
+		contentPane.add(LabelDataDeposizione);
 		
 		/*LABEL FOTO*/
 		LabelFoto = new JLabel("Foto");
@@ -172,7 +175,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelFoto.setForeground(new Color(0, 41, 82));
 		LabelFoto.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelFoto.setBounds(106, 274, 46, 14);
-		getContentPane().add(LabelFoto);
+		contentPane.add(LabelFoto);
 		
 		/*TEXTFIELD NOME*/
 		textFieldNome = new JTextField(20);
@@ -199,7 +202,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldNome.setColumns(10);
 		textFieldNome.setBounds(340, 78, 275, 25);
 		textFieldNome.setCaretColor(new Color(0, 41, 82));
-		getContentPane().add(textFieldNome);
+		contentPane.add(textFieldNome);
 		
 		/*TEXTFIELD PREZZO*/
 		textFieldPrezzo = new JTextField(20) ;
@@ -227,10 +230,10 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldPrezzo.setColumns(10);
 		textFieldPrezzo.setBounds(340, 124, 275, 25);
 		textFieldPrezzo.setCaretColor(new Color(0, 41, 82));
-		getContentPane().add(textFieldPrezzo);
+		contentPane.add(textFieldPrezzo);
 		
 		/*JSPINNER QUANTITA*/
-		SpinnerNumberModel spinnermodel = new SpinnerNumberModel(1, 1, 50, 1);
+		spinnermodel = new SpinnerNumberModel(1, 1, 50, 1);
 		spinnerQuantita = new JSpinner(spinnermodel);
 		spinnerQuantita.setOpaque(false);
 		spinnerQuantita.setBorder(new RoundedCornerBorder());
@@ -242,7 +245,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		spinnerQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		spinnerQuantita.setBounds(340, 219, 46, 25);
-		getContentPane().add(spinnerQuantita);
+		contentPane.add(spinnerQuantita);
 		
 		/*JDATECHOOSER SCADENZA*/
 		dateChooserScadenza = new JDateChooser();
@@ -360,7 +363,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		comboBoxTipologia.setBorder(new RoundedCornerBorder());
 		comboBoxTipologia.setMaximumRowCount(5);
 		comboBoxTipologia.setBounds(340, 29, 275, 25);
-		getContentPane().add(comboBoxTipologia);
+		contentPane.add(comboBoxTipologia);
 		
 		/*TEXTFIELD FOTO*/
 		textFieldFoto = new JTextField(20) ;
@@ -374,7 +377,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldFoto.setColumns(10);
 		textFieldFoto.setBounds(340, 263, 254, 25);
 		textFieldFoto.setCaretColor(new Color(0, 41, 82));
-		getContentPane().add(textFieldFoto);
+		contentPane.add(textFieldFoto);
 		
 		/*BUTTON AGGIUNGI*/
 		ButtonAggiugni = new JButton("");
@@ -400,7 +403,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setContentAreaFilled(false);
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 		ButtonAggiugni.setBounds(505, 441, 110, 24);
-		getContentPane().add(ButtonAggiugni);
+		contentPane.add(ButtonAggiugni);
 		
 		/*BUTTON RIMUOVI TUTTO*/
 		ButtonRimuoviTutto = new JButton("");
@@ -429,7 +432,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonRimuoviTutto.setContentAreaFilled(false);
 		ButtonRimuoviTutto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonRimuoviTutto.setBounds(345, 441, 150, 24);
-		getContentPane().add(ButtonRimuoviTutto);
+		contentPane.add(ButtonRimuoviTutto);
 		
 		/*BUTTON ANNULLA*/
 		ButtonAnnulla = new JButton("");
@@ -455,7 +458,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
 		ButtonAnnulla.setBounds(106, 441, 110, 24);
-		getContentPane().add(ButtonAnnulla);
+		contentPane.add(ButtonAnnulla);
 		
 		/*BUTTON AGGIUNGI FOTO*/
 		ButtonAggiungiFoto = new JButton("...");
@@ -469,13 +472,13 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			}
 		});
 		ButtonAggiungiFoto.setBounds(595, 266, 20, 20);
-		getContentPane().add(ButtonAggiungiFoto);
+		contentPane.add(ButtonAggiungiFoto);
 		
 		/*LABEL SFONDO*/
 		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/Sfondo.png")));
 		LabelSfondo.setBounds(-8, -8, 727, 536);
-		getContentPane().add(LabelSfondo);
+		contentPane.add(LabelSfondo);
 	}
 	
 	public void ControlliAggiungiProdotto(Controller ctrl) {

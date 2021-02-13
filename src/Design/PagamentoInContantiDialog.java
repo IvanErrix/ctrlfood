@@ -34,9 +34,18 @@ import Main.Controller;
 public class PagamentoInContantiDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	
+	private ContentPane contentPane;
+	private JLabel LabelTotaleStampato; //LABEL FISSA
+	private JLabel LabelTotale; //LABEL CARICAMENTO DEL TOTALE
+	private JLabel LabelRestoStampato; //LABEL FISSA
+	private JLabel LabelResto; //LABEL CALCOLO RESTO
+	private JLabel LabelContanti;
+	private JButton ButtonPaga;
+	private JButton ButtonAnnulla;
+	private JLabel LabelNumeroCartaFedelta;
 	private JTextField textFieldNumeroCartaFedelta;
 	private JTextField textFieldContanti;
+	private JLabel LabelSfondo;
 
 	public PagamentoInContantiDialog(Controller ctrl) {
 		
@@ -47,47 +56,60 @@ public class PagamentoInContantiDialog extends JDialog {
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
 		
-		ContentPane contentPane = new ContentPane();
+		/*CONTENTPANE*/
+		contentPane = new ContentPane();
 		setContentPane(contentPane);
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
 		contentPane.setLayout(null);
 		getContentPane().setLayout(null);
 		
-		JLabel LabelTotaleStampato = new JLabel("");
+		/*LABEL TOTALE STAMPATO*/
+		LabelTotaleStampato = new JLabel("");
 		LabelTotaleStampato.setBounds(205, 98, 269, 30);
 		LabelTotaleStampato.setForeground(new Color(0,41,82));
 		LabelTotaleStampato.setBorder(new RoundedCornerBorder());
 		LabelTotaleStampato.setFont(new Font("Cambria", Font.BOLD, 18));
 		contentPane.add(LabelTotaleStampato);
+
+		/*LABEL TOTALE*/
+		LabelTotale = new JLabel("Totale");
+		LabelTotale.setBounds(50, 108, 70, 20);
+		LabelTotale.setForeground(new Color(0,41,82));
+		LabelTotale.setFont(new Font("Cambria", Font.BOLD, 18));
+		contentPane.add(LabelTotale);
 		
-		JLabel LabelRestoStampato = new JLabel("");
+		/*LABEL RESTO STAMPATO*/
+		LabelRestoStampato = new JLabel("");
 		LabelRestoStampato.setBounds(205, 224, 269, 30);
 		LabelRestoStampato.setForeground(new Color(0,41,82));
 		LabelRestoStampato.setBorder(new RoundedCornerBorder());
 		LabelRestoStampato.setFont(new Font("Cambria", Font.BOLD, 18));
 		contentPane.add(LabelRestoStampato);
 		
-
-		JLabel LabelResto = new JLabel("Resto");
+		/*LABEL RESTO*/
+		LabelResto = new JLabel("Resto");
 		LabelResto.setBounds(50, 226, 76, 20);
 		LabelResto.setForeground(new Color(0,41,82));
 		LabelResto.setFont(new Font("Cambria", Font.BOLD, 18));
-		getContentPane().add(LabelResto);
+		contentPane.add(LabelResto);
 
-		JLabel LabelTotale = new JLabel("Totale");
-		LabelTotale.setBounds(50, 108, 70, 20);
-		LabelTotale.setForeground(new Color(0,41,82));
-		LabelTotale.setFont(new Font("Cambria", Font.BOLD, 18));
-		getContentPane().add(LabelTotale);
-
-		JLabel LabelContanti = new JLabel("Contanti");
+		/*LABEL CONTANTI*/
+		LabelContanti = new JLabel("Contanti");
 		LabelContanti.setBounds(50, 164, 97, 20);
 		LabelContanti.setForeground(new Color(0,41,82));
 		LabelContanti.setFont(new Font("Cambria", Font.BOLD, 18));
-		getContentPane().add(LabelContanti);
+		contentPane.add(LabelContanti);
+		
+		/*LABEL NUMERO CARTA FEDELTA*/
+		LabelNumeroCartaFedelta = new JLabel("N° Carta Fedeltà");
+		LabelNumeroCartaFedelta.setBounds(50, 50, 145, 20);
+		LabelNumeroCartaFedelta.setForeground(new Color(0,41,82));
+		LabelNumeroCartaFedelta.setFont(new Font("Cambria", Font.BOLD, 18));
+		contentPane.add(LabelNumeroCartaFedelta);	
 
-		JButton ButtonPaga = new JButton("");
+		/*BUTTON PAGA*/
+		ButtonPaga = new JButton("");
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldContanti.getText().length()!=0) {
@@ -102,7 +124,6 @@ public class PagamentoInContantiDialog extends JDialog {
 				}
 			}
 		});
-		ButtonPaga.setBounds(366, 321, 110, 24);
 		ButtonPaga.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -119,10 +140,11 @@ public class PagamentoInContantiDialog extends JDialog {
 		ButtonPaga.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga.png")));
 		ButtonPaga.setBorder(null);
 		ButtonPaga.setContentAreaFilled(false);
-		getContentPane().add(ButtonPaga);
+		ButtonPaga.setBounds(366, 321, 110, 24);
+		contentPane.add(ButtonPaga);
 
-		JButton ButtonAnnulla = new JButton("");
-		ButtonAnnulla.setBounds(50, 321, 110, 24);
+		/*BUTTON ANNULLA*/
+		ButtonAnnulla = new JButton("");
 		ButtonAnnulla.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -133,7 +155,6 @@ public class PagamentoInContantiDialog extends JDialog {
 				ButtonAnnulla.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 			}
 		});
-		ButtonAnnulla.setPressedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 		ButtonAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -141,19 +162,15 @@ public class PagamentoInContantiDialog extends JDialog {
 		});
 		ButtonAnnulla.setOpaque(false);
 		ButtonAnnulla.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
+		ButtonAnnulla.setPressedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
-		getContentPane().add(ButtonAnnulla);
+		ButtonAnnulla.setBounds(50, 321, 110, 24);
+		contentPane.add(ButtonAnnulla);
 
-		JLabel LabelNumeroCartaFedelta = new JLabel("N° Carta Fedeltà");
-		LabelNumeroCartaFedelta.setBounds(50, 50, 145, 20);
-		LabelNumeroCartaFedelta.setForeground(new Color(0,41,82));
-		LabelNumeroCartaFedelta.setFont(new Font("Cambria", Font.BOLD, 18));
-		getContentPane().add(LabelNumeroCartaFedelta);		
-		
+		/*TEXTFIELD NUMERO CARTA FEDELTA*/
 		textFieldNumeroCartaFedelta = new JTextField() ;
-		textFieldNumeroCartaFedelta.setBounds(205, 40, 269, 30);
 		textFieldNumeroCartaFedelta.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -178,8 +195,10 @@ public class PagamentoInContantiDialog extends JDialog {
 		textFieldNumeroCartaFedelta.setBackground(new Color(191,215,255));
 		textFieldNumeroCartaFedelta.setSelectedTextColor(new Color (191,215,255));
 		textFieldNumeroCartaFedelta.setSelectionColor(new Color (0,41,82));
-		getContentPane().add(textFieldNumeroCartaFedelta);
+		textFieldNumeroCartaFedelta.setBounds(205, 40, 269, 30);
+		contentPane.add(textFieldNumeroCartaFedelta);
 		
+		/*TEXTFIELD CONTANTI*/
 		textFieldContanti = new JTextField();
 		textFieldContanti.addKeyListener(new KeyAdapter() {
 			@Override
@@ -200,10 +219,10 @@ public class PagamentoInContantiDialog extends JDialog {
 		textFieldContanti.setBounds(205, 154, 269, 30);
 		contentPane.add(textFieldContanti);
 		
-		JLabel LabelSfondo = new JLabel("");
+		/*LABEL SFONDO*/
+		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/SfondoClienti.png")));
 		LabelSfondo.setBounds(-9, -9, 580, 429);
 		contentPane.add(LabelSfondo);
-
 	}
 }

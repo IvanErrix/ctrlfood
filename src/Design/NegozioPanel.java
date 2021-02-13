@@ -41,16 +41,21 @@ public class NegozioPanel extends JPanel {
 	private ArrayList<Prodotto> prodotti;
 	private String Titoli[]= {"Tipologia","IDProdotto", "Nome", "Prezzo", "Quantità","Scadenza", "Raccolta", "Produzione", "Mungitura", "Deposizione", "Confezionamento"};
 	private DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
-
-		private static final long serialVersionUID = 1L;
-
+	private static final long serialVersionUID = 1L;
 		@Override
 		public boolean isCellEditable(int row, int column) {
 			return false;
 		}
 	};
+	private JScrollPane scrollPane;
 	private JTable table;
+	private JButton ButtonSearch;
+	private JButton ButtonRefresh;
+	private JButton ButtonAggiungi;
+	private JButton ButtonStampa;
+	private JButton ButtonSposta;
 	private JTextField textFieldSearch;
+	private JLabel LabelSfondo;
 
 	public NegozioPanel(Controller ctrl) {
 		setOpaque(false);
@@ -58,13 +63,15 @@ public class NegozioPanel extends JPanel {
 		setBounds(77, 0, 836, 569);
 		setLayout(null);
 
-		JScrollPane scrollPane = new JScrollPane();
+		/*SCROLLPANE*/
+		scrollPane = new JScrollPane();
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
 		scrollPane.getViewport().setBackground(new Color(191,215,255));
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(43, 88, 747, 432);
 		add(scrollPane);
 
+		/*TABLE*/
 		table = new JTable(model);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setSelectionBackground(new Color(0, 41, 82));
@@ -84,11 +91,11 @@ public class NegozioPanel extends JPanel {
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 		renderer.setHorizontalAlignment( SwingConstants.CENTER );
-
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);
 
-		JButton ButtonSearch = new JButton("");
+		/*BUTTON SEARCH*/
+		ButtonSearch = new JButton("");
 		ButtonSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String text = textFieldSearch.getText();
@@ -99,7 +106,6 @@ public class NegozioPanel extends JPanel {
 				}
 			}
 		});
-		ButtonSearch.setSelectedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
 		ButtonSearch.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -112,13 +118,15 @@ public class NegozioPanel extends JPanel {
 		});
 		ButtonSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
+		ButtonSearch.setSelectedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
 		ButtonSearch.setOpaque(false);
 		ButtonSearch.setBorder(null);
 		ButtonSearch.setContentAreaFilled(false);
 		ButtonSearch.setBounds(379, 28, 34, 34);
 		add(ButtonSearch);
 		
-		JButton ButtonRefresh = new JButton("");
+		/*BUTTON REFRESH*/
+		ButtonRefresh = new JButton("");
 		ButtonRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CaricaProdottiNegozio(ctrl);
@@ -145,6 +153,7 @@ public class NegozioPanel extends JPanel {
 		ButtonRefresh.setBounds(423, 28, 34, 34);
 		add(ButtonRefresh);
 
+		/*TEXTFIELD SEARCH*/
 		textFieldSearch = new JTextField();
 		textFieldSearch.addKeyListener(new KeyAdapter() {
 			@Override
@@ -176,8 +185,13 @@ public class NegozioPanel extends JPanel {
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
 
-
-		JButton ButtonAggiungi = new JButton("");
+		/*BUTTON AGGIUNGI*/
+		ButtonAggiungi = new JButton("");
+		ButtonAggiungi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.ApriAggiungiAlNegozioDialog(ctrl);
+			}
+		});
 		ButtonAggiungi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -191,18 +205,19 @@ public class NegozioPanel extends JPanel {
 		ButtonAggiungi.setPressedIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonAggiungi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriAggiungiAlNegozioDialog(ctrl);
-			}
-		});
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiungi.setBounds(500, 40, 90, 22);
 		add(ButtonAggiungi);
 
-		JButton ButtonStampa = new JButton("");
+		/*BUTTON STAMPA*/
+		ButtonStampa = new JButton("");
+		ButtonStampa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.StampaListaProdotti(table, "negozio");
+			}
+		});
 		ButtonStampa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -214,11 +229,6 @@ public class NegozioPanel extends JPanel {
 			}
 		});
 		ButtonStampa.setPressedIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/ButtonStampa.png")));
-		ButtonStampa.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ctrl.StampaListaProdotti(table, "negozio");
-			}
-		});
 		ButtonStampa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonStampa.setIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/ButtonStampa.png")));
 		ButtonStampa.setBounds(700, 40, 90, 22);
@@ -227,18 +237,8 @@ public class NegozioPanel extends JPanel {
 		ButtonStampa.setContentAreaFilled(false);
 		add(ButtonStampa);
 
-		JButton ButtonSposta = new JButton("");
-		ButtonSposta.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				ButtonSposta.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSpostaAzzurro.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				ButtonSposta.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSposta.png")));
-			}
-		});
-		ButtonSposta.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSposta.png")));
+		/*BUTTON STAMPA*/
+		ButtonSposta = new JButton("");
 		ButtonSposta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(table.getSelectionModel().isSelectionEmpty() == false) {
@@ -251,6 +251,17 @@ public class NegozioPanel extends JPanel {
 				}
 			}
 		});
+		ButtonSposta.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonSposta.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSpostaAzzurro.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonSposta.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSposta.png")));
+			}
+		});
+		ButtonSposta.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSposta.png")));
 		ButtonSposta.setBounds(600, 40, 90, 22);
 		ButtonSposta.setIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/ButtonSposta.png")));
 		ButtonSposta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -259,7 +270,8 @@ public class NegozioPanel extends JPanel {
 		ButtonSposta.setContentAreaFilled(false);
 		add(ButtonSposta);
 		
-		JLabel LabelSfondo = new JLabel("");
+		/*LABEL SFONDO*/
+		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(NegozioPanel.class.getResource("/scrimg/SfondoPanel.png")));
 		LabelSfondo.setBounds(-2, -2, 836, 569);
 		add(LabelSfondo);

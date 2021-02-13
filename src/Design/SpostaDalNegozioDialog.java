@@ -22,21 +22,35 @@ import java.awt.event.ActionEvent;
 
 public class SpostaDalNegozioDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
-
+	private ContentPane contentPane;
+	private SpinnerNumberModel spinnermodel;
+	private JSpinner spinnerQuantita;
+	private JLabel LabelQuantita;
+	private JLabel LabelIDProdotto; //LABEL FISSA 
+	private JLabel LabelID; //LABEL CARICAMENTO ID DEL PRODTTO SELEZIONATO
+	private JLabel LabelNomeProdotto; //LABEL FISSA
+	private JLabel LabelNome; //LABEL CARICAMENTO NOME DEL PRODOTTO SELEZIONATO
+	private JButton ButtonSposta;
+	private JButton ButtonAnnulla;
+	private JLabel LabelSfondo;
+	
 	public SpostaDalNegozioDialog() {
 		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(356, 300);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
-		ContentPane contentPane = new ContentPane();
+		
+		/*CONTENTPANE*/
+		contentPane = new ContentPane();
 		setContentPane(contentPane);
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
 		contentPane.setLayout(null);
 		
-		SpinnerNumberModel spinnermodel = new SpinnerNumberModel(1, 1, 50, 1);
-		JSpinner spinnerQuantita = new JSpinner(spinnermodel);
+		/*SPINNER QUANTITA*/
+		spinnermodel = new SpinnerNumberModel(1, 1, 50, 1);
+		spinnerQuantita = new JSpinner(spinnermodel);
 		spinnerQuantita.setOpaque(false);
 		spinnerQuantita.setBorder(new RoundedCornerBorder());
 		spinnerQuantita.getComponent(0).setBackground(new Color(191,215,255));
@@ -47,15 +61,37 @@ public class SpostaDalNegozioDialog extends JDialog {
 		spinnerQuantita.setFont(new Font("Impact", Font.PLAIN, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		spinnerQuantita.setBounds(251, 118, 53, 24);
-		getContentPane().add(spinnerQuantita);
+		contentPane.add(spinnerQuantita);
 		
-		JLabel LabelQuantita = new JLabel("Quantit\u00E0");
+		/*LABEL QUANTITA*/
+		LabelQuantita = new JLabel("Quantit\u00E0");
 		LabelQuantita.setFont(new Font("Impact", Font.PLAIN, 22));
 		LabelQuantita.setForeground(new Color(0, 41, 82));
 		LabelQuantita.setBounds(40, 115, 84, 24);
-		getContentPane().add(LabelQuantita);
+		contentPane.add(LabelQuantita);
+
+		/*LABEL ID PRODOTTO*/
+		LabelIDProdotto = new JLabel("ID Prodotto");
+		LabelIDProdotto.setBounds(40, 32, 84, 14);
+		contentPane.add(LabelIDProdotto);
 		
-		JButton ButtonSposta = new JButton("");
+		/*LABEL ID*/
+		LabelID = new JLabel("");
+		LabelID.setBounds(194, 32, 46, 14);
+		contentPane.add(LabelID);
+		
+		/*LABEL NOME PRODTTO*/
+		LabelNomeProdotto = new JLabel("Nome Prodotto");
+		LabelNomeProdotto.setBounds(40, 75, 84, 14);
+		contentPane.add(LabelNomeProdotto);
+		
+		/*LABEL NOME*/
+		LabelNome = new JLabel("");
+		LabelNome.setBounds(194, 75, 46, 14);
+		contentPane.add(LabelNome);
+		
+		/*BUTTON SPOSTA*/
+		ButtonSposta = new JButton("");
 		ButtonSposta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setAlwaysOnTop(false);
@@ -63,7 +99,6 @@ public class SpostaDalNegozioDialog extends JDialog {
 				dispose();
 			}
 		});
-		ButtonSposta.setPressedIcon(new ImageIcon(SpostaDalNegozioDialog.class.getResource("/scrimg/ButtonSposta2.png")));
 		ButtonSposta.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -75,19 +110,20 @@ public class SpostaDalNegozioDialog extends JDialog {
 			}
 		});
 		ButtonSposta.setIcon(new ImageIcon(SpostaDalNegozioDialog.class.getResource("/scrimg/ButtonSposta2.png")));
+		ButtonSposta.setPressedIcon(new ImageIcon(SpostaDalNegozioDialog.class.getResource("/scrimg/ButtonSposta2.png")));
 		ButtonSposta.setOpaque(false);
 		ButtonSposta.setBorder(null);
 		ButtonSposta.setContentAreaFilled(false);
 		ButtonSposta.setBounds(194, 227, 110, 24);
-		getContentPane().add(ButtonSposta);
+		contentPane.add(ButtonSposta);
 		
-		JButton ButtonAnnulla = new JButton("");
+		/*BUTTON ANNULLA*/
+		ButtonAnnulla = new JButton("");
 		ButtonAnnulla.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		ButtonAnnulla.setPressedIcon(new ImageIcon(SpostaDalNegozioDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 		ButtonAnnulla.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -98,32 +134,18 @@ public class SpostaDalNegozioDialog extends JDialog {
 				ButtonAnnulla.setIcon(new ImageIcon(SpostaDalNegozioDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 			}
 		});
+		ButtonAnnulla.setPressedIcon(new ImageIcon(SpostaDalNegozioDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 		ButtonAnnulla.setIcon(new ImageIcon(SpostaDalNegozioDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 		ButtonAnnulla.setOpaque(false);
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
 		ButtonAnnulla.setBounds(40, 227, 110, 24);
-		getContentPane().add(ButtonAnnulla);
+		contentPane.add(ButtonAnnulla);
 		
-		JLabel LabelIDProdotto = new JLabel("ID Prodotto");
-		LabelIDProdotto.setBounds(40, 32, 84, 14);
-		contentPane.add(LabelIDProdotto);
-		
-		JLabel LabelID = new JLabel("");
-		LabelID.setBounds(194, 32, 46, 14);
-		contentPane.add(LabelID);
-		
-		JLabel LabelNomeProdotto = new JLabel("Nome Prodotto");
-		LabelNomeProdotto.setBounds(40, 75, 84, 14);
-		contentPane.add(LabelNomeProdotto);
-		
-		JLabel LabelNome = new JLabel("");
-		LabelNome.setBounds(194, 75, 46, 14);
-		contentPane.add(LabelNome);
-		
-		JLabel LabelSfondo = new JLabel("");
+		/*LABEL SFONDO*/
+		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(SpostaDalNegozioDialog.class.getResource("/scrimg/SfondoSpostaDalNegozio.png")));
 		LabelSfondo.setBounds(-9, -9, 372, 322);
-		getContentPane().add(LabelSfondo);
+		contentPane.add(LabelSfondo);
 	}
 }

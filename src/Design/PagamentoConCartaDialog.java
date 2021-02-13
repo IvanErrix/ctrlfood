@@ -36,13 +36,24 @@ import java.awt.event.KeyEvent;
 public class PagamentoConCartaDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-
-	private JPasswordField passwordFieldPin;
-	private boolean visible=false;
+	private ContentPane contentPane;
+	private JButton ButtonVediPassword;
+	private JButton ButtonPaga;
+	private JButton ButtonAnnulla;
+	private JLabel LabelNumeroCarta;
+	private JLabel LabelPin;
+	private JLabel LabelScadenza;
+	private JLabel LabelNumeroCartaFedelta;
+	private MaskFormatter mf;
+	private JFormattedTextField textFieldNumeroCarta;
 	private JTextField textFieldNumeroCartaFedelta;
+	private JPasswordField passwordFieldPin;
+	private JDateChooser dateChooserScadenzaCarta;
+	private JTextFieldDateEditor dateChooserEditorScadenzaCarta;
+	private JLabel LabelSfondo;
+	private boolean visible=false;
 
 	public PagamentoConCartaDialog(Controller ctrl) {
-		
 		Date data_corrente = new Date();
 		
 		setAlwaysOnTop(true);
@@ -50,16 +61,17 @@ public class PagamentoConCartaDialog extends JDialog {
 		setUndecorated(true);
 		setSize(563, 414);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
-		getContentPane().setLayout(null);
 		
-		ContentPane contentPane = new ContentPane();
+		
+		/*CONTENTPANE*/
+		contentPane = new ContentPane();
 		setContentPane(contentPane);
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
 		contentPane.setLayout(null);
 		
-		JButton ButtonVediPassword = new JButton("");
-		ButtonVediPassword.setBounds(444, 96, 32, 32);
+		/*BUTTON VEDI PASSWORD*/
+		ButtonVediPassword = new JButton("");
 		ButtonVediPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(visible==false) {
@@ -80,37 +92,46 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonVediPassword.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonVediPassword.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonViewPassword.png")));
 		ButtonVediPassword.setBorder(null);
+		ButtonVediPassword.setBounds(444, 96, 32, 32);
 		ButtonVediPassword.setContentAreaFilled(false);
-		getContentPane().add(ButtonVediPassword);
+		add(ButtonVediPassword);
 		
-
-		JLabel LabelNumeroCarta = new JLabel("N° Carta");
+		/*LABEL NUMERO CARTA*/
+		LabelNumeroCarta = new JLabel("N° Carta");
 		LabelNumeroCarta.setBounds(50, 52, 76, 20);
 		LabelNumeroCarta.setForeground(new Color(0,41,82));
 		LabelNumeroCarta.setFont(new Font("Cambria", Font.BOLD, 18));
-		getContentPane().add(LabelNumeroCarta);
-
-		JLabel LabelPin = new JLabel("Pin");
+		add(LabelNumeroCarta);
+		
+		/*LABEL PIN*/
+		LabelPin = new JLabel("Pin");
 		LabelPin.setBounds(50, 108, 70, 20);
 		LabelPin.setForeground(new Color(0,41,82));
 		LabelPin.setFont(new Font("Cambria", Font.BOLD, 18));
-		getContentPane().add(LabelPin);
+		add(LabelPin);
 
-		JLabel LabelScadenza = new JLabel("Scadenza");
+		/*LABEL SCADNENZA*/
+		LabelScadenza = new JLabel("Scadenza");
 		LabelScadenza.setBounds(50, 164, 97, 20);
 		LabelScadenza.setForeground(new Color(0,41,82));
 		LabelScadenza.setFont(new Font("Cambria", Font.BOLD, 18));
-		getContentPane().add(LabelScadenza);
+		add(LabelScadenza);
+		
+		/*LABEL NUMERO CARTA FEDELTA*/
+		LabelNumeroCartaFedelta = new JLabel("N° Carta Fedeltà");
+		LabelNumeroCartaFedelta.setBounds(52, 220, 145, 20);
+		LabelNumeroCartaFedelta.setForeground(new Color(0,41,82));
+		LabelNumeroCartaFedelta.setFont(new Font("Cambria", Font.BOLD, 18));
+		add(LabelNumeroCartaFedelta);		
 
-		
-		
-		MaskFormatter mf = null;
+		/*FORMATTED TEXTFIELD NUMERO CARTA*/
+		mf = null;
 		try {
 			mf = new MaskFormatter("####-####-####-####");
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		JFormattedTextField textFieldNumeroCarta = new JFormattedTextField(mf) ;
+		textFieldNumeroCarta = new JFormattedTextField(mf) ;
 		textFieldNumeroCarta.setBounds(207, 40, 269, 30);
 		textFieldNumeroCarta.setBorder(new RoundedCornerBorder());
 		textFieldNumeroCarta.setFont(new Font("Cambria", Font.BOLD, 11));
@@ -120,10 +141,10 @@ public class PagamentoConCartaDialog extends JDialog {
 		textFieldNumeroCarta.setSelectionColor(new Color (0,41,82));
 		textFieldNumeroCarta.setColumns(10);
 		textFieldNumeroCarta.setCaretColor(new Color(0, 41, 82));
-		getContentPane().add(textFieldNumeroCarta);
+		add(textFieldNumeroCarta);
 		
+		/*PASSWORDFIELD PIN*/
 		passwordFieldPin = new JPasswordField() ;
-		passwordFieldPin.setBounds(207, 96, 234, 30);
 		passwordFieldPin.addKeyListener(new KeyAdapter() {
 			@SuppressWarnings("deprecation")
 			@Override
@@ -147,11 +168,13 @@ public class PagamentoConCartaDialog extends JDialog {
 		passwordFieldPin.setBorder(new RoundedCornerBorder());
 		passwordFieldPin.setForeground(new Color(0,41,82));
 		passwordFieldPin.setFont(new Font("Cambria", Font.BOLD, 15));
+		passwordFieldPin.setBounds(207, 96, 234, 30);
 		passwordFieldPin.setCaretColor(new Color(0, 41, 82));
-		getContentPane().add(passwordFieldPin);
+		add(passwordFieldPin);
 		
-		JDateChooser dateChooserScadenzaCarta = new JDateChooser();
-		JTextFieldDateEditor dateChooserEditorScadenzaCarta = ((JTextFieldDateEditor)dateChooserScadenzaCarta.getDateEditor());
+		/*DATACHOOSER SCADENZA CARTA*/
+		dateChooserScadenzaCarta = new JDateChooser();
+		dateChooserEditorScadenzaCarta = ((JTextFieldDateEditor)dateChooserScadenzaCarta.getDateEditor());
 		dateChooserEditorScadenzaCarta.setBackground(new Color(191, 215, 255));
 		dateChooserEditorScadenzaCarta.setForeground(new Color(0, 41, 82));
 		dateChooserEditorScadenzaCarta.setSelectedTextColor(new Color (191,215,255));
@@ -162,10 +185,15 @@ public class PagamentoConCartaDialog extends JDialog {
 		dateChooserScadenzaCarta.setMinSelectableDate(data_corrente);
 		dateChooserScadenzaCarta.setDateFormatString("dd-MM-yyyy");
 		dateChooserScadenzaCarta.setBounds(207, 152, 292, 30);
-		contentPane.add(dateChooserScadenzaCarta);
+		add(dateChooserScadenzaCarta);
 
-		JButton ButtonPaga = new JButton("");
-		ButtonPaga.setBounds(366, 321, 110, 24);
+		/*BUTTON PAGA*/
+		ButtonPaga = new JButton("");
+		ButtonPaga.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ControlloPagamaneto();
+			}
+		});
 		ButtonPaga.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -178,37 +206,20 @@ public class PagamentoConCartaDialog extends JDialog {
 		});
 		ButtonPaga.setPressedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga.png")));
 		ButtonPaga.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonPaga.addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
-			public void actionPerformed(ActionEvent e) {
-				if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") || dateChooserEditorScadenzaCarta.getText().length()==0 ) {
-					setAlwaysOnTop(false);
-					JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
-					setAlwaysOnTop(true);
-				}
-				else {
-					if (passwordFieldPin.getText().length()<5 || textFieldNumeroCarta.getText().replace("-", "").length()==0) {
-						setAlwaysOnTop(false);
-						JOptionPane.showMessageDialog(null, "IL PIN DEVE CONTENERE 5 NUMERI E IL NUMERO DELLA CARTA NE DEVE CONTENERE 16", "", JOptionPane.ERROR_MESSAGE);
-						setAlwaysOnTop(true);
-					}
-					else {
-						setAlwaysOnTop(false);
-						JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
-						setAlwaysOnTop(true);
-						dispose();
-					} 
-				}
-			}
-		});
 		ButtonPaga.setOpaque(false);
 		ButtonPaga.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonPaga.png")));
 		ButtonPaga.setBorder(null);
+		ButtonPaga.setBounds(366, 321, 110, 24);
 		ButtonPaga.setContentAreaFilled(false);
-		getContentPane().add(ButtonPaga);
+		add(ButtonPaga);
 
-		JButton ButtonAnnulla = new JButton("");
-		ButtonAnnulla.setBounds(50, 321, 110, 24);
+		/*BUTTON ANNULLA*/
+		ButtonAnnulla = new JButton("");
+		ButtonAnnulla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		ButtonAnnulla.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -220,26 +231,16 @@ public class PagamentoConCartaDialog extends JDialog {
 			}
 		});
 		ButtonAnnulla.setPressedIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
-		ButtonAnnulla.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
-		});
 		ButtonAnnulla.setOpaque(false);
 		ButtonAnnulla.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAnnulla.png")));
 		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
-		getContentPane().add(ButtonAnnulla);
-
-		JLabel LabelNumeroCartaFedelta = new JLabel("N° Carta Fedeltà");
-		LabelNumeroCartaFedelta.setBounds(52, 220, 145, 20);
-		LabelNumeroCartaFedelta.setForeground(new Color(0,41,82));
-		LabelNumeroCartaFedelta.setFont(new Font("Cambria", Font.BOLD, 18));
-		getContentPane().add(LabelNumeroCartaFedelta);		
+		ButtonAnnulla.setBounds(50, 321, 110, 24);
+		add(ButtonAnnulla);
 		
+		/*TEXTFIELD NUMERO CARTA FEDELTA*/
 		textFieldNumeroCartaFedelta = new JTextField() ;
-		textFieldNumeroCartaFedelta.setBounds(207, 210, 269, 30);
 		textFieldNumeroCartaFedelta.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -264,11 +265,34 @@ public class PagamentoConCartaDialog extends JDialog {
 		textFieldNumeroCartaFedelta.setBackground(new Color(191,215,255));
 		textFieldNumeroCartaFedelta.setSelectedTextColor(new Color (191,215,255));
 		textFieldNumeroCartaFedelta.setSelectionColor(new Color (0,41,82));
-		getContentPane().add(textFieldNumeroCartaFedelta);
+		textFieldNumeroCartaFedelta.setBounds(207, 210, 269, 30);
+		add(textFieldNumeroCartaFedelta);
 		
-		JLabel LabelSfondo = new JLabel("");
+		/*LABEL SFONDO*/
+		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/SfondoClienti.png")));
 		LabelSfondo.setBounds(-9, -9, 580, 429);
-		contentPane.add(LabelSfondo);	
+		add(LabelSfondo);	
+	}
+	
+	public void ControlloPagamaneto() {
+		if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") || dateChooserEditorScadenzaCarta.getText().length()==0 ) {
+			setAlwaysOnTop(false);
+			JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
+			setAlwaysOnTop(true);
+		}
+		else {
+			if (passwordFieldPin.getText().length()<5 || textFieldNumeroCarta.getText().replace("-", "").length()==0) {
+				setAlwaysOnTop(false);
+				JOptionPane.showMessageDialog(null, "IL PIN DEVE CONTENERE 5 NUMERI E IL NUMERO DELLA CARTA NE DEVE CONTENERE 16", "", JOptionPane.ERROR_MESSAGE);
+				setAlwaysOnTop(true);
+			}
+			else {
+				setAlwaysOnTop(false);
+				JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
+				setAlwaysOnTop(true);
+				dispose();
+			} 
+		}
 	}
 }

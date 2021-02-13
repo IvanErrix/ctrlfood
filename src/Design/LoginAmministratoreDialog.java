@@ -26,8 +26,14 @@ import java.awt.event.KeyEvent;
 
 public class LoginAmministratoreDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
+	private ContentPane contentPane;
+	private JButton ButtonChiudi;
+	private JButton ButtonIndietro;
+	private JButton ButtonVediPassword;
+	private JButton ButtonLogin;
 	private JTextField textFieldUsername;
 	private JPasswordField passwordField;
+	private JLabel LabelSfondo;
 	private boolean visible=false;
 
 	public LoginAmministratoreDialog(Controller ctrl) {
@@ -36,14 +42,16 @@ public class LoginAmministratoreDialog extends JDialog {
 		setSize(355, 467);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
-		ContentPane contentPane = new ContentPane();
+		
+		/*CONTENTPANE*/
+		contentPane = new ContentPane();
 		setContentPane(contentPane);
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
 		contentPane.setLayout(null);
 		
-		JButton ButtonChiudi = new JButton("");
-		ButtonChiudi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		/*BUTTON CHIUDI*/
+		ButtonChiudi = new JButton("");
 		ButtonChiudi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -60,6 +68,7 @@ public class LoginAmministratoreDialog extends JDialog {
 			}
 		});
 		ButtonChiudi.setPressedIcon(new ImageIcon(FrameIniziale.class.getResource("/scrimg/ButtonChiudi.png")));
+		ButtonChiudi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonChiudi.setFocusable(false);
 		ButtonChiudi.setOpaque(false);
 		ButtonChiudi.setBorder(null);
@@ -68,7 +77,8 @@ public class LoginAmministratoreDialog extends JDialog {
 		ButtonChiudi.setBounds(295, 38, 18, 18);
 		contentPane.add(ButtonChiudi);
 		
-		JButton ButtonIndietro = new JButton("");
+		/*BUTTON INDIETRO*/
+		ButtonIndietro = new JButton("");
 		ButtonIndietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -95,7 +105,8 @@ public class LoginAmministratoreDialog extends JDialog {
 		ButtonIndietro.setBounds(27, 29, 34, 34);
 		contentPane.add(ButtonIndietro);
 		
-		JButton ButtonVediPassword = new JButton("");
+		/*BUTTON VEDI PASSWORD*/
+		ButtonVediPassword = new JButton("");
 		ButtonVediPassword.setBounds(250, 190, 32, 32);
 		ButtonVediPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -119,6 +130,7 @@ public class LoginAmministratoreDialog extends JDialog {
 		ButtonVediPassword.setContentAreaFilled(false);
 		contentPane.add(ButtonVediPassword);
 		
+		/*TEXTFIELD USERNAME*/
 		textFieldUsername = new JTextField();
 		textFieldUsername.addKeyListener(new KeyAdapter() {
 			@Override
@@ -144,6 +156,7 @@ public class LoginAmministratoreDialog extends JDialog {
 		textFieldUsername.setBounds(94, 144, 188, 29);
 		contentPane.add(textFieldUsername);
 		
+		/*PASSWORDFIEL*/
 		passwordField = new JPasswordField();
 		passwordField.addKeyListener(new KeyAdapter() {
 			@Override
@@ -162,8 +175,8 @@ public class LoginAmministratoreDialog extends JDialog {
 		passwordField.setBounds(94, 198, 153, 29);
 		contentPane.add(passwordField);
 		
-		JButton ButtonLogin = new JButton("");
-		ButtonLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		/*BUTTON LOGIN*/
+		ButtonLogin = new JButton("");
 		ButtonLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EffettuaLogin(ctrl);
@@ -181,6 +194,7 @@ public class LoginAmministratoreDialog extends JDialog {
 		});
 		ButtonLogin.setPressedIcon(new ImageIcon(LoginAmministratoreDialog.class.getResource("/scrimg/ButtonLogin.png")));
 		ButtonLogin.setIcon(new ImageIcon(LoginAmministratoreDialog.class.getResource("/scrimg/ButtonLogin.png")));
+		ButtonLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonLogin.setFocusable(false);
 		ButtonLogin.setOpaque(false);
 		ButtonLogin.setBorder(null);
@@ -188,7 +202,8 @@ public class LoginAmministratoreDialog extends JDialog {
 		ButtonLogin.setBounds(114, 278, 118, 25);
 		contentPane.add(ButtonLogin);
 		
-		JLabel LabelSfondo = new JLabel("");
+		/*LABEL SFONDO*/
+		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(LoginAmministratoreDialog.class.getResource("/scrimg/SfondoLoginAmministratori.png")));
 		LabelSfondo.setBounds(-9, -7, 377, 491);
 		contentPane.add(LabelSfondo);

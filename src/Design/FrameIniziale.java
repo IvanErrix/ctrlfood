@@ -3,10 +3,8 @@ package Design;
 import java.awt.Color;
 import java.awt.Toolkit;
 
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
 import ExternalClasses.ContentPane;
 import Main.Controller;
 
@@ -20,20 +18,25 @@ import java.awt.Cursor;
 
 public class FrameIniziale extends JFrame {
 	private static final long serialVersionUID = 1L;
+	private JButton ButtonChiudi;
+	private JButton ButtonAmministratore;
+	private JButton ButtonClienti;
+	private JLabel LabelSfondo;
 
 	public FrameIniziale(Controller ctrl) {
 		setUndecorated(true);
 		setSize(355, 467);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
+		
 		ContentPane contentPane = new ContentPane();
 		setContentPane(contentPane);
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
 		contentPane.setLayout(null);
 		
-		JButton ButtonChiudi = new JButton("");
-		ButtonChiudi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		/*BUTTON CHIUDI*/
+		ButtonChiudi = new JButton("");
 		ButtonChiudi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -50,6 +53,7 @@ public class FrameIniziale extends JFrame {
 			}
 		});
 		ButtonChiudi.setPressedIcon(new ImageIcon(FrameIniziale.class.getResource("/scrimg/ButtonChiudi.png")));
+		ButtonChiudi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonChiudi.setFocusable(false);
 		ButtonChiudi.setOpaque(false);
 		ButtonChiudi.setBorder(null);
@@ -58,7 +62,8 @@ public class FrameIniziale extends JFrame {
 		ButtonChiudi.setBounds(295, 38, 18, 18);
 		contentPane.add(ButtonChiudi);
 		
-		JButton ButtonAmministratore = new JButton("");
+		/*BUTTON AMMINISTRATORE*/
+		ButtonAmministratore = new JButton("");
 		ButtonAmministratore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -85,8 +90,8 @@ public class FrameIniziale extends JFrame {
 		ButtonAmministratore.setBounds(74, 160, 210, 45);
 		contentPane.add(ButtonAmministratore);
 		
-		JButton ButtonClienti = new JButton("");
-		ButtonClienti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		/*BUTTON CLIENTI*/
+		ButtonClienti = new JButton("");
 		ButtonClienti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -106,13 +111,15 @@ public class FrameIniziale extends JFrame {
 		});
 		ButtonClienti.setPressedIcon(new ImageIcon(FrameIniziale.class.getResource("/scrimg/ButtonClienteLogin.png")));
 		ButtonClienti.setIcon(new ImageIcon(FrameIniziale.class.getResource("/scrimg/ButtonClienteLogin.png")));
+		ButtonClienti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonClienti.setOpaque(false);
 		ButtonClienti.setBorder(null);
 		ButtonClienti.setContentAreaFilled(false);
 		ButtonClienti.setBounds(74, 231, 210, 45);
 		contentPane.add(ButtonClienti);
 		
-		JLabel LabelSfondo = new JLabel("");
+		/*LABEL SFONDO*/
+		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(FrameIniziale.class.getResource("/scrimg/SfondoLogin.png")));
 		LabelSfondo.setBounds(-9, -9, 377, 491);
 		contentPane.add(LabelSfondo);
