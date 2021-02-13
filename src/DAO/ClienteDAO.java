@@ -34,8 +34,7 @@ public class ClienteDAO {
 		
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
-			ResultSet datirecuperati = null;
-			datirecuperati = query.executeQuery();
+			ResultSet datirecuperati = query.executeQuery();
 			
 			while(datirecuperati.next()) {
 				clienti.add(new Cliente(datirecuperati.getInt(1), datirecuperati.getString(2), datirecuperati.getString(3), datirecuperati.getString(4), datirecuperati.getInt(5)));
@@ -54,8 +53,7 @@ public class ClienteDAO {
 		
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
-			ResultSet datirecuperati = null;
-			datirecuperati = query.executeQuery();
+			ResultSet datirecuperati = query.executeQuery();
 			
 			while(datirecuperati.next()) {
 				carte.add(new CartaFedelta(datirecuperati.getInt(1), datirecuperati.getInt(2), datirecuperati.getDate(3), datirecuperati.getInt(4)));

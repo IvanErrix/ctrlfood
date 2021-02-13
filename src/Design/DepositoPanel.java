@@ -249,6 +249,7 @@ public class DepositoPanel extends JPanel {
 				try {
 					ctrl.EliminaProdottoDeposito(Integer.parseInt(model.getValueAt(table.getSelectedRow(), 1).toString()));
 					JOptionPane.showMessageDialog(null, "RIGA ELIMINATA CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+					CaricaProdottiInTabella(ctrl);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
 				}

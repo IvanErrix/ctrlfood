@@ -77,6 +77,11 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setAlwaysOnTop(false);
+				String valore = comboBoxNome.getSelectedItem().toString();
+				valore = valore.replaceAll("\\s+","");
+				String[] parts = valore.split("-");
+				String idprodotto = parts[0];
+				ctrl.AggiungiProdottoAlCarrello(ctrl.RecuperaCarrello(), Integer.parseInt(idprodotto), Integer.parseInt(spinnerQuantita.getValue().toString()));
 				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 				setAlwaysOnTop(true);
 			}

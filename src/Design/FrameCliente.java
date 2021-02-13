@@ -63,6 +63,7 @@ public class FrameCliente extends JFrame {
 		ButtonIndietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				ctrl.EliminaCarrelliNonPagati();
 				ctrl.ApriLoginFrame(ctrl);
 			}
 		});
@@ -127,6 +128,7 @@ public class FrameCliente extends JFrame {
 		ButtonChiudi.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonChiudi.png")));
 		ButtonChiudi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ctrl.EliminaCarrelliNonPagati();
 				System.exit(0);
 			}
 		});

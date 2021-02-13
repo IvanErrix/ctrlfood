@@ -104,8 +104,7 @@ public class DepositoDAO {
 
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
-			ResultSet datiRecuperati = null;
-			datiRecuperati = query.executeQuery();
+			ResultSet datiRecuperati = query.executeQuery();
 
 			while(datiRecuperati.next()) 
 				prodotti.add(new Prodotto(datiRecuperati.getInt(1), datiRecuperati.getString(2), datiRecuperati.getDouble(3), datiRecuperati.getInt(4), datiRecuperati.getDate(5),

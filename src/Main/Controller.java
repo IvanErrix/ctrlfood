@@ -410,4 +410,27 @@ public class Controller {
 		clientedao.AggiornaDatiCliente(idcliente, nome, cognome, codicefiscale);
 	}
 	
+	//Funzioni Database Carrello
+	public void CreaCarrello() {
+		carrellodao.CreaCarrello();
+	}
+	
+	public void EliminaCarrelliNonPagati() {
+		carrellodao.EliminaCarrelliNonPagati();
+	}
+	
+	public int RecuperaCarrello() {
+		int  id = carrellodao.RecuperaCarrello();
+		
+		return id;
+	}
+	
+	public void AggiungiProdottoAlCarrello(int idcarrello, int idprodotto, int quantita) {
+		carrellodao.AggiungiProdottoAlCarrello(idcarrello, idprodotto, quantita);
+	}
+	
+	public ArrayList<Prodotto> CaricaProdottiCarrello() {
+		return carrellodao.RecuperaProdottiCarrello();
+	}
+	
 }

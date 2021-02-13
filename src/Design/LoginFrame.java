@@ -90,6 +90,7 @@ public class LoginFrame extends JFrame {
 		ButtonClienti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				ctrl.CreaCarrello();
 				ctrl.ApriFrameCliente(ctrl);
 			}
 		});

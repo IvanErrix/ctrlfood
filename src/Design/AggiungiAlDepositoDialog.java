@@ -490,7 +490,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				ctrl.InserisciProdottoDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
 						dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorRaccolta.getDate().getTime());
 				setAlwaysOnTop(false);
-				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE \n AGGIORNARE LA TABELLA PER VISUALIZZARE IL PRODOTTO", "", JOptionPane.INFORMATION_MESSAGE);
 				setAlwaysOnTop(true);
 				RimuoviTutto();
 			}
@@ -507,7 +507,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				ctrl.InserisciProdottoLatticino(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
 						dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorMungitura.getDate().getTime(), dateChooserEditorProduzione.getDate().getTime());
 				setAlwaysOnTop(false);
-				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE \n AGGIORNARE LA TABELLA PER VISUALIZZARE IL PRODOTTO", "", JOptionPane.INFORMATION_MESSAGE);
 				setAlwaysOnTop(true);
 				RimuoviTutto();
 			}
@@ -523,7 +523,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				ctrl.InserisciProdottoConfezionato(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
 						dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorConfezionamento.getDate().getTime());
 				setAlwaysOnTop(false);
-				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE \n AGGIORNARE LA TABELLA PER VISUALIZZARE IL PRODOTTO", "", JOptionPane.INFORMATION_MESSAGE);
 				setAlwaysOnTop(true);
 				RimuoviTutto();
 			}
@@ -538,7 +538,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				ctrl.InserisciProdottoFarinaceo(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
 						dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorProduzione.getDate().getTime());
 				setAlwaysOnTop(false);
-				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE \n AGGIORNARE LA TABELLA PER VISUALIZZARE IL PRODOTTO", "", JOptionPane.INFORMATION_MESSAGE);
 				setAlwaysOnTop(true);
 				RimuoviTutto();
 			}
@@ -553,7 +553,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				ctrl.InserisciProdottoUova(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
 						dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorDeposizione.getDate().getTime());
 				setAlwaysOnTop(false);
-				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE \n AGGIORNARE LA TABELLA PER VISUALIZZARE IL PRODOTTO", "", JOptionPane.INFORMATION_MESSAGE);
 				setAlwaysOnTop(true);
 				RimuoviTutto();
 			}
