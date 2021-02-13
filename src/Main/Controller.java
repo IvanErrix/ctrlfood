@@ -53,7 +53,7 @@ import Design.FrameAmministratore;
 import Design.FrameCliente;
 import Design.LoadingDialog;
 import Design.LoginAmministratoreDialog;
-import Design.LoginFrame;
+import Design.FrameIniziale;
 import Design.ModificaClienteDialog;
 import Design.NegozioPanel;
 import Design.PagamentoConCartaDialog;
@@ -94,7 +94,7 @@ public class Controller {
 				try {
 					Controller ctrl= new Controller();
 //					System.out.println("Connessione avvenuta");
-					LoginFrame login = new LoginFrame(ctrl);
+					FrameIniziale login = new FrameIniziale(ctrl);
 					login.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -194,7 +194,7 @@ public class Controller {
 	}
 	
 	public void ApriLoginFrame(Controller ctrl) {
-		LoginFrame login = new LoginFrame(ctrl);
+		FrameIniziale login = new FrameIniziale(ctrl);
 		login.setVisible(true);
 	}
 	

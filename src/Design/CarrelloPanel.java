@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Date;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,6 +24,7 @@ import javax.swing.table.TableRowSorter;
 
 import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
+import Objects.Prodotto;
 
 import java.awt.Font;
 import javax.swing.ListSelectionModel;
@@ -35,6 +38,7 @@ public class CarrelloPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	private JScrollPane scrollPane;
+	private ArrayList<Prodotto> prodotti;
 	private String Titoli[]= {"Tipologia","IDProdotto", "Nome", "Prezzo", "Quantità","Scadenza", "Raccolta", "Produzione", "Mungitura", "Deposizione", "Confezionamento"};
 	private String Elementi[][]= {};
 	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
@@ -125,6 +129,7 @@ public class CarrelloPanel extends JPanel {
 		ButtonRefresh = new JButton("");
 		ButtonRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				CaricaProdottiCarrello(ctrl);
 			}
 		});
 		ButtonRefresh.addMouseListener(new MouseAdapter() {
@@ -242,6 +247,41 @@ public class CarrelloPanel extends JPanel {
 		LabelSfondo.setIcon(new ImageIcon(CarrelloPanel.class.getResource("/scrimg/SfondoPanel.png")));
 		LabelSfondo.setBounds(-2, -2, 836, 569);
 		add(LabelSfondo);
+		
+		CaricaProdottiCarrello(ctrl);
+	}
+	public void CaricaProdottiCarrello(Controller ctrl) {
+		model.setRowCount(0);
+		prodotti=ctrl.CaricaProdottiCarrello();
+		for(int i=0; i<prodotti.size(); i++) {
+			 int id = prodotti.get(i).getIdprodotto();
+			 String nome = prodotti.get(i).getNome();
+			 double prezzo = prodotti.get(i).getPrezzo();
+			 int quantita = prodotti.get(i).getQuantita();
+			 Date scadenza = (Date) prodotti.get(i).getData_scadenza();
+			 Date raccolta = (Date) prodotti.get(i).getData_raccolta();
+			 Date produzione = (Date) prodotti.get(i).getData_produzione();
+			 Date mungitura = (Date) prodotti.get(i).getData_mungitura();
+			 Date deposizione = (Date) prodotti.get(i).getData_deposizione();
+			 Date confezionamento = (Date) prodotti.get(i).getData_confezionamento();
+			 Boolean valore;
+			if((valore=prodotti.get(i).getOrtofrutta())==true) {
+				model.addRow(new Object[] {"ORTOFRUTTA", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			else if((valore=prodotti.get(i).getLatticino())==true) {
+				model.addRow(new Object[] {"LATTICINI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			else if((valore=prodotti.get(i).getFarinaceo())==true) {
+				model.addRow(new Object[] {"FARINACEI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			else if((valore=prodotti.get(i).getUova())==true) {
+				model.addRow(new Object[] {"UOVA", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			else if((valore=prodotti.get(i).getConfezionato())==true) {
+				model.addRow(new Object[] {"CONFEZIONATI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
+			}
+			 
+		}
 	}
 
 }

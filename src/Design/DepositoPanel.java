@@ -52,8 +52,15 @@ public class DepositoPanel extends JPanel {
 		}
 	};
 			
+	private JScrollPane scrollPane;
 	private JTable table;
 	private JTextField textFieldSearch;
+	private JButton ButtonSearch;
+	private JButton ButtonRefresh;
+	private JButton ButtonAggiungi;
+	private JButton ButtonStampa;
+	private JButton ButtonElimina;
+	private JLabel LabelSfondo;
 
 	public DepositoPanel(Controller ctrl) {
 		setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -62,7 +69,8 @@ public class DepositoPanel extends JPanel {
 		setBounds(77, 0, 836, 569);
 		setLayout(null);
 		
-		JScrollPane scrollPane = new JScrollPane();
+		/*SCROLLPANE*/
+		scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
@@ -71,6 +79,7 @@ public class DepositoPanel extends JPanel {
 		scrollPane.setBounds(43, 88, 747, 432);
 		add(scrollPane);
 		
+		/*TABLE*/
 		table = new JTable(model);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setShowGrid(false);
@@ -90,67 +99,10 @@ public class DepositoPanel extends JPanel {
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
-		
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
 		table.setRowSorter(rowSorter);
 	
-		JButton ButtonSearch = new JButton("");
-		ButtonSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String text = textFieldSearch.getText();
-				if (text.trim().length() == 0) {
-					rowSorter.setRowFilter(null);
-				} else {
-					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-				}
-			}
-		});
-		ButtonSearch.setSelectedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
-		ButtonSearch.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearchAzzurro.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
-			}
-		});
-		ButtonSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
-		ButtonSearch.setOpaque(false);
-		ButtonSearch.setBorder(null);
-		ButtonSearch.setContentAreaFilled(false);
-		ButtonSearch.setBounds(379, 28, 34, 34);
-		add(ButtonSearch);
-		
-		JButton ButtonRefresh = new JButton("");
-		ButtonRefresh.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CaricaProdottiInTabella(ctrl);
-			}
-		});
-		ButtonRefresh.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefreshAzzurro.png")));
-
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
-
-			}
-		});
-		ButtonRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
-		ButtonRefresh.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
-		ButtonRefresh.setOpaque(false);
-		ButtonRefresh.setBorder(null);
-		ButtonRefresh.setContentAreaFilled(false);
-		ButtonRefresh.setBounds(423, 28, 34, 34);
-		add(ButtonRefresh);
-		
+		/*TEXTFIELD SEARCH*/
 		textFieldSearch = new JTextField();
 		textFieldSearch.addKeyListener(new KeyAdapter() {
 			@Override
@@ -182,7 +134,72 @@ public class DepositoPanel extends JPanel {
 		textFieldSearch.setColumns(10);
 		add(textFieldSearch);
 		
-		JButton ButtonAggiungi = new JButton("");
+		/*BUTTON SEARCH*/
+		ButtonSearch = new JButton("");
+		ButtonSearch.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearchAzzurro.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
+			}
+		});
+		ButtonSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String text = textFieldSearch.getText();
+				if (text.trim().length() == 0) {
+					rowSorter.setRowFilter(null);
+				} else {
+					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+				}
+			}
+		});
+		ButtonSearch.setSelectedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
+		ButtonSearch.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
+		ButtonSearch.setOpaque(false);
+		ButtonSearch.setBorder(null);
+		ButtonSearch.setContentAreaFilled(false);
+		ButtonSearch.setBounds(379, 28, 34, 34);
+		add(ButtonSearch);
+		
+		/*BUTTON REFRESH*/
+		ButtonRefresh = new JButton("");
+		ButtonRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CaricaProdottiInTabella(ctrl);
+			}
+		});
+		ButtonRefresh.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefreshAzzurro.png")));
+
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+
+			}
+		});
+		ButtonRefresh.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonRefresh.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+		ButtonRefresh.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonRefresh.png")));
+		ButtonRefresh.setOpaque(false);
+		ButtonRefresh.setBorder(null);
+		ButtonRefresh.setContentAreaFilled(false);
+		ButtonRefresh.setBounds(423, 28, 34, 34);
+		add(ButtonRefresh);
+		
+		/*BUTTON AGGIUNGI*/
+		ButtonAggiungi = new JButton("");
+		ButtonAggiungi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.ApriAggiungiAlDepositoDialog(ctrl);
+			}
+		});
 		ButtonAggiungi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -196,18 +213,19 @@ public class DepositoPanel extends JPanel {
 		ButtonAggiungi.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiungi.setOpaque(false);
 		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonAggiungi.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriAggiungiAlDepositoDialog(ctrl);
-			}
-		});
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonAggiungi.png")));
 		ButtonAggiungi.setBounds(500, 40, 90, 22);
 		add(ButtonAggiungi);
 		
-		JButton ButtonStampa = new JButton("");
+		/*BUTTON STAMPA*/
+		ButtonStampa = new JButton("");
+		ButtonStampa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ctrl.StampaListaProdotti(table, "deposito");
+			}
+		});
 		ButtonStampa.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -219,11 +237,6 @@ public class DepositoPanel extends JPanel {
 			}
 		});
 		ButtonStampa.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
-		ButtonStampa.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ctrl.StampaListaProdotti(table, "deposito");
-			}
-		});
 		ButtonStampa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonStampa.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonStampa.png")));
 		ButtonStampa.setBounds(700, 40, 90, 22);
@@ -232,18 +245,8 @@ public class DepositoPanel extends JPanel {
 		ButtonStampa.setContentAreaFilled(false);
 		add(ButtonStampa);
 		
-		JButton ButtonElimina = new JButton("");
-		ButtonElimina.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonEliminaAzzurro.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
-			}
-		});
-		ButtonElimina.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
+		/*BUTTON ELIMINA*/
+		ButtonElimina = new JButton("");
 		ButtonElimina.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -255,6 +258,17 @@ public class DepositoPanel extends JPanel {
 				}
 			}
 		});
+		ButtonElimina.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonEliminaAzzurro.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
+			}
+		});
+		ButtonElimina.setPressedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
 		ButtonElimina.setBounds(600, 40, 90, 22);
 		ButtonElimina.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonElimina.png")));
 		ButtonElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -263,15 +277,13 @@ public class DepositoPanel extends JPanel {
 		ButtonElimina.setContentAreaFilled(false);
 		add(ButtonElimina);
 		
-		JLabel LabelSfondo = new JLabel("");
+		/*LABEL SFONDO*/
+		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/SfondoPanel.png")));
 		LabelSfondo.setBounds(-2, -2, 836, 569);
 		add(LabelSfondo);	
 		
-
 		CaricaProdottiInTabella(ctrl);
-
-		
 	}
 	
 	public void CaricaProdottiInTabella(Controller ctrl) {
