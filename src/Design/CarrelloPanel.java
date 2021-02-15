@@ -217,7 +217,9 @@ public class CarrelloPanel extends JPanel {
 		ButtonElimina.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					model.removeRow(table.getSelectedRow());
+					ctrl.EliminaProdottoCarrello(Integer.parseInt(table.getValueAt(table.getSelectedRow(), 1).toString()));
+					JOptionPane.showMessageDialog(null, "PRODOTTO ELIMINATO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+					CaricaProdottiCarrello(ctrl);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
 				}

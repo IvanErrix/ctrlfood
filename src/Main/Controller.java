@@ -433,4 +433,8 @@ public class Controller {
 		return carrellodao.RecuperaProdottiCarrello();
 	}
 	
+	public void EliminaProdottoCarrello(int idprodotto) {
+		carrellodao.EliminaProdottoCarrello(idprodotto);
+	}
+	
 }

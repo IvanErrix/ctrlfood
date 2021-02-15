@@ -50,6 +50,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	public AggiungiAlCarrelloDialog(Controller ctrl) {
+		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(449, 357);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
@@ -88,6 +89,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 				ctrl.AggiungiProdottoAlCarrello(ctrl.RecuperaCarrello(), Integer.parseInt(idprodotto), Integer.parseInt(spinnerQuantita.getValue().toString()));
 				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
 				setAlwaysOnTop(true);
+				CaricaComboBoxNome(ctrl);
+				CaricaSpinnerELabels(ctrl);
 			}
 		});
 		ButtonAggiungi.addMouseListener(new MouseAdapter() {
