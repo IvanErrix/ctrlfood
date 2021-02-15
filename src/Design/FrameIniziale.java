@@ -18,6 +18,7 @@ import java.awt.Cursor;
 
 public class FrameIniziale extends JFrame {
 	private static final long serialVersionUID = 1L;
+	private ContentPane contentPane;
 	private JButton ButtonChiudi;
 	private JButton ButtonAmministratore;
 	private JButton ButtonClienti;
@@ -25,11 +26,13 @@ public class FrameIniziale extends JFrame {
 
 	public FrameIniziale(Controller ctrl) {
 		setUndecorated(true);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameAmministratore.class.getResource("/scrimg/logo2.png")));
 		setSize(355, 467);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
 		
-		ContentPane contentPane = new ContentPane();
+		/*CONTENTPANE*/
+		contentPane = new ContentPane();
 		setContentPane(contentPane);
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));

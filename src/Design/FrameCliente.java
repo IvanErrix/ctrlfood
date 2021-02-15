@@ -77,12 +77,17 @@ public class FrameCliente extends JFrame {
 				ctrl.ApriLoginFrame(ctrl);
 			}
 		});
+		
+		JLabel LabelEsci = new JLabel("");
+		LabelEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IcoExitWhite_32.png")));
+		LabelEsci.setBounds(10, 463, 32, 32);
+		PanelPrincipale.add(LabelEsci);
 		ButtonIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonIndietro.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonIndietroAzzurro.png")));
+		ButtonIndietro.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/EsciWhite.png")));
 		ButtonIndietro.setOpaque(false);
 		ButtonIndietro.setBorder(null);
 		ButtonIndietro.setContentAreaFilled(false);
-		ButtonIndietro.setBounds(84, 412, 34, 34);
+		ButtonIndietro.setBounds(52, 456, 54, 39);
 		PanelPrincipale.add(ButtonIndietro);
 		
 		/*BUTTON CARRELLO*/
@@ -237,5 +242,4 @@ public class FrameCliente extends JFrame {
 			ButtonCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CassaWhite.png")));
 		}
 	}
-
 }
