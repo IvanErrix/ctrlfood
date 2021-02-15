@@ -107,7 +107,6 @@ public class LoginAmministratoreDialog extends JDialog {
 		
 		/*BUTTON VEDI PASSWORD*/
 		ButtonVediPassword = new JButton("");
-		ButtonVediPassword.setBounds(250, 190, 32, 32);
 		ButtonVediPassword.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(visible==false) {
@@ -128,6 +127,7 @@ public class LoginAmministratoreDialog extends JDialog {
 		ButtonVediPassword.setIcon(new ImageIcon(LoginAmministratoreDialog.class.getResource("/scrimg/ButtonViewPassword.png")));
 		ButtonVediPassword.setBorder(null);
 		ButtonVediPassword.setContentAreaFilled(false);
+		ButtonVediPassword.setBounds(250, 190, 32, 32);
 		contentPane.add(ButtonVediPassword);
 		
 		/*TEXTFIELD USERNAME*/

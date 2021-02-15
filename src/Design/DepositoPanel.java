@@ -50,8 +50,7 @@ public class DepositoPanel extends JPanel {
 		public boolean isCellEditable(int row, int column) {
 			return false;
 		}
-	};
-			
+	};	
 	private JScrollPane scrollPane;
 	private JTable table;
 	private JTextField textFieldSearch;
@@ -136,16 +135,6 @@ public class DepositoPanel extends JPanel {
 		
 		/*BUTTON SEARCH*/
 		ButtonSearch = new JButton("");
-		ButtonSearch.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearchAzzurro.png")));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
-			}
-		});
 		ButtonSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String text = textFieldSearch.getText();
@@ -154,6 +143,16 @@ public class DepositoPanel extends JPanel {
 				} else {
 					rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
 				}
+			}
+		});
+		ButtonSearch.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearchAzzurro.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				ButtonSearch.setIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));
 			}
 		});
 		ButtonSearch.setSelectedIcon(new ImageIcon(DepositoPanel.class.getResource("/scrimg/ButtonSearch.png")));

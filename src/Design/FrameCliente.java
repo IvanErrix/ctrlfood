@@ -22,10 +22,11 @@ public class FrameCliente extends JFrame {
 	private JPanel PanelCaricamento;
 	private JLabel LabelCarrello;
 	private JLabel LabelCassa;
+	private JLabel LabelEsci;
 	private JButton ButtonChiudi;
 	private JButton ButtonRiduci;
 	private JButton ButtonHomepage;
-	private JButton ButtonIndietro;
+	private JButton ButtonEsci;
 	private JButton ButtonCarrello;
 	private JButton ButtonCassa;
 	private JLabel LabelSfondoButton;
@@ -68,27 +69,32 @@ public class FrameCliente extends JFrame {
 		LabelCassa.setBounds(10, 214, 44, 44);
 		PanelPrincipale.add(LabelCassa);
 		
-		/*BUTTON INDIETRO*/
-		ButtonIndietro = new JButton("");
-		ButtonIndietro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				ctrl.EliminaCarrelliNonPagati();
-				ctrl.ApriLoginFrame(ctrl);
-			}
-		});
-		
-		JLabel LabelEsci = new JLabel("");
+		/*LABEL ESCI*/
+		LabelEsci = new JLabel("");
 		LabelEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IcoExitWhite_32.png")));
 		LabelEsci.setBounds(10, 463, 32, 32);
 		PanelPrincipale.add(LabelEsci);
-		ButtonIndietro.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonIndietro.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/EsciWhite.png")));
-		ButtonIndietro.setOpaque(false);
-		ButtonIndietro.setBorder(null);
-		ButtonIndietro.setContentAreaFilled(false);
-		ButtonIndietro.setBounds(52, 456, 54, 39);
-		PanelPrincipale.add(ButtonIndietro);
+		
+		
+		/*BUTTON INDIETRO*/
+		ButtonEsci = new JButton("");
+		ButtonEsci.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				ctrl.EliminaCarrelliNonPagati();
+				CambiaIconaAiButtonFrameClienti(new String("esci"));
+				ctrl.ApriLoginFrame(ctrl);
+			}
+		});
+		ButtonEsci.setFocusable(false);
+		ButtonEsci.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/EsciWhite.png")));
+		ButtonEsci.setOpaque(false);
+		ButtonEsci.setBorder(null);
+		ButtonEsci.setContentAreaFilled(false);
+		ButtonEsci.setBorderPainted(false);
+		ButtonEsci.setBounds(52, 456, 54, 39);
+		PanelPrincipale.add(ButtonEsci);
 		
 		/*BUTTON CARRELLO*/
 		ButtonCarrello = new JButton("");
@@ -159,6 +165,11 @@ public class FrameCliente extends JFrame {
 		
 		/*BUTTON CHIUDI*/
 		ButtonRiduci = new JButton("");
+		ButtonRiduci.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setExtendedState(JFrame.ICONIFIED);
+			}
+		});
 		ButtonRiduci.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -171,11 +182,6 @@ public class FrameCliente extends JFrame {
 		});
 		ButtonRiduci.setFocusable(false);
 		ButtonRiduci.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonRiduci.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setExtendedState(JFrame.ICONIFIED);
-			}
-		});
 		ButtonRiduci.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonRiduci.png")));
 		ButtonRiduci.setBounds(1109, 5, 15, 18);
 		ButtonRiduci.setOpaque(false);
@@ -220,26 +226,43 @@ public class FrameCliente extends JFrame {
 	
 	public void CambiaIconaAiButtonFrameClienti(String nome) {
 		 if (nome.equals("carrello")) {
-			LabelCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconShoppingCart3D.png")));
-			LabelCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CheckoutWhite_32.png")));
+			LabelCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IconShoppingCart3D.png")));
+			LabelCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CheckoutWhite_32.png")));
+			LabelEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IcoExitWhite_32.png")));
 			LabelSfondoButton.setVisible(true);
 			LabelSfondoButton.setBounds(-1, 147, 177, 43);
-			ButtonCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonCarrello.png")));
-			ButtonCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CassaWhite.png")));	
+			ButtonCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/ButtonCarrello.png")));
+			ButtonCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CassaWhite.png")));
+			ButtonEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/EsciWhite.png")));
 		}
 		else if(nome.equals("cassa")) {
-			LabelCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
-			LabelCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconCheckout3D.png")));
+			LabelCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
+			LabelCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IconCheckout3D.png")));
+			LabelEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IcoExitWhite_32.png")));
 			LabelSfondoButton.setVisible(true);
 			LabelSfondoButton.setBounds(-1, 210, 177, 43);
-			ButtonCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CarrelloWhite.png")));
-			ButtonCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonCassa.png")));
-		}else if(nome.equals("homepage")) {
-			LabelCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
-			LabelCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CheckoutWhite_32.png")));
+			ButtonCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CarrelloWhite.png")));
+			ButtonCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/ButtonCassa.png")));
+			ButtonEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/EsciWhite.png")));
+		}
+		else if(nome.equals("homepage")) {
+			LabelCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
+			LabelCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CheckoutWhite_32.png")));
+			LabelEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IcoExitWhite_32.png")));
 			LabelSfondoButton.setVisible(false);
-			ButtonCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CarrelloWhite.png")));
-			ButtonCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CassaWhite.png")));
+			ButtonCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CarrelloWhite.png")));
+			ButtonCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CassaWhite.png")));
+			ButtonEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/EsciWhite.png")));
+		}
+		else if(nome.equals("esci")) {
+			LabelCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
+			LabelCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CheckoutWhite_32.png")));
+			LabelEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IconEsci3D.png")));
+			LabelSfondoButton.setVisible(true);
+			LabelSfondoButton.setBounds(-1, 400, 177, 43);
+			ButtonCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CarrelloWhite.png")));
+			ButtonCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CassaWhite.png")));
+			ButtonEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/ButtonEsci.png")));
 		}
 	}
 }
