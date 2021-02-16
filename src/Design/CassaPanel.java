@@ -155,12 +155,12 @@ public class CassaPanel extends JPanel {
 		
 		/*SCROLLPANE*/
 		scrollPane = new JScrollPane(PanelCaricamento, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		PanelCaricamento.setLayout(new BoxLayout(PanelCaricamento, BoxLayout.Y_AXIS));
+		PanelCaricamento.setLayout(null);
 		scrollPane.setBounds(40, 115, 737, 379);
 		scrollPane.setOpaque(false);
 		add(scrollPane);
 		
-		
+		/*LABEL SFONDO*/
 		LabelSfondo = new JLabel("");
 		LabelSfondo.setBounds(-2, -2, 836, 569);
 		LabelSfondo.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/SfondoPanel.png")));
@@ -172,13 +172,30 @@ public class CassaPanel extends JPanel {
 	public void TotaleSpesa(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiCarrello();
 		Double totale = 0.0;
+		int y=10;
 		for(int i=0; i<prodotti.size(); i++) {
 			JLabel nome = new JLabel();
 			nome.setText(prodotti.get(i).getNome());
 			nome.setFont(new Font("Cambria", Font.BOLD, 17));
-			nome.setSize(300,300);
+			nome.setForeground(new Color(0, 41, 82));
+			nome.setBounds(10, y, 110, 25);
 			PanelCaricamento.add(nome);
+			JLabel quantita = new JLabel();
+			quantita.setText(Integer.toString(prodotti.get(i).getQuantita()));
+			quantita.setHorizontalAlignment(SwingConstants.CENTER);
+			quantita.setFont(new Font("Cambria", Font.BOLD, 17));
+			quantita.setForeground(new Color(0, 41, 82));
+			quantita.setBounds(520, y, 65, 14);
+			PanelCaricamento.add(quantita);
+			JLabel prezzo = new JLabel();
+			prezzo.setText(Double.toString(prodotti.get(i).getPrezzo())+ "€");
+			prezzo.setHorizontalAlignment(SwingConstants.CENTER);
+			prezzo.setFont(new Font("Cambria", Font.BOLD, 17));
+			prezzo.setForeground(new Color(0, 41, 82));
+			prezzo.setBounds(635, y, 65, 14);
+			PanelCaricamento.add(prezzo);
 			totale = totale + (prodotti.get(i).getPrezzo() * prodotti.get(i).getQuantita());
+			y=y+30;
 		}
 		LabelTotaleNumero.setText(totale+"€");
 	}

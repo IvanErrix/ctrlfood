@@ -197,6 +197,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldNome.setBorder(new RoundedCornerBorder());
 		textFieldNome.setOpaque(false);
 		textFieldNome.setBackground(new Color(191,215,255));
+		textFieldNome.setForeground(new Color(0, 41, 82));
 		textFieldNome.setSelectedTextColor(new Color (191,215,255));
 		textFieldNome.setSelectionColor(new Color (0,41,82));
 		textFieldNome.setColumns(10);
@@ -225,6 +226,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldPrezzo.setBorder(new RoundedCornerBorder());
 		textFieldPrezzo.setOpaque(false);
 		textFieldPrezzo.setBackground(new Color(191,215,255));
+		textFieldPrezzo.setForeground(new Color(0, 41, 82));
 		textFieldPrezzo.setSelectedTextColor(new Color (191,215,255));
 		textFieldPrezzo.setSelectionColor(new Color (0,41,82));
 		textFieldPrezzo.setColumns(10);
@@ -251,7 +253,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserScadenza = new JDateChooser();
 		dateChooserEditorScadenza = ((JTextFieldDateEditor)dateChooserScadenza.getDateEditor());
 		dateChooserEditorScadenza.setOpaque(false);
-		dateChooserEditorScadenza.setForeground(new Color(0, 41, 82));
+		dateChooserEditorScadenza.setForeground(new Color(0,41,82));
 		dateChooserEditorScadenza.setBorder(new RoundedCornerBorder());
 		dateChooserEditorScadenza.setFont(new Font("Cambria", Font.BOLD, 14));
 		dateChooserEditorScadenza.setSelectedTextColor(new Color (191,215,255));
@@ -266,7 +268,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserRaccolta = new JDateChooser();
 		dateChooserEditorRaccolta = ((JTextFieldDateEditor)dateChooserRaccolta.getDateEditor());
 		dateChooserEditorRaccolta.setOpaque(false);
-		dateChooserEditorRaccolta.setForeground(new Color(0, 41, 82));
+		dateChooserEditorRaccolta.setForeground(new Color(0,41,82));
 		dateChooserEditorRaccolta.setSelectedTextColor(new Color (191,215,255));
 		dateChooserEditorRaccolta.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorRaccolta.setBorder(new RoundedCornerBorder());
@@ -281,7 +283,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserProduzione = new JDateChooser();
 		dateChooserEditorProduzione = ((JTextFieldDateEditor)dateChooserProduzione.getDateEditor());
 		dateChooserEditorProduzione.setOpaque(false);
-		dateChooserEditorProduzione.setForeground(new Color(0, 41, 82));
+		dateChooserEditorProduzione.setForeground(new Color(0,41,82));
 		dateChooserEditorProduzione.setSelectedTextColor(new Color (191,215,255));
 		dateChooserEditorProduzione.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorProduzione.setBorder(new RoundedCornerBorder());
@@ -297,7 +299,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserConfezionamento = new JDateChooser();
 		dateChooserEditorConfezionamento = ((JTextFieldDateEditor)dateChooserConfezionamento.getDateEditor());
 		dateChooserEditorConfezionamento.setOpaque(false);
-		dateChooserEditorConfezionamento.setForeground(new Color(0, 41, 82));
+		dateChooserEditorConfezionamento.setForeground(new Color(0,41,82));
 		dateChooserEditorConfezionamento.setSelectedTextColor(new Color (191,215,255));
 		dateChooserEditorConfezionamento.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorConfezionamento.setBorder(new RoundedCornerBorder());
@@ -314,7 +316,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserMungitura.setVisible(false);
 		dateChooserEditorMungitura = ((JTextFieldDateEditor)dateChooserMungitura.getDateEditor());
 		dateChooserEditorMungitura.setOpaque(false);
-		dateChooserEditorMungitura.setForeground(new Color(0, 41, 82));
+		dateChooserEditorMungitura.setForeground(new Color(0,41,82));;
 		dateChooserEditorMungitura.setSelectedTextColor(new Color (191,215,255));
 		dateChooserEditorMungitura.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorMungitura.setBorder(new RoundedCornerBorder());
@@ -329,7 +331,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserDeposizione = new JDateChooser();
 		dateChooserEditorDeposizione = ((JTextFieldDateEditor)dateChooserDeposizione.getDateEditor());
 		dateChooserEditorDeposizione.setOpaque(false);
-		dateChooserEditorDeposizione.setForeground(new Color(0, 41, 82));
+		dateChooserEditorDeposizione.setForeground(new Color(0,41,82));
 		dateChooserEditorDeposizione.setSelectedTextColor(new Color (191,215,255));
 		dateChooserEditorDeposizione.setSelectionColor(new Color (0,41,82));
 		dateChooserEditorDeposizione.setBorder(new RoundedCornerBorder());

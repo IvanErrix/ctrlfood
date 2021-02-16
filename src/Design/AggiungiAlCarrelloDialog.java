@@ -52,7 +52,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 	public AggiungiAlCarrelloDialog(Controller ctrl) {
 		setAlwaysOnTop(true);
 		setUndecorated(true);
-		setSize(449, 357);
+		setSize(467, 376);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
 		
@@ -157,7 +157,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		comboBoxNome.setForeground(new Color(0,41,82));
 		comboBoxNome.setFont(new Font("Cambria", Font.BOLD, 16));
 		comboBoxNome.setFocusable(false);
-		comboBoxNome.setBounds(155, 25, 221, 30);
+		comboBoxNome.setBounds(167, 25, 221, 30);
 		contentPane.add(comboBoxNome);
 		
 		/*SPINNER QUANTITA*/
@@ -173,7 +173,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		spinnerQuantita.setRequestFocusEnabled(false);
 		spinnerQuantita.setFont(new Font("Cambria", Font.BOLD, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		spinnerQuantita.setBounds(193, 224, 60, 30);
+		spinnerQuantita.setBounds(227, 224, 100, 30);
 		contentPane.add(spinnerQuantita);
 		
 		/*LABEL PREZZO*/
@@ -181,7 +181,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		LabelPrezzo.setHorizontalTextPosition(SwingConstants.CENTER);
 		LabelPrezzo.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelPrezzo.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelPrezzo.setBounds(193, 103, 94, 24);
+		LabelPrezzo.setBounds(216, 103, 124, 24);
 		LabelPrezzo.setForeground(new Color(0,41,82));
 		LabelPrezzo.setBorder(new RoundedCornerBorder());
 		contentPane.add(LabelPrezzo);
@@ -191,7 +191,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		LabelDataScadenza.setHorizontalTextPosition(SwingConstants.CENTER);
 		LabelDataScadenza.setHorizontalAlignment(SwingConstants.CENTER);
 		LabelDataScadenza.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelDataScadenza.setBounds(193, 163, 124, 24);
+		LabelDataScadenza.setBounds(216, 167, 124, 24);
 		LabelDataScadenza.setForeground(new Color(0,41,82));
 		LabelDataScadenza.setBorder(new RoundedCornerBorder());
 		contentPane.add(LabelDataScadenza);
