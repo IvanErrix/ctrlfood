@@ -3,36 +3,21 @@ package Main;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Panel;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Date;
-
-import javax.swing.AbstractButton;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingWorker;
 import javax.swing.UIManager;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
-
-import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JTextFieldDateEditor;
 
 import DAO.CarrelloDAO;
 import DAO.ClienteDAO;
@@ -121,6 +106,7 @@ public class Controller {
 		return connessione;
 	}
 	
+	//Funzioni per l'apertura dei frame
 	public void ApriFrameAmministratore(Controller ctrl) {
 		FrameAmministratore frame = new FrameAmministratore(ctrl);
 		frame.setVisible(true);
@@ -129,6 +115,11 @@ public class Controller {
 	public void ApriFrameCliente (Controller ctrl) {
 		FrameCliente frame = new FrameCliente(ctrl);
 		frame.setVisible(true);
+	}
+	
+	public void ApriLoginFrame(Controller ctrl) {
+		FrameIniziale login = new FrameIniziale(ctrl);
+		login.setVisible(true);
 	}
 	
 	//Funzioni per l'apertura dei panel
@@ -191,11 +182,6 @@ public class Controller {
 	public void ApriLoginAmministratoreDialog(Controller ctrl) {
 		LoginAmministratoreDialog dialog = new LoginAmministratoreDialog(ctrl);
 		dialog.setVisible(true);
-	}
-	
-	public void ApriLoginFrame(Controller ctrl) {
-		FrameIniziale login = new FrameIniziale(ctrl);
-		login.setVisible(true);
 	}
 	
 	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
@@ -435,6 +421,5 @@ public class Controller {
 	
 	public void EliminaProdottoCarrello(int idprodotto) {
 		carrellodao.EliminaProdottoCarrello(idprodotto);
-	}
-	
+	}	
 }

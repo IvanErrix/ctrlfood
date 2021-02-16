@@ -69,8 +69,8 @@ public class FrameIniziale extends JFrame {
 		ButtonAmministratore = new JButton("");
 		ButtonAmministratore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				ctrl.ApriLoginAmministratoreDialog(ctrl);
+				dispose();
 			}
 		});
 		ButtonAmministratore.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
