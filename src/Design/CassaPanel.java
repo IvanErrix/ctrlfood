@@ -1,35 +1,43 @@
 package Design;
 
 import java.awt.Color;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
-import java.awt.Font;
 import java.awt.Cursor;
-import javax.swing.border.EtchedBorder;
-
-import Main.Controller;
-
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
+
+import Main.Controller;
+import Objects.Prodotto;
+import java.awt.Component;
 
 public class CassaPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
+	private ArrayList<Prodotto> prodotti;
 	private JLabel LabelIntestazione;
 	private JLabel LabelTotale;
 	private JLabel LabelTotaleNumero;
 	private JButton ButtonPagaConCarta;
 	private JButton ButtonPagaInContanti;
-	private JScrollPane scrollPaneProdottiCarrello;
 	private JLabel LabelSfondo;
+	private JPanel PanelCaricamento;
+	private JScrollPane scrollPane;
+	private JLabel LabelNomiProdotti;
+	private JLabel LabelQuantita;
+	private JLabel LabelPrezzo;
 
 	public CassaPanel(Controller ctrl) {
 		
@@ -40,32 +48,55 @@ public class CassaPanel extends JPanel {
 		setBackground(new Color(0, 80, 157));
 		setBounds(77, 0, 836, 569);
 		setLayout(null);
-		
-		/*LABEL INTESTAZIONE*/
 		LabelIntestazione = new JLabel("Lista dei prodotti nel carrello:");
+		LabelIntestazione.setBounds(40, 35, 271, 32);
 		LabelIntestazione.setFont(new Font("Cambria", Font.BOLD, 20));
 		LabelIntestazione.setForeground(new Color(0, 41, 82));
-		LabelIntestazione.setBounds(40, 35, 271, 32);
 		add(LabelIntestazione);
 		
 		/*LABEL TOTALE*/
 		LabelTotale = new JLabel("Totale");
+		LabelTotale.setBounds(631, 505, 68, 23);
 		LabelTotale.setFont(new Font("Cambria", Font.BOLD, 19));
 		LabelTotale.setForeground(new Color(0, 41, 82));
 		LabelTotale.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelTotale.setBounds(631, 505, 68, 23);
 		add(LabelTotale);
 		
 		/*LABEL TOTALE NUMERO*/
 		LabelTotaleNumero = new JLabel("0 \u20AC");
+		LabelTotaleNumero.setBounds(709, 505, 68, 23);
 		LabelTotaleNumero.setFont(new Font("Cambria", Font.BOLD, 19));
 		LabelTotaleNumero.setForeground(new Color(0, 41, 82));
 		LabelTotaleNumero.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelTotaleNumero.setBounds(709, 505, 68, 23);
 		add(LabelTotaleNumero);
 		
+		/*LABEL NOMI PRODOTTI*/
+		LabelNomiProdotti = new JLabel("Nomi Prodotti");
+		LabelNomiProdotti.setFont(new Font("Cambria", Font.BOLD, 17));
+		LabelNomiProdotti.setForeground(new Color(0, 41, 82));
+		LabelNomiProdotti.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(0,41,82)));
+		LabelNomiProdotti.setBounds(40, 78, 118, 21);
+		add(LabelNomiProdotti);
+		
+		/*LABEL QUANTITA*/
+		LabelQuantita = new JLabel("Quantit\u00E0");
+		LabelQuantita.setFont(new Font("Cambria", Font.BOLD, 17));
+		LabelQuantita.setForeground(new Color(0, 41, 82));
+		LabelQuantita.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(0,41,82)));
+		LabelQuantita.setBounds(556, 78, 68, 21);
+		add(LabelQuantita);
+		
+		/*LABEL PREZZO*/
+		LabelPrezzo = new JLabel("Prezzo");
+		LabelPrezzo.setFont(new Font("Cambria", Font.BOLD, 17));
+		LabelPrezzo.setForeground(new Color(0, 41, 82));
+		LabelPrezzo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(0,41,82)));
+		LabelPrezzo.setBounds(679, 78, 53, 21);
+		add(LabelPrezzo);
+	
 		/*BUTTON PAGA CON CARTA*/
 		ButtonPagaConCarta = new JButton("");
+		ButtonPagaConCarta.setBounds(679, 35, 98, 30);
 		ButtonPagaConCarta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriPagamentoConCartaDialog(ctrl);
@@ -84,7 +115,6 @@ public class CassaPanel extends JPanel {
 		ButtonPagaConCarta.setSelectedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
 		ButtonPagaConCarta.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
 		ButtonPagaConCarta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonPagaConCarta.setBounds(679, 35, 98, 30);
 		ButtonPagaConCarta.setOpaque(false);
 		ButtonPagaConCarta.setBorder(null);
 		ButtonPagaConCarta.setContentAreaFilled(false);
@@ -92,6 +122,7 @@ public class CassaPanel extends JPanel {
 		
 		/*BUTTON PAGA IN CONTANTI*/
 		ButtonPagaInContanti = new JButton("");
+		ButtonPagaInContanti.setBounds(556, 35, 98, 32);
 		ButtonPagaInContanti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ctrl.ApriPagamentoInContantiDialog(ctrl);
@@ -113,23 +144,42 @@ public class CassaPanel extends JPanel {
 		ButtonPagaInContanti.setBorder(null);
 		ButtonPagaInContanti.setOpaque(false);
 		ButtonPagaInContanti.setContentAreaFilled(false);
-		ButtonPagaInContanti.setBounds(556, 35, 98, 32);
 		add(ButtonPagaInContanti);
 		
-		/*SCROLLPANE PRODOTTI CARRELLO*/
-		scrollPaneProdottiCarrello = new JScrollPane();
-		scrollPaneProdottiCarrello.setBackground(new Color(191, 215, 255));
-		scrollPaneProdottiCarrello.getViewport().setBackground(new Color(191, 215, 255));
-		scrollPaneProdottiCarrello.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0, 41, 82), new Color(0, 41, 82)));
-		scrollPaneProdottiCarrello.setOpaque(false);
-		scrollPaneProdottiCarrello.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPaneProdottiCarrello.setBounds(40, 78, 737, 416);
-		add(scrollPaneProdottiCarrello);
+		/*PANEL CARICAMENTO*/
+		PanelCaricamento = new JPanel();
+		PanelCaricamento.setAlignmentY(50.0f);
+		PanelCaricamento.setBounds(40, 115, 737, 379);
+		PanelCaricamento.setBackground(new Color(191,215,255,180));
 		
-		/*LABEL SFONDO*/
+		
+		/*SCROLLPANE*/
+		scrollPane = new JScrollPane(PanelCaricamento, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		PanelCaricamento.setLayout(new BoxLayout(PanelCaricamento, BoxLayout.Y_AXIS));
+		scrollPane.setBounds(40, 115, 737, 379);
+		scrollPane.setOpaque(false);
+		add(scrollPane);
+		
+		
 		LabelSfondo = new JLabel("");
-		LabelSfondo.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/SfondoPanel.png")));
 		LabelSfondo.setBounds(-2, -2, 836, 569);
+		LabelSfondo.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/SfondoPanel.png")));
 		add(LabelSfondo);
+		
+		TotaleSpesa(ctrl);
+	}
+	
+	public void TotaleSpesa(Controller ctrl) {
+		prodotti=ctrl.CaricaProdottiCarrello();
+		Double totale = 0.0;
+		for(int i=0; i<prodotti.size(); i++) {
+			JLabel nome = new JLabel();
+			nome.setText(prodotti.get(i).getNome());
+			nome.setFont(new Font("Cambria", Font.BOLD, 17));
+			nome.setSize(300,300);
+			PanelCaricamento.add(nome);
+			totale = totale + (prodotti.get(i).getPrezzo() * prodotti.get(i).getQuantita());
+		}
+		LabelTotaleNumero.setText(totale+"€");
 	}
 }

@@ -91,8 +91,6 @@ public class CarrelloDAO {
 	public void EliminaProdottoCarrello(int idprodotto) {
 		String sql = "CALL elimina_prodotto_carrello(?)";
 		
-		
-		
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
 			query.setInt(1, idprodotto);
