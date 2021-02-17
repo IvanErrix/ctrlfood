@@ -1,5 +1,6 @@
 package Design;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.Toolkit;
@@ -13,12 +14,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import ExternalClasses.ContentPane;
 import Main.Controller;
 
 public class FrameCliente extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel PanelPrincipale;
+	private ContentPane contentPane;
 	private JPanel PanelCaricamento;
 	private JLabel LabelCarrello;
 	private JLabel LabelCassa;
@@ -43,39 +46,39 @@ public class FrameCliente extends JFrame {
 		setSize(1152, 600);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);	
 		
-		/*PANEL PRINCIPALE*/
-		PanelPrincipale = new JPanel();
-		PanelPrincipale.setBorder(null);
-		PanelPrincipale.setLayout(null);
-		setContentPane(PanelPrincipale);
+		/*CONTENTPANE*/
+		contentPane = new ContentPane();
+		setContentPane(contentPane);
+		getContentPane().isOpaque();
+		setBackground(new Color(0, 67, 137, 0));
+		contentPane.setLayout(null);
 		
 		/*PANEL CARICAMENTO*/
 		PanelCaricamento = new JPanel();
 		PanelCaricamento.setOpaque(false);
 		PanelCaricamento.setBorder(null);
 		PanelCaricamento.setBounds(194, 26, 948, 563);
-		PanelPrincipale.add(PanelCaricamento);
 		PanelCaricamento.setLayout(null);
+		getContentPane().add(PanelCaricamento);
 		
 		/*LABEL CARRELLO*/
 		LabelCarrello = new JLabel("");
 		LabelCarrello.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShoppingCartWhite_32.png")));
 		LabelCarrello.setBounds(10, 151, 44, 44);
-		PanelPrincipale.add(LabelCarrello);
+		getContentPane().add(LabelCarrello);
 		
 		/*LABEL CASSA*/
 		LabelCassa = new JLabel("");
 		LabelCassa.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/CheckoutWhite_32.png")));
 		LabelCassa.setBounds(10, 214, 44, 44);
-		PanelPrincipale.add(LabelCassa);
+		getContentPane().add(LabelCassa);
 		
 		/*LABEL ESCI*/
 		LabelEsci = new JLabel("");
 		LabelEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IcoExitWhite_32.png")));
 		LabelEsci.setBounds(10, 463, 32, 32);
-		PanelPrincipale.add(LabelEsci);
-		
-		
+		getContentPane().add(LabelEsci);
+	
 		/*BUTTON INDIETRO*/
 		ButtonEsci = new JButton("");
 		ButtonEsci.addActionListener(new ActionListener() {
@@ -94,7 +97,7 @@ public class FrameCliente extends JFrame {
 		ButtonEsci.setContentAreaFilled(false);
 		ButtonEsci.setBorderPainted(false);
 		ButtonEsci.setBounds(52, 456, 54, 39);
-		PanelPrincipale.add(ButtonEsci);
+		getContentPane().add(ButtonEsci);
 		
 		/*BUTTON CARRELLO*/
 		ButtonCarrello = new JButton("");
@@ -114,7 +117,7 @@ public class FrameCliente extends JFrame {
 		ButtonCarrello.setContentAreaFilled(false);
 		ButtonCarrello.setBorderPainted(false);
 		ButtonCarrello.setBounds(51, 156, 98, 39);
-		PanelPrincipale.add(ButtonCarrello);
+		getContentPane().add(ButtonCarrello);
 		
 		/*BUTTONCASSA*/ 
 		ButtonCassa = new JButton("");
@@ -134,7 +137,7 @@ public class FrameCliente extends JFrame {
 		ButtonCassa.setBorderPainted(false);
 		ButtonCassa.setOpaque(false);
 		ButtonCassa.setFocusable(false);
-		PanelPrincipale.add(ButtonCassa);
+		getContentPane().add(ButtonCassa);
 		
 		/*BUTTON CHIUDI*/
 		ButtonChiudi = new JButton("");
@@ -160,8 +163,8 @@ public class FrameCliente extends JFrame {
 		ButtonChiudi.setOpaque(false);
 		ButtonChiudi.setBorder(null);
 		ButtonChiudi.setContentAreaFilled(false);
-		ButtonChiudi.setBounds(1130, 5, 18, 18);
-		PanelPrincipale.add(ButtonChiudi);
+		ButtonChiudi.setBounds(1109, 5, 18, 18);
+		getContentPane().add(ButtonChiudi);
 		
 		/*BUTTON CHIUDI*/
 		ButtonRiduci = new JButton("");
@@ -183,11 +186,11 @@ public class FrameCliente extends JFrame {
 		ButtonRiduci.setFocusable(false);
 		ButtonRiduci.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonRiduci.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonRiduci.png")));
-		ButtonRiduci.setBounds(1109, 5, 15, 18);
+		ButtonRiduci.setBounds(1088, 5, 15, 18);
 		ButtonRiduci.setOpaque(false);
 		ButtonRiduci.setBorder(null);
 		ButtonRiduci.setContentAreaFilled(false);
-		PanelPrincipale.add(ButtonRiduci);
+		getContentPane().add(ButtonRiduci);
 		
 		/*BUTTON HOMEPAGE*/
 		ButtonHomepage = new JButton("");
@@ -206,20 +209,20 @@ public class FrameCliente extends JFrame {
 		ButtonHomepage.setBounds(10, 5, 160, 55);
 		ButtonHomepage.setContentAreaFilled(false);
 		ButtonHomepage.setFocusable(false);
-		PanelPrincipale.add(ButtonHomepage);
+		getContentPane().add(ButtonHomepage);
 		
 		/*LABEL SFONDO BUTTON*/
 		LabelSfondoButton = new JLabel("");
 		LabelSfondoButton.setVisible(false);
 		LabelSfondoButton.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/SfondoButton.png")));
 		LabelSfondoButton.setBounds(0, 140, 177, 43);
-		PanelPrincipale.add(LabelSfondoButton);
+		getContentPane().add(LabelSfondoButton);
 		
 		/*LABEL SFONDO*/
 		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/SfondoFrame.png")));
 		LabelSfondo.setBounds(-2, 0, 1162, 600);
-		PanelPrincipale.add(LabelSfondo);
+		getContentPane().add(LabelSfondo);
 		
 		ctrl.ApriAnimazionePanel(ctrl, PanelCaricamento);
 	}
