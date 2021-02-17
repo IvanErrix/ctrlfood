@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -174,12 +175,14 @@ public class CassaPanel extends JPanel {
 		Double totale = 0.0;
 		int y=10;
 		for(int i=0; i<prodotti.size(); i++) {
+			
 			JLabel nome = new JLabel();
 			nome.setText(prodotti.get(i).getNome());
 			nome.setFont(new Font("Cambria", Font.BOLD, 17));
 			nome.setForeground(new Color(0, 41, 82));
-			nome.setBounds(10, y, 110, 25);
+			nome.setBounds(10, y, 200, 25);
 			PanelCaricamento.add(nome);
+			
 			JLabel quantita = new JLabel();
 			quantita.setText(Integer.toString(prodotti.get(i).getQuantita()));
 			quantita.setHorizontalAlignment(SwingConstants.CENTER);
@@ -187,16 +190,39 @@ public class CassaPanel extends JPanel {
 			quantita.setForeground(new Color(0, 41, 82));
 			quantita.setBounds(520, y, 65, 14);
 			PanelCaricamento.add(quantita);
+			
 			JLabel prezzo = new JLabel();
 			prezzo.setText(Double.toString(prodotti.get(i).getPrezzo())+ "€");
 			prezzo.setHorizontalAlignment(SwingConstants.CENTER);
 			prezzo.setFont(new Font("Cambria", Font.BOLD, 17));
 			prezzo.setForeground(new Color(0, 41, 82));
 			prezzo.setBounds(635, y, 65, 14);
+			
 			PanelCaricamento.add(prezzo);
 			totale = totale + (prodotti.get(i).getPrezzo() * prodotti.get(i).getQuantita());
 			y=y+30;
 		}
-		LabelTotaleNumero.setText(totale+"€");
+		
+		LabelTotaleNumero.setText(round(totale, 2)+"€");
+	}
+	
+	public static double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+	    long factor = (long) Math.pow(10, places);
+	    value = value * factor;
+	    long tmp = Math.round(value);
+	    return (double) tmp / factor;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void ControlloTotale() {
+		if(LabelTotaleNumero.getText().contentEquals("0.0€")) {
+			ButtonPagaConCarta.disable();
+			ButtonPagaInContanti.disable();
+		}
+		else {
+			ButtonPagaConCarta.enable();
+			ButtonPagaInContanti.enable();
+		}
 	}
 }

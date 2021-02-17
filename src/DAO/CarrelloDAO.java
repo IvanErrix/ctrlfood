@@ -99,5 +99,17 @@ public class CarrelloDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void AggiornaCarrello(int idcarrello) {
+		String sql ="CALL aggiorna_carrello(?)";
+		
+		try {
+			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
+			query.setInt(1, idcarrello);
+			query.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

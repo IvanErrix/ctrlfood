@@ -192,6 +192,11 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControlloPagamaneto();
+				setAlwaysOnTop(false);
+				ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
+				JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
+				setAlwaysOnTop(true);
+				dispose();
 			}
 		});
 		ButtonPaga.addMouseListener(new MouseAdapter() {
@@ -276,7 +281,7 @@ public class PagamentoConCartaDialog extends JDialog {
 	}
 	
 	public void ControlloPagamaneto() {
-		if(textFieldNumeroCarta.getText().equals("") || passwordFieldPin.getText().equals("") || dateChooserEditorScadenzaCarta.getText().length()==0 ) {
+		if(textFieldNumeroCarta.getText().length()==0 || passwordFieldPin.getText().length()==0 || dateChooserEditorScadenzaCarta.getText().length()==0 ) {
 			setAlwaysOnTop(false);
 			JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
 			setAlwaysOnTop(true);

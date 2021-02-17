@@ -81,16 +81,24 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonAggiungi = new JButton("");
 		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setAlwaysOnTop(false);
-				String valore = comboBoxNome.getSelectedItem().toString();
-				valore = valore.replaceAll("\\s+","");
-				String[] parts = valore.split("-");
-				String idprodotto = parts[0];
-				ctrl.AggiungiProdottoAlCarrello(ctrl.RecuperaCarrello(), Integer.parseInt(idprodotto), Integer.parseInt(spinnerQuantita.getValue().toString()));
-				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
-				setAlwaysOnTop(true);
-				CaricaComboBoxNome(ctrl);
-				CaricaSpinnerELabels(ctrl);
+				if(comboBoxNome.getSelectedItem()!=null) {
+					String valore = comboBoxNome.getSelectedItem().toString();
+					valore = valore.replaceAll("\\s+","");
+					String[] parts = valore.split("-");
+					String idprodotto = parts[0];
+					ctrl.AggiungiProdottoAlCarrello(ctrl.RecuperaCarrello(), Integer.parseInt(idprodotto), Integer.parseInt(spinnerQuantita.getValue().toString()));
+					setAlwaysOnTop(false);
+					JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
+					setAlwaysOnTop(true);
+					CaricaComboBoxNome(ctrl);
+					CaricaSpinnerELabels(ctrl);
+				}
+				else {
+					setAlwaysOnTop(false);
+					JOptionPane.showMessageDialog(null, "PRODOTTI TERMINATI NEL NEGOZIO", "", JOptionPane.WARNING_MESSAGE);
+					setAlwaysOnTop(true);
+					dispose();
+				}
 			}
 		});
 		ButtonAggiungi.addMouseListener(new MouseAdapter() {
@@ -225,7 +233,6 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		comboBoxNome.removeAllItems();
 		for(int i=0; i<prodotti.size(); i++) {
 				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
-				
 		}
 	}
 	

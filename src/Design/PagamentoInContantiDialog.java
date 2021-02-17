@@ -12,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
@@ -22,6 +23,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.MaskFormatter;
 
 import com.toedter.calendar.JDateChooser;
@@ -30,10 +33,12 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import ExternalClasses.ContentPane;
 import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
+import Objects.Prodotto;
 
 public class PagamentoInContantiDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	private ArrayList<Prodotto> prodotti;
 	private ContentPane contentPane;
 	private JLabel LabelTotaleStampato; //LABEL FISSA
 	private JLabel LabelTotale; //LABEL CARICAMENTO DEL TOTALE
@@ -112,14 +117,16 @@ public class PagamentoInContantiDialog extends JDialog {
 		ButtonPaga = new JButton("");
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldContanti.getText().length()!=0) {
+				if(textFieldContanti.getText().length()!=0 || LabelRestoStampato.getText().length()!=0) {
 					setAlwaysOnTop(false);
+					ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
 					JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
 					setAlwaysOnTop(true);
+					dispose();
 				}
 				else {
 					setAlwaysOnTop(false);
-					JOptionPane.showMessageDialog(null, "INSERIRE CONTANTI", "", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "INSERIRE CONTANTI O INSERIRNE DI PIÙ", "", JOptionPane.WARNING_MESSAGE);
 					setAlwaysOnTop(true);
 				}
 			}
@@ -189,7 +196,7 @@ public class PagamentoInContantiDialog extends JDialog {
 		});
 		textFieldNumeroCartaFedelta.setForeground(new Color(0,41,82));
 		textFieldNumeroCartaFedelta.setBorder(new RoundedCornerBorder());
-		textFieldNumeroCartaFedelta.setFont(new Font("Cambria", Font.BOLD, 15));
+		textFieldNumeroCartaFedelta.setFont(new Font("Cambria", Font.BOLD, 18));
 		textFieldNumeroCartaFedelta.setColumns(10);
 		textFieldNumeroCartaFedelta.setCaretColor(new Color(0, 41, 82));
 		textFieldNumeroCartaFedelta.setBackground(new Color(191,215,255));
@@ -204,14 +211,26 @@ public class PagamentoInContantiDialog extends JDialog {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char c=e.getKeyChar();
-				if(!(Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+				if(!(Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE || c==KeyEvent.VK_PERIOD)) 
 					e.consume();
 			}
+			
 		});
+		textFieldContanti.getDocument().addDocumentListener(new DocumentListener() {
+			  public void changedUpdate(DocumentEvent e) {
+				  TotaleSpesa(ctrl);
+			  }
+			  public void removeUpdate(DocumentEvent e) {
+				  TotaleSpesa(ctrl);
+			  }
+			  public void insertUpdate(DocumentEvent e) {
+				  TotaleSpesa(ctrl);
+			  }
+			});
 		textFieldContanti.setSelectionColor(new Color(0, 41, 82));
 		textFieldContanti.setSelectedTextColor(new Color(191, 215, 255));
 		textFieldContanti.setForeground(new Color(0, 41, 82));
-		textFieldContanti.setFont(new Font("Cambria", Font.BOLD, 15));
+		textFieldContanti.setFont(new Font("Cambria", Font.BOLD, 18));
 		textFieldContanti.setColumns(10);
 		textFieldContanti.setCaretColor(new Color(0, 41, 82));
 		textFieldContanti.setBorder(new RoundedCornerBorder());
@@ -224,5 +243,41 @@ public class PagamentoInContantiDialog extends JDialog {
 		LabelSfondo.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/SfondoClienti.png")));
 		LabelSfondo.setBounds(-9, -9, 580, 429);
 		contentPane.add(LabelSfondo);
+		
+		CalcoloTotale(ctrl);
+		TotaleSpesa(ctrl);
+	}
+	
+	public void CalcoloTotale(Controller ctrl) {
+		prodotti=ctrl.CaricaProdottiCarrello();
+		Double totale = 0.0;
+		for(int i=0; i<prodotti.size(); i++) {
+			totale = totale + (prodotti.get(i).getPrezzo() * prodotti.get(i).getQuantita());
+		}
+		LabelTotaleStampato.setText(round(totale,2)+"");
+	}
+	
+	public void TotaleSpesa(Controller ctrl) {
+		Double resto = 0.0;
+		if(textFieldContanti.getText().length()!=0) {
+			resto = Double.parseDouble(textFieldContanti.getText()) - Double.parseDouble(LabelTotaleStampato.getText()) ;
+			if(resto<0) {
+				LabelRestoStampato.setText("");
+			}
+			else {
+				LabelRestoStampato.setText(round(resto,2)+"");
+			}
+		}
+		else{
+			LabelRestoStampato.setText("");
+		}
+	}
+	
+	public static double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+	    long factor = (long) Math.pow(10, places);
+	    value = value * factor;
+	    long tmp = Math.round(value);
+	    return (double) tmp / factor;
 	}
 }

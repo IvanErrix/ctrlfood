@@ -78,7 +78,6 @@ public class Controller {
 			public void run() {
 				try {
 					Controller ctrl= new Controller();
-//					System.out.println("Connessione avvenuta");
 					FrameIniziale login = new FrameIniziale(ctrl);
 					login.setVisible(true);
 				} catch (Exception e) {
@@ -422,4 +421,8 @@ public class Controller {
 	public void EliminaProdottoCarrello(int idprodotto) {
 		carrellodao.EliminaProdottoCarrello(idprodotto);
 	}	
+	
+	public void AggiornaCarrello(int idcarrello) {
+		carrellodao.AggiornaCarrello(idcarrello);
+	}
 }
