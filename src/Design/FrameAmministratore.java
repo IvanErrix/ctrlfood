@@ -241,7 +241,7 @@ public class FrameAmministratore extends JFrame {
 		LabelSfondoButton = new JLabel("");
 		LabelSfondoButton.setVisible(false);
 		LabelSfondoButton.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/SfondoButton.png")));
-		LabelSfondoButton.setBounds(0, 140, 177, 43);
+		LabelSfondoButton.setBounds(2, 140, 182, 43);
 		getContentPane().add(LabelSfondoButton);
 		
 		/*LABEL SFONDO*/
@@ -260,7 +260,7 @@ public class FrameAmministratore extends JFrame {
 			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
 			LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoLogout_32.png")));
 			LabelSfondoButton.setVisible(true);
-			LabelSfondoButton.setBounds(-1, 147, 177, 43);
+			LabelSfondoButton.setBounds(-1, 147, 182, 43);
 			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonDeposito.png")));
 			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
 			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
@@ -273,7 +273,7 @@ public class FrameAmministratore extends JFrame {
 			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
 			LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoLogout_32.png")));
 			LabelSfondoButton.setVisible(true);
-			LabelSfondoButton.setBounds(-1, 210, 177, 43);
+			LabelSfondoButton.setBounds(-1, 210, 182, 43);
 			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
 			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonNegozio.png")));
 			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));
@@ -286,7 +286,7 @@ public class FrameAmministratore extends JFrame {
 			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconUser3D.png")));
 			LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoLogout_32.png")));
 			LabelSfondoButton.setVisible(true);
-			LabelSfondoButton.setBounds(-1, 277, 177, 43);
+			LabelSfondoButton.setBounds(-1, 277, 182, 43);
 			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
 			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
 			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonClienti.png")));
@@ -299,7 +299,7 @@ public class FrameAmministratore extends JFrame {
 			LabelClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoUserWhite_32.png")));
 			LabelLogout.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconLogout3D.png")));
 			LabelSfondoButton.setVisible(true);
-			LabelSfondoButton.setBounds(-1, 400, 177, 43);
+			LabelSfondoButton.setBounds(-1, 400, 182, 43);
 			ButtonDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/DepositoWhite.png")));
 			ButtonNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/NegozioWhite.png")));
 			ButtonClienti.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ClientiWhite.png")));

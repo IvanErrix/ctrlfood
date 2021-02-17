@@ -65,7 +65,7 @@ public class NegozioPanel extends JPanel {
 
 		/*SCROLLPANE*/
 		scrollPane = new JScrollPane();
-		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
+		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82),  new Color(0,41,82)));
 		scrollPane.getViewport().setBackground(new Color(191,215,255));
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(43, 88, 747, 432);

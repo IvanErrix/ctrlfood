@@ -11,7 +11,6 @@ import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JTextField;
-import javax.swing.plaf.basic.BasicComboPopup;
 import Main.Controller;
 
 import java.awt.event.ActionListener;
@@ -26,9 +25,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
-import javax.accessibility.AccessibleContext;
-import javax.swing.DefaultComboBoxModel;
-
 import java.util.Date;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
@@ -42,7 +38,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private ContentPane contentPane;
-	private JLabel LabelTipologia;
 	private JLabel LabelNome;
 	private JLabel LabelPrezzo;
 	private JLabel LabelDataScadenza;
@@ -53,6 +48,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 	private JLabel LabelDataMungitura;
 	private JLabel LabelDataDeposizione;
 	private JLabel LabelFoto;
+	private String nome;
+	private String nome2 = "ORTOFRUTTA";
 	private JTextField textFieldNome;
 	private JTextField textFieldPrezzo;
 	private SpinnerNumberModel spinnermodel;
@@ -72,6 +69,11 @@ public class AggiungiAlDepositoDialog extends JDialog {
 	private JTextFieldDateEditor dateChooserEditorConfezionamento;
 	private JDateChooser dateChooserDeposizione;
 	private JTextFieldDateEditor dateChooserEditorDeposizione;
+	private JButton ButtonOrtofrutta;
+	private JButton ButtonFarinacei;
+	private JButton ButtonConfezionati;
+	private JButton ButtonLatticini;
+	private JButton ButtonUova;
 	private JButton ButtonAggiugni;
 	private JButton ButtonRimuoviTutto;
 	private JButton ButtonAnnulla;
@@ -93,40 +95,33 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		getContentPane().isOpaque();
 		setBackground(new Color(0, 67, 137, 0));
 		contentPane.setLayout(null);
-
-		/*LABEL TIPOLOGIA*/
-		LabelTipologia = new JLabel("Tipologia");
-		LabelTipologia.setForeground(new Color(0, 41, 82));
-		LabelTipologia.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelTipologia.setBounds(106, 40, 92, 14);
-		contentPane.add(LabelTipologia);
 		
 		/*LABEL NOME*/
 		LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0, 41, 82));
 		LabelNome.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelNome.setBounds(106, 89, 46, 14);
+		LabelNome.setBounds(106, 115, 46, 14);
 		contentPane.add(LabelNome);
 		
 		/*LABEL PREZZO*/
 		LabelPrezzo = new JLabel("Prezzo");
 		LabelPrezzo.setForeground(new Color(0, 41, 82));
 		LabelPrezzo.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelPrezzo.setBounds(106, 136, 50, 14);
+		LabelPrezzo.setBounds(106, 162, 50, 14);
 		contentPane.add(LabelPrezzo);
 		
 		/*LABEL DATA SCADENZA*/
 		LabelDataScadenza = new JLabel("Data Scadenza");
 		LabelDataScadenza.setForeground(new Color(0, 41, 82));
 		LabelDataScadenza.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelDataScadenza.setBounds(106, 180, 118, 14);
+		LabelDataScadenza.setBounds(106, 206, 118, 14);
 		contentPane.add(LabelDataScadenza);
 		
 		/*LABEL QUANTITA*/
 		LabelQuantita = new JLabel("Quantit\u00E0");
 		LabelQuantita.setForeground(new Color(0, 41, 82));
 		LabelQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelQuantita.setBounds(106, 230, 68, 14);
+		LabelQuantita.setBounds(106, 256, 68, 14);
 		contentPane.add(LabelQuantita);
 		
 		/*LABEL RACCOLTA*/
@@ -134,7 +129,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelDataRaccolta.setVisible(true);
 		LabelDataRaccolta.setForeground(new Color(0, 41, 82));
 		LabelDataRaccolta.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelDataRaccolta.setBounds(106, 326, 118, 14);
+		LabelDataRaccolta.setBounds(106, 352, 118, 14);
 		contentPane.add(LabelDataRaccolta);
 		
 		/*LABEL PRODUZIONE*/
@@ -142,7 +137,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelDataProduzione.setVisible(false);
 		LabelDataProduzione.setForeground(new Color(0, 41, 82));
 		LabelDataProduzione.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelDataProduzione.setBounds(106, 326, 141, 14);
+		LabelDataProduzione.setBounds(106, 352, 141, 14);
 		contentPane.add(LabelDataProduzione);
 		
 		/*LABEL MUNGITURA*/
@@ -150,7 +145,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelDataMungitura.setVisible(false);
 		LabelDataMungitura.setForeground(new Color(0, 41, 82));
 		LabelDataMungitura.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelDataMungitura.setBounds(106, 374, 118, 14);
+		LabelDataMungitura.setBounds(106, 400, 118, 14);
 		contentPane.add(LabelDataMungitura);
 		
 		/*LABEL CONFEZIONAMENTO*/
@@ -158,7 +153,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelDataConfezionamento.setVisible(false);
 		LabelDataConfezionamento.setForeground(new Color(0, 41, 82));
 		LabelDataConfezionamento.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelDataConfezionamento.setBounds(106, 326, 180, 14);
+		LabelDataConfezionamento.setBounds(106, 352, 180, 14);
 		contentPane.add(LabelDataConfezionamento);
 		
 		/*LABEL DEPOSIZIONE*/
@@ -166,7 +161,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelDataDeposizione.setVisible(false);
 		LabelDataDeposizione.setForeground(new Color(0, 41, 82));
 		LabelDataDeposizione.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelDataDeposizione.setBounds(106, 326, 161, 14);
+		LabelDataDeposizione.setBounds(106, 352, 161, 14);
 		contentPane.add(LabelDataDeposizione);
 		
 		/*LABEL FOTO*/
@@ -174,7 +169,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelFoto.setVisible(false);
 		LabelFoto.setForeground(new Color(0, 41, 82));
 		LabelFoto.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelFoto.setBounds(106, 274, 46, 14);
+		LabelFoto.setBounds(106, 300, 46, 14);
 		contentPane.add(LabelFoto);
 		
 		/*TEXTFIELD NOME*/
@@ -201,7 +196,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldNome.setSelectedTextColor(new Color (191,215,255));
 		textFieldNome.setSelectionColor(new Color (0,41,82));
 		textFieldNome.setColumns(10);
-		textFieldNome.setBounds(340, 78, 275, 25);
+		textFieldNome.setBounds(340, 104, 275, 25);
 		textFieldNome.setCaretColor(new Color(0, 41, 82));
 		contentPane.add(textFieldNome);
 		
@@ -230,7 +225,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldPrezzo.setSelectedTextColor(new Color (191,215,255));
 		textFieldPrezzo.setSelectionColor(new Color (0,41,82));
 		textFieldPrezzo.setColumns(10);
-		textFieldPrezzo.setBounds(340, 124, 275, 25);
+		textFieldPrezzo.setBounds(340, 150, 275, 25);
 		textFieldPrezzo.setCaretColor(new Color(0, 41, 82));
 		contentPane.add(textFieldPrezzo);
 		
@@ -246,7 +241,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		spinnerQuantita.setRequestFocusEnabled(false);
 		spinnerQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		spinnerQuantita.setBounds(340, 219, 46, 25);
+		spinnerQuantita.setBounds(340, 245, 46, 25);
 		contentPane.add(spinnerQuantita);
 		
 		/*JDATECHOOSER SCADENZA*/
@@ -261,7 +256,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserScadenza.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		dateChooserScadenza.setMinSelectableDate(data_corrente);
 		dateChooserScadenza.setDateFormatString("dd-MM-yyyy");
-		dateChooserScadenza.setBounds(340, 172, 275, 25);
+		dateChooserScadenza.setBounds(340, 198, 275, 25);
 		contentPane.add(dateChooserScadenza);
 		
 		/*JDATECHOOSER RACCOLTA*/
@@ -276,7 +271,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserRaccolta.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		dateChooserRaccolta.setMaxSelectableDate(data_corrente);
 		dateChooserRaccolta.setDateFormatString("dd-MM-yyyy");
-		dateChooserRaccolta.setBounds(340, 315, 275, 25);
+		dateChooserRaccolta.setBounds(340, 341, 275, 25);
 		contentPane.add(dateChooserRaccolta);
 		
 		/*JDATECHOOSER PRODUZIONE*/
@@ -291,7 +286,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserProduzione.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		dateChooserProduzione.setMaxSelectableDate(data_corrente);
 		dateChooserProduzione.setDateFormatString("dd-MM-yyyy");
-		dateChooserProduzione.setBounds(340, 315, 275, 25);
+		dateChooserProduzione.setBounds(340, 341, 275, 25);
 		dateChooserProduzione.setVisible(false);
 		contentPane.add(dateChooserProduzione);
 		
@@ -307,7 +302,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserConfezionamento.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		dateChooserConfezionamento.setMaxSelectableDate(data_corrente);
 		dateChooserConfezionamento.setDateFormatString("dd-MM-yyyy");
-		dateChooserConfezionamento.setBounds(340, 315, 275, 25);
+		dateChooserConfezionamento.setBounds(340, 341, 275, 25);
 		dateChooserConfezionamento.setVisible(false);
 		contentPane.add(dateChooserConfezionamento);
 		
@@ -324,7 +319,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserMungitura.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		dateChooserMungitura.setMaxSelectableDate(data_corrente);
 		dateChooserMungitura.setDateFormatString("dd-MM-yyyy");
-		dateChooserMungitura.setBounds(340, 363, 275, 25);
+		dateChooserMungitura.setBounds(340, 389, 275, 25);
 		contentPane.add(dateChooserMungitura);
 		
 		/*JDATECHOOSER DEPOSIZIONE*/ 
@@ -339,33 +334,33 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserDeposizione.getCalendarButton().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		dateChooserDeposizione.setMaxSelectableDate(data_corrente);
 		dateChooserDeposizione.setDateFormatString("dd-MM-yyyy");
-		dateChooserDeposizione.setBounds(340, 315, 275, 25);
+		dateChooserDeposizione.setBounds(340, 341, 275, 25);
 		dateChooserDeposizione.setVisible(false);
 		contentPane.add(dateChooserDeposizione);
 		
 		/*COMBOBOX TIPOLOGIA*/
-		comboBoxTipologia = new JComboBox();
-		comboBoxTipologia.setOpaque(false);
-		comboBoxTipologia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				VisibilitaLabel();
-			}
-		});
-		comboBoxTipologia.setFocusable(false);
-		AccessibleContext ac = comboBoxTipologia.getAccessibleContext();
-		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
-		list = pop.getList();
-		list.setSelectionForeground(new Color(191, 215, 255));
-		list.setSelectionBackground(new Color(0, 41, 82));	
-		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"ORTOFRUTTA", "LATTICINI", "CONFEZIONATI", "FARINACEI", "UOVA"}));
-		comboBoxTipologia.setOpaque(false);
-		comboBoxTipologia.setForeground(new Color(0, 41, 82));
-		comboBoxTipologia.setFont(new Font("Cambria", Font.BOLD, 14));
-		comboBoxTipologia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		comboBoxTipologia.setBorder(new RoundedCornerBorder());
-		comboBoxTipologia.setMaximumRowCount(5);
-		comboBoxTipologia.setBounds(340, 29, 275, 25);
-		contentPane.add(comboBoxTipologia);
+//		comboBoxTipologia = new JComboBox();
+//		comboBoxTipologia.setOpaque(false);
+//		comboBoxTipologia.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				VisibilitaLabel();
+//			}
+//		});
+//		comboBoxTipologia.setFocusable(false);
+//		AccessibleContext ac = comboBoxTipologia.getAccessibleContext();
+//		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
+//		list = pop.getList();
+//		list.setSelectionForeground(new Color(191, 215, 255));
+//		list.setSelectionBackground(new Color(0, 41, 82));	
+//		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"ORTOFRUTTA", "LATTICINI", "CONFEZIONATI", "FARINACEI", "UOVA"}));
+//		comboBoxTipologia.setOpaque(false);
+//		comboBoxTipologia.setForeground(new Color(0, 41, 82));
+//		comboBoxTipologia.setFont(new Font("Cambria", Font.BOLD, 14));
+//		comboBoxTipologia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+//		comboBoxTipologia.setBorder(new RoundedCornerBorder());
+//		comboBoxTipologia.setMaximumRowCount(5);
+//		comboBoxTipologia.setBounds(340, 29, 275, 25);
+//		contentPane.add(comboBoxTipologia);
 		
 		/*TEXTFIELD FOTO*/
 		textFieldFoto = new JTextField(20) ;
@@ -377,9 +372,89 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		textFieldFoto.setSelectedTextColor(new Color (191,215,255));
 		textFieldFoto.setSelectionColor(new Color (0,41,82));
 		textFieldFoto.setColumns(10);
-		textFieldFoto.setBounds(340, 263, 254, 25);
+		textFieldFoto.setBounds(340, 289, 254, 25);
 		textFieldFoto.setCaretColor(new Color(0, 41, 82));
 		contentPane.add(textFieldFoto);
+		
+		/*BUTTON ORTOFRUTTA*/
+		ButtonOrtofrutta = new JButton("");
+		ButtonOrtofrutta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VisibilitaLabel("ORTOFRUTTA");
+				nome2 = "ORTOFRUTTA";
+			}
+		});
+		ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofruttaBlue.png")));
+		ButtonOrtofrutta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonOrtofrutta.setOpaque(false);
+		ButtonOrtofrutta.setBorder(null);
+		ButtonOrtofrutta.setContentAreaFilled(false);
+		ButtonOrtofrutta.setBounds(74, 11, 78, 83);
+		contentPane.add(ButtonOrtofrutta);
+		
+		/*BUTTON FARINACEI*/
+		ButtonFarinacei = new JButton("");
+		ButtonFarinacei.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			VisibilitaLabel("FARINACEO");
+			nome2 = "FARINACEO";
+			}
+		});
+		ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
+		ButtonFarinacei.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonFarinacei.setOpaque(false);
+		ButtonFarinacei.setBorder(null);
+		ButtonFarinacei.setContentAreaFilled(false);
+		ButtonFarinacei.setBounds(189, 11, 78, 83);
+		contentPane.add(ButtonFarinacei);
+		
+		/*BUTTON CONFEZIONATI*/
+		ButtonConfezionati = new JButton("");
+		ButtonConfezionati.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			VisibilitaLabel("CONFEZIONATO");
+			nome2 = "CONFEZIONATO";
+			}
+		});
+		ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
+		ButtonConfezionati.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonConfezionati.setOpaque(false);
+		ButtonConfezionati.setBorder(null);
+		ButtonConfezionati.setContentAreaFilled(false);
+		ButtonConfezionati.setBounds(308, 11, 78, 83);
+		contentPane.add(ButtonConfezionati);
+		
+		/*BUTTON LATTICINI*/
+		ButtonLatticini = new JButton("");
+		ButtonLatticini.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			VisibilitaLabel("LATTICINO");
+			nome2 = "LATTICINO";
+			}
+		});
+		ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
+		ButtonLatticini.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonLatticini.setOpaque(false);
+		ButtonLatticini.setBorder(null);
+		ButtonLatticini.setContentAreaFilled(false);
+		ButtonLatticini.setBounds(431, 10, 78, 83);
+		contentPane.add(ButtonLatticini);
+		
+		/*BUTTON UOVA*/
+		ButtonUova = new JButton("");
+		ButtonUova.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			VisibilitaLabel("UOVA");
+			nome2 = "UOVA";
+			}
+		});
+		ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
+		ButtonUova.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonUova.setOpaque(false);
+		ButtonUova.setBorder(null);
+		ButtonUova.setContentAreaFilled(false);
+		ButtonUova.setBounds(558, 10, 78, 83);
+		contentPane.add(ButtonUova);
 		
 		/*BUTTON AGGIUNGI*/
 		ButtonAggiugni = new JButton("");
@@ -404,7 +479,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni.setBorder(null);
 		ButtonAggiugni.setContentAreaFilled(false);
 		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
-		ButtonAggiugni.setBounds(505, 441, 110, 24);
+		ButtonAggiugni.setBounds(505, 455, 110, 24);
 		contentPane.add(ButtonAggiugni);
 		
 		/*BUTTON RIMUOVI TUTTO*/
@@ -433,7 +508,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonRimuoviTutto.setBorder(null);
 		ButtonRimuoviTutto.setContentAreaFilled(false);
 		ButtonRimuoviTutto.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonRimuoviTutto.setBounds(345, 441, 150, 24);
+		ButtonRimuoviTutto.setBounds(345, 455, 150, 24);
 		contentPane.add(ButtonRimuoviTutto);
 		
 		/*BUTTON ANNULLA*/
@@ -459,7 +534,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
-		ButtonAnnulla.setBounds(106, 441, 110, 24);
+		ButtonAnnulla.setBounds(106, 455, 110, 24);
 		contentPane.add(ButtonAnnulla);
 		
 		/*BUTTON AGGIUNGI FOTO*/
@@ -482,9 +557,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelSfondo.setBounds(-8, -8, 727, 536);
 		contentPane.add(LabelSfondo);
 	}
-	
 	public void ControlliAggiungiProdotto(Controller ctrl) {
-		if (comboBoxTipologia.getSelectedItem()=="ORTOFRUTTA") {
+		if (nome2.equals("ORTOFRUTTA")) {
 			if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 					|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {
 				setAlwaysOnTop(false);
@@ -500,7 +574,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				RimuoviTutto();
 			}
 		}
-		else if(comboBoxTipologia.getSelectedItem()=="LATTICINI") {
+		else if(nome2.equals("LATTICINO")) {
 			if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 					|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 
 					|| dateChooserEditorMungitura.getText().length() == 0) {
@@ -517,7 +591,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				RimuoviTutto();
 			}
 		}
-		else if(comboBoxTipologia.getSelectedItem()=="CONFEZIONATI") {
+		else if(nome2.equals("CONFEZIONATO")) {
 			if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 					|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorConfezionamento.getText().length() == 0) {
 				setAlwaysOnTop(false);
@@ -532,7 +606,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				setAlwaysOnTop(true);
 				RimuoviTutto();
 			}
-		}else if(comboBoxTipologia.getSelectedItem()=="FARINACEI") {
+		}else if(nome2.equals("FARINACEO")) {
 			if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 					|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 ) {
 				setAlwaysOnTop(false);
@@ -547,7 +621,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 				setAlwaysOnTop(true);
 				RimuoviTutto();
 			}
-		}else if(comboBoxTipologia.getSelectedItem()=="UOVA") {
+		}else if(nome2.equals("UOVA")) {
 			if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 					|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorDeposizione.getText().length() == 0 ) {
 				setAlwaysOnTop(false);
@@ -579,8 +653,13 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserDeposizione.setDate(null);
 	}
 	
-	public void VisibilitaLabel() {
-		if(comboBoxTipologia.getSelectedItem()=="ORTOFRUTTA") {
+	public void VisibilitaLabel(String nome) {
+		if(nome.equals("ORTOFRUTTA")) {
+			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofruttaBlue.png")));
+			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
+			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
+			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
+			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 			LabelDataConfezionamento.setVisible(false);
 			LabelDataRaccolta.setVisible(true);
 			LabelDataMungitura.setVisible(false);
@@ -594,7 +673,12 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			dateChooserProduzione.setVisible(false);
 			dateChooserDeposizione.setVisible(false);
 		}
-		else if(comboBoxTipologia.getSelectedItem()=="LATTICINI") {
+		else if(nome.equals("LATTICINO")) {
+			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
+			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
+			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
+			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticiniBlue.png")));
+			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 			LabelDataConfezionamento.setVisible(false);
 			LabelDataRaccolta.setVisible(false);
 			LabelDataMungitura.setVisible(true);
@@ -609,7 +693,12 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			dateChooserProduzione.setVisible(true);
 			dateChooserDeposizione.setVisible(false);
 		}
-		else if(comboBoxTipologia.getSelectedItem()=="CONFEZIONATI") {
+		else if(nome.equals("CONFEZIONATO")) {
+			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
+			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
+			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionatiBlue.png")));
+			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
+			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 			LabelDataConfezionamento.setVisible(true);
 			LabelDataRaccolta.setVisible(false);
 			LabelDataMungitura.setVisible(false);
@@ -624,7 +713,12 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			dateChooserProduzione.setVisible(false);
 			dateChooserDeposizione.setVisible(false);
 		
-		}else if(comboBoxTipologia.getSelectedItem()=="FARINACEI") {
+		}else if(nome.equals("FARINACEO")) {
+			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
+			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinaceiBlue.png")));
+			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
+			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
+			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 			LabelDataConfezionamento.setVisible(false);
 			LabelDataRaccolta.setVisible(false);
 			LabelDataMungitura.setVisible(false);
@@ -639,13 +733,19 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			dateChooserProduzione.setVisible(true);
 			dateChooserDeposizione.setVisible(false);
 			
-		}else if(comboBoxTipologia.getSelectedItem()=="UOVA") {
+		}else if(nome.equals("UOVA")) {
+			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
+			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
+			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
+			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
+			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUovaBlue.png")));
 			LabelDataConfezionamento.setVisible(false);
 			LabelDataRaccolta.setVisible(false);
 			LabelDataMungitura.setVisible(false);
 			LabelDataProduzione.setVisible(false);
 			LabelDataDeposizione.setVisible(true);
 			textFieldNome.setText("UOVA");
+			textFieldNome.setDisabledTextColor(new Color(0,41,82));
 			textFieldNome.setEnabled(false);
 			dateChooserConfezionamento.setVisible(false);
 			dateChooserConfezionamento.setVisible(false);

@@ -215,7 +215,7 @@ public class FrameCliente extends JFrame {
 		LabelSfondoButton = new JLabel("");
 		LabelSfondoButton.setVisible(false);
 		LabelSfondoButton.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/SfondoButton.png")));
-		LabelSfondoButton.setBounds(0, 140, 177, 43);
+		LabelSfondoButton.setBounds(-1, 140, 182, 43);
 		getContentPane().add(LabelSfondoButton);
 		
 		/*LABEL SFONDO*/
@@ -233,7 +233,7 @@ public class FrameCliente extends JFrame {
 			LabelCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CheckoutWhite_32.png")));
 			LabelEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IcoExitWhite_32.png")));
 			LabelSfondoButton.setVisible(true);
-			LabelSfondoButton.setBounds(-1, 147, 177, 43);
+			LabelSfondoButton.setBounds(-1, 147, 182, 43);
 			ButtonCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/ButtonCarrello.png")));
 			ButtonCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CassaWhite.png")));
 			ButtonEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/EsciWhite.png")));
@@ -243,7 +243,7 @@ public class FrameCliente extends JFrame {
 			LabelCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IconCheckout3D.png")));
 			LabelEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IcoExitWhite_32.png")));
 			LabelSfondoButton.setVisible(true);
-			LabelSfondoButton.setBounds(-1, 210, 177, 43);
+			LabelSfondoButton.setBounds(-1, 210, 182, 43);
 			ButtonCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CarrelloWhite.png")));
 			ButtonCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/ButtonCassa.png")));
 			ButtonEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/EsciWhite.png")));
@@ -262,7 +262,7 @@ public class FrameCliente extends JFrame {
 			LabelCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CheckoutWhite_32.png")));
 			LabelEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IconEsci3D.png")));
 			LabelSfondoButton.setVisible(true);
-			LabelSfondoButton.setBounds(-1, 400, 177, 43);
+			LabelSfondoButton.setBounds(-1, 400, 182, 43);
 			ButtonCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CarrelloWhite.png")));
 			ButtonCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CassaWhite.png")));
 			ButtonEsci.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/ButtonEsci.png")));

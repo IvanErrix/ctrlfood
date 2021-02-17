@@ -19,7 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
+import javax.swing.border.EtchedBorder;
 
+import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
 import Objects.Prodotto;
 import java.awt.Component;
@@ -64,7 +66,7 @@ public class CassaPanel extends JPanel {
 		add(LabelTotale);
 		
 		/*LABEL TOTALE NUMERO*/
-		LabelTotaleNumero = new JLabel("0 \u20AC");
+		LabelTotaleNumero = new JLabel("0.0€");
 		LabelTotaleNumero.setBounds(709, 505, 68, 23);
 		LabelTotaleNumero.setFont(new Font("Cambria", Font.BOLD, 19));
 		LabelTotaleNumero.setForeground(new Color(0, 41, 82));
@@ -115,6 +117,7 @@ public class CassaPanel extends JPanel {
 		});
 		ButtonPagaConCarta.setSelectedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
 		ButtonPagaConCarta.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
+		ButtonPagaConCarta.setDisabledIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaConCarta.png")));
 		ButtonPagaConCarta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonPagaConCarta.setOpaque(false);
 		ButtonPagaConCarta.setBorder(null);
@@ -139,11 +142,12 @@ public class CassaPanel extends JPanel {
 				ButtonPagaInContanti.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
 			}
 		});
-		ButtonPagaInContanti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonPagaInContanti.setSelectedIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
 		ButtonPagaInContanti.setIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
+		ButtonPagaInContanti.setDisabledIcon(new ImageIcon(CassaPanel.class.getResource("/scrimg/ButtonPagaInContanti.png")));
 		ButtonPagaInContanti.setBorder(null);
 		ButtonPagaInContanti.setOpaque(false);
+		ButtonPagaInContanti.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonPagaInContanti.setContentAreaFilled(false);
 		add(ButtonPagaInContanti);
 		
@@ -152,13 +156,14 @@ public class CassaPanel extends JPanel {
 		PanelCaricamento.setAlignmentY(50.0f);
 		PanelCaricamento.setBounds(40, 115, 737, 379);
 		PanelCaricamento.setBackground(new Color(191,215,255,180));
+		PanelCaricamento.setLayout(null);
 		
 		
 		/*SCROLLPANE*/
 		scrollPane = new JScrollPane(PanelCaricamento, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		PanelCaricamento.setLayout(null);
 		scrollPane.setBounds(40, 115, 737, 379);
 		scrollPane.setOpaque(false);
+		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82),  new Color(0,41,82)));
 		add(scrollPane);
 		
 		/*LABEL SFONDO*/
@@ -168,6 +173,7 @@ public class CassaPanel extends JPanel {
 		add(LabelSfondo);
 		
 		TotaleSpesa(ctrl);
+		ControlloTotale();
 	}
 	
 	public void TotaleSpesa(Controller ctrl) {
@@ -178,7 +184,9 @@ public class CassaPanel extends JPanel {
 			
 			JLabel nome = new JLabel();
 			nome.setText(prodotti.get(i).getNome());
+			nome.setHorizontalAlignment(SwingConstants.CENTER);
 			nome.setFont(new Font("Cambria", Font.BOLD, 17));
+//			nome.setBorder(new RoundedCornerBorder());
 			nome.setForeground(new Color(0, 41, 82));
 			nome.setBounds(10, y, 200, 25);
 			PanelCaricamento.add(nome);
@@ -214,15 +222,14 @@ public class CassaPanel extends JPanel {
 	    return (double) tmp / factor;
 	}
 	
-	@SuppressWarnings("deprecation")
 	public void ControlloTotale() {
-		if(LabelTotaleNumero.getText().contentEquals("0.0€")) {
-			ButtonPagaConCarta.disable();
-			ButtonPagaInContanti.disable();
+		if(LabelTotaleNumero.getText().equals("0.0€")) {
+			ButtonPagaConCarta.setEnabled(false);
+			ButtonPagaInContanti.setEnabled(false);
 		}
 		else {
-			ButtonPagaConCarta.enable();
-			ButtonPagaInContanti.enable();
+			ButtonPagaConCarta.setEnabled(true);
+			ButtonPagaInContanti.setEnabled(true);
 		}
 	}
 }

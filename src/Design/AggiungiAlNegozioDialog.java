@@ -37,10 +37,15 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	
 	private ArrayList<Prodotto> prodotti;
 	private ContentPane contentPane;
-	private JLabel LabelTipologia;
 	private JLabel LabelNome;
 	private JLabel LabelQuantita;
 	private JLabel LabelIDProdotto;
+	private String nome2 = "ORTOFRUTTA";
+	private JButton ButtonOrtofrutta;
+	private JButton ButtonFarinacei;
+	private JButton ButtonConfezionati;
+	private JButton ButtonLatticini;
+	private JButton ButtonUova;
 	private JButton ButtonAggiungi;
 	private JButton ButtonAnnulla;
 	private JComboBox comboBoxTipologia;
@@ -56,7 +61,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	public AggiungiAlNegozioDialog(Controller ctrl) {
 		
 		setUndecorated(true);
-		setSize(453, 364);
+		setSize(568, 429);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
 		
@@ -67,33 +72,111 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		setBackground(new Color(0, 67, 137, 0));
 		contentPane.setLayout(null);
 		
-		/*LABEL TIPOLOGIA*/
-		LabelTipologia = new JLabel("Tipologia");
-		LabelTipologia.setForeground(new Color(0,41,82));
-		LabelTipologia.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelTipologia.setBounds(41, 57, 92, 21);
-		contentPane.add(LabelTipologia);
-		
 		/*LABEL NOME*/
 		LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0,41,82));
 		LabelNome.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelNome.setBounds(41, 107, 46, 24);
+		LabelNome.setBounds(107, 151, 46, 24);
 		contentPane.add(LabelNome);
 		
 		/*LABEL QUANTITA*/
 		LabelQuantita = new JLabel("Quantit\u00E0");
 		LabelQuantita.setForeground(new Color(0,41,82));
 		LabelQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelQuantita.setBounds(41, 220, 68, 14);
+		LabelQuantita.setBounds(107, 264, 68, 14);
 		contentPane.add(LabelQuantita);
 		
 		/*LABEL ID PRODOTTO*/
 		LabelIDProdotto = new JLabel("ID Prodotto");
 		LabelIDProdotto.setForeground(new Color(0,41,82));
 		LabelIDProdotto.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelIDProdotto.setBounds(41, 169, 92, 21);
+		LabelIDProdotto.setBounds(107, 213, 92, 21);
 		contentPane.add(LabelIDProdotto);
+		
+		/*BUTTON ORTOFRUTTA*/
+		ButtonOrtofrutta = new JButton("");
+		ButtonOrtofrutta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nome2 = "ORTOFRUTTA";
+				VisibilitaLabel(nome2);
+				CaricaComboBoxNome(ctrl);
+			}
+		});
+		ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofruttaBlue.png")));
+		ButtonOrtofrutta.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonOrtofrutta.setOpaque(false);
+		ButtonOrtofrutta.setBorder(null);
+		ButtonOrtofrutta.setContentAreaFilled(false);
+		ButtonOrtofrutta.setBounds(31, 13, 78, 83);
+		contentPane.add(ButtonOrtofrutta);
+		
+		/*BUTTON FARINACEI*/
+		ButtonFarinacei = new JButton("");
+		ButtonFarinacei.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			nome2 = "FARINACEO";
+			VisibilitaLabel(nome2);
+			CaricaComboBoxNome(ctrl);
+			}
+		});
+		ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
+		ButtonFarinacei.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonFarinacei.setOpaque(false);
+		ButtonFarinacei.setBorder(null);
+		ButtonFarinacei.setContentAreaFilled(false);
+		ButtonFarinacei.setBounds(130, 13, 78, 83);
+		contentPane.add(ButtonFarinacei);
+		
+		/*BUTTON CONFEZIONATI*/
+		ButtonConfezionati = new JButton("");
+		ButtonConfezionati.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			nome2 = "CONFEZIONATO";
+			VisibilitaLabel(nome2);
+			CaricaComboBoxNome(ctrl);
+			}
+		});
+		ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
+		ButtonConfezionati.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonConfezionati.setOpaque(false);
+		ButtonConfezionati.setBorder(null);
+		ButtonConfezionati.setContentAreaFilled(false);
+		ButtonConfezionati.setBounds(229, 13, 78, 83);
+		contentPane.add(ButtonConfezionati);
+		
+		/*BUTTON LATTICINI*/
+		ButtonLatticini = new JButton("");
+		ButtonLatticini.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			nome2 = "LATTICINO";
+			VisibilitaLabel(nome2);
+			CaricaComboBoxNome(ctrl);
+			}
+		});
+		ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
+		ButtonLatticini.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonLatticini.setOpaque(false);
+		ButtonLatticini.setBorder(null);
+		ButtonLatticini.setContentAreaFilled(false);
+		ButtonLatticini.setBounds(330, 13, 78, 83);
+		contentPane.add(ButtonLatticini);
+		
+		/*BUTTON UOVA*/
+		ButtonUova = new JButton("");
+		ButtonUova.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			nome2 = "UOVA";
+			VisibilitaLabel(nome2);
+			CaricaComboBoxNome(ctrl);
+			}
+		});
+		ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
+		ButtonUova.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonUova.setOpaque(false);
+		ButtonUova.setBorder(null);
+		ButtonUova.setContentAreaFilled(false);
+		ButtonUova.setBounds(436, 13, 78, 83);
+		contentPane.add(ButtonUova);
 		
 		/*BUTTON AGGIUNGI*/
 		ButtonAggiungi = new JButton("");
@@ -123,7 +206,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonAggiungi.setBorder(null);
 		ButtonAggiungi.setContentAreaFilled(false);
 		ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
-		ButtonAggiungi.setBounds(288, 300, 110, 24);
+		ButtonAggiungi.setBounds(354, 340, 110, 24);
 		contentPane.add(ButtonAggiungi);
 		
 		/*BUTTON ANNULLA*/
@@ -149,7 +232,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonAnnulla.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonAnnulla.setBorder(null);
 		ButtonAnnulla.setContentAreaFilled(false);
-		ButtonAnnulla.setBounds(41, 300, 110, 24);
+		ButtonAnnulla.setBounds(107, 340, 110, 24);
 		contentPane.add(ButtonAnnulla);
 		
 		/*COMBOBOX NOME*/
@@ -170,31 +253,31 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxNome.setMaximumRowCount(3);
 		comboBoxNome.setForeground(new Color(0,41,82));
 		comboBoxNome.setBackground(new Color(191,215,255));
-		comboBoxNome.setBounds(208, 107, 190, 25);
+		comboBoxNome.setBounds(274, 151, 190, 25);
 		contentPane.add(comboBoxNome);
 		
 		/*COMBOBOX TIPOLOGIA*/
-		comboBoxTipologia = new JComboBox();
-		comboBoxTipologia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CaricaComboBoxNome(ctrl);
-				CaricaSpinnerQuantita(ctrl);
-			}
-		});
-		AccessibleContext ac2 = comboBoxTipologia.getAccessibleContext();
-		BasicComboPopup pop2 = (BasicComboPopup) ac2.getAccessibleChild(0);
-		list2 = pop2.getList();
-		list2.setSelectionForeground(new Color(191, 215, 255));
-		list2.setSelectionBackground(new Color(0, 41, 82));
-		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"ORTOFRUTTA", "LATTICINI", "FARINACEI", "UOVA", "CONFEZIONATI"}));
-		comboBoxNome.setMaximumRowCount(5);
-		comboBoxTipologia.setForeground(new Color(0,41,82));
-		comboBoxTipologia.setFont(new Font("Cambria", Font.BOLD, 14));
-		comboBoxTipologia.setFocusable(false);
-		comboBoxTipologia.setBorder(new RoundedCornerBorder());
-		comboBoxTipologia.setBackground(new Color(191,215,255));
-		comboBoxTipologia.setBounds(208, 56, 190, 25);
-		contentPane.add(comboBoxTipologia);
+//		comboBoxTipologia = new JComboBox();
+//		comboBoxTipologia.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				CaricaComboBoxNome(ctrl);
+//				CaricaSpinnerQuantita(ctrl);
+//			}
+//		});
+//		AccessibleContext ac2 = comboBoxTipologia.getAccessibleContext();
+//		BasicComboPopup pop2 = (BasicComboPopup) ac2.getAccessibleChild(0);
+//		list2 = pop2.getList();
+//		list2.setSelectionForeground(new Color(191, 215, 255));
+//		list2.setSelectionBackground(new Color(0, 41, 82));
+//		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"ORTOFRUTTA", "LATTICINI", "FARINACEI", "UOVA", "CONFEZIONATI"}));
+//		comboBoxNome.setMaximumRowCount(5);
+//		comboBoxTipologia.setForeground(new Color(0,41,82));
+//		comboBoxTipologia.setFont(new Font("Cambria", Font.BOLD, 14));
+//		comboBoxTipologia.setFocusable(false);
+//		comboBoxTipologia.setBorder(new RoundedCornerBorder());
+//		comboBoxTipologia.setBackground(new Color(191,215,255));
+//		comboBoxTipologia.setBounds(208, 56, 190, 25);
+//		contentPane.add(comboBoxTipologia);
 		
 		/*SPINNER QUANTITA*/
 		model = new SpinnerNumberModel(1, 1, 50, 1);
@@ -209,7 +292,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		spinnerQuantita.setRequestFocusEnabled(false);
 		spinnerQuantita.setFont(new Font("Cambria", Font.BOLD, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		spinnerQuantita.setBounds(208, 216, 60, 24);
+		spinnerQuantita.setBounds(274, 260, 60, 24);
 		((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
 		contentPane.add(spinnerQuantita);
 		
@@ -220,13 +303,13 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		LabelID.setForeground(new Color(0,41,82));
 		LabelID.setFont(new Font("Cambria", Font.BOLD, 16));
 		LabelID.setBorder(new RoundedCornerBorder());
-		LabelID.setBounds(208, 166, 68, 24);
+		LabelID.setBounds(274, 210, 68, 24);
 		contentPane.add(LabelID);
 		
 		/*LABEL SFONDO*/
 		LabelSfondo = new JLabel("");
-		LabelSfondo.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/SfondoAggiungiAlnegozio.png")));
-		LabelSfondo.setBounds(-8, -8, 467, 376);
+		LabelSfondo.setIcon(new ImageIcon(AggiungiAlNegozioDialog.class.getResource("/scrimg/SfondoClienti.png")));
+		LabelSfondo.setBounds(-8, -8, 580, 429);
 		contentPane.add(LabelSfondo);
 		
 		CaricaComboBoxNome(ctrl);
@@ -237,19 +320,19 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
 		comboBoxNome.removeAllItems();
 		for(int i=0; i<prodotti.size(); i++) {
-			if(prodotti.get(i).getOrtofrutta()==true && comboBoxTipologia.getSelectedItem()=="ORTOFRUTTA") {
+			if(prodotti.get(i).getOrtofrutta()==true && nome2.equals("ORTOFRUTTA")) {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getLatticino()==true && comboBoxTipologia.getSelectedItem()=="LATTICINI") {
+			else if(prodotti.get(i).getLatticino()==true && nome2.equals("LATTICINO")) {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getFarinaceo()==true && comboBoxTipologia.getSelectedItem()=="FARINACEI") {
+			else if(prodotti.get(i).getFarinaceo()==true && nome2.equals("FARINACEO")) {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getUova()==true && comboBoxTipologia.getSelectedItem()=="UOVA") {
+			else if(prodotti.get(i).getUova()==true && nome2.equals("UOVA")) {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getConfezionato()==true && comboBoxTipologia.getSelectedItem()=="CONFEZIONATI") {
+			else if(prodotti.get(i).getConfezionato()==true &&nome2.equals("CONFEZIONATO")) {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
 		}
@@ -271,5 +354,43 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		else {
 			LabelID.setText("");
 		}
+	}
+	
+	public void VisibilitaLabel(String nome) {
+		if(nome.equals("ORTOFRUTTA")) {
+			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofruttaBlue.png")));
+			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
+			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
+			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
+			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
+		}
+		else if(nome.equals("LATTICINO")) {
+			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
+			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
+			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
+			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticiniBlue.png")));
+			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
+		}
+		else if(nome.equals("CONFEZIONATO")) {
+			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
+			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
+			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionatiBlue.png")));
+			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
+			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
+		
+		}else if(nome.equals("FARINACEO")) {
+			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
+			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinaceiBlue.png")));
+			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
+			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
+			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
+			
+		}else if(nome.equals("UOVA")) {
+			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
+			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
+			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
+			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
+			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUovaBlue.png")));
+	}
 	}
 }

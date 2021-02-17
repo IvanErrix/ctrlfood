@@ -71,7 +71,7 @@ public class DepositoPanel extends JPanel {
 		/*SCROLLPANE*/
 		scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
+		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82),  new Color(0,41,82)));
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
 		scrollPane.getViewport().setOpaque(true);
 		scrollPane.setOpaque(false);
@@ -273,6 +273,7 @@ public class DepositoPanel extends JPanel {
 		ButtonElimina.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonElimina.setOpaque(false);
 		ButtonElimina.setBorder(null);
+		
 		ButtonElimina.setContentAreaFilled(false);
 		add(ButtonElimina);
 		
