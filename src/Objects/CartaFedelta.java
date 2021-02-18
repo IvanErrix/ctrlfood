@@ -4,36 +4,36 @@ import java.util.*;
 
 public class CartaFedelta{
 
-    public CartaFedelta(int idcarta_fedelta, double punti, double punti_ortofrutta, double punti_latticini,
-			double punti_farinacei, double punti_uova, double punti_confezionati, Date data, int chiave_cliente) {
+    public CartaFedelta(int idcartafedelta, double punti, double puntiortofrutta, double puntilatticini,
+			double puntifarinacei, double puntiuova, double punticonfezionati, Date data, int chiavecliente) {
 		super();
-		this.idcarta_fedelta = idcarta_fedelta;
+		this.idcartafedelta = idcartafedelta;
 		this.punti = punti;
-		this.punti_ortofrutta = punti_ortofrutta;
-		this.punti_latticini = punti_latticini;
-		this.punti_farinacei = punti_farinacei;
-		this.punti_uova = punti_uova;
-		this.punti_confezionati = punti_confezionati;
+		this.puntiortofrutta = puntiortofrutta;
+		this.puntilatticini = puntilatticini;
+		this.puntifarinacei = puntifarinacei;
+		this.puntiuova = puntiuova;
+		this.punticonfezionati = punticonfezionati;
 		this.data = data;
-		this.chiave_cliente = chiave_cliente;
+		this.chiavecliente = chiavecliente;
 	}
     
-    private int idcarta_fedelta;
+    private int idcartafedelta;
 	private double punti = 0;
-    private double punti_ortofrutta = 0;
-    private double punti_latticini = 0;
-    private double punti_farinacei = 0;
-    private double punti_uova = 0;
-    private double punti_confezionati = 0;
+    private double puntiortofrutta = 0;
+    private double puntilatticini = 0;
+    private double puntifarinacei = 0;
+    private double puntiuova = 0;
+    private double punticonfezionati = 0;
     private Date data;
-    private int chiave_cliente;
+    private int chiavecliente;
     
-	public int getIdcarta_fedelta() {
-		return idcarta_fedelta;
+	public int getIdcartafedelta() {
+		return idcartafedelta;
 	}
 	
-	public void setIdcarta_fedelta(int idcarta_fedelta) {
-		this.idcarta_fedelta = idcarta_fedelta;
+	public void setIdcartafedelta(int idcarta_fedelta) {
+		this.idcartafedelta = idcarta_fedelta;
 	}
 	
 	public double getPunti() {
@@ -44,44 +44,44 @@ public class CartaFedelta{
 		this.punti = punti;
 	}
 	
-	public double getPunti_ortofrutta() {
-		return punti_ortofrutta;
+	public double getPuntiortofrutta() {
+		return puntiortofrutta;
 	}
 	
-	public void setPunti_ortofrutta(double punti_ortofrutta) {
-		this.punti_ortofrutta = punti_ortofrutta;
+	public void setPuntiortofrutta(double punti_ortofrutta) {
+		this.puntiortofrutta = punti_ortofrutta;
 	}
 	
-	public double getPunti_latticini() {
-		return punti_latticini;
+	public double getPuntilatticini() {
+		return puntilatticini;
 	}
 	
-	public void setPunti_latticini(double punti_latticini) {
-		this.punti_latticini = punti_latticini;
+	public void setPuntilatticini(double punti_latticini) {
+		this.puntilatticini = punti_latticini;
 	}
 	
-	public double getPunti_farinacei() {
-		return punti_farinacei;
+	public double getPuntifarinacei() {
+		return puntifarinacei;
 	}
 	
-	public void setPunti_farinacei(double punti_farinacei) {
-		this.punti_farinacei = punti_farinacei;
+	public void setPuntifarinacei(double punti_farinacei) {
+		this.puntifarinacei = punti_farinacei;
 	}
 	
-	public double getPunti_uova() {
-		return punti_uova;
+	public double getPuntiuova() {
+		return puntiuova;
 	}
 	
-	public void setPunti_uova(double punti_uova) {
-		this.punti_uova = punti_uova;
+	public void setPuntiuova(double punti_uova) {
+		this.puntiuova = punti_uova;
 	}
 	
-	public double getPunti_confezionati() {
-		return punti_confezionati;
+	public double getPunticonfezionati() {
+		return punticonfezionati;
 	}
 	
-	public void setPunti_confezionati(double punti_confezionati) {
-		this.punti_confezionati = punti_confezionati;
+	public void setPunticonfezionati(double punti_confezionati) {
+		this.punticonfezionati = punti_confezionati;
 	}
 	
 	public Date getData() {
@@ -92,12 +92,12 @@ public class CartaFedelta{
 		this.data = data;
 	}
 	
-	public int getChiave_cliente() {
-		return chiave_cliente;
+	public int getChiavecliente() {
+		return chiavecliente;
 	}
 	
-	public void setChiave_cliente(int chiave_cliente) {
-		this.chiave_cliente = chiave_cliente;
+	public void setChiavecliente(int chiave_cliente) {
+		this.chiavecliente = chiave_cliente;
 	}
     
 }

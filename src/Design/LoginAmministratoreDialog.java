@@ -210,7 +210,7 @@ public class LoginAmministratoreDialog extends JDialog {
 		
 	}
 	
-	@SuppressWarnings("deprecation")
+
 	public void EffettuaLogin(Controller ctrl) {
 		if (textFieldUsername.getText().equals("") && passwordField.getText().equals("")) {
 			setAlwaysOnTop(false);

@@ -9,11 +9,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.accessibility.AccessibleContext;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import ExternalClasses.ContentPane;
 import ExternalClasses.RoundedCornerBorder;
@@ -21,6 +23,8 @@ import Main.Controller;
 import Objects.Cliente;
 
 import javax.swing.JTextField;
+import javax.swing.plaf.basic.BasicComboPopup;
+
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.Cursor;
@@ -36,6 +40,7 @@ public class ModificaClienteDialog extends JDialog {
 	private JTextField textFieldNome;
 	private JTextField textFieldCognome;
 	private JTextField textFieldCodiceFiscale;
+	private JList<?> list;
 	private JComboBox comboBoxCliente;
 	private JLabel LabelCliente;
 	private JLabel LabelNome;
@@ -164,6 +169,12 @@ public class ModificaClienteDialog extends JDialog {
 		
 		/*COMBOBOX CLIENTE*/
 		comboBoxCliente = new JComboBox<Object>();
+		AccessibleContext ac = comboBoxCliente.getAccessibleContext();
+		BasicComboPopup pop = (BasicComboPopup) ac.getAccessibleChild(0);
+		list = pop.getList();
+		list.setSelectionForeground(new Color(191, 215, 255));
+		list.setSelectionBackground(new Color(0, 41, 82));
+		list.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		comboBoxCliente.setFocusable(false);
 		comboBoxCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

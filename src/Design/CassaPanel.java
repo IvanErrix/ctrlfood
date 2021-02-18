@@ -204,21 +204,13 @@ public class CassaPanel extends JPanel {
 			prezzo.setFont(new Font("Cambria", Font.BOLD, 17));
 			prezzo.setForeground(new Color(0, 41, 82));
 			prezzo.setBounds(635, y, 65, 14);
-			
 			PanelCaricamento.add(prezzo);
+			
 			totale = totale + (prodotti.get(i).getPrezzo() * prodotti.get(i).getQuantita());
 			y=y+30;
 		}
 		
-		LabelTotaleNumero.setText(round(totale, 2)+"€");
-	}
-	
-	public static double round(double value, int places) {
-	    if (places < 0) throw new IllegalArgumentException();
-	    long factor = (long) Math.pow(10, places);
-	    value = value * factor;
-	    long tmp = Math.round(value);
-	    return (double) tmp / factor;
+		LabelTotaleNumero.setText(ctrl.Arrotonda(totale, 2)+"€");
 	}
 	
 	public void ControlloTotale() {

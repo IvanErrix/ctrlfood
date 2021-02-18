@@ -25,6 +25,7 @@ import DAO.Connessione;
 import DAO.DepositoDAO;
 import DAO.LoginAmministratoreDAO;
 import DAO.NegozioDAO;
+import DAO.PagamentoDAO;
 import Design.AggiungiAlCarrelloDialog;
 import Design.AggiungiAlDepositoDialog;
 import Design.AggiungiAlNegozioDialog;
@@ -36,7 +37,6 @@ import Design.ClientiPanel;
 import Design.DepositoPanel;
 import Design.FrameAmministratore;
 import Design.FrameCliente;
-import Design.LoadingDialog;
 import Design.LoginAmministratoreDialog;
 import Design.FrameIniziale;
 import Design.ModificaClienteDialog;
@@ -55,6 +55,7 @@ public class Controller {
 	private static ClienteDAO clientedao;
 	private static DepositoDAO depositodao;
 	private static NegozioDAO negoziodao;
+	private static PagamentoDAO pagamentodao;
 	private static LoginAmministratoreDAO loginamministratoredao;
 	
 	/*Prima di tutto il programma controlla la connessione. See la connessione è assente
@@ -94,6 +95,7 @@ public class Controller {
 			clientedao = new ClienteDAO();
 			depositodao = new DepositoDAO();
 			negoziodao = new NegozioDAO();
+			pagamentodao = new PagamentoDAO();
 			loginamministratoredao = new LoginAmministratoreDAO();
 		} catch (Exception e) {
 			System.exit(0);
@@ -223,15 +225,6 @@ public class Controller {
 		dialog.setVisible(true);
 	}
 	
-	public JDialog ApriLoadingDialog(Controller ctrl) {
-		LoadingDialog dialog = new LoadingDialog(ctrl);
-		return dialog;
-	}
-	
-	public void ChiudiLoadingDialog(Controller ctrl, JDialog dialog) {
-		dialog.dispose();
-	}
-	
 	//Stampa all'interno di un file txt che si trova sul desktop, il contenuto della tabella passata come argomento
 	public void StampaListaProdotti(JTable table, String tipo) {
 		String cartellahome = System.getProperty("user.home");
@@ -260,20 +253,7 @@ public class Controller {
 			e.printStackTrace();
 		}
 	}
-	
-	//Carica il file con estensione JPG dal pc tramite il filechooser
-	public void CaricaFileJPGDaPC(JTextField textFieldFoto) {
-		JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-		jfc.setDialogTitle("Seleziona un file");
-		jfc.setAcceptAllFileFilterUsed(false);
-		FileNameExtensionFilter filter =new FileNameExtensionFilter("JPG", "jpg");
-		jfc.addChoosableFileFilter(filter);
-		int returnValue = jfc.showOpenDialog(null);
-		if(returnValue == JFileChooser.APPROVE_OPTION) {
-			textFieldFoto.setText(jfc.getSelectedFile().getPath());
-		}
-	}
-	
+
 	//Consente il movimento delle icone all'interno di AnimazionePanel
 	public void MovimentoIcone(JLabel label) {
 		int velocita = 2;
@@ -424,5 +404,22 @@ public class Controller {
 	
 	public void AggiornaCarrello(int idcarrello) {
 		carrellodao.AggiornaCarrello(idcarrello);
+	}
+	
+	//Funzioni Database Pagamento
+	public void AggiornaPunti(double puntiortofrutta, double puntilatticini, double puntifarinacei, double puntiuova, double punticonfezionati, double puntitotali, int cartafedelta ) {
+		pagamentodao.AggiornaPunti(puntiortofrutta, puntilatticini, puntifarinacei, puntiuova, punticonfezionati, puntitotali, cartafedelta);
+	}
+	
+	public void AggiungiPagamento(int chiavecarrello, int chiavecartafedelta) {
+		pagamentodao.AggiungiPagamento(chiavecarrello, chiavecartafedelta);
+	}
+	
+	public double Arrotonda(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+	    long factor = (long) Math.pow(10, places);
+	    value = value * factor;
+	    long tmp = Math.round(value);
+	    return (double) tmp / factor;
 	}
 }

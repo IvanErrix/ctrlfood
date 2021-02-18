@@ -22,6 +22,7 @@ import com.toedter.calendar.JTextFieldDateEditor;
 import ExternalClasses.ContentPane;
 import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
+import Objects.Prodotto;
 
 import java.awt.Cursor;
 import java.awt.event.ActionListener;
@@ -29,6 +30,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -36,6 +38,7 @@ import java.awt.event.KeyEvent;
 public class PagamentoConCartaDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
+	private ArrayList<Prodotto> prodotti;
 	private ContentPane contentPane;
 	private JButton ButtonVediPassword;
 	private JButton ButtonPaga;
@@ -174,6 +177,12 @@ public class PagamentoConCartaDialog extends JDialog {
 		
 		/*DATACHOOSER SCADENZA CARTA*/
 		dateChooserScadenzaCarta = new JDateChooser();
+		dateChooserScadenzaCarta.getCalendarButton().setBorderPainted(false);
+		dateChooserScadenzaCarta.getCalendarButton().setContentAreaFilled(false);
+		dateChooserScadenzaCarta.getCalendarButton().setBackground(new Color(191,215,255));
+		dateChooserScadenzaCarta.getCalendarButton().setOpaque(false);
+		dateChooserScadenzaCarta.getCalendarButton().setBorder(null);
+		dateChooserScadenzaCarta.getCalendarButton().setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/calendar.png")));
 		dateChooserEditorScadenzaCarta = ((JTextFieldDateEditor)dateChooserScadenzaCarta.getDateEditor());
 		dateChooserEditorScadenzaCarta.setBackground(new Color(191, 215, 255));
 		dateChooserEditorScadenzaCarta.setForeground(new Color(0, 41, 82));
@@ -272,7 +281,8 @@ public class PagamentoConCartaDialog extends JDialog {
 		LabelSfondo = new JLabel("");
 		LabelSfondo.setIcon(new ImageIcon(PagamentoConCartaDialog.class.getResource("/scrimg/SfondoClienti.png")));
 		LabelSfondo.setBounds(-9, -9, 580, 429);
-		add(LabelSfondo);	
+		add(LabelSfondo);
+		
 	}
 	
 	public void ControlloPagamaneto(Controller ctrl) {
@@ -289,11 +299,53 @@ public class PagamentoConCartaDialog extends JDialog {
 			}
 			else {
 				setAlwaysOnTop(false);
-				ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
+				try {
+					ctrl.AggiungiPagamento(ctrl.RecuperaCarrello(), Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
+					CalcoloPunti(ctrl);
+					ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
+				} catch (NumberFormatException e) {
+					ctrl.AggiungiPagamento(ctrl.RecuperaCarrello(),0);
+					CalcoloPunti(ctrl);
+					ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
+				}
 				JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
 				setAlwaysOnTop(true);
 				dispose();
 			} 
+		}
+	}
+	
+	public void CalcoloPunti(Controller ctrl) {
+		prodotti=ctrl.CaricaProdottiCarrello();
+		Double totalepunti = 0.0;
+		Double puntiortofrutta = 0.0;
+		Double puntilatticini = 0.0;
+		Double puntifarinacei = 0.0;
+		Double puntiuova = 0.0;
+		Double punticonfezionati = 0.0;
+		for(int i=0; i<prodotti.size(); i++) {
+			if(prodotti.get(i).getOrtofrutta()==true) {
+				puntiortofrutta=puntiortofrutta+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
+				System.out.println(puntiortofrutta);
+			}
+			else if(prodotti.get(i).getLatticino()==true){
+				puntilatticini=puntilatticini+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
+			}
+			else if(prodotti.get(i).getFarinaceo()==true) {
+				puntifarinacei=puntifarinacei+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
+			}
+			else if(prodotti.get(i).getUova()==true){
+				puntiuova=puntiuova+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
+			}
+			else if(prodotti.get(i).getConfezionato()==true) {
+				punticonfezionati=punticonfezionati+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
+			}
+		}
+		totalepunti =puntiortofrutta + puntilatticini + puntifarinacei + puntiuova + punticonfezionati;
+		try {
+			ctrl.AggiornaPunti(ctrl.Arrotonda(puntiortofrutta, 2), ctrl.Arrotonda(puntilatticini, 2), ctrl.Arrotonda(puntifarinacei, 2), ctrl.Arrotonda(puntiuova, 2), 
+					ctrl.Arrotonda(punticonfezionati, 2), ctrl.Arrotonda(totalepunti, 2), Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
+		} catch (NumberFormatException e) {
 		}
 	}
 }

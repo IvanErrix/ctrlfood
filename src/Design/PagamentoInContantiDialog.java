@@ -119,7 +119,15 @@ public class PagamentoInContantiDialog extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				if(textFieldContanti.getText().length()!=0 || LabelRestoStampato.getText().length()!=0) {
 					setAlwaysOnTop(false);
-					ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
+					try {
+						ctrl.AggiungiPagamento(ctrl.RecuperaCarrello(), Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
+						CalcoloPunti(ctrl);
+						ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
+					} catch (NumberFormatException e1) {
+						ctrl.AggiungiPagamento(ctrl.RecuperaCarrello(), 0);
+						CalcoloPunti(ctrl);
+						ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
+					}
 					JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
 					setAlwaysOnTop(true);
 					dispose();
@@ -254,7 +262,7 @@ public class PagamentoInContantiDialog extends JDialog {
 		for(int i=0; i<prodotti.size(); i++) {
 			totale = totale + (prodotti.get(i).getPrezzo() * prodotti.get(i).getQuantita());
 		}
-		LabelTotaleStampato.setText(round(totale,2)+"");
+		LabelTotaleStampato.setText(ctrl.Arrotonda(totale,2)+"");
 	}
 	
 	public void TotaleSpesa(Controller ctrl) {
@@ -265,7 +273,7 @@ public class PagamentoInContantiDialog extends JDialog {
 				LabelRestoStampato.setText("");
 			}
 			else {
-				LabelRestoStampato.setText(round(resto,2)+"");
+				LabelRestoStampato.setText(ctrl.Arrotonda(resto,2)+"");
 			}
 		}
 		else{
@@ -273,11 +281,38 @@ public class PagamentoInContantiDialog extends JDialog {
 		}
 	}
 	
-	public static double round(double value, int places) {
-	    if (places < 0) throw new IllegalArgumentException();
-	    long factor = (long) Math.pow(10, places);
-	    value = value * factor;
-	    long tmp = Math.round(value);
-	    return (double) tmp / factor;
+	public void CalcoloPunti(Controller ctrl) {
+		prodotti=ctrl.CaricaProdottiCarrello();
+		Double totalepunti = 0.0;
+		Double puntiortofrutta = 0.0;
+		Double puntilatticini = 0.0;
+		Double puntifarinacei = 0.0;
+		Double puntiuova = 0.0;
+		Double punticonfezionati = 0.0;
+		for(int i=0; i<prodotti.size(); i++) {
+			if(prodotti.get(i).getOrtofrutta()==true) {
+				puntiortofrutta=puntiortofrutta+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
+				System.out.println(puntiortofrutta);
+			}
+			else if(prodotti.get(i).getLatticino()==true){
+				puntilatticini=puntilatticini+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
+			}
+			else if(prodotti.get(i).getFarinaceo()==true) {
+				puntifarinacei=puntifarinacei+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
+			}
+			else if(prodotti.get(i).getUova()==true){
+				puntiuova=puntiuova+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
+			}
+			else if(prodotti.get(i).getConfezionato()==true) {
+				punticonfezionati=punticonfezionati+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
+			}
+		}
+		totalepunti =puntiortofrutta + puntilatticini + puntifarinacei + puntiuova + punticonfezionati;
+		try {
+			ctrl.AggiornaPunti(ctrl.Arrotonda(puntiortofrutta, 2), ctrl.Arrotonda(puntilatticini, 2), ctrl.Arrotonda(puntifarinacei, 2), ctrl.Arrotonda(puntiuova, 2), 
+					ctrl.Arrotonda(punticonfezionati, 2), ctrl.Arrotonda(totalepunti, 2), Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
+		} catch (NumberFormatException e) {
+		}
 	}
+	
 }

@@ -48,10 +48,8 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private JButton ButtonUova;
 	private JButton ButtonAggiungi;
 	private JButton ButtonAnnulla;
-	private JComboBox comboBoxTipologia;
 	private JList<?> list;
 	private JComboBox comboBoxNome;
-	private JList<?> list2;
 	private SpinnerNumberModel model;
 	private JSpinner spinnerQuantita;
 	private JLabel LabelID;
@@ -182,12 +180,19 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonAggiungi = new JButton("");
 		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setAlwaysOnTop(false);
-				ctrl.AggiungiProdottoAlNegozio(Integer.parseInt(LabelID.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()));
-				JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
-				setAlwaysOnTop(true);
-				CaricaComboBoxNome(ctrl);
-				CaricaSpinnerQuantita(ctrl);
+				if (comboBoxNome.getSelectedItem()!=null) {
+					setAlwaysOnTop(false);
+					ctrl.AggiungiProdottoAlNegozio(Integer.parseInt(LabelID.getText()),Integer.parseInt(spinnerQuantita.getValue().toString()));
+					JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE \nAGGIORNARE LA TABELLA PER VISUALIZZARE IL PRODOTTO", "",JOptionPane.INFORMATION_MESSAGE);
+					setAlwaysOnTop(true);
+					CaricaComboBoxNome(ctrl);
+					CaricaSpinnerQuantita(ctrl);
+				}
+				else {
+					setAlwaysOnTop(false);
+					JOptionPane.showMessageDialog(null, "TIPOLOGIA DI PRODOTTI TERMINATA IN DEPOSITO", "",JOptionPane.WARNING_MESSAGE);
+					setAlwaysOnTop(true);
+				}
 			}
 		});
 		ButtonAggiungi.addMouseListener(new MouseAdapter() {
@@ -255,29 +260,6 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxNome.setBackground(new Color(191,215,255));
 		comboBoxNome.setBounds(274, 151, 190, 25);
 		contentPane.add(comboBoxNome);
-		
-		/*COMBOBOX TIPOLOGIA*/
-//		comboBoxTipologia = new JComboBox();
-//		comboBoxTipologia.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				CaricaComboBoxNome(ctrl);
-//				CaricaSpinnerQuantita(ctrl);
-//			}
-//		});
-//		AccessibleContext ac2 = comboBoxTipologia.getAccessibleContext();
-//		BasicComboPopup pop2 = (BasicComboPopup) ac2.getAccessibleChild(0);
-//		list2 = pop2.getList();
-//		list2.setSelectionForeground(new Color(191, 215, 255));
-//		list2.setSelectionBackground(new Color(0, 41, 82));
-//		comboBoxTipologia.setModel(new DefaultComboBoxModel(new String[] {"ORTOFRUTTA", "LATTICINI", "FARINACEI", "UOVA", "CONFEZIONATI"}));
-//		comboBoxNome.setMaximumRowCount(5);
-//		comboBoxTipologia.setForeground(new Color(0,41,82));
-//		comboBoxTipologia.setFont(new Font("Cambria", Font.BOLD, 14));
-//		comboBoxTipologia.setFocusable(false);
-//		comboBoxTipologia.setBorder(new RoundedCornerBorder());
-//		comboBoxTipologia.setBackground(new Color(191,215,255));
-//		comboBoxTipologia.setBounds(208, 56, 190, 25);
-//		contentPane.add(comboBoxTipologia);
 		
 		/*SPINNER QUANTITA*/
 		model = new SpinnerNumberModel(1, 1, 50, 1);

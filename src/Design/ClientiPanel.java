@@ -334,13 +334,13 @@ public class ClientiPanel extends JPanel {
 			String nome = clienti.get(i).getNome();
 			String cognome = clienti.get(i).getCognome();
 			String codice_fiscale = clienti.get(i).getCodice_fiscale();
-			int idcarta = carte.get(i).getIdcarta_fedelta();
+			int idcarta = carte.get(i).getIdcartafedelta();
 			double punti = carte.get(i).getPunti();
-			double punti_ortofrutta = carte.get(i).getPunti_ortofrutta();
-			double punti_latticini = carte.get(i).getPunti_latticini();
-			double punti_farinacei = carte.get(i).getPunti_farinacei();
-			double punti_uova = carte.get(i).getPunti_uova();
-			double punti_confezionati = carte.get(i).getPunti_confezionati();
+			double punti_ortofrutta = carte.get(i).getPuntiortofrutta();
+			double punti_latticini = carte.get(i).getPuntilatticini();
+			double punti_farinacei = carte.get(i).getPuntifarinacei();
+			double punti_uova = carte.get(i).getPuntiuova();
+			double punti_confezionati = carte.get(i).getPunticonfezionati();
 			
 			
 			model.addRow(new Object [] {id, nome, cognome, codice_fiscale, idcarta, punti_ortofrutta, punti_latticini, punti_farinacei, punti_uova, punti_confezionati, punti});

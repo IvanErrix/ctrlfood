@@ -208,7 +208,7 @@ public class FrameAmministratore extends JFrame {
 		ButtonChiudi.setOpaque(false);
 		ButtonChiudi.setBorder(null);
 		ButtonChiudi.setContentAreaFilled(false);
-		ButtonChiudi.setBounds(1109, 5, 18, 18);
+		ButtonChiudi.setBounds(1109, 8, 18, 18);
 		getContentPane().add(ButtonChiudi);
 		
 		/*BUTTON RIDUCI*/
@@ -231,7 +231,7 @@ public class FrameAmministratore extends JFrame {
 		ButtonRiduci.setFocusable(false);
 		ButtonRiduci.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		ButtonRiduci.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/ButtonRiduci.png")));
-		ButtonRiduci.setBounds(1088, 5, 15, 18);
+		ButtonRiduci.setBounds(1088, 8, 15, 18);
 		ButtonRiduci.setOpaque(false);
 		ButtonRiduci.setBorder(null);
 		ButtonRiduci.setContentAreaFilled(false);

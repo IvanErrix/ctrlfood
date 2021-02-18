@@ -186,9 +186,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 				}
 				else {
 					setAlwaysOnTop(false);
-					JOptionPane.showMessageDialog(null, "PRODOTTI TERMINATI NEL NEGOZIO", "", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "QUESTA TIPOLOGIA DI PRODOTTI È TERMINATA NEL NEGOZIO", "", JOptionPane.WARNING_MESSAGE);
 					setAlwaysOnTop(true);
-					dispose();
 				}
 			}
 		});
@@ -341,9 +340,6 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
 			}
 		}
-//		for(int i=0; i<prodotti.size(); i++) {
-//				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
-//		}
 	}
 	
 	public void CaricaSpinnerELabels(Controller ctrl) {
