@@ -56,7 +56,7 @@ public class ClienteDAO {
 			ResultSet datirecuperati = query.executeQuery();
 			
 			while(datirecuperati.next()) {
-				carte.add(new CartaFedelta(datirecuperati.getInt(1), datirecuperati.getInt(2), datirecuperati.getDate(3), datirecuperati.getInt(4)));
+				carte.add(new CartaFedelta(datirecuperati.getInt(1), datirecuperati.getDouble(2), datirecuperati.getDouble(3), datirecuperati.getDouble(4), datirecuperati.getDouble(5), datirecuperati.getDouble(6), datirecuperati.getDouble(7), datirecuperati.getDate(8), datirecuperati.getInt(9)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

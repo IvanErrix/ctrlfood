@@ -186,7 +186,6 @@ public class CassaPanel extends JPanel {
 			nome.setText(prodotti.get(i).getNome());
 			nome.setHorizontalAlignment(SwingConstants.CENTER);
 			nome.setFont(new Font("Cambria", Font.BOLD, 17));
-//			nome.setBorder(new RoundedCornerBorder());
 			nome.setForeground(new Color(0, 41, 82));
 			nome.setBounds(10, y, 200, 25);
 			PanelCaricamento.add(nome);

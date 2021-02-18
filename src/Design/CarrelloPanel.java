@@ -21,6 +21,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -91,6 +92,12 @@ public class CarrelloPanel extends JPanel {
 		table.getTableHeader().setBackground(new Color(191, 215, 255));
 		table.getTableHeader().setForeground(new Color(0,41,82));
 		table.getTableHeader().setFont(new Font("Cambria", Font.BOLD, 15));
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		TableColumn column = null;
+		for (int i = 0; i < 11; i++) {
+		    column = table.getColumnModel().getColumn(i);
+		    column.setPreferredWidth(110);
+		}
 		DefaultTableCellRenderer renderer = (DefaultTableCellRenderer)table.getDefaultRenderer(Object.class);
 	    renderer.setHorizontalAlignment( SwingConstants.CENTER );
 		TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());

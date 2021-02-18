@@ -19,9 +19,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-
 import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
 import Objects.CartaFedelta;
@@ -31,6 +31,7 @@ import java.awt.Font;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.RowSorter;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -42,7 +43,7 @@ public class ClientiPanel extends JPanel {
 	
 	private ArrayList<Cliente> clienti;
 	private ArrayList<CartaFedelta> carte;
-	private String Titoli[]= {"IDCliente", "Nome", "Cognome", "Codice Fiscale", "ID Carta", "Punti"};
+	private String Titoli[]= {"IDCliente", "Nome", "Cognome", "Codice Fiscale", "ID Carta", "Punti Ortofrutta", "Punti Latticini", "Punti Farinacei", "Punti Uova", "Punti Confezionati", "Punti Totali"};
 	public DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
 		
 		private static final long serialVersionUID = 1L;
@@ -73,6 +74,7 @@ public class ClientiPanel extends JPanel {
 		
 		/*SCROLLPANE*/
 		scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82),  new Color(0,41,82)));
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
 		scrollPane.setOpaque(false);
@@ -92,6 +94,12 @@ public class ClientiPanel extends JPanel {
 		table.setBackground(new Color(191, 215, 255));
 		table.setBounds(302, 183, 150, 150);
 		scrollPane.setViewportView(table);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		TableColumn column = null;
+		for (int i = 0; i < 11; i++) {
+		    column = table.getColumnModel().getColumn(i);
+		    column.setPreferredWidth(130);
+		}
 		table.getTableHeader().setReorderingAllowed(false);
 		table.getTableHeader().setBackground(new Color(191, 215, 255));
 		table.getTableHeader().setForeground(new Color(0,41,82));
@@ -326,11 +334,16 @@ public class ClientiPanel extends JPanel {
 			String nome = clienti.get(i).getNome();
 			String cognome = clienti.get(i).getCognome();
 			String codice_fiscale = clienti.get(i).getCodice_fiscale();
-//			int idcarta = clienti.get(i).getChiavecarta_fedelta();
 			int idcarta = carte.get(i).getIdcarta_fedelta();
-			int punti = carte.get(i).getPunti();
+			double punti = carte.get(i).getPunti();
+			double punti_ortofrutta = carte.get(i).getPunti_ortofrutta();
+			double punti_latticini = carte.get(i).getPunti_latticini();
+			double punti_farinacei = carte.get(i).getPunti_farinacei();
+			double punti_uova = carte.get(i).getPunti_uova();
+			double punti_confezionati = carte.get(i).getPunti_confezionati();
 			
-			model.addRow(new Object [] {id, nome, cognome, codice_fiscale, idcarta, punti});
+			
+			model.addRow(new Object [] {id, nome, cognome, codice_fiscale, idcarta, punti_ortofrutta, punti_latticini, punti_farinacei, punti_uova, punti_confezionati, punti});
 		}
 		
 	}
