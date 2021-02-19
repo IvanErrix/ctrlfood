@@ -42,7 +42,7 @@ public class FrameAmministratore extends JFrame {
 
 	public FrameAmministratore(Controller ctrl) {
 		setUndecorated(true);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameAmministratore.class.getResource("/scrimg/logo2.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameAmministratore.class.getResource("/scrimg/logo.png")));
 		setFont(new Font("Impact", Font.BOLD, 14));
 		setTitle("CtrlFood");
 		setResizable(false);

@@ -27,8 +27,9 @@ public class FrameIniziale extends JFrame {
 	private JLabel LabelSfondo;
 
 	public FrameIniziale(Controller ctrl) {
+		
 		setUndecorated(true);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameAmministratore.class.getResource("/scrimg/logo2.png")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameAmministratore.class.getResource("/scrimg/logo.png")));
 		setSize(355, 467);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
