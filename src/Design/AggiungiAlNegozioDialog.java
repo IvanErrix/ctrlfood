@@ -28,7 +28,6 @@ import Main.Controller;
 import Objects.Prodotto;
 
 import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 
 public class AggiungiAlNegozioDialog extends JDialog {
@@ -40,7 +39,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private JLabel LabelNome;
 	private JLabel LabelQuantita;
 	private JLabel LabelIDProdotto;
-	private String nome2 = "ORTOFRUTTA";
+	private String nome = "ORTOFRUTTA";
 	private JButton ButtonOrtofrutta;
 	private JButton ButtonFarinacei;
 	private JButton ButtonConfezionati;
@@ -49,17 +48,17 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private JButton ButtonAggiungi;
 	private JButton ButtonAnnulla;
 	private JList<?> list;
-	private JComboBox comboBoxNome;
+	private JComboBox<String> comboBoxNome;
 	private SpinnerNumberModel model;
 	private JSpinner spinnerQuantita;
 	private JLabel LabelID;
 	private JLabel LabelSfondo;
 
-	@SuppressWarnings("unchecked")
 	public AggiungiAlNegozioDialog(Controller ctrl) {
 		
 		setUndecorated(true);
 		setSize(568, 429);
+		setModalityType(DEFAULT_MODALITY_TYPE);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
 		
@@ -95,8 +94,8 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonOrtofrutta = new JButton("");
 		ButtonOrtofrutta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				nome2 = "ORTOFRUTTA";
-				VisibilitaLabel(nome2);
+				nome = "ORTOFRUTTA";
+				VisibilitaLabel(nome);
 				CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -112,8 +111,8 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonFarinacei = new JButton("");
 		ButtonFarinacei.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome2 = "FARINACEO";
-			VisibilitaLabel(nome2);
+			nome = "FARINACEO";
+			VisibilitaLabel(nome);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -129,8 +128,8 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonConfezionati = new JButton("");
 		ButtonConfezionati.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome2 = "CONFEZIONATO";
-			VisibilitaLabel(nome2);
+			nome = "CONFEZIONATO";
+			VisibilitaLabel(nome);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -146,8 +145,8 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonLatticini = new JButton("");
 		ButtonLatticini.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome2 = "LATTICINO";
-			VisibilitaLabel(nome2);
+			nome = "LATTICINO";
+			VisibilitaLabel(nome);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -163,8 +162,8 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonUova = new JButton("");
 		ButtonUova.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome2 = "UOVA";
-			VisibilitaLabel(nome2);
+			nome = "UOVA";
+			VisibilitaLabel(nome);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -180,19 +179,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonAggiungi = new JButton("");
 		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (comboBoxNome.getSelectedItem()!=null) {
-					setAlwaysOnTop(false);
-					ctrl.AggiungiProdottoAlNegozio(Integer.parseInt(LabelID.getText()),Integer.parseInt(spinnerQuantita.getValue().toString()));
-					JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE \nAGGIORNARE LA TABELLA PER VISUALIZZARE IL PRODOTTO", "",JOptionPane.INFORMATION_MESSAGE);
-					setAlwaysOnTop(true);
-					CaricaComboBoxNome(ctrl);
-					CaricaSpinnerQuantita(ctrl);
-				}
-				else {
-					setAlwaysOnTop(false);
-					JOptionPane.showMessageDialog(null, "TIPOLOGIA DI PRODOTTI TERMINATA IN DEPOSITO", "",JOptionPane.WARNING_MESSAGE);
-					setAlwaysOnTop(true);
-				}
+				ControlloAggiungiProdotto(ctrl);
 			}
 		});
 		ButtonAggiungi.addMouseListener(new MouseAdapter() {
@@ -241,7 +228,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		contentPane.add(ButtonAnnulla);
 		
 		/*COMBOBOX NOME*/
-		comboBoxNome = new JComboBox();
+		comboBoxNome = new JComboBox<String>();
 		comboBoxNome.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CaricaSpinnerQuantita(ctrl);
@@ -302,19 +289,19 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
 		comboBoxNome.removeAllItems();
 		for(int i=0; i<prodotti.size(); i++) {
-			if(prodotti.get(i).getOrtofrutta()==true && nome2.equals("ORTOFRUTTA")) {
+			if(prodotti.get(i).getOrtofrutta()==true && nome.equals("ORTOFRUTTA")) {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getLatticino()==true && nome2.equals("LATTICINO")) {
+			else if(prodotti.get(i).getLatticino()==true && nome.equals("LATTICINO")) {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getFarinaceo()==true && nome2.equals("FARINACEO")) {
+			else if(prodotti.get(i).getFarinaceo()==true && nome.equals("FARINACEO")) {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getUova()==true && nome2.equals("UOVA")) {
+			else if(prodotti.get(i).getUova()==true && nome.equals("UOVA")) {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getConfezionato()==true &&nome2.equals("CONFEZIONATO")) {
+			else if(prodotti.get(i).getConfezionato()==true &&nome.equals("CONFEZIONATO")) {
 				comboBoxNome.addItem(prodotti.get(i).getNome());
 			}
 		}
@@ -360,19 +347,37 @@ public class AggiungiAlNegozioDialog extends JDialog {
 			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 		
-		}else if(nome.equals("FARINACEO")) {
+		}
+		else if(nome.equals("FARINACEO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinaceiBlue.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
 			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 			
-		}else if(nome.equals("UOVA")) {
+		}
+		else if(nome.equals("UOVA")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
 			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUovaBlue.png")));
+		}
 	}
+	
+	public void ControlloAggiungiProdotto(Controller ctrl) {
+		if (comboBoxNome.getSelectedItem()!=null) {
+			setAlwaysOnTop(false);
+			ctrl.AggiungiProdottoAlNegozio(Integer.parseInt(LabelID.getText()),Integer.parseInt(spinnerQuantita.getValue().toString()));
+			JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE \nAGGIORNARE LA TABELLA PER VISUALIZZARE IL PRODOTTO", "",JOptionPane.INFORMATION_MESSAGE);
+			setAlwaysOnTop(true);
+			CaricaComboBoxNome(ctrl);
+			CaricaSpinnerQuantita(ctrl);
+		}
+		else {
+			setAlwaysOnTop(false);
+			JOptionPane.showMessageDialog(null, "TIPOLOGIA DI PRODOTTI TERMINATA IN DEPOSITO", "",JOptionPane.WARNING_MESSAGE);
+			setAlwaysOnTop(true);
+		}
 	}
 }

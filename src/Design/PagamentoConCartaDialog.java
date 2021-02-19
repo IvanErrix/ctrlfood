@@ -57,12 +57,14 @@ public class PagamentoConCartaDialog extends JDialog {
 	private boolean visible=false;
 
 	public PagamentoConCartaDialog(Controller ctrl) {
+		
 		Date data_corrente = new Date();
 		
 		setAlwaysOnTop(true);
 		getContentPane().setBackground(new Color(0, 67, 137));
 		setUndecorated(true);
 		setSize(563, 414);
+		setModalityType(DEFAULT_MODALITY_TYPE);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		
 		

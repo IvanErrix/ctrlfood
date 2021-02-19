@@ -8,16 +8,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.UIManager;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.filechooser.FileSystemView;
 
 import DAO.CarrelloDAO;
 import DAO.ClienteDAO;
@@ -37,13 +32,12 @@ import Design.ClientiPanel;
 import Design.DepositoPanel;
 import Design.FrameAmministratore;
 import Design.FrameCliente;
-import Design.LoginAmministratoreDialog;
+import Design.LoginAmministratoreFrame;
 import Design.FrameIniziale;
 import Design.ModificaClienteDialog;
 import Design.NegozioPanel;
 import Design.PagamentoConCartaDialog;
 import Design.PagamentoInContantiDialog;
-import Design.SpostaDalNegozioDialog;
 import Objects.CartaFedelta;
 import Objects.Cliente;
 import Objects.Prodotto;
@@ -58,9 +52,10 @@ public class Controller {
 	private static PagamentoDAO pagamentodao;
 	private static LoginAmministratoreDAO loginamministratoredao;
 	
-	/*Prima di tutto il programma controlla la connessione. See la connessione è assente
-	 *Se invece la connessione è presente, la funzione main fa partire la prima schermata
-	 *del programma, ovvero FramePrincipale
+	/* Prima di tutto il programma controlla la connessione. Se la connessione è assente,
+	 * il programa non si avvierà.
+	 * Se invece la connessione è presente, la funzione main farà partire la prima schermata
+	 * del programma, ovvero FramePrincipale
 	 */
 	public static void main(String[] args) {
 		UIManager.put("ComboBox.background", new Color(191, 215, 255));
@@ -181,8 +176,8 @@ public class Controller {
 	//Funzioni per l'apertura delle dialog
 	
 	public void ApriLoginAmministratoreDialog(Controller ctrl) {
-		LoginAmministratoreDialog dialog = new LoginAmministratoreDialog(ctrl);
-		dialog.setVisible(true);
+		LoginAmministratoreFrame frame = new LoginAmministratoreFrame(ctrl);
+		frame.setVisible(true);
 	}
 	
 	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
@@ -207,11 +202,6 @@ public class Controller {
 	
 	public void ApriPagamentoConCartaDialog(Controller ctrl) {
 		PagamentoConCartaDialog dialog = new PagamentoConCartaDialog(ctrl);
-		dialog.setVisible(true);
-	}
-	
-	public void ApriSpostaDalNegozioDialog() {
-		SpostaDalNegozioDialog dialog = new SpostaDalNegozioDialog();
 		dialog.setVisible(true);
 	}
 	

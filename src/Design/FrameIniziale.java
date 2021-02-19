@@ -17,7 +17,9 @@ import java.awt.event.ActionEvent;
 import java.awt.Cursor;
 
 public class FrameIniziale extends JFrame {
+	
 	private static final long serialVersionUID = 1L;
+	
 	private ContentPane contentPane;
 	private JButton ButtonChiudi;
 	private JButton ButtonAmministratore;

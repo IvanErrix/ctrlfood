@@ -44,7 +44,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 	private JLabel LabelDataScadenzaProdotto; //Label fissa
 	private JLabel LabelDataScadenza; //Label caricamento della data di scadelza del prodotto
 	private JLabel LabelSfondo;
-	private String nome2 = "ORTOFRUTTA";
+	private String nome = "ORTOFRUTTA";
 	private JButton ButtonOrtofrutta;
 	private JButton ButtonFarinacei;
 	private JButton ButtonConfezionati;
@@ -59,6 +59,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(570, 417);
+		setModalityType(DEFAULT_MODALITY_TYPE);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
 		
@@ -87,8 +88,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonOrtofrutta = new JButton("");
 		ButtonOrtofrutta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				nome2 = "ORTOFRUTTA";
-				VisibilitaLabel(nome2);
+				nome = "ORTOFRUTTA";
+				VisibilitaLabel(nome);
 				CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -104,8 +105,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonFarinacei = new JButton("");
 		ButtonFarinacei.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome2 = "FARINACEO";
-			VisibilitaLabel(nome2);
+			nome = "FARINACEO";
+			VisibilitaLabel(nome);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -121,8 +122,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonConfezionati = new JButton("");
 		ButtonConfezionati.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome2 = "CONFEZIONATO";
-			VisibilitaLabel(nome2);
+			nome = "CONFEZIONATO";
+			VisibilitaLabel(nome);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -138,8 +139,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonLatticini = new JButton("");
 		ButtonLatticini.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome2 = "LATTICINO";
-			VisibilitaLabel(nome2);
+			nome = "LATTICINO";
+			VisibilitaLabel(nome);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -155,8 +156,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonUova = new JButton("");
 		ButtonUova.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome2 = "UOVA";
-			VisibilitaLabel(nome2);
+			nome = "UOVA";
+			VisibilitaLabel(nome);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -172,23 +173,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonAggiungi = new JButton("");
 		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(comboBoxNome.getSelectedItem()!=null) {
-					String valore = comboBoxNome.getSelectedItem().toString();
-					valore = valore.replaceAll("\\s+","");
-					String[] parts = valore.split("-");
-					String idprodotto = parts[0];
-					ctrl.AggiungiProdottoAlCarrello(ctrl.RecuperaCarrello(), Integer.parseInt(idprodotto), Integer.parseInt(spinnerQuantita.getValue().toString()));
-					setAlwaysOnTop(false);
-					JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE", "", JOptionPane.INFORMATION_MESSAGE);
-					setAlwaysOnTop(true);
-					CaricaComboBoxNome(ctrl);
-					CaricaSpinnerELabels(ctrl);
-				}
-				else {
-					setAlwaysOnTop(false);
-					JOptionPane.showMessageDialog(null, "QUESTA TIPOLOGIA DI PRODOTTI È TERMINATA NEL NEGOZIO", "", JOptionPane.WARNING_MESSAGE);
-					setAlwaysOnTop(true);
-				}
+				ControlloAggiungiProdotto(ctrl);
 			}
 		});
 		ButtonAggiungi.addMouseListener(new MouseAdapter() {
@@ -324,19 +309,19 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		prodotti=ctrl.CaricaProdottiNegozio();
 		comboBoxNome.removeAllItems();
 		for(int i=0; i<prodotti.size(); i++) {
-			if(prodotti.get(i).getOrtofrutta()==true && nome2.equals("ORTOFRUTTA")) {
+			if(prodotti.get(i).getOrtofrutta()==true && nome.equals("ORTOFRUTTA")) {
 				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getLatticino()==true && nome2.equals("LATTICINO")) {
+			else if(prodotti.get(i).getLatticino()==true && nome.equals("LATTICINO")) {
 				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getFarinaceo()==true && nome2.equals("FARINACEO")) {
+			else if(prodotti.get(i).getFarinaceo()==true && nome.equals("FARINACEO")) {
 				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getUova()==true && nome2.equals("UOVA")) {
+			else if(prodotti.get(i).getUova()==true && nome.equals("UOVA")) {
 				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
 			}
-			else if(prodotti.get(i).getConfezionato()==true &&nome2.equals("CONFEZIONATO")) {
+			else if(prodotti.get(i).getConfezionato()==true &&nome.equals("CONFEZIONATO")) {
 				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
 			}
 		}
@@ -387,19 +372,41 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 		
-		}else if(nome.equals("FARINACEO")) {
+		}
+		else if(nome.equals("FARINACEO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinaceiBlue.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
 			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 			
-		}else if(nome.equals("UOVA")) {
+		}
+		else if(nome.equals("UOVA")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
 			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUovaBlue.png")));
+		}
 	}
+	
+	public void ControlloAggiungiProdotto(Controller ctrl) {
+		if(comboBoxNome.getSelectedItem()!=null) {
+			String valore = comboBoxNome.getSelectedItem().toString();
+			valore = valore.replaceAll("\\s+","");
+			String[] parts = valore.split("-");
+			String idprodotto = parts[0];
+			ctrl.AggiungiProdottoAlCarrello(ctrl.RecuperaCarrello(), Integer.parseInt(idprodotto), Integer.parseInt(spinnerQuantita.getValue().toString()));
+			setAlwaysOnTop(false);
+			JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE \nAGGIORNARE LA TABELLA PER VISUALIZZARE IL PRODOTTO", "", JOptionPane.INFORMATION_MESSAGE);
+			setAlwaysOnTop(true);
+			CaricaComboBoxNome(ctrl);
+			CaricaSpinnerELabels(ctrl);
+		}
+		else {
+			setAlwaysOnTop(false);
+			JOptionPane.showMessageDialog(null, "QUESTA TIPOLOGIA DI PRODOTTI È TERMINATA NEL NEGOZIO", "", JOptionPane.WARNING_MESSAGE);
+			setAlwaysOnTop(true);
+		}
 	}
 }

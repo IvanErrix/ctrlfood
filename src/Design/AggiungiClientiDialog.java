@@ -41,8 +41,10 @@ public class AggiungiClientiDialog extends JDialog {
 
 	public AggiungiClientiDialog(Controller ctrl) {
 		
+		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(563, 411);
+		setModalityType(DEFAULT_MODALITY_TYPE);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
 		

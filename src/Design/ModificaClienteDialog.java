@@ -49,8 +49,11 @@ public class ModificaClienteDialog extends JDialog {
 	private JLabel LabelSfondo;
 
 	public ModificaClienteDialog(Controller ctrl) {
+		
+		setAlwaysOnTop(true);
 		setUndecorated(true);
 		setSize(453, 364);
+		setModalityType(DEFAULT_MODALITY_TYPE);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
 		
@@ -184,6 +187,7 @@ public class ModificaClienteDialog extends JDialog {
 		comboBoxCliente.setBounds(152, 40, 233, 32);
 		comboBoxCliente.setBorder(new RoundedCornerBorder());
 		comboBoxCliente.setOpaque(false);
+		comboBoxCliente.setForeground(new Color(0, 41, 82));
 		comboBoxCliente.setFont(new Font("Cambria", Font.BOLD, 15));
 		contentPane.add(comboBoxCliente);
 		

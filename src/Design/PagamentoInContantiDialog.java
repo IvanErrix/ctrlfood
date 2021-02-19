@@ -58,6 +58,7 @@ public class PagamentoInContantiDialog extends JDialog {
 		getContentPane().setBackground(new Color(0, 67, 137));
 		setUndecorated(true);
 		setSize(563, 414);
+		setModalityType(DEFAULT_MODALITY_TYPE);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - getSize().width) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - getSize().height) / 2);
 		getContentPane().setLayout(null);
 		
@@ -218,9 +219,17 @@ public class PagamentoInContantiDialog extends JDialog {
 		textFieldContanti.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				char c=e.getKeyChar();
-				if(!(Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE || c==KeyEvent.VK_PERIOD)) 
-					e.consume();
+				if (textFieldContanti.getText().length()<8) {
+					char c = e.getKeyChar();
+					if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE
+							|| c == KeyEvent.VK_PERIOD))
+						e.consume();
+				}
+				else {
+					char c=e.getKeyChar();
+					if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
 			}
 			
 		});

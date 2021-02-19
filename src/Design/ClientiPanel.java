@@ -290,6 +290,7 @@ public class ClientiPanel extends JPanel {
 				try {
 					ctrl.EliminaCliente(Integer.parseInt(model.getValueAt(table.getSelectedRow(), 0).toString()));
 					JOptionPane.showMessageDialog(null, "CLIENTE ELIMINATO", "", JOptionPane.INFORMATION_MESSAGE);
+					CaricaClientiInTabella(ctrl);
 				} catch (Exception e2) {
 					JOptionPane.showMessageDialog(null, "SELEZIONARE PRIMA UNA RIGA", "", JOptionPane.WARNING_MESSAGE);
 				}
