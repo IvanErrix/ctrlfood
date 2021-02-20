@@ -118,7 +118,7 @@ public class PagamentoInContantiDialog extends JDialog {
 		ButtonPaga = new JButton("");
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldContanti.getText().length()!=0 || LabelRestoStampato.getText().length()!=0) {
+				if(textFieldContanti.getText().length()!=0 && LabelRestoStampato.getText().length()!=0) {
 					setAlwaysOnTop(false);
 					try {
 						ctrl.AggiungiPagamento(ctrl.RecuperaCarrello(), Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
@@ -132,6 +132,7 @@ public class PagamentoInContantiDialog extends JDialog {
 					JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
 					setAlwaysOnTop(true);
 					dispose();
+					ctrl.CreaCarrello();
 				}
 				else {
 					setAlwaysOnTop(false);
@@ -301,7 +302,6 @@ public class PagamentoInContantiDialog extends JDialog {
 		for(int i=0; i<prodotti.size(); i++) {
 			if(prodotti.get(i).getOrtofrutta()==true) {
 				puntiortofrutta=puntiortofrutta+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
-				System.out.println(puntiortofrutta);
 			}
 			else if(prodotti.get(i).getLatticino()==true){
 				puntilatticini=puntilatticini+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;

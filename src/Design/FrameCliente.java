@@ -36,7 +36,7 @@ public class FrameCliente extends JFrame {
 	private JLabel LabelSfondo;
 	private Boolean aperta = true;
 	
-	public FrameCliente(Controller ctrl) {
+	public FrameCliente(Controller ctrl) {		
 		setUndecorated(true);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrameAmministratore.class.getResource("/scrimg/logo.png")));
 		setFont(new Font("Impact", Font.BOLD, 14));
@@ -86,7 +86,7 @@ public class FrameCliente extends JFrame {
 				dispose();
 				ctrl.EliminaCarrelliNonPagati();
 				CambiaIconaAiButtonFrameClienti(new String("esci"));
-				ctrl.ApriLoginFrame(ctrl);
+				ctrl.ApriFrameIniziale(ctrl);
 			}
 		});
 		ButtonEsci.setFocusable(false);

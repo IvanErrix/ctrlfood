@@ -172,7 +172,7 @@ public class FrameAmministratore extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				CambiaIconaAiButtonFramePrincipale(new String("logout"));
 				dispose();
-				ctrl.ApriLoginFrame(ctrl);
+				ctrl.ApriFrameIniziale(ctrl);
 			}
 		});
 		ButtonLogout.setFocusable(false);

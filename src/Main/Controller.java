@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 
+import com.sun.jdi.Method;
+
 import DAO.CarrelloDAO;
 import DAO.ClienteDAO;
 import DAO.Connessione;
@@ -113,7 +115,11 @@ public class Controller {
 		frame.setVisible(true);
 	}
 	
-	public void ApriLoginFrame(Controller ctrl) {
+	public void ChiudiFrameCliente() {
+//		frame.ChiudiFrame();
+	}
+	
+	public void ApriFrameIniziale(Controller ctrl) {
 		FrameIniziale login = new FrameIniziale(ctrl);
 		login.setVisible(true);
 	}

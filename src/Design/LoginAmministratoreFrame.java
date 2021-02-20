@@ -86,7 +86,7 @@ public class LoginAmministratoreFrame extends JFrame {
 		ButtonIndietro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				ctrl.ApriLoginFrame(ctrl);
+				ctrl.ApriFrameIniziale(ctrl);
 			}
 		});
 		ButtonIndietro.addMouseListener(new MouseAdapter() {
