@@ -2,16 +2,15 @@ package Design;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,10 +20,9 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
-import ExternalClasses.RoundedCornerBorder;
+import ExternalClasses.MyScrollBarUI;
 import Main.Controller;
 import Objects.Prodotto;
-import java.awt.Component;
 
 public class CassaPanel extends JPanel {
 
@@ -37,6 +35,7 @@ public class CassaPanel extends JPanel {
 	private JButton ButtonPagaInContanti;
 	private JLabel LabelSfondo;
 	private JPanel PanelCaricamento;
+	private int grandezza = -200;
 	private JScrollPane scrollPane;
 	private JLabel LabelNomiProdotti;
 	private JLabel LabelQuantita;
@@ -155,14 +154,18 @@ public class CassaPanel extends JPanel {
 		PanelCaricamento = new JPanel();
 		PanelCaricamento.setAlignmentY(50.0f);
 		PanelCaricamento.setBounds(40, 115, 737, 379);
-		PanelCaricamento.setBackground(new Color(191,215,255,180));
+		PanelCaricamento.setPreferredSize(new Dimension(737,grandezza));
+		PanelCaricamento.setBackground(new Color(191,215,255));
 		PanelCaricamento.setLayout(null);
 		
 		
 		/*SCROLLPANE*/
-		scrollPane = new JScrollPane(PanelCaricamento, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane = new JScrollPane(PanelCaricamento);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI());
+		scrollPane.setBackground(new Color(191, 215, 255));
 		scrollPane.setBounds(40, 115, 737, 379);
-		scrollPane.setOpaque(false);
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82),  new Color(0,41,82)));
 		add(scrollPane);
 		
@@ -181,13 +184,13 @@ public class CassaPanel extends JPanel {
 		Double totale = 0.0;
 		int y=10;
 		for(int i=0; i<prodotti.size(); i++) {
-			
 			JLabel nome = new JLabel();
 			nome.setText(prodotti.get(i).getNome());
 			nome.setHorizontalAlignment(SwingConstants.CENTER);
 			nome.setFont(new Font("Cambria", Font.BOLD, 17));
 			nome.setForeground(new Color(0, 41, 82));
-			nome.setBounds(10, y, 200, 25);
+			nome.setSize(200, 25);
+			nome.setLocation(10, y);
 			PanelCaricamento.add(nome);
 			
 			JLabel quantita = new JLabel();
@@ -195,7 +198,8 @@ public class CassaPanel extends JPanel {
 			quantita.setHorizontalAlignment(SwingConstants.CENTER);
 			quantita.setFont(new Font("Cambria", Font.BOLD, 17));
 			quantita.setForeground(new Color(0, 41, 82));
-			quantita.setBounds(520, y, 65, 14);
+			quantita.setSize(65, 14);
+			quantita.setLocation(520, y);
 			PanelCaricamento.add(quantita);
 			
 			JLabel prezzo = new JLabel();
@@ -203,11 +207,18 @@ public class CassaPanel extends JPanel {
 			prezzo.setHorizontalAlignment(SwingConstants.CENTER);
 			prezzo.setFont(new Font("Cambria", Font.BOLD, 17));
 			prezzo.setForeground(new Color(0, 41, 82));
-			prezzo.setBounds(635, y, 65, 14);
+			prezzo.setSize(65, 14);
+			prezzo.setLocation(635, y);
 			PanelCaricamento.add(prezzo);
 			
 			totale = totale + (prodotti.get(i).getPrezzo() * prodotti.get(i).getQuantita());
 			y=y+30;
+			
+			grandezza=grandezza + 50; 
+			PanelCaricamento.setPreferredSize(new Dimension(737,grandezza));
+					
+			PanelCaricamento.revalidate();
+			PanelCaricamento.repaint();
 		}
 		
 		LabelTotaleNumero.setText(ctrl.Arrotonda(totale, 2)+"€");

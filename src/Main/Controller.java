@@ -71,6 +71,7 @@ public class Controller {
 		UIManager.put("Panel.background", new Color(191, 215, 255));
 		UIManager.put("Button.background", new Color(191, 215, 255));
 		UIManager.put("Button.foreground", new Color(0, 41, 82));
+//		UIManager.put("ScrollBarUI", "my.package.MyScrollBarUI");
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
