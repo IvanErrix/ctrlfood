@@ -2,7 +2,6 @@ package Design;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -11,25 +10,15 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.text.MaskFormatter;
-
-import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JTextFieldDateEditor;
-
 import ExternalClasses.ContentPane;
 import ExternalClasses.RoundedCornerBorder;
 import Main.Controller;
@@ -266,7 +255,7 @@ public class PagamentoInContantiDialog extends JDialog {
 		TotaleSpesa(ctrl);
 	}
 	
-	public void CalcoloTotale(Controller ctrl) {
+	private void CalcoloTotale(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiCarrello();
 		Double totale = 0.0;
 		for(int i=0; i<prodotti.size(); i++) {
@@ -275,7 +264,7 @@ public class PagamentoInContantiDialog extends JDialog {
 		LabelTotaleStampato.setText(ctrl.Arrotonda(totale,2)+"");
 	}
 	
-	public void TotaleSpesa(Controller ctrl) {
+	private void TotaleSpesa(Controller ctrl) {
 		Double resto = 0.0;
 		if(textFieldContanti.getText().length()!=0) {
 			resto = Double.parseDouble(textFieldContanti.getText()) - Double.parseDouble(LabelTotaleStampato.getText()) ;
@@ -291,7 +280,7 @@ public class PagamentoInContantiDialog extends JDialog {
 		}
 	}
 	
-	public void CalcoloPunti(Controller ctrl) {
+	private void CalcoloPunti(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiCarrello();
 		Double totalepunti = 0.0;
 		Double puntiortofrutta = 0.0;

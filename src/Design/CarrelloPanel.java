@@ -2,7 +2,6 @@ package Design;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -20,7 +19,6 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -45,7 +43,7 @@ public class CarrelloPanel extends JPanel {
 	private ArrayList<Prodotto> prodotti;
 	private String Titoli[]= {"Tipologia","IDProdotto", "Nome", "Prezzo", "Quantità","Scadenza", "Raccolta", "Produzione", "Mungitura", "Deposizione", "Confezionamento"};
 	private String Elementi[][]= {};
-	public DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
+	private DefaultTableModel model = new DefaultTableModel(Elementi, Titoli) {
 		private static final long serialVersionUID = 1L;
 
 			@Override
@@ -264,34 +262,34 @@ public class CarrelloPanel extends JPanel {
 		
 		CaricaProdottiCarrello(ctrl);
 	}
-	public void CaricaProdottiCarrello(Controller ctrl) {
+	
+	private void CaricaProdottiCarrello(Controller ctrl) {
 		model.setRowCount(0);
 		prodotti=ctrl.CaricaProdottiCarrello();
 		for(int i=0; i<prodotti.size(); i++) {
-			 int id = prodotti.get(i).getIdprodotto();
-			 String nome = prodotti.get(i).getNome();
-			 double prezzo = prodotti.get(i).getPrezzo();
-			 int quantita = prodotti.get(i).getQuantita();
-			 Date scadenza = (Date) prodotti.get(i).getData_scadenza();
-			 Date raccolta = (Date) prodotti.get(i).getData_raccolta();
-			 Date produzione = (Date) prodotti.get(i).getData_produzione();
-			 Date mungitura = (Date) prodotti.get(i).getData_mungitura();
-			 Date deposizione = (Date) prodotti.get(i).getData_deposizione();
-			 Date confezionamento = (Date) prodotti.get(i).getData_confezionamento();
-			 Boolean valore;
-			if((valore=prodotti.get(i).getOrtofrutta())==true) {
+			int id = prodotti.get(i).getIdprodotto();
+			String nome = prodotti.get(i).getNome();
+			double prezzo = prodotti.get(i).getPrezzo();
+			int quantita = prodotti.get(i).getQuantita();
+			Date scadenza = (Date) prodotti.get(i).getData_scadenza();
+			Date raccolta = (Date) prodotti.get(i).getData_raccolta();
+			Date produzione = (Date) prodotti.get(i).getData_produzione();
+			Date mungitura = (Date) prodotti.get(i).getData_mungitura();
+			Date deposizione = (Date) prodotti.get(i).getData_deposizione();
+			Date confezionamento = (Date) prodotti.get(i).getData_confezionamento();
+			if((prodotti.get(i).getOrtofrutta())==true) {
 				model.addRow(new Object[] {"ORTOFRUTTA", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
-			else if((valore=prodotti.get(i).getLatticino())==true) {
+			else if((prodotti.get(i).getLatticino())==true) {
 				model.addRow(new Object[] {"LATTICINI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
-			else if((valore=prodotti.get(i).getFarinaceo())==true) {
+			else if((prodotti.get(i).getFarinaceo())==true) {
 				model.addRow(new Object[] {"FARINACEI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
-			else if((valore=prodotti.get(i).getUova())==true) {
+			else if((prodotti.get(i).getUova())==true) {
 				model.addRow(new Object[] {"UOVA", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
-			else if((valore=prodotti.get(i).getConfezionato())==true) {
+			else if((prodotti.get(i).getConfezionato())==true) {
 				model.addRow(new Object[] {"CONFEZIONATI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
 			 

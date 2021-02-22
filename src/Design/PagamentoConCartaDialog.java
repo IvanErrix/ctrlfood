@@ -12,8 +12,6 @@ import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import javax.swing.text.MaskFormatter;
@@ -28,7 +26,6 @@ import Objects.Prodotto;
 
 import java.awt.Cursor;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -329,7 +326,8 @@ public class PagamentoConCartaDialog extends JDialog {
 		
 	}
 	
-	public void ControlloPagamaneto(Controller ctrl) {
+	@SuppressWarnings("deprecation")
+	private void ControlloPagamaneto(Controller ctrl) {
 		if(textFieldNumeroCarta.getText().length()==0 || passwordFieldPin.getText().length()==0 || dateChooserEditorScadenzaCarta.getText().length()==0 ) {
 			setAlwaysOnTop(false);
 			JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);
@@ -359,7 +357,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		}
 	}
 	
-	public void CalcoloPunti(Controller ctrl) {
+	private void CalcoloPunti(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiCarrello();
 		Double totalepunti = 0.0;
 		Double puntiortofrutta = 0.0;

@@ -44,7 +44,7 @@ public class ClientiPanel extends JPanel {
 	private ArrayList<Cliente> clienti;
 	private ArrayList<CartaFedelta> carte;
 	private String Titoli[]= {"IDCliente", "Nome", "Cognome", "Codice Fiscale", "ID Carta", "Punti Ortofrutta", "Punti Latticini", "Punti Farinacei", "Punti Uova", "Punti Confezionati", "Punti Totali"};
-	public DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
+	private DefaultTableModel model = new DefaultTableModel(Titoli, 0) {
 		
 		private static final long serialVersionUID = 1L;
 
@@ -325,7 +325,7 @@ public class ClientiPanel extends JPanel {
 		CaricaClientiInTabella(ctrl);
 	}
 	
-	public void CaricaClientiInTabella(Controller ctrl) {
+	private void CaricaClientiInTabella(Controller ctrl) {
 		model.setRowCount(0);
 		clienti=ctrl.CaricaClienti();
 		carte=ctrl.CaricaPunti();

@@ -267,7 +267,7 @@ public class AggiungiClientiDialog extends JDialog {
 		contentPane.add(LabelSfondo);
 	}
 	
-	public void ControlliAggiungiCliente(Controller ctrl) {
+	private void ControlliAggiungiCliente(Controller ctrl) {
 		if(textFieldNome.getText().length()==0 || textFieldCognome.getText().length()==0 || textFieldCodiceFiscale.getText().length()==0 || textFieldCodiceFiscale.getText().length()<16 ) {
 			setAlwaysOnTop(false);
 			JOptionPane.showMessageDialog(null, "COMPLETARE TUTTE I CAMPI", "", JOptionPane.WARNING_MESSAGE);
@@ -282,7 +282,7 @@ public class AggiungiClientiDialog extends JDialog {
 		}
 	}
 	
-	public void RimuoviTutto() {
+	private void RimuoviTutto() {
 		textFieldNome.setText("");
 		textFieldCognome.setText("");
 		textFieldCodiceFiscale.setText("");

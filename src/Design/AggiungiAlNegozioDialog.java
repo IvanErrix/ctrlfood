@@ -285,7 +285,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		CaricaSpinnerQuantita(ctrl);
 	}
 	
-	public void CaricaComboBoxNome(Controller ctrl) {
+	private void CaricaComboBoxNome(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
 		comboBoxNome.removeAllItems();
 		for(int i=0; i<prodotti.size(); i++) {
@@ -307,7 +307,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		}
 	}
 	
-	public void CaricaSpinnerQuantita(Controller ctrl) {
+	private void CaricaSpinnerQuantita(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
 		if (comboBoxNome.getSelectedItem()!=null) {
 			for (int i = 0; i < prodotti.size(); i++) {
@@ -325,7 +325,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		}
 	}
 	
-	public void VisibilitaLabel(String nome) {
+	private void VisibilitaLabel(String nome) {
 		if(nome.equals("ORTOFRUTTA")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofruttaBlue.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
@@ -365,7 +365,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		}
 	}
 	
-	public void ControlloAggiungiProdotto(Controller ctrl) {
+	private void ControlloAggiungiProdotto(Controller ctrl) {
 		if (comboBoxNome.getSelectedItem()!=null) {
 			setAlwaysOnTop(false);
 			ctrl.AggiungiProdottoAlNegozio(Integer.parseInt(LabelID.getText()),Integer.parseInt(spinnerQuantita.getValue().toString()));

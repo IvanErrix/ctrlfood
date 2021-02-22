@@ -253,7 +253,7 @@ public class FrameAmministratore extends JFrame {
 		ctrl.ApriAnimazionePanel(ctrl, PanelCaricamento);
 	}
 	
-	public void CambiaIconaAiButtonFramePrincipale(String nome) {
+	private void CambiaIconaAiButtonFramePrincipale(String nome) {
 		if(nome.equals("deposito")) {
 			LabelDeposito.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IconHouse3D.png")));
 			LabelNegozio.setIcon(new ImageIcon(FrameAmministratore.class.getResource("/scrimg/IcoShopWhite_32.png")));

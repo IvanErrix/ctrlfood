@@ -179,7 +179,7 @@ public class CassaPanel extends JPanel {
 		ControlloTotale();
 	}
 	
-	public void TotaleSpesa(Controller ctrl) {
+	private void TotaleSpesa(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiCarrello();
 		Double totale = 0.0;
 		int y=10;
@@ -224,7 +224,7 @@ public class CassaPanel extends JPanel {
 		LabelTotaleNumero.setText(ctrl.Arrotonda(totale, 2)+"€");
 	}
 	
-	public void ControlloTotale() {
+	private void ControlloTotale() {
 		if(LabelTotaleNumero.getText().equals("0.0€")) {
 			ButtonPagaConCarta.setEnabled(false);
 			ButtonPagaInContanti.setEnabled(false);

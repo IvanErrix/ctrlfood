@@ -41,7 +41,7 @@ public class ModificaClienteDialog extends JDialog {
 	private JTextField textFieldCognome;
 	private JTextField textFieldCodiceFiscale;
 	private JList<?> list;
-	private JComboBox comboBoxCliente;
+	private JComboBox<Object> comboBoxCliente;
 	private JLabel LabelCliente;
 	private JLabel LabelNome;
 	private JLabel LabelCognome;
@@ -229,7 +229,7 @@ public class ModificaClienteDialog extends JDialog {
 		CaricaTextFields(ctrl);
 	}
 	
-	public void CaricaClienti(Controller ctrl) {
+	private void CaricaClienti(Controller ctrl) {
 		clienti=ctrl.CaricaClienti();
 		comboBoxCliente.removeAllItems();
 		
@@ -238,7 +238,7 @@ public class ModificaClienteDialog extends JDialog {
 		}
 	}
 	
-	public void CaricaTextFields(Controller ctrl) {
+	private void CaricaTextFields(Controller ctrl) {
 		clienti=ctrl.CaricaClienti();
 		if (comboBoxCliente.getSelectedItem()!=null) {
 			for (int i = 0; i < clienti.size(); i++) {
@@ -260,7 +260,7 @@ public class ModificaClienteDialog extends JDialog {
 		}
 	}
 	
-	public void AggiornaInformazioniDialog(Controller ctrl) {
+	private void AggiornaInformazioniDialog(Controller ctrl) {
 		String valore = comboBoxCliente.getSelectedItem().toString();
 		valore = valore.replaceAll("\\s+","");
 		String[] parts = valore.split("-");

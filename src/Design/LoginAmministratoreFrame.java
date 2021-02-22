@@ -216,8 +216,8 @@ public class LoginAmministratoreFrame extends JFrame {
 		
 	}
 	
-
-	public void EffettuaLogin(Controller ctrl) {
+	@SuppressWarnings("deprecation")
+	private void EffettuaLogin(Controller ctrl) {
 		if (textFieldUsername.getText().equals("") && passwordField.getText().equals("")) {
 			setAlwaysOnTop(false);
 			JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.WARNING_MESSAGE);

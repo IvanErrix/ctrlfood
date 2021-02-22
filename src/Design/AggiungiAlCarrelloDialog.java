@@ -305,7 +305,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		CaricaSpinnerELabels(ctrl);
 	}
 	
-	public void CaricaComboBoxNome(Controller ctrl) {
+	private void CaricaComboBoxNome(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiNegozio();
 		comboBoxNome.removeAllItems();
 		for(int i=0; i<prodotti.size(); i++) {
@@ -327,7 +327,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		}
 	}
 	
-	public void CaricaSpinnerELabels(Controller ctrl) {
+	private void CaricaSpinnerELabels(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiNegozio();
 		if (comboBoxNome.getSelectedItem()!=null) {
 			for (int i = 0; i < prodotti.size(); i++) {
@@ -350,7 +350,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		}
 	}
 	
-	public void VisibilitaLabel(String nome) {
+	private void VisibilitaLabel(String nome) {
 		if(nome.equals("ORTOFRUTTA")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofruttaBlue.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
@@ -390,7 +390,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		}
 	}
 	
-	public void ControlloAggiungiProdotto(Controller ctrl) {
+	private void ControlloAggiungiProdotto(Controller ctrl) {
 		if(comboBoxNome.getSelectedItem()!=null) {
 			String valore = comboBoxNome.getSelectedItem().toString();
 			valore = valore.replaceAll("\\s+","");

@@ -527,7 +527,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		contentPane.add(LabelSfondo);
 	}
 	
-	public void ControlliAggiungiProdotto(Controller ctrl) {
+	private void ControlliAggiungiProdotto(Controller ctrl) {
 		if (nome.equals("ORTOFRUTTA")) {
 			AggiungiOrtofrutta(ctrl);
 		}
@@ -546,7 +546,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 	
 	}
 	
-	public void RimuoviTutto() {
+	private void RimuoviTutto() {
 		textFieldNome.setText("");
 		textFieldPrezzo.setText("");
 		spinnerQuantita.setValue(1);
@@ -558,7 +558,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		dateChooserDeposizione.setDate(null);
 	}
 	
-	public void VisibilitaLabel(String nome) {
+	private void VisibilitaLabel(String nome) {
 		if(nome.equals("ORTOFRUTTA")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofruttaBlue.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
@@ -663,20 +663,20 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		}
 	}
 
-	public void ProdottoAggiuntoCorrettamente() {
+	private void ProdottoAggiuntoCorrettamente() {
 		setAlwaysOnTop(false);
 		JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE \nAGGIORNARE LA TABELLA PER VISUALIZZARE IL PRODOTTO", "", JOptionPane.INFORMATION_MESSAGE);
 		setAlwaysOnTop(true);
 		RimuoviTutto();
 	}
 	
-	public void ErroreAggiuntaProdotto() {
+	private void ErroreAggiuntaProdotto() {
 		setAlwaysOnTop(false);
 		JOptionPane.showMessageDialog(null, "COMPLETARE TUTTI I CAMPI", "", JOptionPane.ERROR_MESSAGE);
 		setAlwaysOnTop(true);
 	}
 	
-	public void AggiungiOrtofrutta(Controller ctrl) {
+	private void AggiungiOrtofrutta(Controller ctrl) {
 		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {
 			ErroreAggiuntaProdotto();
@@ -688,7 +688,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		}
 	}
 	
-	public void AggiungiLatticino(Controller ctrl) {
+	private void AggiungiLatticino(Controller ctrl) {
 		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 
 				|| dateChooserEditorMungitura.getText().length() == 0) {
@@ -701,7 +701,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		}
 	}
 	
-	public void AggiungiConfezionato(Controller ctrl) {
+	private void AggiungiConfezionato(Controller ctrl) {
 		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorConfezionamento.getText().length() == 0) {
 			ErroreAggiuntaProdotto();
@@ -713,7 +713,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		}
 	}
 	
-	public void AggiungiFarinaceo(Controller ctrl) {
+	private void AggiungiFarinaceo(Controller ctrl) {
 		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 ) {
 			ErroreAggiuntaProdotto();
@@ -725,7 +725,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		}
 	}
 	
-	public void AggiungiUovo(Controller ctrl) {
+	private void AggiungiUovo(Controller ctrl) {
 		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorDeposizione.getText().length() == 0 ) {
 			ErroreAggiuntaProdotto();

@@ -227,7 +227,7 @@ public class FrameCliente extends JFrame {
 		ctrl.ApriAnimazionePanel(ctrl, PanelCaricamento);
 	}
 	
-	public void CambiaIconaAiButtonFrameClienti(String nome) {
+	private void CambiaIconaAiButtonFrameClienti(String nome) {
 		 if (nome.equals("carrello")) {
 			LabelCarrello.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/IconShoppingCart3D.png")));
 			LabelCassa.setIcon(new ImageIcon(FrameCliente.class.getResource("/scrimg/CheckoutWhite_32.png")));

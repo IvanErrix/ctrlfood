@@ -14,8 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 
-import com.sun.jdi.Method;
-
 import DAO.CarrelloDAO;
 import DAO.ClienteDAO;
 import DAO.Connessione;
