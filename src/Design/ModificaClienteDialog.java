@@ -124,7 +124,7 @@ public class ModificaClienteDialog extends JDialog {
 				textFieldNome.setText(textFieldNome.getText().toUpperCase());
 			}
 		});
-		textFieldNome.setBounds(151, 97, 234, 20);
+		textFieldNome.setBounds(152, 94, 234, 25);
 		textFieldNome.setBorder(new RoundedCornerBorder());
 		textFieldNome.setOpaque(false);
 		textFieldNome.setFont(new Font("Cambria", Font.BOLD, 15));
@@ -142,7 +142,7 @@ public class ModificaClienteDialog extends JDialog {
 				textFieldCognome.setText(textFieldCognome.getText().toUpperCase());
 			}
 		});
-		textFieldCognome.setBounds(151, 146, 234, 20);
+		textFieldCognome.setBounds(152, 143, 234, 25);
 		textFieldCognome.setBorder(new RoundedCornerBorder());
 		textFieldCognome.setOpaque(false);
 		textFieldCognome.setFont(new Font("Cambria", Font.BOLD, 15));
@@ -160,7 +160,7 @@ public class ModificaClienteDialog extends JDialog {
 				textFieldCodiceFiscale.setText(textFieldCodiceFiscale.getText().toUpperCase());
 			}
 		});
-		textFieldCodiceFiscale.setBounds(151, 199, 234, 20);
+		textFieldCodiceFiscale.setBounds(152, 196, 234, 25);
 		textFieldCodiceFiscale.setBorder(new RoundedCornerBorder());
 		textFieldCodiceFiscale.setOpaque(false);
 		textFieldCodiceFiscale.setFont(new Font("Cambria", Font.BOLD, 15));
@@ -261,21 +261,32 @@ public class ModificaClienteDialog extends JDialog {
 	}
 	
 	private void AggiornaInformazioniDialog(Controller ctrl) {
-		String valore = comboBoxCliente.getSelectedItem().toString();
-		valore = valore.replaceAll("\\s+","");
-		String[] parts = valore.split("-");
-		String part1 = parts[0];
-		if (textFieldNome.getText().length()!=0 && textFieldCognome.getText().length()!=0 && textFieldCodiceFiscale.getText().length()!=0 && textFieldCodiceFiscale.getText().length()==16) {
-			setAlwaysOnTop(false);
-			ctrl.AggiornaDatiCliente(Integer.parseInt(part1), textFieldNome.getText(), textFieldCognome.getText(), textFieldCodiceFiscale.getText());
-			JOptionPane.showMessageDialog(null, "DATI AGGIORNATI", "", JOptionPane.INFORMATION_MESSAGE);
-			setAlwaysOnTop(true);
-			CaricaClienti(ctrl);
-			CaricaTextFields(ctrl);
+		if (comboBoxCliente.getSelectedItem()!=null) {
+			String valore = comboBoxCliente.getSelectedItem().toString();
+			valore = valore.replaceAll("\\s+", "");
+			String[] parts = valore.split("-");
+			String part1 = parts[0];
+			if (textFieldNome.getText().length() != 0 && textFieldCognome.getText().length() != 0
+					&& textFieldCodiceFiscale.getText().length() != 0
+					&& textFieldCodiceFiscale.getText().length() == 16) {
+				setAlwaysOnTop(false);
+				ctrl.AggiornaDatiCliente(Integer.parseInt(part1), textFieldNome.getText(), textFieldCognome.getText(),
+						textFieldCodiceFiscale.getText());
+				JOptionPane.showMessageDialog(null,
+						"CLIENTE AGGIORNATO CORRETTAMENTE \nAGGIORNARE LA TABELLA PER VISUALIZZARLO", "",
+						JOptionPane.INFORMATION_MESSAGE);
+				setAlwaysOnTop(true);
+				CaricaClienti(ctrl);
+				CaricaTextFields(ctrl);
+			} else {
+				setAlwaysOnTop(false);
+				JOptionPane.showMessageDialog(null, "INSERIRE VALORI CORRETTI", "", JOptionPane.WARNING_MESSAGE);
+				setAlwaysOnTop(true);
+			} 
 		}
 		else {
 			setAlwaysOnTop(false);
-			JOptionPane.showMessageDialog(null, "INSERIRE VALORI CORRETTI", "", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "NON CI SONO CLIENTI DA MODIFICARE", "", JOptionPane.WARNING_MESSAGE);
 			setAlwaysOnTop(true);
 		}
 	}

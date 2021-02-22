@@ -376,7 +376,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		}
 		else {
 			setAlwaysOnTop(false);
-			JOptionPane.showMessageDialog(null, "TIPOLOGIA DI PRODOTTI TERMINATA IN DEPOSITO", "",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "QUESTA TIPOLOGIA DI PRODOTTI È TERMINATA NEL DEPOSITO", "",JOptionPane.WARNING_MESSAGE);
 			setAlwaysOnTop(true);
 		}
 	}
