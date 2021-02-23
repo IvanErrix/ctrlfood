@@ -315,6 +315,10 @@ public class Controller {
 		negoziodao.SpostaProdottoDalNegozio(idprodotto);
 	}
 	
+	public void EliminaProdottoNegozio(int idprodotto) {
+		negoziodao.EliminaProdottoNegozio(idprodotto);
+	}
+	
 	//Metodi Database Clienti
 	public void AggiungiCliente(String nome, String cognome, String codice_fiscale) {
 		clientedao.AggiungiCliente(nome, cognome, codice_fiscale);

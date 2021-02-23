@@ -121,7 +121,7 @@ public class DepositoDAO {
 	}
 
 	public void EliminaProdottoDeposito(int idprodotto) {
-		String sql = "CALL elimina_prodotto_deposito(?)";
+		String sql = "CALL elimina_prodotto(?)";
 		
 		PreparedStatement query;
 		try {

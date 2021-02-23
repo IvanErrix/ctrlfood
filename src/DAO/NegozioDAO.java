@@ -56,4 +56,17 @@ public class NegozioDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void EliminaProdottoNegozio(int idprodotto) {
+		String sql = "CALL elimina_prodotto(?)";
+		
+		PreparedStatement query;
+		try {
+			query = Controller.getConnessione().getConn().prepareStatement(sql);
+			query.setInt(1, idprodotto);
+			query.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

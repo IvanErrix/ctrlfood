@@ -288,7 +288,26 @@ public class NegozioPanel extends JPanel {
 		LabelSfondo.setBounds(-2, -2, 836, 569);
 		add(LabelSfondo);
 		
+		EliminaProdottiScaduti(ctrl);
 		CaricaProdottiNegozio(ctrl);
+	}
+	
+	private void EliminaProdottiScaduti(Controller ctrl) {
+		boolean eliminati=false;
+		ArrayList<String> prodotti_scaduti = new ArrayList<String>();
+		java.util.Date data_corrente = new java.util.Date();
+		prodotti=ctrl.CaricaProdottiNegozio();
+		for(int i=0; i<prodotti.size(); i++) {
+			Date scadenza = (Date) prodotti.get(i).getData_scadenza();
+			if(scadenza.compareTo(data_corrente)<0) {
+				prodotti_scaduti.add(prodotti.get(i).getNome());
+				ctrl.EliminaProdottoNegozio(prodotti.get(i).getIdprodotto());
+				eliminati=true;
+			}
+		}
+		if(eliminati==true) {
+			JOptionPane.showMessageDialog(null, "QUESTI PRODOTTI SONO STATI ELIMINATI PERCHÈ SCADUTI:\n"+prodotti_scaduti, "", JOptionPane.INFORMATION_MESSAGE);
+		}
 	}
 	
 	private void CaricaProdottiNegozio(Controller ctrl) {
