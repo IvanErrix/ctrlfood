@@ -103,7 +103,7 @@ public class Controller {
 		return connessione;
 	}
 	
-	//Funzioni per l'apertura dei frame
+	//Metodi per l'apertura dei frame
 	public void ApriFrameAmministratore(Controller ctrl) {
 		FrameAmministratore frame = new FrameAmministratore(ctrl);
 		frame.setVisible(true);
@@ -113,17 +113,18 @@ public class Controller {
 		FrameCliente frame = new FrameCliente(ctrl);
 		frame.setVisible(true);
 	}
-	
-	public void ChiudiFrameCliente() {
-//		frame.ChiudiFrame();
-	}
-	
+
 	public void ApriFrameIniziale(Controller ctrl) {
 		FrameIniziale login = new FrameIniziale(ctrl);
 		login.setVisible(true);
 	}
 	
-	//Funzioni per l'apertura dei panel
+	public void ApriFrameLoginAmministratore(Controller ctrl) {
+		LoginAmministratoreFrame frame = new LoginAmministratoreFrame(ctrl);
+		frame.setVisible(true);
+	}
+	
+	//Metodi per l'apertura dei panel
 	public void ApriDepositoPanel(Controller ctrl, JPanel PanelCaricamento) {
 		DepositoPanel deposito = new DepositoPanel(ctrl);
 		deposito.setVisible(true);
@@ -178,13 +179,7 @@ public class Controller {
 		PanelCaricamento.revalidate();
 	}
 	
-	//Funzioni per l'apertura delle dialog
-	
-	public void ApriLoginAmministratoreDialog(Controller ctrl) {
-		LoginAmministratoreFrame frame = new LoginAmministratoreFrame(ctrl);
-		frame.setVisible(true);
-	}
-	
+	//Metodi per l'apertura delle dialog
 	public void ApriAggiungiAlDepositoDialog(Controller ctrl) {
 		AggiungiAlDepositoDialog dialog = new AggiungiAlDepositoDialog(ctrl);
 		dialog.setVisible(true);
@@ -200,6 +195,11 @@ public class Controller {
 		dialog.setVisible(true);
 	}
 	
+	public void ApriModificaClienteDialog(Controller ctrl) {
+		ModificaClienteDialog dialog = new ModificaClienteDialog(ctrl);
+		dialog.setVisible(true);
+	}
+	
 	public void ApriAggiungiAlCarrelloDialog(Controller ctrl) {
 		AggiungiAlCarrelloDialog dialog = new AggiungiAlCarrelloDialog(ctrl);
 		dialog.setVisible(true);
@@ -210,46 +210,12 @@ public class Controller {
 		dialog.setVisible(true);
 	}
 	
-	public void ApriModificaClienteDialog(Controller ctrl) {
-		ModificaClienteDialog dialog = new ModificaClienteDialog(ctrl);
-		dialog.setVisible(true);
-	}
-	
 	public void ApriPagamentoInContantiDialog(Controller ctrl) {
 		PagamentoInContantiDialog dialog = new PagamentoInContantiDialog(ctrl);
 		dialog.setVisible(true);
 	}
 	
-	//Stampa all'interno di un file txt che si trova sul desktop, il contenuto della tabella passata come argomento
-	public void StampaListaProdotti(JTable table, String tipo) {
-		String cartellahome = System.getProperty("user.home");
-		String nome = new String();
-		if(tipo=="negozio") {
-			nome = "Lista_"+ tipo + ".txt";
-		}
-		else if(tipo=="deposito") {
-			nome = "Lista_"+ tipo + ".txt";
-		}
-		else if(tipo=="clienti") {
-			nome = "Lista_"+ tipo + ".txt";
-		}
-		File file = new File(cartellahome+ "/Desktop", nome+".txt");
-		try {
-			BufferedWriter output = new BufferedWriter(new FileWriter(file));
-			for(int i = 0; i < table.getRowCount(); i++){
-                for(int j = 0; j < table.getColumnCount(); j++){
-                	output.write(table.getModel().getValueAt(i, j)+" ");
-                }
-                output.write("\n- - - - - - - - - - - - - - - - \n");
-            }
-			output.close();
-			JOptionPane.showMessageDialog(null, "FILE STAMPATO", "", JOptionPane.INFORMATION_MESSAGE);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	//Consente il movimento delle icone all'interno di AnimazionePanel
+	//Metodo che consente il movimento delle icone all'interno di AnimazionePanel
 	public void MovimentoIcone(JLabel label) {
 		int velocita = 2;
     	if (label.getLocation().x>0 && label.getLocation().x<=690 && label.getLocation().y==490) {		//Sposta a sinistra
@@ -266,12 +232,12 @@ public class Controller {
     	}
 	}
 	
-	//Funzioni per Database
+	//Metodi per Database
 	public String ControllaDatiLogin(String username, String password) {
 		return loginamministratoredao.ControllaDatiLogin(username, password);
 	}
 	
-	//Funzioni Database Deposito
+	//Metodi Database Deposito
 	public void InserisciProdottoDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_raccolta) {
 		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
 		java.sql.Date raccolta = new java.sql.Date(data_raccolta);
@@ -336,7 +302,7 @@ public class Controller {
 		depositodao.EliminaProdottoDeposito(idprodotto);
 	}
 	
-	//Funzioni Database Negozio
+	//Metodi Database Negozio
 	public void AggiungiProdottoAlNegozio(int idprodotto,int quantita) {
 		negoziodao.AggiungiProdottoAlNegozio(idprodotto, quantita);
 	}
@@ -349,7 +315,7 @@ public class Controller {
 		negoziodao.SpostaProdottoDalNegozio(idprodotto);
 	}
 	
-	//Funzioni Database Clienti
+	//Metodi Database Clienti
 	public void AggiungiCliente(String nome, String cognome, String codice_fiscale) {
 		clientedao.AggiungiCliente(nome, cognome, codice_fiscale);
 	}
@@ -370,7 +336,7 @@ public class Controller {
 		clientedao.AggiornaDatiCliente(idcliente, nome, cognome, codicefiscale);
 	}
 	
-	//Funzioni Database Carrello
+	//Metodi Database Carrello
 	public void CreaCarrello() {
 		carrellodao.CreaCarrello();
 	}
@@ -401,7 +367,7 @@ public class Controller {
 		carrellodao.AggiornaCarrello(idcarrello);
 	}
 	
-	//Funzioni Database Pagamento
+	//Metodi Database Pagamento
 	public void AggiornaPunti(double puntiortofrutta, double puntilatticini, double puntifarinacei, double puntiuova, double punticonfezionati, double puntitotali, int cartafedelta ) {
 		pagamentodao.AggiornaPunti(puntiortofrutta, puntilatticini, puntifarinacei, puntiuova, punticonfezionati, puntitotali, cartafedelta);
 	}
@@ -410,6 +376,7 @@ public class Controller {
 		pagamentodao.AggiungiPagamento(chiavecarrello, chiavecartafedelta);
 	}
 	
+	//Metodo per arrotondare i double a due cifre decimali
 	public double Arrotonda(double value, int places) {
 	    if (places < 0) throw new IllegalArgumentException();
 	    long factor = (long) Math.pow(10, places);
@@ -417,4 +384,33 @@ public class Controller {
 	    long tmp = Math.round(value);
 	    return (double) tmp / factor;
 	}
+	
+	//Metodo che stampa all'interno di un file txt che si trova sul desktop, il contenuto della tabella passata come argomento
+	public void StampaListaProdotti(JTable table, String tipo) {
+			String cartellahome = System.getProperty("user.home");
+			String nome = new String();
+			if(tipo=="negozio") {
+				nome = "Lista_"+ tipo + ".txt";
+			}
+			else if(tipo=="deposito") {
+				nome = "Lista_"+ tipo + ".txt";
+			}
+			else if(tipo=="clienti") {
+				nome = "Lista_"+ tipo + ".txt";
+			}
+			File file = new File(cartellahome+ "/Desktop", nome+".txt");
+			try {
+				BufferedWriter output = new BufferedWriter(new FileWriter(file));
+				for(int i = 0; i < table.getRowCount(); i++){
+	                for(int j = 0; j < table.getColumnCount(); j++){
+	                	output.write(table.getModel().getValueAt(i, j)+" ");
+	                }
+	                output.write("\n- - - - - - - - - - - - - - - - \n");
+	            }
+				output.close();
+				JOptionPane.showMessageDialog(null, "FILE STAMPATO", "", JOptionPane.INFORMATION_MESSAGE);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 }

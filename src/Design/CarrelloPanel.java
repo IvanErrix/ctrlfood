@@ -23,8 +23,9 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import ExternalClasses.MyScrollBarUI;
+import ExternalClasses.HorizontalScrollBarUI;
 import ExternalClasses.RoundedCornerBorder;
+import ExternalClasses.VerticalScrollBarUI;
 import Main.Controller;
 import Objects.Prodotto;
 
@@ -35,6 +36,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JLabel;
+import javax.swing.ScrollPaneConstants;
 
 public class CarrelloPanel extends JPanel {
 	
@@ -69,8 +71,10 @@ public class CarrelloPanel extends JPanel {
 		
 		/*SCROLLPANE*/
 		scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(20,69,123),  new Color(20,69,123)));
-		scrollPane.getHorizontalScrollBar().setUI(new MyScrollBarUI());
+		scrollPane.getHorizontalScrollBar().setUI(new HorizontalScrollBarUI());
+		scrollPane.getVerticalScrollBar().setUI(new VerticalScrollBarUI());
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(43, 88, 747, 432);

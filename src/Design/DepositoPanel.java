@@ -8,8 +8,9 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import ExternalClasses.MyScrollBarUI;
+import ExternalClasses.HorizontalScrollBarUI;
 import ExternalClasses.RoundedCornerBorder;
+import ExternalClasses.VerticalScrollBarUI;
 import Main.Controller;
 import Objects.Prodotto;
 
@@ -73,7 +74,8 @@ public class DepositoPanel extends JPanel {
 		/*SCROLLPANE*/
 		scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.getHorizontalScrollBar().setUI(new MyScrollBarUI());
+		scrollPane.getHorizontalScrollBar().setUI(new HorizontalScrollBarUI());
+		scrollPane.getVerticalScrollBar().setUI(new VerticalScrollBarUI());
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82),  new Color(0,41,82)));
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
 		scrollPane.getViewport().setOpaque(true);

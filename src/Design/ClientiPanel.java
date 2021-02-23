@@ -22,7 +22,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
+import ExternalClasses.HorizontalScrollBarUI;
 import ExternalClasses.RoundedCornerBorder;
+import ExternalClasses.VerticalScrollBarUI;
 import Main.Controller;
 import Objects.CartaFedelta;
 import Objects.Cliente;
@@ -76,6 +79,8 @@ public class ClientiPanel extends JPanel {
 		scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82),  new Color(0,41,82)));
+		scrollPane.getHorizontalScrollBar().setUI(new HorizontalScrollBarUI());
+		scrollPane.getVerticalScrollBar().setUI(new VerticalScrollBarUI());
 		scrollPane.getViewport().setBackground(new Color(191, 215, 255));
 		scrollPane.setOpaque(false);
 		scrollPane.setBounds(43, 88, 747, 432);

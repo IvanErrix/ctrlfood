@@ -20,7 +20,7 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.EtchedBorder;
 
-import ExternalClasses.MyScrollBarUI;
+import ExternalClasses.VerticalScrollBarUI;
 import Main.Controller;
 import Objects.Prodotto;
 
@@ -163,7 +163,7 @@ public class CassaPanel extends JPanel {
 		scrollPane = new JScrollPane(PanelCaricamento);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.getVerticalScrollBar().setUI(new MyScrollBarUI());
+		scrollPane.getVerticalScrollBar().setUI(new VerticalScrollBarUI());
 		scrollPane.setBackground(new Color(191, 215, 255));
 		scrollPane.setBounds(40, 115, 737, 379);
 		scrollPane.setBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(0,41,82),  new Color(0,41,82)));

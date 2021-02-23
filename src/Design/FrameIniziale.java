@@ -72,7 +72,7 @@ public class FrameIniziale extends JFrame {
 		ButtonAmministratore = new JButton("");
 		ButtonAmministratore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriLoginAmministratoreDialog(ctrl);
+				ctrl.ApriFrameLoginAmministratore(ctrl);
 				dispose();
 			}
 		});
