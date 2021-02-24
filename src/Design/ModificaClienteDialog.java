@@ -27,6 +27,8 @@ import javax.swing.plaf.basic.BasicComboPopup;
 
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.Cursor;
 
 public class ModificaClienteDialog extends JDialog {
@@ -124,6 +126,22 @@ public class ModificaClienteDialog extends JDialog {
 				textFieldNome.setText(textFieldNome.getText().toUpperCase());
 			}
 		});
+		textFieldNome.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(textFieldNome.getText().length()<15) {
+					char c=e.getKeyChar();
+					if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
+				else {
+					char c=e.getKeyChar();
+					if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
+
+			}
+		});
 		textFieldNome.setBounds(152, 94, 234, 25);
 		textFieldNome.setBorder(new RoundedCornerBorder());
 		textFieldNome.setOpaque(false);
@@ -142,6 +160,22 @@ public class ModificaClienteDialog extends JDialog {
 				textFieldCognome.setText(textFieldCognome.getText().toUpperCase());
 			}
 		});
+		textFieldCognome.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(textFieldNome.getText().length()<15) {
+					char c=e.getKeyChar();
+					if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
+				else {
+					char c=e.getKeyChar();
+					if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
+
+			}
+		});
 		textFieldCognome.setBounds(152, 143, 234, 25);
 		textFieldCognome.setBorder(new RoundedCornerBorder());
 		textFieldCognome.setOpaque(false);
@@ -158,6 +192,21 @@ public class ModificaClienteDialog extends JDialog {
 			@Override
 			public void focusLost(FocusEvent e) {
 				textFieldCodiceFiscale.setText(textFieldCodiceFiscale.getText().toUpperCase());
+			}
+		});
+		textFieldCodiceFiscale.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if(textFieldCodiceFiscale.getText().length()<16) {
+					char c=e.getKeyChar();
+					if(!(Character.isAlphabetic(c) || Character.isDigit(c) ||  (c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
+				else {
+					char c=e.getKeyChar();
+					if(!((c==KeyEvent.VK_BACK_SPACE) ||  c==KeyEvent.VK_DELETE ))
+						e.consume();
+				}
 			}
 		});
 		textFieldCodiceFiscale.setBounds(152, 196, 234, 25);

@@ -40,6 +40,8 @@ public class CassaPanel extends JPanel {
 	private JLabel LabelNomiProdotti;
 	private JLabel LabelQuantita;
 	private JLabel LabelPrezzo;
+	private JLabel LabelPunti;
+	private JLabel LabelPuntiNumero;
 
 	public CassaPanel(Controller ctrl) {
 		
@@ -95,6 +97,24 @@ public class CassaPanel extends JPanel {
 		LabelPrezzo.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, new Color(0,41,82)));
 		LabelPrezzo.setBounds(679, 78, 53, 21);
 		add(LabelPrezzo);
+		
+		/*LABEL PUNTI*/
+		LabelPunti = new JLabel("Punti");
+		LabelPunti.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelPunti.setFont(new Font("Cambria", Font.BOLD, 19));
+		LabelPunti.setForeground(new Color(0, 41, 82));
+		LabelPunti.setSize(65, 14);
+		LabelPunti.setLocation(40, 509);
+		add(LabelPunti);
+		
+		LabelPuntiNumero = new JLabel();
+		LabelPuntiNumero.setText("0.00");
+		LabelPuntiNumero.setHorizontalAlignment(SwingConstants.CENTER);
+		LabelPuntiNumero.setFont(new Font("Cambria", Font.BOLD, 19));
+		LabelPuntiNumero.setForeground(new Color(0, 41, 82));
+		LabelPuntiNumero.setSize(65, 14);
+		LabelPuntiNumero.setLocation(118, 509);
+		add(LabelPuntiNumero);
 	
 		/*BUTTON PAGA CON CARTA*/
 		ButtonPagaConCarta = new JButton("");
@@ -220,7 +240,7 @@ public class CassaPanel extends JPanel {
 			PanelCaricamento.revalidate();
 			PanelCaricamento.repaint();
 		}
-		
+		LabelPuntiNumero.setText(ctrl.Arrotonda(totale*0.10, 2)+"");
 		LabelTotaleNumero.setText(ctrl.Arrotonda(totale, 2)+"€");
 	}
 	

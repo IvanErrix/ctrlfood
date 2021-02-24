@@ -347,6 +347,11 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		}
 		else {
 			LabelPrezzo.setText("");
+			LabelDataScadenza.setText("");
+			spinnerQuantita.setModel(new SpinnerNumberModel(1, 1, 1, 1));
+			((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
+			spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191, 215, 255));
+			spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(0, 41, 82));
 		}
 	}
 	

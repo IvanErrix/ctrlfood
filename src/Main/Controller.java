@@ -38,8 +38,12 @@ import Design.ModificaClienteDialog;
 import Design.NegozioPanel;
 import Design.PagamentoConCartaDialog;
 import Design.PagamentoInContantiDialog;
+import Objects.Carrello;
 import Objects.CartaFedelta;
 import Objects.Cliente;
+import Objects.Deposito;
+import Objects.Negozio;
+import Objects.Pagamento;
 import Objects.Prodotto;
 
 public class Controller {
@@ -51,6 +55,7 @@ public class Controller {
 	private static NegozioDAO negoziodao;
 	private static PagamentoDAO pagamentodao;
 	private static LoginAmministratoreDAO loginamministratoredao;
+	private FrameCliente framecliente;
 	
 	/* Prima di tutto il programma controlla la connessione. Se la connessione è assente,
 	 * il programa non si avvierà.
@@ -69,7 +74,6 @@ public class Controller {
 		UIManager.put("Panel.background", new Color(191, 215, 255));
 		UIManager.put("Button.background", new Color(191, 215, 255));
 		UIManager.put("Button.foreground", new Color(0, 41, 82));
-//		UIManager.put("ScrollBarUI", "my.package.MyScrollBarUI");
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -110,8 +114,12 @@ public class Controller {
 	}
 	
 	public void ApriFrameCliente (Controller ctrl) {
-		FrameCliente frame = new FrameCliente(ctrl);
-		frame.setVisible(true);
+		framecliente = new FrameCliente(ctrl);
+		framecliente.setVisible(true);
+	}
+	
+	public void ChiudiFrameCliente() {
+		framecliente.dispose();
 	}
 
 	public void ApriFrameIniziale(Controller ctrl) {

@@ -242,6 +242,8 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControlloPagamaneto(ctrl);
+				ctrl.ChiudiFrameCliente();
+				ctrl.ApriFrameIniziale(ctrl);
 			}
 		});
 		ButtonPaga.addMouseListener(new MouseAdapter() {

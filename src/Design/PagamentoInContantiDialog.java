@@ -121,7 +121,8 @@ public class PagamentoInContantiDialog extends JDialog {
 					JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
 					setAlwaysOnTop(true);
 					dispose();
-					ctrl.CreaCarrello();
+					ctrl.ChiudiFrameCliente();
+					ctrl.ApriFrameIniziale(ctrl);
 				}
 				else {
 					setAlwaysOnTop(false);
