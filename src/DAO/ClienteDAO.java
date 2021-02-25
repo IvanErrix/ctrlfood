@@ -37,7 +37,7 @@ public class ClienteDAO {
 			ResultSet datirecuperati = query.executeQuery();
 			
 			while(datirecuperati.next()) {
-				clienti.add(new Cliente(datirecuperati.getInt(1), datirecuperati.getString(2), datirecuperati.getString(3), datirecuperati.getString(4), datirecuperati.getInt(5)));
+				clienti.add(new Cliente(datirecuperati.getInt(1), datirecuperati.getString(2), datirecuperati.getString(3), datirecuperati.getString(4)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

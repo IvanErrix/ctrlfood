@@ -2,19 +2,17 @@ package Objects;
 
 public class Cliente {
 
-    public Cliente(int idcliente, String nome, String cognome, String codice_fiscale, int chiavecarta_fedelta) {
+    public Cliente(int idcliente, String nome, String cognome, String codice_fiscale) {
 		super();
 		this.idcliente = idcliente;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.codice_fiscale = codice_fiscale;
-		this.chiavecarta_fedelta = chiavecarta_fedelta;
 	}
 	private int idcliente;
     private String nome;
     private String cognome;
     private String codice_fiscale;
-    private int chiavecarta_fedelta;
     
 	public int getIdcliente() {
 		return idcliente;
@@ -39,12 +37,6 @@ public class Cliente {
 	}
 	public void setCodice_fiscale(String codice_fiscale) {
 		this.codice_fiscale = codice_fiscale;
-	}
-	public int getChiavecarta_fedelta() {
-		return chiavecarta_fedelta;
-	}
-	public void setChiavecarta_fedelta(int chiavecarta_fedelta) {
-		this.chiavecarta_fedelta = chiavecarta_fedelta;
 	}
 
 }
