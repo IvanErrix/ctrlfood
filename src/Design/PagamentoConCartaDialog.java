@@ -137,16 +137,16 @@ public class PagamentoConCartaDialog extends JDialog {
 		
 		/*LABEL NUMERO CARTA SULLA CARTA*/
 		LabelNumCartaSuCarta = new JLabel("");
-		LabelNumCartaSuCarta.setFont(new Font("Cambria", Font.BOLD, 14));
+		LabelNumCartaSuCarta.setFont(new Font("Cambria", Font.BOLD, 15));
 		LabelNumCartaSuCarta.setForeground(new Color(191, 215, 255));
-		LabelNumCartaSuCarta.setBounds(219, 95, 165, 14);
+		LabelNumCartaSuCarta.setBounds(221, 89, 165, 20);
 		contentPane.add(LabelNumCartaSuCarta);
 		
 		/*LABEL SCADENZA CARTA SULLA CARTA*/
 		LabelScadenzaSuCarta = new JLabel("");
-		LabelScadenzaSuCarta.setFont(new Font("Cambria", Font.BOLD, 14));
+		LabelScadenzaSuCarta.setFont(new Font("Cambria", Font.BOLD, 15));
 		LabelScadenzaSuCarta.setForeground(new Color(191, 215, 255));
-		LabelScadenzaSuCarta.setBounds(219, 116, 102, 14);
+		LabelScadenzaSuCarta.setBounds(221, 128, 102, 14);
 		contentPane.add(LabelScadenzaSuCarta);
 
 		/*FORMATTED TEXTFIELD NUMERO CARTA*/
