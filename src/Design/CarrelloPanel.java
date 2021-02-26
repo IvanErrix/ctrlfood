@@ -264,6 +264,7 @@ public class CarrelloPanel extends JPanel {
 		LabelSfondo.setBounds(-2, -2, 836, 569);
 		add(LabelSfondo);
 		
+		EliminaProdottiScaduti(ctrl);
 		CaricaProdottiCarrello(ctrl);
 	}
 	
@@ -297,6 +298,19 @@ public class CarrelloPanel extends JPanel {
 				model.addRow(new Object[] {"CONFEZIONATI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 			}
 			 
+		}
+	}
+	
+	private void EliminaProdottiScaduti(Controller ctrl) {
+		ArrayList<String> prodotti_scaduti = new ArrayList<String>();
+		java.util.Date data_corrente = new java.util.Date();
+		prodotti=ctrl.CaricaProdottiNegozio();
+		for(int i=0; i<prodotti.size(); i++) {
+			Date scadenza = (Date) prodotti.get(i).getData_scadenza();
+			if(scadenza.compareTo(data_corrente)<0) {
+				prodotti_scaduti.add(prodotti.get(i).getNome());
+				ctrl.EliminaProdottoNegozio(prodotti.get(i).getIdprodotto());
+			}
 		}
 	}
 

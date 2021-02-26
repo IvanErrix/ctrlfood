@@ -72,8 +72,8 @@ public class FrameIniziale extends JFrame {
 		ButtonAmministratore = new JButton("");
 		ButtonAmministratore.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ctrl.ApriFrameLoginAmministratore(ctrl);
 				dispose();
+				ctrl.ApriFrameLoginAmministratore(ctrl);
 			}
 		});
 		ButtonAmministratore.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
