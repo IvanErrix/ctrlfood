@@ -31,6 +31,8 @@ import com.toedter.calendar.JTextFieldDateEditor;
 
 import ExternalClasses.ContentPane;
 import ExternalClasses.RoundedCornerBorder;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class AggiungiAlDepositoDialog extends JDialog {
 
@@ -317,6 +319,11 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		
 		/*JDATECHOOSER MUNGITURA*/ 
 		dateChooserMungitura = new JDateChooser();
+		dateChooserMungitura.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent evt) {
+				dateChooserProduzione.setMinSelectableDate(dateChooserMungitura.getDate());
+			}
+		});
 		dateChooserMungitura.getCalendarButton().setBorderPainted(false);
 		dateChooserMungitura.getCalendarButton().setContentAreaFilled(false);
 		dateChooserMungitura.getCalendarButton().setBackground(new Color(191,215,255));
@@ -691,7 +698,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 	private void AggiungiLatticino(Controller ctrl) {
 		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 
-				|| dateChooserEditorMungitura.getText().length() == 0) {
+				|| dateChooserEditorMungitura.getText().length() == 0 || dateChooserProduzione.getDate().compareTo(dateChooserMungitura.getDate())<0) {
 			ErroreAggiuntaProdotto();
 		}
 		else {
