@@ -189,6 +189,17 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		
 		/*TEXTFIELD PREZZO*/
 		textFieldPrezzo = new JTextField(20) ;
+		textFieldPrezzo.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusLost(FocusEvent e) {
+				try {
+					if(ctrl.Arrotonda(Double.parseDouble(textFieldPrezzo.getText()), 2)==0.00) {
+						textFieldPrezzo.setText("");
+					}
+				} catch (NumberFormatException e1) {
+				}
+			}
+		});
 		textFieldPrezzo.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -683,6 +694,12 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		setAlwaysOnTop(true);
 	}
 	
+	private void ErroreDateLatticino() {
+		setAlwaysOnTop(false);
+		JOptionPane.showMessageDialog(null, "LA DATA MUNGITURA NON PUO ESSERE MAGGIORE DELLA DATA PRODUZIONE", "", JOptionPane.ERROR_MESSAGE);
+		setAlwaysOnTop(true);
+	}
+	
 	private void AggiungiOrtofrutta(Controller ctrl) {
 		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {
@@ -698,8 +715,12 @@ public class AggiungiAlDepositoDialog extends JDialog {
 	private void AggiungiLatticino(Controller ctrl) {
 		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
 				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 
-				|| dateChooserEditorMungitura.getText().length() == 0 || dateChooserProduzione.getDate().compareTo(dateChooserMungitura.getDate())<0) {
+				|| dateChooserEditorMungitura.getText().length() == 0) {
 			ErroreAggiuntaProdotto();
+			
+		}
+		else if(dateChooserProduzione.getDate().compareTo(dateChooserMungitura.getDate())<0) {
+			ErroreDateLatticino();
 		}
 		else {
 			ctrl.InserisciProdottoLatticino(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
