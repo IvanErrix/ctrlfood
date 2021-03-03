@@ -247,58 +247,53 @@ public class Controller {
 	}
 	
 	//Metodi Database Deposito
-	public void InserisciProdottoDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_raccolta) {
+	public void InserisciProdottoOrtofruttaInDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_raccolta) {
 		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
 		java.sql.Date raccolta = new java.sql.Date(data_raccolta);
 		try {
 			depositodao.AggiungiOrtofruttaAlDeposito(nome, prezzo, quantita, scadenza, raccolta);
 		} catch (NumberFormatException e) {
-			System.out.println("errore controller");
 			e.printStackTrace();
 		}
 	}
 	
-	public void InserisciProdottoConfezionato(String nome, double prezzo, int quantita, long data_scadenza, long data_confezionamento) {
+	public void InserisciProdottoConfezionatoInDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_confezionamento) {
 		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
 		java.sql.Date confezionamento = new java.sql.Date(data_confezionamento);
 		try {
 			depositodao.AggiungiConfezionatoAlDeposito(nome, prezzo, quantita, scadenza, confezionamento);
 		} catch (NumberFormatException e) {
-			System.out.println("errore controller");
 			e.printStackTrace();
 		}
 	}
 	
-	public void InserisciProdottoLatticino(String nome, double prezzo, int quantita, long data_scadenza, long data_mungitura, long data_produzione) {
+	public void InserisciProdottoLatticinoInDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_mungitura, long data_produzione) {
 		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
 		java.sql.Date mungitura = new java.sql.Date(data_mungitura);
 		java.sql.Date produzione = new java.sql.Date(data_produzione);
 		try {
 			depositodao.AggiungiLatticinoAlDeposito(nome, prezzo, quantita, scadenza, mungitura, produzione);
 		} catch (NumberFormatException e) {
-			System.out.println("errore controller");
 			e.printStackTrace();
 		}
 	}
 	
-	public void InserisciProdottoFarinaceo(String nome, double prezzo, int quantita, long data_scadenza, long data_produzione) {
+	public void InserisciProdottoFarinaceoInDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_produzione) {
 		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
 		java.sql.Date produzione = new java.sql.Date(data_produzione);
 		try {
 			depositodao.AggiungiFarinaceoAlDeposito(nome, prezzo, quantita, scadenza, produzione);
 		} catch (NumberFormatException e) {
-			System.out.println("errore controller");
 			e.printStackTrace();
 		}
 	}
 	
-	public void InserisciProdottoUova(String nome, double prezzo, int quantita, long data_scadenza, long data_deposizione) {
+	public void InserisciProdottoUovaInDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_deposizione) {
 		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
 		java.sql.Date deposizione = new java.sql.Date(data_deposizione);
 		try {
 			depositodao.AggiungiUovoAlDeposito(nome, prezzo, quantita, scadenza, deposizione);
 		} catch (NumberFormatException e) {
-			System.out.println("errore controller");
 			e.printStackTrace();
 		}
 	}

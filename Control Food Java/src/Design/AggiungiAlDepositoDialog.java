@@ -706,7 +706,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			ErroreAggiuntaProdotto();
 		}
 		else {
-			ctrl.InserisciProdottoDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+			ctrl.InserisciProdottoOrtofruttaInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
 					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorRaccolta.getDate().getTime());
 			ProdottoAggiuntoCorrettamente();
 		}
@@ -723,7 +723,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			ErroreDateLatticino();
 		}
 		else {
-			ctrl.InserisciProdottoLatticino(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+			ctrl.InserisciProdottoLatticinoInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
 					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorMungitura.getDate().getTime(), dateChooserEditorProduzione.getDate().getTime());
 			ProdottoAggiuntoCorrettamente();
 		}
@@ -735,7 +735,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			ErroreAggiuntaProdotto();
 		} 
 		else {
-			ctrl.InserisciProdottoConfezionato(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+			ctrl.InserisciProdottoConfezionatoInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
 					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorConfezionamento.getDate().getTime());
 			ProdottoAggiuntoCorrettamente();
 		}
@@ -747,7 +747,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			ErroreAggiuntaProdotto();
 		}
 		else {
-			ctrl.InserisciProdottoFarinaceo(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+			ctrl.InserisciProdottoFarinaceoInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
 					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorProduzione.getDate().getTime());
 			ProdottoAggiuntoCorrettamente();
 		}
@@ -759,7 +759,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			ErroreAggiuntaProdotto();
 		}
 		else {
-			ctrl.InserisciProdottoUova(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+			ctrl.InserisciProdottoUovaInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
 					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorDeposizione.getDate().getTime());
 			ProdottoAggiuntoCorrettamente();
 		}
