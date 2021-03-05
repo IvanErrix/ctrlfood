@@ -156,7 +156,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonUova = new JButton("");
 		ButtonUova.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome = "UOVA";
+			nome = "UOVO";
 			VisibilitaLabel(nome);
 			CaricaComboBoxNome(ctrl);
 			}
@@ -309,19 +309,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		prodotti=ctrl.CaricaProdottiNegozio();
 		comboBoxNome.removeAllItems();
 		for(int i=0; i<prodotti.size(); i++) {
-			if(prodotti.get(i).getOrtofrutta()==true && nome.equals("ORTOFRUTTA")) {
-				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
-			}
-			else if(prodotti.get(i).getLatticino()==true && nome.equals("LATTICINO")) {
-				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
-			}
-			else if(prodotti.get(i).getFarinaceo()==true && nome.equals("FARINACEO")) {
-				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
-			}
-			else if(prodotti.get(i).getUova()==true && nome.equals("UOVA")) {
-				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
-			}
-			else if(prodotti.get(i).getConfezionato()==true &&nome.equals("CONFEZIONATO")) {
+			if(prodotti.get(i).getTipologia().equals(nome)) {
 				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
 			}
 		}
@@ -386,7 +374,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 			
 		}
-		else if(nome.equals("UOVA")) {
+		else if(nome.equals("UOVO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));

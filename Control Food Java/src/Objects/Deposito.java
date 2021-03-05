@@ -1,36 +1,39 @@
 package Objects;
 
 public class Deposito {
-
-    public Deposito(int iddeposito, String luogo, int grandezza) {
+    
+	public Deposito(int iddeposito, String indirizzo, String grandezza) {
 		super();
 		this.iddeposito = iddeposito;
-		this.luogo = luogo;
+		this.indirizzo = indirizzo;
 		this.grandezza = grandezza;
 	}
-    
+
 	private int iddeposito;
-    private String luogo;
-    private int grandezza;
+    private String indirizzo;
+    private String grandezza;
     
 	public int getIddeposito() {
 		return iddeposito;
 	}
+	
 	public void setIddeposito(int iddeposito) {
 		this.iddeposito = iddeposito;
 	}
-	public String getLuogo() {
-		return luogo;
+	
+	public String getIndirizzo() {
+		return indirizzo;
 	}
-	public void setLuogo(String luogo) {
-		this.luogo = luogo;
+	
+	public void setIndirizzo(String indirizzo) {
+		this.indirizzo = indirizzo;
 	}
-	public int getGrandezza() {
+	
+	public String getGrandezza() {
 		return grandezza;
 	}
-	public void setGrandezza(int grandezza) {
+	
+	public void setGrandezza(String grandezza) {
 		this.grandezza = grandezza;
 	}
-
-
 }

@@ -382,7 +382,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonOrtofrutta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nome = "ORTOFRUTTA";
-				VisibilitaLabel("ORTOFRUTTA");
+				VisibilitaLabel(nome);
 			}
 		});
 		ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofruttaBlue.png")));
@@ -398,7 +398,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonFarinacei.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nome = "FARINACEO";
-				VisibilitaLabel("FARINACEO");
+				VisibilitaLabel(nome);
 			}
 		});
 		ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
@@ -414,7 +414,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonConfezionati.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nome = "CONFEZIONATO";
-				VisibilitaLabel("CONFEZIONATO");
+				VisibilitaLabel(nome);
 			}
 		});
 		ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
@@ -430,7 +430,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonLatticini.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				nome = "LATTICINO";
-				VisibilitaLabel("LATTICINO");
+				VisibilitaLabel(nome);
 			}
 		});
 		ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
@@ -445,8 +445,8 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonUova = new JButton("");
 		ButtonUova.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				nome = "UOVA";
-				VisibilitaLabel("UOVA");
+				nome = "UOVO";
+				VisibilitaLabel(nome);
 			}
 		});
 		ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
@@ -461,7 +461,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		ButtonAggiugni = new JButton("");
 		ButtonAggiugni.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ControlliAggiungiProdotto(ctrl);
+				AggiungiProdotto(ctrl);
 			}
 		});
 		ButtonAggiugni.addMouseListener(new MouseAdapter() {
@@ -543,25 +543,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		LabelSfondo.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/Sfondo.png")));
 		LabelSfondo.setBounds(-8, -8, 727, 536);
 		contentPane.add(LabelSfondo);
-	}
-	
-	private void ControlliAggiungiProdotto(Controller ctrl) {
-		if (nome.equals("ORTOFRUTTA")) {
-			AggiungiOrtofrutta(ctrl);
-		}
-		else if(nome.equals("LATTICINO")) {
-			AggiungiLatticino(ctrl);
-		}
-		else if(nome.equals("CONFEZIONATO")) {
-			AggiungiConfezionato(ctrl);
-		}
-		else if(nome.equals("FARINACEO")) {
-			AggiungiFarinaceo(ctrl);
-		}
-		else if(nome.equals("UOVA")) {
-			AggiungiUovo(ctrl);
-		}
-	
 	}
 	
 	private void RimuoviTutto() {
@@ -658,7 +639,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			dateChooserDeposizione.setVisible(false);
 			
 		}
-		else if(nome.equals("UOVA")) {
+		else if(nome.equals("UOVO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
@@ -700,68 +681,133 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		setAlwaysOnTop(true);
 	}
 	
-	private void AggiungiOrtofrutta(Controller ctrl) {
-		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
-				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {
-			ErroreAggiuntaProdotto();
-		}
-		else {
-			ctrl.InserisciProdottoOrtofruttaInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
-					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorRaccolta.getDate().getTime());
-			ProdottoAggiuntoCorrettamente();
-		}
-	}
+//	private void AggiungiOrtofrutta(Controller ctrl) {
+//		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
+//				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorRaccolta.getText().length() == 0) {
+//			ErroreAggiuntaProdotto();
+//		}
+//		else {
+//			ctrl.InserisciProdottoOrtofruttaInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+//					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorRaccolta.getDate().getTime());
+//			ProdottoAggiuntoCorrettamente();
+//		}
+//	}
+//	
+//	private void AggiungiLatticino(Controller ctrl) {
+//		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
+//				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 
+//				|| dateChooserEditorMungitura.getText().length() == 0) {
+//			ErroreAggiuntaProdotto();
+//			
+//		}
+//		else if(dateChooserProduzione.getDate().compareTo(dateChooserMungitura.getDate())<0) {
+//			ErroreDateLatticino();
+//		}
+//		else {
+//			ctrl.InserisciProdottoLatticinoInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+//					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorMungitura.getDate().getTime(), dateChooserEditorProduzione.getDate().getTime());
+//			ProdottoAggiuntoCorrettamente();
+//		}
+//	}
+//	
+//	private void AggiungiConfezionato(Controller ctrl) {
+//		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
+//				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorConfezionamento.getText().length() == 0) {
+//			ErroreAggiuntaProdotto();
+//		} 
+//		else {
+//			ctrl.InserisciProdottoConfezionatoInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+//					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorConfezionamento.getDate().getTime());
+//			ProdottoAggiuntoCorrettamente();
+//		}
+//	}
+//	
+//	private void AggiungiFarinaceo(Controller ctrl) {
+//		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
+//				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 ) {
+//			ErroreAggiuntaProdotto();
+//		}
+//		else {
+//			ctrl.InserisciProdottoFarinaceoInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+//					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorProduzione.getDate().getTime());
+//			ProdottoAggiuntoCorrettamente();
+//		}
+//	}
+//	
+//	private void AggiungiUovo(Controller ctrl) {
+//		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
+//				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorDeposizione.getText().length() == 0 ) {
+//			ErroreAggiuntaProdotto();
+//		}
+//		else {
+//			ctrl.InserisciProdottoUovaInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+//					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorDeposizione.getDate().getTime());
+//			ProdottoAggiuntoCorrettamente();
+//		}
+//	}
 	
-	private void AggiungiLatticino(Controller ctrl) {
-		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
-				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 
-				|| dateChooserEditorMungitura.getText().length() == 0) {
-			ErroreAggiuntaProdotto();
+	private void AggiungiProdotto(Controller ctrl) {
+		if(textFieldNome.getText().length() != 0 || textFieldPrezzo.getText().length() != 0 || dateChooserEditorScadenza.getText().length() != 0) {
+			 if(nome.equals("ORTOFRUTTA")) {
+				 if(dateChooserEditorRaccolta.getText().length() != 0 && dateChooserEditorProduzione.getText().length() == 0 && dateChooserEditorMungitura.getText().length() == 0 && dateChooserEditorDeposizione.getText().length() == 0 && dateChooserEditorConfezionamento.getText().length() == 0) {
+					
+					 ctrl.InserisciProdottoInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), dateChooserEditorScadenza.getDate().getTime(), nome,
+							 dateChooserEditorRaccolta.getDate().getTime(), dateChooserEditorProduzione.getDate().getTime(),
+							 dateChooserEditorMungitura.getDate().getTime(), dateChooserEditorDeposizione.getDate().getTime(),
+							 dateChooserEditorConfezionamento.getDate().getTime());
+					 ProdottoAggiuntoCorrettamente();
+				 }
+				 else {
+					 ErroreAggiuntaProdotto();
+				 }
+			 }
+			 else if(nome.equals("LATTICINO")) {
+				 if(dateChooserEditorRaccolta.getText().length() == 0 && dateChooserEditorProduzione.getText().length() != 0 && dateChooserEditorMungitura.getText().length() != 0 && dateChooserEditorDeposizione.getText().length() == 0 && dateChooserEditorConfezionamento.getText().length() == 0) {
 			
-		}
-		else if(dateChooserProduzione.getDate().compareTo(dateChooserMungitura.getDate())<0) {
-			ErroreDateLatticino();
+				 }
+				 else {
+					 ErroreAggiuntaProdotto();
+				 }
+			 }
+			 else if(nome.equals("UOVO")) {
+				 if(dateChooserEditorRaccolta.getText().length() == 0 && dateChooserEditorProduzione.getText().length() == 0 && dateChooserEditorMungitura.getText().length() == 0 && dateChooserEditorDeposizione.getText().length() != 0 && dateChooserEditorConfezionamento.getText().length() == 0) {
+			
+				 }
+				 else {
+					 ErroreAggiuntaProdotto();
+				 }
+			 }
+			 else if(nome.equals("CONFEZIONATO")) {
+				 if(dateChooserEditorRaccolta.getText().length() == 0 && dateChooserEditorProduzione.getText().length() == 0 && dateChooserEditorMungitura.getText().length() == 0 && dateChooserEditorDeposizione.getText().length() == 0 && dateChooserEditorConfezionamento.getText().length() != 0) {
+			
+				 }
+				 else {
+					 ErroreAggiuntaProdotto();
+				 }
+			 }
+			 else if(nome.equals("FARINACEO")) {
+				 if(dateChooserEditorRaccolta.getText().length() != 0 && dateChooserEditorProduzione.getText().length() == 0 && dateChooserEditorMungitura.getText().length() == 0 && dateChooserEditorDeposizione.getText().length() == 0 && dateChooserEditorConfezionamento.getText().length() == 0) {
+			
+				 }
+				 else {
+					 ErroreAggiuntaProdotto();
+				 }
+			 }
 		}
 		else {
-			ctrl.InserisciProdottoLatticinoInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
-					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorMungitura.getDate().getTime(), dateChooserEditorProduzione.getDate().getTime());
-			ProdottoAggiuntoCorrettamente();
-		}
-	}
-	
-	private void AggiungiConfezionato(Controller ctrl) {
-		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
-				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorConfezionamento.getText().length() == 0) {
-			ErroreAggiuntaProdotto();
-		} 
-		else {
-			ctrl.InserisciProdottoConfezionatoInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
-					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorConfezionamento.getDate().getTime());
-			ProdottoAggiuntoCorrettamente();
-		}
-	}
-	
-	private void AggiungiFarinaceo(Controller ctrl) {
-		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
-				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorProduzione.getText().length() == 0 ) {
-			ErroreAggiuntaProdotto();
-		}
-		else {
-			ctrl.InserisciProdottoFarinaceoInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
-					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorProduzione.getDate().getTime());
-			ProdottoAggiuntoCorrettamente();
-		}
-	}
-	
-	private void AggiungiUovo(Controller ctrl) {
-		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
-				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorDeposizione.getText().length() == 0 ) {
 			ErroreAggiuntaProdotto();
 		}
-		else {
-			ctrl.InserisciProdottoUovaInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
-					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorDeposizione.getDate().getTime());
-			ProdottoAggiuntoCorrettamente();
-		}
+		
+		
+		
+//		if (textFieldNome.getText().length() == 0 || textFieldPrezzo.getText().length() == 0
+//				|| dateChooserEditorScadenza.getText().length() == 0 || dateChooserEditorDeposizione.getText().length() == 0 ) {
+//			ErroreAggiuntaProdotto();
+//		}
+//		else {
+//			ctrl.InserisciProdottoUovaInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
+//					dateChooserEditorScadenza.getDate().getTime(), dateChooserEditorDeposizione.getDate().getTime());
+//			ProdottoAggiuntoCorrettamente();
+//		}
 	}
 }

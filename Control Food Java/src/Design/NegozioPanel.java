@@ -319,27 +319,14 @@ public class NegozioPanel extends JPanel {
 			double prezzo = prodotti.get(i).getPrezzo();
 			int quantita = prodotti.get(i).getQuantita();
 			Date scadenza = (Date) prodotti.get(i).getData_scadenza();
+			String tipologia = prodotti.get(i).getTipologia();
 			Date raccolta = (Date) prodotti.get(i).getData_raccolta();
 			Date produzione = (Date) prodotti.get(i).getData_produzione();
 			Date mungitura = (Date) prodotti.get(i).getData_mungitura();
 			Date deposizione = (Date) prodotti.get(i).getData_deposizione();
 			Date confezionamento = (Date) prodotti.get(i).getData_confezionamento();
-			if((prodotti.get(i).getOrtofrutta())==true) {
-				model.addRow(new Object[] {"ORTOFRUTTA", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
-			}
-			else if((prodotti.get(i).getLatticino())==true) {
-				model.addRow(new Object[] {"LATTICINI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
-			}
-			else if((prodotti.get(i).getFarinaceo())==true) {
-				model.addRow(new Object[] {"FARINACEI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
-			}
-			else if((prodotti.get(i).getUova())==true) {
-				model.addRow(new Object[] {"UOVA", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
-			}
-			else if((prodotti.get(i).getConfezionato())==true) {
-				model.addRow(new Object[] {"CONFEZIONATI", id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
-			}
-			 
+			
+			model.addRow(new Object[] {tipologia, id, nome, prezzo+" €", quantita, scadenza, raccolta, produzione, mungitura, deposizione, confezionamento});
 		}
 	}
 }

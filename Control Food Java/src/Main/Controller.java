@@ -279,6 +279,16 @@ public class Controller {
 
 	}
 	
+	public void InserisciProdottoInDeposito(String nome, double prezzo, int quantita, long data_scadenza, String tipologia, long data_raccolta, long data_produzione, long data_mungitura, long data_deposizione, long data_confezionamento) {
+		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
+		java.sql.Date raccolta = new java.sql.Date(data_raccolta);
+		java.sql.Date produzione = new java.sql.Date(data_produzione);
+		java.sql.Date mungitura = new java.sql.Date(data_mungitura);
+		java.sql.Date deposizione = new java.sql.Date(data_deposizione);
+		java.sql.Date confezionamento= new java.sql.Date(data_confezionamento);
+		depositodao.AggiungiProdottoAlDeposito(nome, prezzo, quantita, scadenza, tipologia, raccolta, produzione, mungitura, deposizione, confezionamento);
+	}
+	
 	public ArrayList<Prodotto> CaricaProdottiDeposito(Controller ctrl) {
 		return depositodao.CaricaProdottiDeposito(ctrl);
 	}

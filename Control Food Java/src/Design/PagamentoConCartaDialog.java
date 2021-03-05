@@ -368,20 +368,20 @@ public class PagamentoConCartaDialog extends JDialog {
 		Double puntiuova = 0.0;
 		Double punticonfezionati = 0.0;
 		for(int i=0; i<prodotti.size(); i++) {
-			if(prodotti.get(i).getOrtofrutta()==true) {
+			if(prodotti.get(i).getTipologia().equals("ORTOFRUTTA")) {
 				puntiortofrutta=puntiortofrutta+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
 				System.out.println(puntiortofrutta);
 			}
-			else if(prodotti.get(i).getLatticino()==true){
+			else if(prodotti.get(i).getTipologia().equals("LATTICINO")){
 				puntilatticini=puntilatticini+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
 			}
-			else if(prodotti.get(i).getFarinaceo()==true) {
+			else if(prodotti.get(i).getTipologia().equals("FARINACEO")) {
 				puntifarinacei=puntifarinacei+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
 			}
-			else if(prodotti.get(i).getUova()==true){
+			else if(prodotti.get(i).getTipologia().equals("UOVO")){
 				puntiuova=puntiuova+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
 			}
-			else if(prodotti.get(i).getConfezionato()==true) {
+			else if(prodotti.get(i).getTipologia().equals("CONFEZIONATO")) {
 				punticonfezionati=punticonfezionati+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
 			}
 		}
