@@ -10,95 +10,9 @@ import Main.Controller;
 import Objects.Prodotto;
 
 public class DepositoDAO {
-
-	public void AggiungiOrtofruttaAlDeposito(String nome, double prezzo, int quantita, Date data_scadenza, Date data_raccolta) {
-		String sql = "CALL aggiungi_ortofrutta_deposito(?, ?, ?, ?, ?, ?)";
-		
-		try {
-			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
-			query.setString(1, nome);
-			query.setDouble(2, prezzo);
-			query.setInt(3, quantita);
-			query.setDate(4, data_scadenza);
-			query.setBoolean(5, true);
-			query.setDate(6, data_raccolta);
-			query.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void AggiungiConfezionatoAlDeposito(String nome, double prezzo, int quantita, Date data_scadenza, Date data_confezionamento) {
-		String sql = "CALL aggiungi_confezionato_depostio(?, ?, ?, ?, ?, ?)";
-		
-		try {
-			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
-			query.setString(1, nome);
-			query.setDouble(2, prezzo);
-			query.setInt(3, quantita);
-			query.setDate(4, data_scadenza);
-			query.setBoolean(5, true);
-			query.setDate(6, data_confezionamento);
-			query.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void AggiungiLatticinoAlDeposito(String nome, double prezzo, int quantita, Date data_scadenza, Date data_mungitura, Date data_produzione) {
-		String sql ="CALL aggiungi_latticino_deposito(?, ?, ?, ?, ?, ?, ?)";
-		
-		try {
-			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
-			query.setString(1, nome);
-			query.setDouble(2, prezzo);
-			query.setInt(3, quantita);
-			query.setDate(4, data_scadenza);
-			query.setBoolean(5, true);
-			query.setDate(6, data_mungitura);
-			query.setDate(7, data_produzione);
-			query.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void AggiungiFarinaceoAlDeposito(String nome, double prezzo, int quantita, Date data_scadenza, Date data_produzione) {
-		String sql = "CALL aggiungi_farinaceo_deposito(?, ?, ?, ?, ?, ?)";
-		
-		try {
-			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
-			query.setString(1, nome);
-			query.setDouble(2, prezzo);
-			query.setInt(3, quantita);
-			query.setDate(4, data_scadenza);
-			query.setBoolean(5, true);
-			query.setDate(6, data_produzione);
-			query.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void AggiungiUovoAlDeposito(String nome, double prezzo, int quantita, Date data_scadenza, Date data_deposizione) {
-		String sql = "CALL aggiungi_uovo_deposito(?, ?, ?, ?, ?, ?)";
-		
-		try {
-			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
-			query.setString(1, nome);
-			query.setDouble(2, prezzo);
-			query.setInt(3, quantita);
-			query.setDate(4, data_scadenza);
-			query.setBoolean(5, true);
-			query.setDate(6, data_deposizione);
-			query.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
 	
 	public void AggiungiProdottoAlDeposito(String nome, double prezzo, int quantita, Date data_scadenza, String tipologia, Date data_raccolta, Date data_produzione,  Date data_mungitura, Date data_deposizione, Date data_confezionamento) {
-	String sql = "CALL aggiungi_prodotto_deposi(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	String sql = "CALL aggiungi_prodotto_deposito(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
@@ -112,7 +26,7 @@ public class DepositoDAO {
 			query.setDate(8, data_mungitura);
 			query.setDate(9, data_deposizione);
 			query.setDate(10, data_confezionamento);
-			query.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

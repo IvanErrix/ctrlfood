@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -246,47 +248,35 @@ public class Controller {
 	}
 	
 	//Metodi Database Deposito
-	public void InserisciProdottoOrtofruttaInDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_raccolta) {
-		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
-		java.sql.Date raccolta = new java.sql.Date(data_raccolta);
-		depositodao.AggiungiOrtofruttaAlDeposito(nome, prezzo, quantita, scadenza, raccolta);
-
+	public void InserisciOrtofruttaInDeposito(String nome, double prezzo, int quantita, Date data_scadenza, String tipologia, Date data_raccolta) {
+		java.sql.Date scadenza = new java.sql.Date(data_scadenza.getTime());
+		java.sql.Date raccolta = new java.sql.Date(data_raccolta.getTime());
+		depositodao.AggiungiProdottoAlDeposito(nome, prezzo, quantita, scadenza, tipologia, raccolta, null, null, null, null);
 	}
 	
-	public void InserisciProdottoConfezionatoInDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_confezionamento) {
-		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
-		java.sql.Date confezionamento = new java.sql.Date(data_confezionamento);
-		depositodao.AggiungiConfezionatoAlDeposito(nome, prezzo, quantita, scadenza, confezionamento);
+	public void InserisciLatticinoInDeposito(String nome, double prezzo, int quantita, Date data_scadenza, String tipologia ,Date data_produzione, Date data_mungitura) {
+		java.sql.Date scadenza = new java.sql.Date(data_scadenza.getTime());
+		java.sql.Date produzione = new java.sql.Date(data_produzione.getTime());
+		java.sql.Date mungitura = new java.sql.Date(data_mungitura.getTime());
+		depositodao.AggiungiProdottoAlDeposito(nome, prezzo, quantita, scadenza, tipologia, null, produzione, mungitura, null, null);
 	}
 	
-	public void InserisciProdottoLatticinoInDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_mungitura, long data_produzione) {
-		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
-		java.sql.Date mungitura = new java.sql.Date(data_mungitura);
-		java.sql.Date produzione = new java.sql.Date(data_produzione);
-		depositodao.AggiungiLatticinoAlDeposito(nome, prezzo, quantita, scadenza, mungitura, produzione);
+	public void InserisciFarinaceoInDeposito(String nome, double prezzo, int quantita, Date data_scadenza, String tipologia ,Date data_produzione) {
+		java.sql.Date scadenza = new java.sql.Date(data_scadenza.getTime());
+		java.sql.Date produzione = new java.sql.Date(data_produzione.getTime());
+		depositodao.AggiungiProdottoAlDeposito(nome, prezzo, quantita, scadenza, tipologia, null, produzione, null, null, null);
 	}
 	
-	public void InserisciProdottoFarinaceoInDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_produzione) {
-		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
-		java.sql.Date produzione = new java.sql.Date(data_produzione);
-		depositodao.AggiungiFarinaceoAlDeposito(nome, prezzo, quantita, scadenza, produzione);
+	public void InserisciUovoInDeposito(String nome, double prezzo, int quantita, Date data_scadenza, String tipologia ,Date data_deposizione) {
+		java.sql.Date scadenza = new java.sql.Date(data_scadenza.getTime());
+		java.sql.Date deposizione = new java.sql.Date(data_deposizione.getTime());
+		depositodao.AggiungiProdottoAlDeposito(nome, prezzo, quantita, scadenza, tipologia, null, null, null, deposizione, null);
 	}
 	
-	public void InserisciProdottoUovaInDeposito(String nome, double prezzo, int quantita, long data_scadenza, long data_deposizione) {
-		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
-		java.sql.Date deposizione = new java.sql.Date(data_deposizione);
-		depositodao.AggiungiUovoAlDeposito(nome, prezzo, quantita, scadenza, deposizione);
-
-	}
-	
-	public void InserisciProdottoInDeposito(String nome, double prezzo, int quantita, long data_scadenza, String tipologia, long data_raccolta, long data_produzione, long data_mungitura, long data_deposizione, long data_confezionamento) {
-		java.sql.Date scadenza = new java.sql.Date(data_scadenza);
-		java.sql.Date raccolta = new java.sql.Date(data_raccolta);
-		java.sql.Date produzione = new java.sql.Date(data_produzione);
-		java.sql.Date mungitura = new java.sql.Date(data_mungitura);
-		java.sql.Date deposizione = new java.sql.Date(data_deposizione);
-		java.sql.Date confezionamento= new java.sql.Date(data_confezionamento);
-		depositodao.AggiungiProdottoAlDeposito(nome, prezzo, quantita, scadenza, tipologia, raccolta, produzione, mungitura, deposizione, confezionamento);
+	public void InserisciConfezionatoInDepisto(String nome, double prezzo, int quantita, Date data_scadenza, String tipologia ,Date data_confezionamento) {
+		java.sql.Date scadenza = new java.sql.Date(data_scadenza.getTime());
+		java.sql.Date confezionamento= new java.sql.Date(data_confezionamento.getTime());
+		depositodao.AggiungiProdottoAlDeposito(nome, prezzo, quantita, scadenza, tipologia, null, null, null, null, confezionamento);
 	}
 	
 	public ArrayList<Prodotto> CaricaProdottiDeposito(Controller ctrl) {

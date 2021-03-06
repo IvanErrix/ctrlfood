@@ -28,7 +28,6 @@ import Main.Controller;
 import Objects.Prodotto;
 
 import javax.swing.JComboBox;
-import javax.swing.SwingConstants;
 
 public class AggiungiAlNegozioDialog extends JDialog {
 
@@ -38,8 +37,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private ContentPane contentPane;
 	private JLabel LabelNome;
 	private JLabel LabelQuantita;
-	private JLabel LabelIDProdotto;
-	private String nome = "ORTOFRUTTA";
+	private String tipologia = "ORTOFRUTTA";
 	private JButton ButtonOrtofrutta;
 	private JButton ButtonFarinacei;
 	private JButton ButtonConfezionati;
@@ -51,7 +49,6 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private JComboBox<String> comboBoxNome;
 	private SpinnerNumberModel model;
 	private JSpinner spinnerQuantita;
-	private JLabel LabelID;
 	private JLabel LabelSfondo;
 
 	public AggiungiAlNegozioDialog(Controller ctrl) {
@@ -73,29 +70,22 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		LabelNome = new JLabel("Nome");
 		LabelNome.setForeground(new Color(0,41,82));
 		LabelNome.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelNome.setBounds(107, 151, 46, 24);
+		LabelNome.setBounds(107, 169, 46, 24);
 		contentPane.add(LabelNome);
 		
 		/*LABEL QUANTITA*/
 		LabelQuantita = new JLabel("Quantit\u00E0");
 		LabelQuantita.setForeground(new Color(0,41,82));
 		LabelQuantita.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelQuantita.setBounds(107, 264, 68, 14);
+		LabelQuantita.setBounds(107, 234, 68, 14);
 		contentPane.add(LabelQuantita);
-		
-		/*LABEL ID PRODOTTO*/
-		LabelIDProdotto = new JLabel("ID Prodotto");
-		LabelIDProdotto.setForeground(new Color(0,41,82));
-		LabelIDProdotto.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelIDProdotto.setBounds(107, 213, 92, 21);
-		contentPane.add(LabelIDProdotto);
 		
 		/*BUTTON ORTOFRUTTA*/
 		ButtonOrtofrutta = new JButton("");
 		ButtonOrtofrutta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				nome = "ORTOFRUTTA";
-				VisibilitaLabel(nome);
+				tipologia = "ORTOFRUTTA";
+				VisibilitaLabel(tipologia);
 				CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -104,15 +94,15 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonOrtofrutta.setOpaque(false);
 		ButtonOrtofrutta.setBorder(null);
 		ButtonOrtofrutta.setContentAreaFilled(false);
-		ButtonOrtofrutta.setBounds(31, 13, 78, 83);
+		ButtonOrtofrutta.setBounds(31, 22, 78, 83);
 		contentPane.add(ButtonOrtofrutta);
 		
 		/*BUTTON FARINACEI*/
 		ButtonFarinacei = new JButton("");
 		ButtonFarinacei.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome = "FARINACEO";
-			VisibilitaLabel(nome);
+			tipologia = "FARINACEO";
+			VisibilitaLabel(tipologia);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -121,15 +111,15 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonFarinacei.setOpaque(false);
 		ButtonFarinacei.setBorder(null);
 		ButtonFarinacei.setContentAreaFilled(false);
-		ButtonFarinacei.setBounds(130, 13, 78, 83);
+		ButtonFarinacei.setBounds(130, 22, 78, 83);
 		contentPane.add(ButtonFarinacei);
 		
 		/*BUTTON CONFEZIONATI*/
 		ButtonConfezionati = new JButton("");
 		ButtonConfezionati.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome = "CONFEZIONATO";
-			VisibilitaLabel(nome);
+			tipologia = "CONFEZIONATO";
+			VisibilitaLabel(tipologia);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -138,15 +128,15 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonConfezionati.setOpaque(false);
 		ButtonConfezionati.setBorder(null);
 		ButtonConfezionati.setContentAreaFilled(false);
-		ButtonConfezionati.setBounds(229, 13, 78, 83);
+		ButtonConfezionati.setBounds(229, 22, 78, 83);
 		contentPane.add(ButtonConfezionati);
 		
 		/*BUTTON LATTICINI*/
 		ButtonLatticini = new JButton("");
 		ButtonLatticini.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome = "LATTICINO";
-			VisibilitaLabel(nome);
+			tipologia = "LATTICINO";
+			VisibilitaLabel(tipologia);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -155,15 +145,15 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonLatticini.setOpaque(false);
 		ButtonLatticini.setBorder(null);
 		ButtonLatticini.setContentAreaFilled(false);
-		ButtonLatticini.setBounds(330, 13, 78, 83);
+		ButtonLatticini.setBounds(330, 22, 78, 83);
 		contentPane.add(ButtonLatticini);
 		
 		/*BUTTON UOVA*/
 		ButtonUova = new JButton("");
 		ButtonUova.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome = "UOVO";
-			VisibilitaLabel(nome);
+			tipologia = "UOVO";
+			VisibilitaLabel(tipologia);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -172,7 +162,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		ButtonUova.setOpaque(false);
 		ButtonUova.setBorder(null);
 		ButtonUova.setContentAreaFilled(false);
-		ButtonUova.setBounds(436, 13, 78, 83);
+		ButtonUova.setBounds(436, 22, 78, 83);
 		contentPane.add(ButtonUova);
 		
 		/*BUTTON AGGIUNGI*/
@@ -245,7 +235,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		comboBoxNome.setMaximumRowCount(3);
 		comboBoxNome.setForeground(new Color(0,41,82));
 		comboBoxNome.setBackground(new Color(191,215,255));
-		comboBoxNome.setBounds(274, 151, 190, 25);
+		comboBoxNome.setBounds(274, 169, 190, 25);
 		contentPane.add(comboBoxNome);
 		
 		/*SPINNER QUANTITA*/
@@ -261,19 +251,9 @@ public class AggiungiAlNegozioDialog extends JDialog {
 		spinnerQuantita.setRequestFocusEnabled(false);
 		spinnerQuantita.setFont(new Font("Cambria", Font.BOLD, 14));
 		spinnerQuantita.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		spinnerQuantita.setBounds(274, 260, 60, 24);
+		spinnerQuantita.setBounds(274, 230, 60, 24);
 		((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
 		contentPane.add(spinnerQuantita);
-		
-		/*LABEL ID*/
-		LabelID = new JLabel("");
-		LabelID.setHorizontalAlignment(SwingConstants.CENTER);
-		LabelID.setHorizontalTextPosition(SwingConstants.CENTER);
-		LabelID.setForeground(new Color(0,41,82));
-		LabelID.setFont(new Font("Cambria", Font.BOLD, 16));
-		LabelID.setBorder(new RoundedCornerBorder());
-		LabelID.setBounds(274, 210, 68, 24);
-		contentPane.add(LabelID);
 		
 		/*LABEL SFONDO*/
 		LabelSfondo = new JLabel("");
@@ -288,47 +268,47 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private void CaricaComboBoxNome(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
 		comboBoxNome.removeAllItems();
-		for(int i=0; i<prodotti.size(); i++) {
-			if(prodotti.get(i).getTipologia().equals(nome)) {
-				comboBoxNome.addItem(prodotti.get(i).getNome());
+			for(int i=0; i<prodotti.size(); i++) {
+				if(prodotti.get(i).getTipologia().equals(tipologia)) {
+					comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
+				}
 			}
-		}
 	}
 	
 	private void CaricaSpinnerQuantita(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiDeposito(ctrl);
 		if (comboBoxNome.getSelectedItem()!=null) {
 			for (int i = 0; i < prodotti.size(); i++) {
-				if (comboBoxNome.getSelectedItem().toString().equals(prodotti.get(i).getNome())) {
+				String valore = comboBoxNome.getSelectedItem().toString();
+				valore = valore.replaceAll("\\s+","");
+				String[] parts = valore.split("-");
+				String part1 = parts[0];
+				if (part1.equals(Integer.toString(prodotti.get(i).getIdprodotto()))) {
 					spinnerQuantita.setModel(new SpinnerNumberModel(1, 1, prodotti.get(i).getQuantita(), 1));
 					((DefaultEditor) spinnerQuantita.getEditor()).getTextField().setEditable(false);
 					spinnerQuantita.getEditor().getComponent(0).setBackground(new Color(191, 215, 255));
 					spinnerQuantita.getEditor().getComponent(0).setForeground(new Color(0, 41, 82));
-					LabelID.setText(Integer.toString(prodotti.get(i).getIdprodotto()));
 				}
 			} 
 		}
-		else {
-			LabelID.setText("");
-		}
 	}
 	
-	private void VisibilitaLabel(String nome) {
-		if(nome.equals("ORTOFRUTTA")) {
+	private void VisibilitaLabel(String tipologia) {
+		if(tipologia.equals("ORTOFRUTTA")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofruttaBlue.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
 			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 		}
-		else if(nome.equals("LATTICINO")) {
+		else if(tipologia.equals("LATTICINO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
 			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticiniBlue.png")));
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 		}
-		else if(nome.equals("CONFEZIONATO")) {
+		else if(tipologia.equals("CONFEZIONATO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionatiBlue.png")));
@@ -336,7 +316,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 		
 		}
-		else if(nome.equals("FARINACEO")) {
+		else if(tipologia.equals("FARINACEO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinaceiBlue.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
@@ -344,7 +324,7 @@ public class AggiungiAlNegozioDialog extends JDialog {
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 			
 		}
-		else if(nome.equals("UOVO")) {
+		else if(tipologia.equals("UOVO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
@@ -356,7 +336,11 @@ public class AggiungiAlNegozioDialog extends JDialog {
 	private void ControlloAggiungiProdotto(Controller ctrl) {
 		if (comboBoxNome.getSelectedItem()!=null) {
 			setAlwaysOnTop(false);
-			ctrl.AggiungiProdottoAlNegozio(Integer.parseInt(LabelID.getText()),Integer.parseInt(spinnerQuantita.getValue().toString()));
+			String valore = comboBoxNome.getSelectedItem().toString();
+			valore = valore.replaceAll("\\s+","");
+			String[] parts = valore.split("-");
+			String idprodotto = parts[0];
+			ctrl.AggiungiProdottoAlNegozio(Integer.parseInt(idprodotto),Integer.parseInt(spinnerQuantita.getValue().toString()));
 			JOptionPane.showMessageDialog(null, "PRODOTTO AGGIUNTO CORRETTAMENTE \nAGGIORNARE LA TABELLA PER VISUALIZZARE IL PRODOTTO", "",JOptionPane.INFORMATION_MESSAGE);
 			setAlwaysOnTop(true);
 			CaricaComboBoxNome(ctrl);

@@ -44,7 +44,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 	private JLabel LabelDataScadenzaProdotto; //Label fissa
 	private JLabel LabelDataScadenza; //Label caricamento della data di scadelza del prodotto
 	private JLabel LabelSfondo;
-	private String nome = "ORTOFRUTTA";
+	private String tipologia = "ORTOFRUTTA";
 	private JButton ButtonOrtofrutta;
 	private JButton ButtonFarinacei;
 	private JButton ButtonConfezionati;
@@ -88,8 +88,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonOrtofrutta = new JButton("");
 		ButtonOrtofrutta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				nome = "ORTOFRUTTA";
-				VisibilitaLabel(nome);
+				tipologia = "ORTOFRUTTA";
+				VisibilitaLabel(tipologia);
 				CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -105,8 +105,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonFarinacei = new JButton("");
 		ButtonFarinacei.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome = "FARINACEO";
-			VisibilitaLabel(nome);
+			tipologia = "FARINACEO";
+			VisibilitaLabel(tipologia);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -122,8 +122,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonConfezionati = new JButton("");
 		ButtonConfezionati.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome = "CONFEZIONATO";
-			VisibilitaLabel(nome);
+			tipologia = "CONFEZIONATO";
+			VisibilitaLabel(tipologia);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -139,8 +139,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonLatticini = new JButton("");
 		ButtonLatticini.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome = "LATTICINO";
-			VisibilitaLabel(nome);
+			tipologia = "LATTICINO";
+			VisibilitaLabel(tipologia);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -156,8 +156,8 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		ButtonUova = new JButton("");
 		ButtonUova.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			nome = "UOVO";
-			VisibilitaLabel(nome);
+			tipologia = "UOVO";
+			VisibilitaLabel(tipologia);
 			CaricaComboBoxNome(ctrl);
 			}
 		});
@@ -309,7 +309,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		prodotti=ctrl.CaricaProdottiNegozio();
 		comboBoxNome.removeAllItems();
 		for(int i=0; i<prodotti.size(); i++) {
-			if(prodotti.get(i).getTipologia().equals(nome)) {
+			if(prodotti.get(i).getTipologia().equals(tipologia)) {
 				comboBoxNome.addItem(prodotti.get(i).getIdprodotto()+" - "+prodotti.get(i).getNome());
 			}
 		}
@@ -343,22 +343,22 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 		}
 	}
 	
-	private void VisibilitaLabel(String nome) {
-		if(nome.equals("ORTOFRUTTA")) {
+	private void VisibilitaLabel(String tipologia) {
+		if(tipologia.equals("ORTOFRUTTA")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofruttaBlue.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
 			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticini.png")));
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 		}
-		else if(nome.equals("LATTICINO")) {
+		else if(tipologia.equals("LATTICINO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
 			ButtonLatticini.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonLatticiniBlue.png")));
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 		}
-		else if(nome.equals("CONFEZIONATO")) {
+		else if(tipologia.equals("CONFEZIONATO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionatiBlue.png")));
@@ -366,7 +366,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 		
 		}
-		else if(nome.equals("FARINACEO")) {
+		else if(tipologia.equals("FARINACEO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinaceiBlue.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
@@ -374,7 +374,7 @@ public class AggiungiAlCarrelloDialog extends JDialog {
 			ButtonUova.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonUova.png")));
 			
 		}
-		else if(nome.equals("UOVO")) {
+		else if(tipologia.equals("UOVO")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofrutta.png")));
 			ButtonFarinacei.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonFarinacei.png")));
 			ButtonConfezionati.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonConfezionati.png")));
