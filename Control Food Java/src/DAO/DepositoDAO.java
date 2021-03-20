@@ -12,8 +12,8 @@ import Objects.Prodotto;
 public class DepositoDAO {
 	
 	public void AggiungiProdottoAlDeposito(String nome, double prezzo, int quantita, Date data_scadenza, String tipologia, Date data_raccolta, Date data_produzione,  Date data_mungitura, Date data_deposizione, Date data_confezionamento) {
-	String sql = "CALL aggiungi_prodotto_deposito(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		
+		String sql = "CALL public.aggiungi_prodotto_deposito(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
 			query.setString(1, nome);
@@ -26,7 +26,7 @@ public class DepositoDAO {
 			query.setDate(8, data_mungitura);
 			query.setDate(9, data_deposizione);
 			query.setDate(10, data_confezionamento);
-
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -35,7 +35,7 @@ public class DepositoDAO {
 	public ArrayList<Prodotto> CaricaProdottiDeposito(Controller ctrl) {
 
 		ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
-		String sql = "CALL recupera_prodotti_deposito()";
+		String sql = "SELECT * FROM recupera_prodotti_deposito() ORDER BY idprodotto";
 
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
@@ -56,13 +56,13 @@ public class DepositoDAO {
 	}
 
 	public void EliminaProdottoDeposito(int idprodotto) {
-		String sql = "CALL elimina_prodotto(?)";
+		String sql = "CALL public.elimina_prodotto(?)";
 		
 		PreparedStatement query;
 		try {
 			query = Controller.getConnessione().getConn().prepareStatement(sql);
 			query.setInt(1, idprodotto);
-			query.execute();
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -313,8 +313,8 @@ public class Controller {
 		return clientedao.CaricaClienti();
 	}
 	
-	public ArrayList<CartaFedelta> CaricaPunti() {
-		return clientedao.CaricaPuntidFedelta();
+	public ArrayList<CartaFedelta> CaricaCartaFedelta() {
+		return clientedao.CaricaCartaFedelta();
 	}
 
 	public void EliminaCliente(int idcliente) {
@@ -357,12 +357,16 @@ public class Controller {
 	}
 	
 	//Metodi Database Pagamento
-	public void AggiornaPunti(double puntiortofrutta, double puntilatticini, double puntifarinacei, double puntiuova, double punticonfezionati, double puntitotali, int cartafedelta ) {
-		pagamentodao.AggiornaPunti(puntiortofrutta, puntilatticini, puntifarinacei, puntiuova, punticonfezionati, puntitotali, cartafedelta);
+	public void AggiornaPunti(double puntiortofrutta, double puntilatticini, double puntifarinacei, double puntiuova, double punticonfezionati, int cartafedelta ) {
+		pagamentodao.AggiornaPunti(puntiortofrutta, puntilatticini, puntifarinacei, puntiuova, punticonfezionati, cartafedelta);
 	}
 	
 	public void AggiungiPagamento(int chiavecarrello, int chiavecartafedelta) {
 		pagamentodao.AggiungiPagamento(chiavecarrello, chiavecartafedelta);
+	}
+	
+	public void AggiungiPagamentoSenzaCarta(int chiavecarrello) {
+		pagamentodao.AggiungiPagamentoSenzaCarta(chiavecarrello);
 	}
 	
 	//Metodo per arrotondare i double a due cifre decimali

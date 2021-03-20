@@ -114,7 +114,7 @@ public class PagamentoInContantiDialog extends JDialog {
 						CalcoloPunti(ctrl);
 						ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
 					} catch (NumberFormatException e1) {
-						ctrl.AggiungiPagamento(ctrl.RecuperaCarrello(), 0);
+						ctrl.AggiungiPagamentoSenzaCarta(ctrl.RecuperaCarrello());
 						CalcoloPunti(ctrl);
 						ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
 					}
@@ -283,7 +283,6 @@ public class PagamentoInContantiDialog extends JDialog {
 	
 	private void CalcoloPunti(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiCarrello();
-		Double totalepunti = 0.0;
 		Double puntiortofrutta = 0.0;
 		Double puntilatticini = 0.0;
 		Double puntifarinacei = 0.0;
@@ -306,10 +305,9 @@ public class PagamentoInContantiDialog extends JDialog {
 				punticonfezionati=punticonfezionati+(prodotti.get(i).getPrezzo()*prodotti.get(i).getQuantita())*10/100;
 			}
 		}
-		totalepunti =puntiortofrutta + puntilatticini + puntifarinacei + puntiuova + punticonfezionati;
 		try {
 			ctrl.AggiornaPunti(ctrl.Arrotonda(puntiortofrutta, 2), ctrl.Arrotonda(puntilatticini, 2), ctrl.Arrotonda(puntifarinacei, 2), ctrl.Arrotonda(puntiuova, 2), 
-					ctrl.Arrotonda(punticonfezionati, 2), ctrl.Arrotonda(totalepunti, 2), Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
+					ctrl.Arrotonda(punticonfezionati, 2), Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
 		} catch (NumberFormatException e) {
 		}
 	}

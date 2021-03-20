@@ -9,7 +9,7 @@ import Main.Controller;
 public class LoginAmministratoreDAO {
 	
 	public String ControllaDatiLogin(String username, String password) {
-		String sql = "SELECT controlla_dati_login(?, ?)";
+		String sql = "SELECT public.controllo_dati_login(?, ?)";
 		
 		String idamministratore = null;
 		try {

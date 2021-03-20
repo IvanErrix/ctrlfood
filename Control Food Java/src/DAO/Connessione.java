@@ -11,11 +11,11 @@ public class Connessione {
 	private Connection conn;
 	
 	public  Connessione() {
-		
+
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("org.postgresql.Driver");
 			try {
-				conn = DriverManager.getConnection("jdbc:mysql://den1.mysql4.gear.host/ctrlfood", "ctrlfood", "Po3IZ79Y?C_6");
+				conn = DriverManager.getConnection("jdbc:postgresql://ctrlfood-test.cwnsdb7npcei.eu-south-1.rds.amazonaws.com/CtrlFoodTest", "postgres", "ctrlfood");
 			} catch (SQLException e) {
 				JOptionPane.showMessageDialog(null, "Connessione al server fallita", "ERRORE", JOptionPane.ERROR_MESSAGE);
 				System.exit(0);

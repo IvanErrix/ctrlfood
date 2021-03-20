@@ -15,7 +15,7 @@ public class CarrelloDAO {
 		
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
-			query.executeQuery();
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -26,14 +26,14 @@ public class CarrelloDAO {
 		
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
-			query.executeQuery();
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public int RecuperaCarrello() {
-		String sql = "CALL recupera_carrello()";
+		String sql = "SELECT recupera_carrello()";
 		
 		int id = 0;
 		
@@ -59,14 +59,14 @@ public class CarrelloDAO {
 			query.setInt(1, idcarrello);
 			query.setInt(2, idprodotto);
 			query.setInt(3, quantita);
-			query.executeQuery();
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public ArrayList<Prodotto> RecuperaProdottiCarrello(){
-		String sql = "CALL recupera_prodotti_carrello()";
+		String sql = "SELECT * FROM recupera_prodotti_carrello() ORDER BY idprodotto";
 		
 		ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
 		
@@ -94,7 +94,7 @@ public class CarrelloDAO {
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
 			query.setInt(1, idprodotto);
-			query.executeQuery();
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -106,7 +106,7 @@ public class CarrelloDAO {
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
 			query.setInt(1, idcarrello);
-			query.executeQuery();
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

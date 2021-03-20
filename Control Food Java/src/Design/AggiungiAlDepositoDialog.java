@@ -545,8 +545,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		contentPane.add(LabelSfondo);
 	}
 	
-	
-	
 	private void RimuoviTutto() {
 		textFieldNome.setText("");
 		textFieldPrezzo.setText("");
@@ -577,7 +575,6 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		}
 	}
 	
-	
 	private void VisibilitaLabel(String nome) {
 		if(nome.equals("ORTOFRUTTA")) {
 			ButtonOrtofrutta.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonOrtofruttaBlue.png")));
@@ -592,6 +589,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			LabelDataDeposizione.setVisible(false);
 			textFieldNome.setText("");
 			textFieldNome.setEnabled(true);
+			textFieldPrezzo.setText("");
 			dateChooserConfezionamento.setVisible(false);
 			dateChooserRaccolta.setVisible(true);
 			dateChooserMungitura.setVisible(false);
@@ -611,6 +609,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			LabelDataDeposizione.setVisible(false);
 			textFieldNome.setText("");
 			textFieldNome.setEnabled(true);
+			textFieldPrezzo.setText("");
 			dateChooserConfezionamento.setVisible(false);
 			dateChooserConfezionamento.setVisible(false);
 			dateChooserRaccolta.setVisible(false);
@@ -631,6 +630,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			LabelDataDeposizione.setVisible(false);
 			textFieldNome.setText("");
 			textFieldNome.setEnabled(true);
+			textFieldPrezzo.setText("");
 			dateChooserConfezionamento.setVisible(false);
 			dateChooserConfezionamento.setVisible(true);
 			dateChooserRaccolta.setVisible(false);
@@ -652,6 +652,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			LabelDataDeposizione.setVisible(false);
 			textFieldNome.setText("");
 			textFieldNome.setEnabled(true);
+			textFieldPrezzo.setText("");
 			dateChooserConfezionamento.setVisible(false);
 			dateChooserConfezionamento.setVisible(false);
 			dateChooserRaccolta.setVisible(false);
@@ -674,6 +675,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 			textFieldNome.setText("UOVA");
 			textFieldNome.setDisabledTextColor(new Color(0,41,82));
 			textFieldNome.setEnabled(false);
+			textFieldPrezzo.setText("");
 			dateChooserConfezionamento.setVisible(false);
 			dateChooserConfezionamento.setVisible(false);
 			dateChooserRaccolta.setVisible(false);
@@ -709,7 +711,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		}
 		else {
 			ctrl.InserisciOrtofruttaInDeposito(textFieldNome.getText(), Double.parseDouble(textFieldPrezzo.getText()), Integer.parseInt(spinnerQuantita.getValue().toString()), 
-					dateChooserEditorScadenza.getDate(), tipologia, dateChooserEditorScadenza.getDate());
+					dateChooserEditorScadenza.getDate(), tipologia, dateChooserEditorRaccolta.getDate());
 			ProdottoAggiuntoCorrettamente();
 		}
 	}

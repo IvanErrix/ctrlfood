@@ -333,7 +333,7 @@ public class ClientiPanel extends JPanel {
 	private void CaricaClientiInTabella(Controller ctrl) {
 		model.setRowCount(0);
 		clienti=ctrl.CaricaClienti();
-		carte=ctrl.CaricaPunti();
+		carte=ctrl.CaricaCartaFedelta();
 		
 		for(int i=0; i<clienti.size(); i++) {
 			int id = clienti.get(i).getIdcliente();

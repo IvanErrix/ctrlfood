@@ -13,7 +13,7 @@ public class NegozioDAO {
 	public ArrayList<Prodotto> CaricaProdottiNegozio() {
 
 		ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
-		String sql = "CALL recupera_prodotti_negozio()";
+		String sql = "SELECT * FROM recupera_prodotti_negozio() ORDER BY idprodotto";
 
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
@@ -38,7 +38,7 @@ public class NegozioDAO {
 			PreparedStatement query= Controller.getConnessione().getConn().prepareStatement(sql);
 			query.setInt(1,idprodotto);
 			query.setInt(2, quantita);
-			query.executeQuery();
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -51,7 +51,7 @@ public class NegozioDAO {
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
 			query.setInt(1, idprodotto);
-			query.executeQuery();
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -64,7 +64,7 @@ public class NegozioDAO {
 		try {
 			query = Controller.getConnessione().getConn().prepareStatement(sql);
 			query.setInt(1, idprodotto);
-			query.execute();
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

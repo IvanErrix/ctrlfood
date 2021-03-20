@@ -30,7 +30,7 @@ public class ClienteDAO {
 		
 		ArrayList<Cliente> clienti = new ArrayList<Cliente>();
 		
-		String sql = "CALL recupera_clienti";
+		String sql = "SELECT * FROM recupera_clienti() ORDER BY idcliente";
 		
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
@@ -46,10 +46,10 @@ public class ClienteDAO {
 		return clienti;
 	}
 	
-	public ArrayList<CartaFedelta> CaricaPuntidFedelta() {
+	public ArrayList<CartaFedelta> CaricaCartaFedelta() {
 		
 		ArrayList<CartaFedelta> carte = new ArrayList<CartaFedelta>();
-		String sql = "CALL recupera_punti_fedelta";
+		String sql = "SELECT * FROM recupera_carta_fedelta() ORDER BY idcarta_fedelta";
 		
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
@@ -72,7 +72,7 @@ public class ClienteDAO {
 		try {
 			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
 			query.setInt(1, idcliente);
-			query.executeQuery();
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -87,7 +87,7 @@ public class ClienteDAO {
 			query.setString(2, nome);
 			query.setString(3, cognome);
 			query.setString(4, codicefiscale);
-			query.executeQuery();
+			query.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
