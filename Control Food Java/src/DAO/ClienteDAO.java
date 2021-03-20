@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import Main.Controller;
 import Objects.CartaFedelta;
 import Objects.Cliente;
@@ -21,8 +23,9 @@ public class ClienteDAO {
 			query.setString(2, cognome);
 			query.setString(3, codice_fiscale);
 			query.executeUpdate();
+			JOptionPane.showMessageDialog(null, "CLIENTE AGGIUNTO CORRETTAMENTE \nAGGIORNARE LA TABELLA PER VISUALIZZARLO", "", JOptionPane.INFORMATION_MESSAGE);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "UTENTE GIA ESISTENTE NEL DATABASE CON QUESTO CODICE FISCALE", "", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	

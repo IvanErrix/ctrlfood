@@ -276,7 +276,6 @@ public class AggiungiClientiDialog extends JDialog {
 		else {
 			setAlwaysOnTop(false);
 			ctrl.AggiungiCliente(textFieldNome.getText(), textFieldCognome.getText(), textFieldCodiceFiscale.getText());
-			JOptionPane.showMessageDialog(null, "CLIENTE AGGIUNTO CORRETTAMENTE \nAGGIORNARE LA TABELLA PER VISUALIZZARLO", "", JOptionPane.INFORMATION_MESSAGE);
 			setAlwaysOnTop(true);
 			RimuoviTutto();
 		}
