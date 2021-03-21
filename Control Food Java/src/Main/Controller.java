@@ -40,12 +40,8 @@ import Design.ModificaClienteDialog;
 import Design.NegozioPanel;
 import Design.PagamentoConCartaDialog;
 import Design.PagamentoInContantiDialog;
-import Objects.Carrello;
 import Objects.CartaFedelta;
 import Objects.Cliente;
-import Objects.Deposito;
-import Objects.Negozio;
-import Objects.Pagamento;
 import Objects.Prodotto;
 
 public class Controller {

@@ -69,7 +69,7 @@ public class AggiungiAlDepositoDialog extends JDialog {
 	private JButton ButtonConfezionati;
 	private JButton ButtonLatticini;
 	private JButton ButtonUova;
-	private JButton ButtonAggiugni;
+	private JButton ButtonAggiungi;
 	private JButton ButtonRimuoviTutto;
 	private JButton ButtonAnnulla;
 	private JLabel LabelSfondo;
@@ -458,30 +458,30 @@ public class AggiungiAlDepositoDialog extends JDialog {
 		contentPane.add(ButtonUova);
 		
 		/*BUTTON AGGIUNGI*/
-		ButtonAggiugni = new JButton("");
-		ButtonAggiugni.addActionListener(new ActionListener() {
+		ButtonAggiungi = new JButton("");
+		ButtonAggiungi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControlloTipologia(ctrl);
 			}
 		});
-		ButtonAggiugni.addMouseListener(new MouseAdapter() {
+		ButtonAggiungi.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2Azzurro.png")));
+				ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2Azzurro.png")));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
+				ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
 			}
 		});
-		ButtonAggiugni.setPressedIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
-		ButtonAggiugni.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		ButtonAggiugni.setOpaque(false);
-		ButtonAggiugni.setBorder(null);
-		ButtonAggiugni.setContentAreaFilled(false);
-		ButtonAggiugni.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
-		ButtonAggiugni.setBounds(505, 455, 110, 24);
-		contentPane.add(ButtonAggiugni);
+		ButtonAggiungi.setPressedIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
+		ButtonAggiungi.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		ButtonAggiungi.setOpaque(false);
+		ButtonAggiungi.setBorder(null);
+		ButtonAggiungi.setContentAreaFilled(false);
+		ButtonAggiungi.setIcon(new ImageIcon(AggiungiAlDepositoDialog.class.getResource("/scrimg/ButtonAggiungi2.png")));
+		ButtonAggiungi.setBounds(505, 455, 110, 24);
+		contentPane.add(ButtonAggiungi);
 		
 		/*BUTTON RIMUOVI TUTTO*/
 		ButtonRimuoviTutto = new JButton("");
