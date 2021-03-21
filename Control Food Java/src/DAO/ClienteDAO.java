@@ -49,25 +49,6 @@ public class ClienteDAO {
 		return clienti;
 	}
 	
-	public ArrayList<CartaFedelta> CaricaCartaFedelta() {
-		
-		ArrayList<CartaFedelta> carte = new ArrayList<CartaFedelta>();
-		String sql = "SELECT * FROM recupera_carta_fedelta() ORDER BY idcarta_fedelta";
-		
-		try {
-			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
-			ResultSet datirecuperati = query.executeQuery();
-			
-			while(datirecuperati.next()) {
-				carte.add(new CartaFedelta(datirecuperati.getInt(1), datirecuperati.getDouble(2), datirecuperati.getDouble(3), datirecuperati.getDouble(4), datirecuperati.getDouble(5), datirecuperati.getDouble(6), datirecuperati.getDouble(7), datirecuperati.getDate(8), datirecuperati.getInt(9)));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		
-		return carte;
-	}
-	
 	public void EliminaCliente(int idcliente) {
 		String sql = "CALL elimina_cliente(?)";
 		
@@ -95,5 +76,59 @@ public class ClienteDAO {
 			e.printStackTrace();
 		}
 	}
-
+	
+	public void AggiornaPunti(double puntiortofrutta, double puntilatticini, double puntifarinacei, double puntiuova, double punticonfezionati, int cartafedelta ) {
+		String sql = "CALL aggiorna_punti(?, ?, ?, ?, ?, ?)";
+		
+		try {
+			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
+			query.setDouble(1, puntiortofrutta);
+			query.setDouble(2, puntilatticini);
+			query.setDouble(3, puntifarinacei);
+			query.setDouble(4, puntiuova);
+			query.setDouble(5, punticonfezionati);
+			query.setInt(6, cartafedelta);
+			query.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public ArrayList<CartaFedelta> CaricaCartaFedelta() {
+		
+		ArrayList<CartaFedelta> carte = new ArrayList<CartaFedelta>();
+		String sql = "SELECT * FROM recupera_carta_fedelta() ORDER BY idcarta_fedelta";
+		
+		try {
+			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
+			ResultSet datirecuperati = query.executeQuery();
+			
+			while(datirecuperati.next()) {
+				carte.add(new CartaFedelta(datirecuperati.getInt(1), datirecuperati.getDouble(2), datirecuperati.getDouble(3), datirecuperati.getDouble(4), datirecuperati.getDouble(5), datirecuperati.getDouble(6), datirecuperati.getDouble(7), datirecuperati.getDate(8), datirecuperati.getInt(9)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return carte;
+	}
+	
+	public Integer ControlloEsistenzaCartaFedelta(int idcarta_fedelta_selezionata) {
+	String sql = "SELECT public.controllo_esistenza_carta_fedelta(?)";
+		
+		Integer idcarta_fedelta = null;
+		try {
+			PreparedStatement query = Controller.getConnessione().getConn().prepareStatement(sql);
+			query.setInt(1, idcarta_fedelta_selezionata);
+			
+			ResultSet datiRecuperati = query.executeQuery();
+			
+			datiRecuperati.next();
+			idcarta_fedelta = datiRecuperati.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return idcarta_fedelta;
+	}
 }

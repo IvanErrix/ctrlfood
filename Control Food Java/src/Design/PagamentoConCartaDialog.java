@@ -169,7 +169,7 @@ public class PagamentoConCartaDialog extends JDialog {
 		});
 		textFieldNumeroCarta.setBounds(258, 194, 269, 30);
 		textFieldNumeroCarta.setBorder(new RoundedCornerBorder());
-		textFieldNumeroCarta.setFont(new Font("Cambria", Font.BOLD, 11));
+		textFieldNumeroCarta.setFont(new Font("Cambria", Font.BOLD, 15));
 		textFieldNumeroCarta.setForeground(new Color(0,41,82));
 		textFieldNumeroCarta.setBackground(new Color(191,215,255));
 		textFieldNumeroCarta.setSelectedTextColor(new Color (191,215,255));
@@ -242,8 +242,6 @@ public class PagamentoConCartaDialog extends JDialog {
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ControlloPagamaneto(ctrl);
-				ctrl.ChiudiFrameCliente();
-				ctrl.ApriFrameIniziale(ctrl);
 			}
 		});
 		ButtonPaga.addMouseListener(new MouseAdapter() {
@@ -342,19 +340,20 @@ public class PagamentoConCartaDialog extends JDialog {
 				setAlwaysOnTop(true);
 			}
 			else {
-				setAlwaysOnTop(false);
-				try {
-					ctrl.AggiungiPagamento(ctrl.RecuperaCarrello(), Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
-					CalcoloPunti(ctrl);
-					ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
-				} catch (NumberFormatException e) {
+				if(textFieldNumeroCartaFedelta.getText().length()==0) {
 					ctrl.AggiungiPagamentoSenzaCarta(ctrl.RecuperaCarrello());
-					CalcoloPunti(ctrl);
-					ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
+					PagamentoAvvenutoConSuccesso(ctrl);
 				}
-				JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
-				setAlwaysOnTop(true);
-				dispose();
+				else if (ctrl.ControlloEsistenzaCartaFedelta(Integer.parseInt(textFieldNumeroCartaFedelta.getText()))!=0) {
+					ctrl.AggiungiPagamento(ctrl.RecuperaCarrello(),Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
+					CalcoloPunti(ctrl);
+					PagamentoAvvenutoConSuccesso(ctrl);
+				}
+				else {
+					setAlwaysOnTop(false);
+					JOptionPane.showMessageDialog(null, "CARTA FEDELTA NON ESISTENTE\n INSERIRE UN'ALTRA CARTA", "", JOptionPane.WARNING_MESSAGE);
+					setAlwaysOnTop(true);
+				}
 			} 
 		}
 	}
@@ -390,4 +389,15 @@ public class PagamentoConCartaDialog extends JDialog {
 		} catch (NumberFormatException e) {
 		}
 	}
+	
+	public void PagamentoAvvenutoConSuccesso(Controller ctrl) {
+		setAlwaysOnTop(false);
+		JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
+		setAlwaysOnTop(true);
+		dispose();
+		ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
+		ctrl.ChiudiFrameCliente();
+		ctrl.ApriFrameIniziale(ctrl);
+	}
+	
 }

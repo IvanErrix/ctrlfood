@@ -308,10 +308,6 @@ public class Controller {
 	public ArrayList<Cliente> CaricaClienti() {
 		return clientedao.CaricaClienti();
 	}
-	
-	public ArrayList<CartaFedelta> CaricaCartaFedelta() {
-		return clientedao.CaricaCartaFedelta();
-	}
 
 	public void EliminaCliente(int idcliente) {
 		clientedao.EliminaCliente(idcliente);
@@ -319,6 +315,18 @@ public class Controller {
 	
 	public void AggiornaDatiCliente(int idcliente, String nome, String cognome, String codicefiscale) {
 		clientedao.AggiornaDatiCliente(idcliente, nome, cognome, codicefiscale);
+	}
+	
+	public ArrayList<CartaFedelta> CaricaCartaFedelta() {
+		return clientedao.CaricaCartaFedelta();
+	}
+	
+	public void AggiornaPunti(double puntiortofrutta, double puntilatticini, double puntifarinacei, double puntiuova, double punticonfezionati, int cartafedelta ) {
+		clientedao.AggiornaPunti(puntiortofrutta, puntilatticini, puntifarinacei, puntiuova, punticonfezionati, cartafedelta);
+	}
+	
+	public Integer ControlloEsistenzaCartaFedelta(int idcarta_fedelta_selezionata) {
+		return clientedao.ControlloEsistenzaCartaFedelta(idcarta_fedelta_selezionata);
 	}
 	
 	//Metodi Database Carrello
@@ -353,10 +361,6 @@ public class Controller {
 	}
 	
 	//Metodi Database Pagamento
-	public void AggiornaPunti(double puntiortofrutta, double puntilatticini, double puntifarinacei, double puntiuova, double punticonfezionati, int cartafedelta ) {
-		pagamentodao.AggiornaPunti(puntiortofrutta, puntilatticini, puntifarinacei, puntiuova, punticonfezionati, cartafedelta);
-	}
-	
 	public void AggiungiPagamento(int chiavecarrello, int chiavecartafedelta) {
 		pagamentodao.AggiungiPagamento(chiavecarrello, chiavecartafedelta);
 	}

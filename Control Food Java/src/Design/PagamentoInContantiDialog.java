@@ -107,28 +107,7 @@ public class PagamentoInContantiDialog extends JDialog {
 		ButtonPaga = new JButton("");
 		ButtonPaga.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(textFieldContanti.getText().length()!=0 && LabelRestoStampato.getText().length()!=0) {
-					setAlwaysOnTop(false);
-					try {
-						ctrl.AggiungiPagamento(ctrl.RecuperaCarrello(), Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
-						CalcoloPunti(ctrl);
-						ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
-					} catch (NumberFormatException e1) {
-						ctrl.AggiungiPagamentoSenzaCarta(ctrl.RecuperaCarrello());
-						CalcoloPunti(ctrl);
-						ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
-					}
-					JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
-					setAlwaysOnTop(true);
-					dispose();
-					ctrl.ChiudiFrameCliente();
-					ctrl.ApriFrameIniziale(ctrl);
-				}
-				else {
-					setAlwaysOnTop(false);
-					JOptionPane.showMessageDialog(null, "INSERIRE CONTANTI O INSERIRNE DI PIÙ", "", JOptionPane.WARNING_MESSAGE);
-					setAlwaysOnTop(true);
-				}
+				ControlloPagamento(ctrl);
 			}
 		});
 		ButtonPaga.addMouseListener(new MouseAdapter() {
@@ -256,6 +235,30 @@ public class PagamentoInContantiDialog extends JDialog {
 		TotaleSpesa(ctrl);
 	}
 	
+	private void ControlloPagamento(Controller ctrl) {
+		if(textFieldContanti.getText().length()!=0 && LabelRestoStampato.getText().length()!=0) {
+			if(textFieldNumeroCartaFedelta.getText().length()==0) {
+				ctrl.AggiungiPagamentoSenzaCarta(ctrl.RecuperaCarrello());
+				PagamentoAvvenutoConSuccesso(ctrl);
+			}
+			else if (ctrl.ControlloEsistenzaCartaFedelta(Integer.parseInt(textFieldNumeroCartaFedelta.getText()))!=0) {
+				ctrl.AggiungiPagamento(ctrl.RecuperaCarrello(),Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
+				CalcoloPunti(ctrl);
+				PagamentoAvvenutoConSuccesso(ctrl);
+			}
+			else {
+				setAlwaysOnTop(false);
+				JOptionPane.showMessageDialog(null, "CARTA FEDELTA NON ESISTENTE\n INSERIRE UN'ALTRA CARTA", "", JOptionPane.WARNING_MESSAGE);
+				setAlwaysOnTop(true);
+			}
+		}
+		else {
+			setAlwaysOnTop(false);
+			JOptionPane.showMessageDialog(null, "INSERIRE CONTANTI O INSERIRNE DI PIÙ", "", JOptionPane.WARNING_MESSAGE);
+			setAlwaysOnTop(true);
+		}	
+	}
+
 	private void CalcoloTotale(Controller ctrl) {
 		prodotti=ctrl.CaricaProdottiCarrello();
 		Double totale = 0.0;
@@ -310,6 +313,16 @@ public class PagamentoInContantiDialog extends JDialog {
 					ctrl.Arrotonda(punticonfezionati, 2), Integer.parseInt(textFieldNumeroCartaFedelta.getText()));
 		} catch (NumberFormatException e) {
 		}
+	}
+	
+	public void PagamentoAvvenutoConSuccesso(Controller ctrl) {
+		setAlwaysOnTop(false);
+		JOptionPane.showMessageDialog(null, "PAGAMENTO AVVENUTO CON SUCCESSO", "", JOptionPane.INFORMATION_MESSAGE);
+		setAlwaysOnTop(true);
+		dispose();
+		ctrl.AggiornaCarrello(ctrl.RecuperaCarrello());
+		ctrl.ChiudiFrameCliente();
+		ctrl.ApriFrameIniziale(ctrl);
 	}
 	
 }
