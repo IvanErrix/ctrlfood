@@ -189,7 +189,7 @@ public class PagamentoInContantiDialog extends JDialog {
 		textFieldContanti.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
-				if (textFieldContanti.getText().length()<8) {
+				if (textFieldContanti.getText().length()<7) {
 					char c = e.getKeyChar();
 					if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE
 							|| c == KeyEvent.VK_PERIOD))
